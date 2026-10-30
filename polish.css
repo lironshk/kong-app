@@ -1,0 +1,170 @@
+/* Final shared craft layer. Composition remains owned by each destination. */
+body :is(button,.button){background:var(--surface);color:var(--text-primary);border-color:transparent;font-weight:700;transition:background-color 140ms var(--ease),color 140ms var(--ease),transform 140ms var(--ease)}
+body :is(button,.button):hover{background:var(--surface-hover);filter:none}
+body button:active{transform:translateY(1px)}
+body :is(#welcome-start,#daily-start,#start-now,#ob-next,#complete-target,#save-board,#save-skills,.home-primary,.coach-generate,.lib-apply){background:var(--action);color:var(--on-action);border-color:transparent;min-height:52px}
+body :is(#welcome-start,#daily-start,#start-now,#ob-next,#complete-target,#save-board,#save-skills,.home-primary,.coach-generate,.lib-apply):hover{background:var(--action-hover)}
+body .session-log-panel:has(#complete-target) #next-block{background:var(--surface-recessed);color:var(--text-primary)}
+body :is(.text-button,.nav-item){background:transparent;border:0;color:var(--text-secondary)}
+body .nav-item.active{color:var(--action)}
+body :is(.choice.selected,button[aria-pressed=true],.lib-filter-sheet .lib-option[aria-pressed=true]){background:var(--surface-recessed);color:var(--text-primary);border-color:var(--control-border)}
+body :is(.chip,.pill,.lib-tag){border:0;border-radius:4px;background:var(--surface-recessed);color:var(--text-secondary)}
+body :is(.card,.evidence-panel,.onboarding-form,.onboarding-story,.welcome-page){border:0;box-shadow:none}
+body :is(.evidence-checkpoint,.preview-summary,.preview-budget,.preview-recovery){border:0;background:var(--surface-recessed)}
+body :is(.settings-grid,.stats-grid,.dashboard-grid,.onboarding-shell,.workout-layout)>*{min-width:0}
+body :is(.settings-grid,.stats-grid,.dashboard-grid,.onboarding-shell){gap:24px}
+body :is(.stat strong,.summary-stats strong){font-size:32px;line-height:40px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--text-primary)}
+body :is(.micro-note,.card small,.session-log-title small){font-size:14px;line-height:20px;color:var(--text-secondary);opacity:1}
+body :is(.onboarding-story h2,.welcome-main h1){font-size:32px;line-height:40px;letter-spacing:0}
+.onboarding-story h2 br{display:none}
+body :is(.onboarding-story,.onboarding-form){padding:32px;border-radius:24px}
+body :is(.goal-card,.journey-choice){border:0;background:var(--surface-recessed);color:var(--text-primary);box-shadow:none}
+body :is(.goal-card,.journey-choice):hover{transform:none;background:var(--surface-hover)}
+body :is(.goal-card.selected,.journey-choice.selected){outline:1px solid var(--control-border);outline-offset:-1px}
+body .stepper i{background:var(--surface-recessed);color:var(--text-primary);border:0}
+body .stepper .active i{background:var(--text-primary);color:var(--surface)}
+body .home-insight{border-inline-start:0!important}
+body .home-h .home-primary{background:var(--action);color:var(--on-action);border:0}
+body .home-hero-copy{padding:24px}
+body .home-hero-art{background:var(--plate)}
+body :is(.lib-media,.preview-movement-art,.session-visual,.welcome-art){background:var(--plate)}
+body :is(.lib-media img,.movement-atlas-image){aspect-ratio:3/2;object-fit:contain;padding:8px;background:var(--plate)}
+body :is(.home-hero-art img,.welcome-art img,.campaign-photo){object-fit:contain;object-position:center}
+body .lib-page{--lib-gap:24px}
+body .lib-page .lib-card{box-shadow:none}
+body .lib-page .lib-card:hover{box-shadow:none;background:var(--surface-hover)}
+body .lib-skill-card.is-selected{box-shadow:inset 0 0 0 1px var(--control-border)!important}
+body .lib-page .lib-start{background:var(--surface-recessed);color:var(--text-primary)}
+.lib-current-drill{display:flex;align-items:center;gap:12px;margin-block:8px;font-size:14px;line-height:20px;color:var(--text-secondary)}
+.lib-current-drill .lib-media{flex:0 0 72px;border-radius:8px}
+.lib-current-drill .lib-media img{padding:4px}
+.lib-discovery{display:flex;gap:24px;margin:8px 0 24px;flex-wrap:wrap}
+body .lib-discovery button{padding:8px 0;border-radius:0;min-height:44px;font-size:14px;background:transparent;color:var(--text-secondary);border:0}
+body .lib-discovery button[aria-pressed=true]{color:var(--text-primary);box-shadow:inset 0 -1px var(--text-primary)}
+body .lib-discovery button::before{content:none}
+body .lib-page .lib-seg button[aria-selected=true]{box-shadow:none}
+body :is(dialog,.lib-more-menu,dialog.lib-filter-sheet){box-shadow:var(--elevation);border:0}
+body .inline-play{background:var(--surface);color:var(--text-primary);border:1px solid var(--divider);box-shadow:none}
+body .evidence-panel{padding:24px;margin-bottom:24px;border-radius:16px}
+body .evidence-ledger{gap:16px;border:0;margin-block:24px}
+body .evidence-ledger>div{border:0!important;padding:0;gap:8px}
+.evidence-volume{height:4px;background:var(--divider);border-radius:4px;overflow:hidden}
+.evidence-volume i{display:block;height:100%;background:var(--text-primary)}
+body .evidence-checkpoints{gap:16px}
+body .checkpoint-dots i{font-style:normal;background:var(--surface);border:0;color:var(--text-secondary)}
+body .checkpoint-dots .is-done{background:var(--text-primary);color:var(--surface)}
+.progress-skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-block:24px}
+.progress-skills article{padding:16px;background:var(--surface-recessed);border-radius:12px;min-width:0}
+.progress-skills meter{width:100%;accent-color:var(--action)}
+.progress-empty{padding:16px 0;color:var(--text-secondary)}
+body .chart{border:0;background:transparent}
+body .chart-bar{background:var(--text-primary);border-radius:4px 4px 0 0}
+body .session-v3 .workout-main{border:0;border-radius:24px;padding:24px}
+body .session-v3 .session-prescription{gap:24px;padding-block:24px}
+body .session-clock .timer{font-family:var(--font-latin);font-size:96px;line-height:104px;letter-spacing:0;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--text-primary)}
+body .session-clock .timer-actions{gap:8px;flex-wrap:wrap;justify-content:center}
+body .session-clock .timer-actions button{min-width:44px;min-height:44px;height:auto;padding:8px}
+body .session-visual{margin:0 0 24px;border-radius:16px;overflow:hidden}
+body .session-log-panel{bottom:max(8px,env(safe-area-inset-bottom));padding:16px;background:var(--surface);backdrop-filter:none;border:1px solid var(--divider);box-shadow:var(--elevation)}
+body .session-log-panel .quick-target{margin-bottom:8px;min-height:56px}
+body .session-skip{min-height:44px!important}
+body .live-session main{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+body .session-adjust>summary{min-height:44px}
+body .session-rest-scene{background:var(--surface-recessed);padding:32px 16px}
+@media(max-width:1099px){body .onboarding-shell{grid-template-columns:1fr}body .dashboard-grid{grid-template-columns:1fr}}
+@media(max-width:767px){
+ body :is(.card,.evidence-panel,.onboarding-story,.onboarding-form){padding:16px}
+ body :is(.settings-grid,.stats-grid){grid-template-columns:1fr;gap:16px}
+ body :is(.home-h,.home-main,.home-side){gap:16px}
+ body .home-hero-copy{padding:16px}
+ body .home-hero-copy>h3{font-size:28px;line-height:36px}
+ body .session-v3 .workout-main{padding:16px}
+ body .session-v3 .session-prescription{display:grid;grid-template-columns:1fr;gap:16px;padding-block:16px}
+ body .session-clock{border:0;padding:0}
+ body .session-clock .timer{font-size:72px;line-height:80px}
+ body .session-goal{align-items:center;text-align:center}
+ body .session-visual .movement-atlas-image{max-height:200px}
+ body .session-log-panel{margin:0;bottom:max(8px,env(safe-area-inset-bottom))}
+ body .session-v3 .workout-queue{max-height:none}
+ body .evidence-ledger{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .progress-skills{grid-template-columns:1fr}
+ body .preview-controls:has(.duration-segments){grid-template-columns:1fr}
+ body .preview-controls:has(.duration-segments)>label:first-child{grid-column:auto}
+ body .lib-skill-picker{padding:16px}
+ body .lib-skill-picker :is(.skill-selection,label,select){width:100%;min-width:0}
+ body .lib-phase-bar>span{min-width:0;padding:8px 4px}
+ body .topbar{height:calc(56px + env(safe-area-inset-top));padding-top:env(safe-area-inset-top)}
+}
+@media(prefers-reduced-motion:reduce){body *,body *::before,body *::after{transition:none!important;animation:none!important}}
+body .daily-rating input:checked+span{background:var(--surface-recessed);color:var(--text-primary)}
+body .session-log-panel:not(:has(#complete-target)) #next-block{background:var(--action);color:var(--on-action);min-height:52px}
+body .session-next-up{font-size:14px;line-height:20px;padding:12px 16px;border-radius:12px;background:var(--surface-recessed);color:var(--text-primary)}
+body .session-position>span{background:var(--action)}
+body .session-goal>strong{font-size:28px;line-height:36px;font-variant-numeric:tabular-nums;color:var(--text-primary)}
+body :is(.settings-grid,.onboarding-form) :is(input,select,textarea){max-width:100%}
+body :is(.lib-filter-sheet .lib-option,.lib-chip,.lib-clear,.lib-reset,.lib-link-button){min-height:44px}
+body .lib-search{border-color:var(--control-border)}
+body .home-session-preview .today-thumbnails img{flex:1 1 0;min-width:0;aspect-ratio:3/2;height:auto;padding:4px}
+body .today-thumbnails{min-width:0}
+body .session-log-panel .set-inputs{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+body .counter-input{min-width:0}
+body .counter-input input{width:100%;min-width:0}
+body dialog .modal-header button{min-width:44px;min-height:44px}
+:root[data-theme=sunlight] body :is(.card,.lib-card,.session-log-panel){outline:1px solid var(--divider);outline-offset:-1px}
+
+/* R3: visible state, readable phase budgets and bounded primary actions. */
+body .onboarding :is(.bottom-nav,.desktop-nav){display:none}
+body :is(button[aria-pressed="true"],.equipment-option:has(input:checked),.daily-rating label:has(input:checked)){border:2px solid var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--surface));}
+body button[aria-pressed="true"]:not(.choice)::before{content:'✓';margin-inline-end:6px}
+body .catalog-chips button[aria-pressed="true"]::before{content:'✓'}
+body .assessment-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+body .input-unit input{width:100%;min-width:115px}
+body .input-unit{min-width:0}
+body .daily-phases,body .phase-proportions{display:flex;gap:4px;overflow-x:auto}
+body .daily-phases li,body .phase-proportions>span{flex-basis:0;min-width:58px;white-space:normal;padding:8px 4px}
+body .lib-phase-bar>span{flex-basis:0;min-width:52px}
+body .lib-phase-bar b{white-space:normal;overflow:visible;text-overflow:clip}
+body .lib-thumbs[data-count="1"]{grid-template-columns:1fr;grid-template-rows:1fr}
+body .lib-thumbs[data-count="2"]{grid-template-columns:1fr 1fr;grid-template-rows:1fr}
+body .home-hero-art img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;max-width:none}
+body .home-hero-art.is-plate img{object-fit:contain;padding:8px;background:var(--plate)}
+@media(min-width:768px){body :is(.full-width,.home-primary,#ob-next,.coach-generate,.journey-panel>.row>button:last-child){max-width:360px}body .preview-start .full-width{margin-inline:auto}}
+
+/* R3.1: proportional time strips with an independent, wrapping legend. */
+body .session-phases{display:block;width:100%;margin-block:12px}
+body .phase-time-track{display:flex;width:100%;gap:2px;height:4px;overflow:hidden;border-radius:2px}
+body .phase-time-track>span{min-width:2px;padding:0;background:var(--control-border)}
+body .phase-time-track>[data-phase="strength"],body .phase-time-track>[data-phase="practice"]{background:var(--action)}
+body .phase-time-labels{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;font-size:12px;color:var(--text-secondary)}
+body .phase-time-labels>span{white-space:nowrap}
+body .preview-budget:has(.session-phases){display:block;padding:0}
+body .lib-phase-bar.session-phases{display:block;overflow:visible;background:none}
+body .lib-phase-bar.session-phases>span{min-width:0;padding:0;background:none;flex-basis:auto}
+body .lib-phase-bar.session-phases>.phase-time-track{flex-direction:row;gap:2px;height:4px}
+body .lib-phase-bar.session-phases>.phase-time-labels{flex-direction:row;gap:6px 16px;margin-top:8px}
+body .preview-budget>.session-phases{display:block}
+
+/* R4c: compact roadmap, one-row catalogue controls and regular equipment tiles. */
+.skill-evidence-detail,.skill-evidence-detail .skill-gates{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.skill-evidence-detail .skill-gates{padding:16px;border-radius:12px;margin-block:16px}
+.skill-gates h3{margin-bottom:8px}.skill-gates p{margin-bottom:8px}
+body .skill-evidence-detail .roadmap-step{padding:16px;margin-inline-start:12px;width:auto;min-width:0}
+body .skill-evidence-detail .roadmap-step figure{max-width:200px;margin:12px auto}
+.skill-evidence-detail .roadmap-step figure figcaption{display:none}
+.roadmap-step h3{margin-bottom:8px}.roadmap-step p{margin-block:8px}
+.roadmap-details summary,.skill-gates summary{display:flex;align-items:center;min-height:44px}
+.roadmap-details summary::before,.skill-gates summary::before{content:'＋';margin-inline-end:8px}
+.roadmap-details[open] summary::before,.skill-gates details[open] summary::before{content:'−'}
+.lib-toolbar{display:flex;flex-wrap:nowrap;gap:8px}
+.lib-toolbar .lib-search{flex:1 1 0;min-width:0;margin:0;padding-inline:8px}
+.lib-search svg{flex-shrink:0}
+.lib-toolbar .lib-sort{flex:0 0 106px;min-width:0;margin:0;font-size:0}
+.lib-sort select{height:48px;font-size:14px;padding:6px;width:100%}
+.lib-toolbar .lib-filter-button{flex-shrink:0}
+.lib-discovery{flex-wrap:nowrap;gap:24px}
+.lib-sheet-links{display:grid;gap:8px;margin-top:20px}
+body .onboarding-form .equipment-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+body .onboarding-form .equipment-option{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px;margin:0;padding:16px 8px;min-width:0;text-align:center}
+body .equipment-option input{position:absolute;inset-block-start:8px;inset-inline-start:8px;margin:0}
+.equipment-option>span{margin:0}
+@media(min-width:600px){body .onboarding-form .equipment-picker{grid-template-columns:repeat(3,minmax(0,1fr))}}

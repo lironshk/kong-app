@@ -1,0 +1,3830 @@
+{
+  "schema_version": 2,
+  "records": [
+    {
+      "id": "FB001",
+      "source_id": "001",
+      "kind": "template",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "## אימון FB001 – Full Body\n\n**תאריך:** 1.8.2026  \n**מקור:** תמונת לוח ראשונה  \n**סוג:** Full Body  \n**סטטוס:** פענוח חלקי\n\n### חימום – Warm-up ×2\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Plank Knee to Elbow | 30 שניות |\n| 2 | Jumping Jacks | 30 שניות |\n| 3 | Butt Kicks | 30 שניות |\n\n**סבבים:** 2  \n**משך עבודה נטו:** 3 דקות  \n**מנוחות:** לא צוינו.\n\n### Skill\n\nלא מופיע פירוט בלוח.\n\n**סיבה:** המאמן בוחר את הסקיל בזמן האימון.\n\n### Strength\n\n**Round ×3**\n\n| סדר | תרגיל | כמות | ודאות |\n|---|---|---|---|\n| 1 | Explosive Pull Ups | 20 חזרות לפי פענוח הכתום, אך שיוך המספר אינו ודאי | נמוכה |\n| 2 | Pull Ups | 10 חזרות | בינונית |\n| 3 | Bulgarian Split Squat | 12 לכל רגל | בינונית |\n| 4 | Trap Pull | 20 חזרות | בינונית |\n\n**הערת פענוח:** בתשובה הראשונה בשיחה הופיעו 4–5 חזרות ל-Explosive Pull Ups. לאחר בחינה של הפענוח הקודם, יש סתירה בין המספרים והשיוך שלהם לתרגילים. לכן אין לשמור את הכמות כנתון מאומת.\n\n### מנוחות\n\nלא צוינו בלוח.\n\n### תיוגים מוצעים\n\n`full_body`, `pull`, `explosive_strength`, `legs`, `unilateral`, `scapular_control`\n\n### הערות\n\n- זהו אימון מקורי של המאמן.\n- אין להוסיף לו סקיל משוער.\n- יש לשמור את התמונה המקורית לצורך אימות עתידי.\n\n---\n\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Plank Knee to Elbow",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Jumping Jacks",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Butt Kicks",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "skill",
+          "title": "Skill",
+          "type": "skill",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [],
+          "uncertainty": [
+            "תוכן הסקיל לא נמסר; אין להשלים תרגילים."
+          ]
+        },
+        {
+          "id": "strength",
+          "title": "Strength — Round ×3",
+          "type": "strength",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Explosive Pull Ups",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "conflicted",
+              "uncertainty": [
+                "שיוך המספר אינו ודאי; אין כמות מאומתת."
+              ],
+              "alternatives": [
+                {
+                  "reps": {
+                    "min": 20,
+                    "max": 20
+                  },
+                  "status": "uncertain_assignment"
+                },
+                {
+                  "reps": {
+                    "min": 4,
+                    "max": 5
+                  },
+                  "status": "earlier_conflicting_reading"
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "name_raw": "Pull Ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Bulgarian Split Squat",
+              "exercise_id": null,
+              "reps": {
+                "min": 12,
+                "max": 12
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": true,
+              "side_scope": "each_side",
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "Trap Pull",
+              "exercise_id": null,
+              "reps": {
+                "min": 20,
+                "max": 20
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [
+        {
+          "field": "Explosive Pull Ups.reps",
+          "readings": [
+            {
+              "min": 20,
+              "max": 20
+            },
+            {
+              "min": 4,
+              "max": 5
+            }
+          ],
+          "resolution": null,
+          "note": "גם שיוך המספר לתרגיל אינו ודאי."
+        }
+      ],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "FB002",
+      "source_id": "001",
+      "kind": "template",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "## אימון FB002 – Full Body\n\n**תאריך:** 2.8.2026  \n**מקור:** תמונת לוח שנייה  \n**סוג:** Full Body  \n**סטטוס:** פענוח חלקי\n\n### חימום – Warm-up ×2\n\nכל תרגיל 30 שניות.\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Seated In and Out | 30 שניות |\n| 2 | Bicycles | 30 שניות |\n| 3 | Leg Flutter | 30 שניות |\n\n**סבבים:** 2  \n**משך עבודה נטו:** 3 דקות  \n**מנוחות:** לא צוינו.\n\n### Skill\n\nלא פורט בלוח.\n\n**חשוב:** הפענוח הראשוני בשיחה שייך בטעות תרגילים שנראו בצד ימין של הלוח לחלק ה-Skill. לפי ההבהרה המאוחרת של המשתמש, אין לקבוע שהם היו חלק מהסקיל.\n\n### Strength – Round 1 ×3\n\n| סדר | תרגיל | כמות | ודאות |\n|---|---|---|---|\n| 1 | Australian Pull Up (with stop) | 5 חזרות | בינונית |\n| 2 | Jump Dips | 12 חזרות לפי פענוח קודם | נמוכה |\n| 3 | Shoulder Taps | 30 חזרות | גבוהה יחסית |\n| 4 | Jump Squat | 15 חזרות | גבוהה יחסית |\n\n**הערת פענוח:** בתשובה המקורית הופרד \"Pull Up with Stop\" כתרגיל חמישי, אך נראה שהוא חלק מהשורה של Australian Pull Up. יש לשמור את שתי הקריאות כגרסאות פענוח, ולא לספור אותו אוטומטית כתרגיל נוסף.\n\n### Strength – Round 2 ×2–3\n\nבצד ימין של הלוח מופיע סבב נוסף:\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Chin Up Hold | מקסימום זמן |\n| 2 | Wall Walks | 3 חזרות |\n| 3 | Close Squats | 15 חזרות |\n\n**ודאות:** בינונית בחלק מהשמות והכמויות.\n\n**הערה חשובה:** בפענוח הקודם נכתב \"Close Shoulder Shrugs\", אך הכיתוב בלוח נראה יותר כמו \"Close Squats\". יש לאמת מול התמונה המקורית.\n\n### מנוחות\n\nלא צוינו.\n\n### תיוגים מוצעים\n\n`full_body`, `pull`, `push`, `legs`, `core`, `isometric`, `bodyweight`\n\n---\n\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Seated In and Out",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Bicycles",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Leg Flutter",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "skill",
+          "title": "Skill",
+          "type": "skill",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [],
+          "uncertainty": [
+            "אין לשייך אוטומטית את הכתוב בצד ימין לחלק Skill."
+          ]
+        },
+        {
+          "id": "round1",
+          "title": "Strength — Round 1 ×3",
+          "type": "strength",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Australian Pull Up (with stop)",
+              "exercise_id": null,
+              "reps": {
+                "min": 5,
+                "max": 5
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [
+                "Pull Up with Stop הופיע כפענוח נפרד קודם; אינו נספר כתרגיל חמישי."
+              ],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Jump Dips",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "low",
+              "uncertainty": [
+                "12 הופיע בפענוח קודם בלבד."
+              ],
+              "alternatives": [
+                {
+                  "reps": {
+                    "min": 12,
+                    "max": 12
+                  },
+                  "status": "prior_low_confidence_reading"
+                }
+              ]
+            },
+            {
+              "order": 3,
+              "name_raw": "Shoulder Taps",
+              "exercise_id": null,
+              "reps": {
+                "min": 30,
+                "max": 30
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "relatively_high",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "Jump Squat",
+              "exercise_id": null,
+              "reps": {
+                "min": 15,
+                "max": 15
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "relatively_high",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "round2",
+          "title": "Strength — Round 2 ×2–3",
+          "type": "strength",
+          "rounds": {
+            "min": 2,
+            "max": 3
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Chin Up Hold",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": "max_time",
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Wall Walks",
+              "exercise_id": null,
+              "reps": {
+                "min": 3,
+                "max": 3
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Close Squats",
+              "exercise_id": null,
+              "reps": {
+                "min": 15,
+                "max": 15
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [
+                "שם לא מאומת מול התמונה."
+              ],
+              "alternatives": [
+                {
+                  "name_raw": "Close Shoulder Shrugs",
+                  "status": "earlier_reading"
+                }
+              ]
+            }
+          ],
+          "uncertainty": []
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [
+        {
+          "field": "Australian Pull Up (with stop).identity",
+          "readings": [
+            "תרגיל אחד עם עצירה",
+            "Pull Up with Stop כתרגיל נפרד"
+          ],
+          "resolution": null
+        },
+        {
+          "field": "Close Squats.identity",
+          "readings": [
+            "Close Squats",
+            "Close Shoulder Shrugs"
+          ],
+          "resolution": null
+        }
+      ],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "FB003",
+      "source_id": "001",
+      "kind": "template",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "## אימון FB003 – Full Body\n\n**תאריך:** 4.8.2026  \n**מקור:** תמונת לוח שלישית  \n**סוג:** Full Body  \n**סטטוס:** פענוח חלקי בשל זווית הצילום והשתקפויות\n\n### חימום – Warm-up ×2\n\nכל תרגיל 30 שניות.\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Jumping Jacks | 30 שניות |\n| 2 | Bicycles | 30 שניות |\n| 3 | Commando Plank | 30 שניות |\n\n**סבבים:** 2  \n**משך עבודה נטו:** 3 דקות  \n**מנוחות:** לא צוינו.\n\n### Skill\n\nלא פורט בלוח.\n\n### Strength\n\nבכותרת מופיע Round 1.\n\n| סדר | תרגיל | כמות | ודאות |\n|---|---|---|---|\n| 1 | Arch Pull Up | 8 חזרות ×3 | בינונית |\n| 2 | Back Bridge | 15 חזרות ×3 | בינונית |\n| 3 | Trap Pull | 8 חזרות ×3 | בינונית |\n| 4 | Lunges | דקה אחת | בינונית |\n| 5 | External Shoulder Rotation | 10 לכל צד ×3 | בינונית |\n| 6 | Scapula Shrugs with Band | 15 חזרות ×3 | בינונית |\n| 7 | Superman Hold | 15 שניות ×3 | בינונית |\n\n### מנוחות\n\nלא צוינו.\n\n### הערות\n\n- אין ודאות שכל שבעת התרגילים שייכים לאותו סבב.\n- יש לשמר את הסדר כפי שפוענח.\n- המספרים הכתומים משויכים לתרגילים לפי המיקום בתמונה, אך ייתכנו שגיאות.\n\n### תיוגים מוצעים\n\n`full_body`, `pull`, `posterior_chain`, `shoulder_stability`, `scapular_control`, `core`, `mobility`\n\n---\n\n# 5. אימון שנבנה על ידי AI\n\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Jumping Jacks",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Bicycles",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Commando Plank",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "skill",
+          "title": "Skill",
+          "type": "skill",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [],
+          "uncertainty": [
+            "תוכן הסקיל לא נמסר; אין להשלים תרגילים."
+          ]
+        },
+        {
+          "id": "strength",
+          "title": "Strength — Round 1",
+          "type": "strength",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Arch Pull Up",
+              "exercise_id": null,
+              "reps": {
+                "min": 8,
+                "max": 8
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Back Bridge",
+              "exercise_id": null,
+              "reps": {
+                "min": 15,
+                "max": 15
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Trap Pull",
+              "exercise_id": null,
+              "reps": {
+                "min": 8,
+                "max": 8
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "Lunges",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 60,
+                "max": 60
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 5,
+              "name_raw": "External Shoulder Rotation",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": true,
+              "side_scope": "each_side",
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 6,
+              "name_raw": "Scapula Shrugs with Band",
+              "exercise_id": null,
+              "reps": {
+                "min": 15,
+                "max": 15
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 7,
+              "name_raw": "Superman Hold",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 15,
+                "max": 15
+              },
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "medium",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": [
+            "אין ודאות שכל שבעת התרגילים שייכים לאותו סבב; ×3 בשורות נשמר כסטים בלבד ולא כסבבים נוספים."
+          ]
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "AI-FB001",
+      "source_id": "001",
+      "kind": "template",
+      "origin": "ai_proposal",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "## אימון AI-FB001 – Park Full Body, 30 Minutes\n\n**תאריך:** 5.8.2026  \n**מקור:** אימון שנוצר על ידי AI לבקשת המשתמש  \n**סוג:** Full Body  \n**סביבה:** פארק  \n**משך מתוכנן:** 30 דקות  \n**סטטוס:** הוצע; לא ידוע אם בוצע בפועל.\n\n### חימום – 5 דקות\n\n**2 סבבים**\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Jumping Jacks | 30 שניות |\n| 2 | Commando Plank | 30 שניות |\n| 3 | Hollow Hold | 30 שניות |\n| 4 | Scapular Pull Ups | 10 חזרות |\n\n**מנוחה לפני סקיל:** 30 שניות.\n\n### Skill – Front Lever\n\n**משך מתוכנן:** 8 דקות  \n**סבבים:** 4\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Tuck Front Lever Hold | 10–15 שניות |\n| 2 | Tuck Front Lever Raises | 5 חזרות |\n| 3 | Dead Hang | 20 שניות |\n\n**מנוחה:** 60–90 שניות בין הסבבים.\n\n**דגש:** איכות הביצוע, ללא הגעה לכשל טכני.\n\n### Strength – Circuit ×3\n\n**משך מתוכנן:** כ-17 דקות.\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Explosive Pull Ups | 5 חזרות |\n| 2 | Jump Dips | 10–12 חזרות |\n| 3 | Bulgarian Split Squat | 10 לכל רגל |\n| 4 | Australian Pull Ups | 12–15 חזרות |\n| 5 | Band External Rotation | 15 לכל יד |\n| 6 | Hollow Rocks | 20 חזרות |\n\n**מנוחה:** 90 שניות בין סבבים.\n\n### פינישר אופציונלי – EMOM ×3\n\nבתחילת כל דקה:\n\n**אפשרות א':**\n- 3 Muscle Ups נקיים.\n\n**אפשרות ב':**\n- 5 Chest-to-Bar Pull Ups.\n\n**משך:** 3 דקות.\n\n### הערת תכנון חשובה\n\nהאימון הוגדר כ-30 דקות, אך הוספת פינישר של 3 דקות ל-5 דקות חימום, 8 דקות סקיל ו-17 דקות כוח מביאה את משך האימון ל-33 דקות.\n\nלכן יש לשמור במאגר:\n\n- `planned_duration_minutes: 30`\n- `optional_finisher_minutes: 3`\n- `duration_with_finisher_minutes: 33`\n- `duration_validation: requires_adjustment`\n\nבנוסף, משך הסבבים בפועל תלוי בקצב הביצוע, ולכן 30 דקות הן הערכה ולא זמן מובטח.\n\n### תיוגים\n\n`ai_generated`, `full_body`, `park`, `30_min`, `front_lever`, `pull`, `push`, `legs`, `core`, `explosive_strength`\n\n---\n\n# 6. ספריית התרגילים שהוצעו במהלך השיחה\n\nהתרגילים הבאים הוזכרו כרעיונות להרחבת מאגר התרגילים. **אין להתייחס אליהם כאימונים שבוצעו או כתוכנית שהמשתמש אישר.**\n\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום — 5 דקות",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": {
+            "min": 300,
+            "max": 300
+          },
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Jumping Jacks",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Commando Plank",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Hollow Hold",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "Scapular Pull Ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": [
+            "30 שניות מנוחה לפני סקיל; משך חזרות לא נמסר."
+          ]
+        },
+        {
+          "id": "skill",
+          "title": "Front Lever — 8 דקות",
+          "type": "skill",
+          "rounds": {
+            "min": 4,
+            "max": 4
+          },
+          "duration_seconds": {
+            "min": 480,
+            "max": 480
+          },
+          "rest_seconds": {
+            "min": 60,
+            "max": 90
+          },
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Tuck Front Lever Hold",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 10,
+                "max": 15
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Tuck Front Lever Raises",
+              "exercise_id": null,
+              "reps": {
+                "min": 5,
+                "max": 5
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Dead Hang",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 20,
+                "max": 20
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "strength",
+          "title": "Strength — Circuit ×3",
+          "type": "strength",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": {
+            "min": 1020,
+            "max": 1020
+          },
+          "rest_seconds": {
+            "min": 90,
+            "max": 90
+          },
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Explosive Pull Ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 5,
+                "max": 5
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Jump Dips",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 12
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Bulgarian Split Squat",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": true,
+              "side_scope": "each_side",
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "Australian Pull Ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 12,
+                "max": 15
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 5,
+              "name_raw": "Band External Rotation",
+              "exercise_id": null,
+              "reps": {
+                "min": 15,
+                "max": 15
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": true,
+              "side_scope": "each_side",
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 6,
+              "name_raw": "Hollow Rocks",
+              "exercise_id": null,
+              "reps": {
+                "min": 20,
+                "max": 20
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": [
+            "כ-17 דקות הן הערכה; מנוחה בין סבבים."
+          ]
+        },
+        {
+          "id": "finisher",
+          "title": "פינישר אופציונלי — EMOM ×3",
+          "type": "emom",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": {
+            "min": 180,
+            "max": 180
+          },
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": true,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Muscle Ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 3,
+                "max": 3
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "אפשרות א; אינה מצטרפת לאפשרות ב."
+              ],
+              "alternatives": [
+                {
+                  "name_raw": "Chest-to-Bar Pull Ups",
+                  "reps": {
+                    "min": 5,
+                    "max": 5
+                  },
+                  "status": "alternative_not_additional"
+                }
+              ]
+            }
+          ],
+          "uncertainty": [
+            "בתחילת כל דקה בוחרים אחת משתי החלופות; יתרת דקה לא כומתה כמנוחה נפרדת."
+          ]
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [
+        {
+          "field": "duration_minutes",
+          "readings": [
+            30,
+            33
+          ],
+          "resolution": null,
+          "note": "5+8+17=30; פינישר אופציונלי מוסיף 3. משך מעשי תלוי בקצב; מעבר 30 שניות לא הוכרע כחלק מתקציב הזמן."
+        }
+      ],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": 30,
+      "duration_validation": "requires_adjustment",
+      "optional_finisher_minutes": 3,
+      "duration_with_finisher_minutes": 33,
+      "pre_skill_rest_seconds": 30
+    },
+    {
+      "id": "AI-EMOM001",
+      "source_id": "002",
+      "kind": "template",
+      "origin": "ai_proposal",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "# חילוץ שני — אימון קצר עם אינפוגרף\n\nשם שיחה: לא זמין. תאריך שנמסר בסיכום: 19.10.2026; לא אומת כתאריך ביצוע או יצירת האימון.\nמקור: סיכום שהמשתמש העביר לשיחה המרכזית.\n\n## בקשות משתמש\n- אימון באורך 15 דקות.\n- אינפוגרף מסודר.\n- לא נמסרו בסיכום זה מטרות, מגבלות, ציוד אישי או העדפות תרגילים.\n\n## אימון AI-EMOM001 — אימון פארק גוף מלא\n- מקור: הצעת עוזר; אין תיעוד שבוצע.\n- משך: 15 דקות. שיטה: EMOM. סבבים: 3.\n- חמש תחנות לסבב: הסקה בלבד ממשך האימון ומספר הסבבים, ולא נתון מאומת.\n- בתחילת כל דקה מתחילים תרגיל, משלימים חזרות ונחים ביתרת הדקה. חוזרים על הרצף 3 פעמים. נאמר לשמור על טכניקה תקינה.\n- דקה 2: מקבילים, 8–10 חזרות. זהו תיקון מפורש לנתון המשובש 10–10 באינפוגרף.\n- דקות 1, 3, 4, 5: התרגילים והמינונים אינם נגישים; גם מיקומם כחמש תחנות נשען על המבנה המשוער.\n- שורה מספרית נוספת באינפוגרף שובשה; התיקון השני אינו נגיש.\n- חימום: לא נגיש; אין להסיק שלא היה חימום ואין להוסיף חימום לגרסת המקור.\n- מיקום: פארק, לפי תיאור האימון. זמינות מקבילים משתמעת מהתרגיל; אינה אישור לציוד אישי או לזמינות קבועה. ציוד נוסף לא ידוע.\n- נטען שהאימון מותאם לרמה, אך אין בסיכום ראיות לאופן ההתאמה.\n- סטטוס: חלקי — ממתין לפענוח האינפוגרף המקורי. אין תמונה מצורפת לחילוץ זה.\n\n## הצעות בלבד לאפליקציה\nתמיכה ב-EMOM; טיימר להחלפת תרגיל בדקה; הצגת סבב ודקה נוכחיים; יעד חזרות ויתרת מנוחה; תיקונים ידניים והיסטוריית גרסאות.\n\n## מידע שלא סוכם\nאין כללי התקדמות, רגרסיות ופרוגרסיות, RPE/RIR, שינוי חזרות כשאין מנוחה, מנוחה מינימלית, טיפול בכאב או תדירות שבועית. אין פרטי ביצוע נוספים או עיצוב נגיש של התמונה. אין לנחש פרטים חסרים.\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום — לא נגיש",
+          "type": "warmup",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [],
+          "uncertainty": [
+            "לא נגיש אינו מעיד שלא היה חימום."
+          ]
+        },
+        {
+          "id": "emom",
+          "title": "EMOM — 15 דקות, 3 סבבים",
+          "type": "emom",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": {
+            "min": 900,
+            "max": 900
+          },
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "תחנה לא ידועה — דקה 1 משוערת",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "missing",
+              "uncertainty": [
+                "מיקום התחנה הוא הסקה ממבנה אפשרי של חמש תחנות."
+              ],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "מקבילים — דקה 2",
+              "exercise_id": null,
+              "reps": {
+                "min": 8,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "explicit_correction",
+              "uncertainty": [
+                "תיקון מפורש ל-10–10 המשובש."
+              ],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "תחנה לא ידועה — דקה 3 משוערת",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "missing",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "תחנה לא ידועה — דקה 4 משוערת",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "missing",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 5,
+              "name_raw": "תחנה לא ידועה — דקה 5 משוערת",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "missing",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": [
+            "מספר חמש התחנות ומיקומי החוסרים הם מבנה מוסק, לא רשימת מקור מאומתת; תיקון מספרי נוסף אינו נגיש."
+          ]
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע",
+        "תרגילים ומינונים בדקות 1,3,4,5 אינם נגישים",
+        "תיקון מספרי שני אינו נגיש",
+        "חימום לא נגיש"
+      ],
+      "planned_duration_minutes": 15,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null,
+      "stations_per_round": null,
+      "inferred_stations_per_round": 5,
+      "inferred_station_structure": true
+    },
+    {
+      "id": "AI-PARK020-001",
+      "source_id": "003",
+      "kind": "template",
+      "origin": "ai_proposal",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "## מקור והיקף החילוץ\n\n- **שם השיחה:** אינו מוצג במפורש; נושא השיחה הוא „אינפוגרף לאימון בפארק של 20 דקות”.\n- **תאריך האימון:** 29.08.2026, לפי הקשר השיחה הזמין.\n- **תאריך בקשת החילוץ:** 19.10.2026.\n- **תוכן זמין:** בקשת המשתמש, נוסח האימון שהוכן והתמונה שנוצרה ממנו.\n- **מספר אימונים מלאים בשיחה: אחד.** התמונה והנוסח הם שתי הצגות של אותו אימון, ואוחדו לרשומה אחת.\n- אזכורים לאימונים משיחות אחרות אינם כוללים כאן את תוכנם המלא, ולכן אינם נספרים כאימונים שחולצו.\n\n## אימון 001 — פארק, פול־בודי וסקיל, 20 דקות\n\n**מקור:** הצעת העוזר בעקבות בקשת המשתמש: „תעשה לי אינפוגרף לאימון בפארק של 20 דק”.\n\n**סטטוס:** אימון מוצע. אין בשיחה אישור שהמשתמש ביצע אותו או משוב על הקושי.\n\n**חלוקת הזמן:** 3 דקות חימום + 4 דקות סקיל + 12 דקות כוח + דקת סיום.\n\n### א. חימום — דקות 0–3\n\n| סדר | תרגיל | משך | חזרות / סטים | מנוחה |\n|---|---|---|---|---|\n| 1 | קפיצות קלות | 30 שניות | לא צוינו | לא צוינה |\n| 2 | סיבובי כתפיים | 30 שניות | לא צוינו | לא צוינה |\n| 3 | סקפולר פול־אפס — משיכות שכמות בתלייה | 60 שניות | לא צוינו | לא צוינה |\n| 4 | סקוואטים | 60 שניות | לא צוינו | לא צוינה |\n\n**הערת דיוק:** 60 שניות הן משך התחנה שנכתב. לא הוגדר אם לבצע ברצף או לחלק למקטעים, ולא נקבע מספר חזרות.\n\n### ב. סקיל — דקות 3–7\n\n**שני סבבים, בסדר הבא:**\n\n| סדר בכל סבב | תרגיל | זמן ביצוע בכל סבב | מנוחה |\n|---|---|---|---|\n| 1 | עמידת ידיים לקיר | 20 שניות | לא נקבעה בנפרד |\n| 2 | טאק פרונט לבר | 10–15 שניות | „מנוחה בשאר הזמן” |\n\n**מידע חסר:** לא הוגדרה חלוקת ארבע הדקות בין הסבבים או המנוחה בין שני התרגילים. אין לרשום במאגר „שתי דקות לסבב” ככלל מקורי מוסכם, אף שזו חלוקה אפשרית.\n\n### ג. כוח — דקות 7–19\n\n**שלושה סבבים. ארבע תחנות בכל סבב, בסדר הבא.**  \nלכל תחנה: **40 שניות עבודה ו־20 שניות מעבר.**\n\n| סדר בכל סבב | תרגיל | יעד חזרות בכל סבב | חלון עבודה | מעבר |\n|---|---|---|---|---|\n| 1 | מתח | 8–12 | 40 שניות | 20 שניות |\n| 2 | מקבילים | 8–12 | 40 שניות | 20 שניות |\n| 3 | סקוואט בולגרי | 10 לכל רגל | 40 שניות לשתי הרגליים יחד, לפי מבנה התחנה | 20 שניות |\n| 4 | הרמות ברכיים בתלייה | 10–15 | 40 שניות | 20 שניות |\n\n**בדיקת משך:** 4 תחנות × דקה × 3 סבבים = 12 דקות.\n\n**מידע חסר ואי־בהירויות לשימור במאגר:**\n\n- לא הוגדר מה לעשות אם מגיעים ליעד החזרות לפני תום 40 השניות.\n- לא הוגדר מה גובר אם לא משלימים את החזרות בזמן: הטיימר או יעד החזרות.\n- בבולגרי לא פורטה החלפת הרגליים. יעד של 10 חזרות לכל רגל בתוך 40 שניות עשוי להיות צפוף; זהו יעד מקורי הדורש הבהרה, ולא כלל התקדמות.\n- לא צוינה מנוחה נוספת בין הסבבים.\n- 20 השניות הוגדרו כזמן **מעבר**, ולא כמנוחה נפרדת נוספת.\n\n### ד. סיום — דקות 19–20\n\n| סדר | תרגיל | משך | מנוחה |\n|---|---|---|---|\n| 1 | הולו בודי | 30 שניות | לא צוינה |\n| 2 | מתיחת כתפיים ונשימה | 30 שניות | לא צוינה |\n\n### ציוד ותנאים לאימון\n\n**נדרש לפי התרגילים והאיורים, ולא כרשימת ציוד שהמשתמש אישר:**\n\n- מוט מתח.\n- מקבילים.\n- ספסל או משטח מוגבה ויציב לבולגרי.\n- קיר מתאים לעמידת ידיים.\n- שטח קרקע להולו בודי.\n\n**חסר:** לא נבדק אם יש קיר מתאים בפארק. לא ניתנה חלופה לעמידת הידיים או לתרגילים האחרים במקרה שחסר ציוד.\n\n### תוכן חזותי\n\nנוצר אינפוגרף בעברית עם איורי התרגילים, זמנים, חזרות וחלוקה לארבעת חלקי האימון.\n\n**הערת איכות:** איור הטאק פרונט לבר מציג תנוחה עם רגליים שאינן מכונסות בבירור לטאק קומפקטי. לצורך מאגר הדרכה יש לסמן את האיור כטעון בדיקה, ולא להסתמך עליו כמקור יחיד לטכניקה.\n\n## העדפות, פרופיל ומטרות\n\n### בקשות המשתמש בשיחה עצמה\n\n| נושא | מידע מפורש |\n|---|---|\n| מקום | פארק |\n| משך | 20 דקות |\n| פורמט | אינפוגרף |\n\nהמשתמש לא ביקש בהודעה זו במפורש פול־בודי, פרונט לבר או עמידת ידיים; אלה נוספו על ידי העוזר בהתבסס על הקשר קודם.\n\n### פרופיל קודם שהיה זמין לעוזר\n\n**אלה פרטים מסיכום הקשר קודם, ולא נתונים שנמסרו מחדש בשיחה זו. תאריך המדידה והעדכניות אינם מאומתים.**\n\n| נושא | מידע זמין |\n|---|---|\n| המתאמן | לירון |\n| גיל בעת מסירת הנתונים | 32 |\n| גובה | 180 ס״מ |\n| משקל | 72 ק״ג |\n| ותק בקליסטניקס | כשנה וחצי |\n| מתח מרבי | 20 חזרות |\n| מקבילים מרביים | 15 חזרות |\n| סקיל קיים | מאסל־אפ |\n| פרונט לבר | בתחילת הלמידה |\n| עמידת ידיים | קושי בהחזקה וביציבות |\n\n**ציוד אישי:** בשיחה הנוכחית לא נמסרה רשימת ציוד אישי מאומתת.  \n**מגבלות ופציעות:** לא נמסרו. אין להסיק מכך שאין מגבלות.\n\n### החלטות והצעות העוזר\n\n- אימון פול־בודי.\n- שילוב סקיל לפני חלק הכוח.\n- דגש קטן על עמידת ידיים ופרונט לבר.\n- סיווג האימון כ„רמה: בינוני”.\n- עיקרון שהופיע באינפוגרף: **„איכות לפני כמות”.**\n\nאלה **הצעות העוזר**, ולא כללים שהמשתמש אישר במפורש.\n\n### התאמה והתקדמות\n\nלא סוכמו בשיחה:\n\n- תנאי מעבר לגרסה קשה או קלה יותר.\n- הגדלת חזרות, סטים או זמני החזקה לאורך זמן.\n- שימוש בגומיות או תוספת משקל.\n- מרחק מכשל, קצב ביצוע או טווח תנועה.\n- תדירות שבועית או התאמה לאימונים קודמים.\n- חלופות לחוסר ציוד.\n\n## דרישות ורעיונות לאפליקציה\n\n**בשיחה המקורית לא נדון אפיון אפליקציה.** בקשת החילוץ הנוכחית מוסיפה את הדרישות הבאות למאגר:\n\n- לשמור את כל האימונים הזמינים, כולל אימונים מתוך תמונות.\n- לשמור סדר תרגילים, חימום, סטים, חזרות, זמני ביצוע, סבבים ומנוחות.\n- לשייך לכל מידע מקור ותאריך, כאשר הם זמינים.\n- להבחין בין בקשות המשתמש להצעות העוזר.\n- לאחד כפילויות זהות ולשמור גרסאות שונות.\n- לסמן מידע חסר, פענוח לא ודאי ותוכן שאינו נגיש.\n\n**מסקנות יישומיות מהאימון הזה — הצעות למבנה הנתונים, לא דרישות קודמות של המשתמש:**\n\n- לשמור בנפרד **חלון עבודה בשניות** ו**יעד חזרות**, משום שבאימון זה שניהם מופיעים יחד.\n- להבחין בין **מנוחה**, **זמן מעבר** ו**יתרת זמן שלא הוגדרה**.\n- לשמור יעד „לכל רגל” בשדה נפרד.\n- לשמור סטטוס „מוצע / בוצע / התקבל משוב”; האימון הזה הוא **מוצע**.\n- לקשר אינפוגרף לרשומת האימון, בלי ליצור ממנו אימון כפול.\n- לשמור הערות בדיקה לתוכן ולאיורים.\n\n**שלמות החילוץ:** נכלל האימון המלא היחיד הזמין בשיחה, כולל תוכן האינפוגרף. אימונים אחרים המוזכרים בהיסטוריית הפרויקט אינם נגישים כאן במלואם ולא שוחזרו מהשערות.",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום — דקות 0–3",
+          "type": "warmup",
+          "rounds": null,
+          "duration_seconds": {
+            "min": 180,
+            "max": 180
+          },
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "קפיצות קלות",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "סיבובי כתפיים",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "סקפולר פול־אפס",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 60,
+                "max": 60
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "משך תחנה; אין הנחיה לרצף ללא הפסקה."
+              ],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "סקוואטים",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 60,
+                "max": 60
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "משך תחנה; חזרות לא נקבעו."
+              ],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "skill",
+          "title": "סקיל — דקות 3–7",
+          "type": "skill",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": {
+            "min": 240,
+            "max": 240
+          },
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "עמידת ידיים לקיר",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 20,
+                "max": 20
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "טאק פרונט לבר",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 10,
+                "max": 15
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": [
+            "מנוחה בשאר הזמן; אין חלוקת שתי דקות לסבב או מנוחות נפרדות מאומתות."
+          ]
+        },
+        {
+          "id": "strength",
+          "title": "כוח — דקות 7–19",
+          "type": "strength",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": {
+            "min": 720,
+            "max": 720
+          },
+          "rest_seconds": null,
+          "transition_seconds": {
+            "min": 20,
+            "max": 20
+          },
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "מתח",
+              "exercise_id": null,
+              "reps": {
+                "min": 8,
+                "max": 12
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "מקבילים",
+              "exercise_id": null,
+              "reps": {
+                "min": 8,
+                "max": 12
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "סקוואט בולגרי",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": true,
+              "side_scope": "each_side",
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "חלון 40 שניות לשתי הרגליים; החלפת הרגליים לא פורטה."
+              ],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "הרמות ברכיים בתלייה",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 15
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": [
+            "40 שניות עבודה לכל תחנה ו-20 שניות מעבר, לא מנוחה נוספת. עדיפות טיימר לעומת יעד חזרות לא הוגדרה."
+          ],
+          "work_window_seconds": 40
+        },
+        {
+          "id": "cooldown",
+          "title": "סיום — דקות 19–20",
+          "type": "cooldown",
+          "rounds": null,
+          "duration_seconds": {
+            "min": 60,
+            "max": 60
+          },
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "הולו בודי",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "מתיחת כתפיים ונשימה",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": 20,
+      "duration_validation": "section_budget_sums_to_20_not_execution_guarantee",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "COACH-PUSH001",
+      "source_id": "004",
+      "kind": "template",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "# חילוץ: תוסיף למאגר\n\nתאריך שנמסר: 02.09.2026. מקור תמונה לפי הסיכום: IMG_0929.jpeg. התמונה עצמה לא צורפה לחילוץ. אימון ייחודי אחד, ללא כפילויות מדווחות.\n\n## COACH-PUSH001 — אימון מקור מלוח\n\nהמשתמש ביקש להוסיף את האימון המצולם למאגר. אין אישור שבוצע.\nסיווג PUSH / פלג גוף עליון ודגשי כתפיים, חזה, יד אחורית והכנה לפלאנץ׳ הם פרשנות העוזר ולא כותרת שאושרה על ידי המשתמש. ציוד משתמע: משטח מוגבה או מתקן פארק ורצפה; לא אישור לזמינות אישית. משך ומנוחות לא נמסרו.\n\n### חימום — 2 סבבים\n| סדר | תרגיל | מינון לפי הסיכום | ודאות |\n|---|---|---|---|\n| 1 | Jumping…; כנראה Jumping Jacks | כנראה 30 שניות | שם ומינון לא ודאיים |\n| 2 | Push-ups | כנראה 30 שניות | שם ברור, משך לא ודאי |\n| 3 | Dynamic…; המשך לא קריא | כנראה 30 שניות | פענוח חלקי |\n\nסימון ליד החימום נראה כמו ×30 sec, אך תחולתו על כל התרגילים לא הוכרעה. Dynamic Arm Swings הופיע בפענוח קודם בלבד ואין לשמור אותו כשם מאומת.\n\n### מקטע ראשי — כותרת מקור: Round 1\n| סדר | תרגיל | חזרות | שניות | סטים |\n|---|---|---|---|---|\n| 1 | Elevated Pike Push-ups | 8 | — | 3 |\n| 2 | Wide Push-ups | 15 | — | 3 |\n| 3 | Elevated Lean Planche | — | 30 | 3 |\n| 4 | Diamond Push-ups | 10 | — | 3 |\n| 5 | Decline Push-ups | 8 | — | 3 |\n| 6 | Leg Raises on Floor | 12 | — | 3 |\n\nכל השורות מסומנות ברורות בחילוץ שנמסר, אך לא אומתו כאן מול התמונה. אין להסיק מ-3 סטים לכל תרגיל שיש לבצע גם 3 סבבים, או להכפיל את הכמויות. אין מידע אם יש סבבים או חלקים נוספים שלא צולמו.\n\n### Skill\nהמילה Skill מופיעה מימין ללוח; התוכן אינו מופיע במלואו ולכן תרגילים, סטים וזמנים אינם ניתנים לחילוץ. אין להשלים לפי אימונים אחרים.\n\n## בקשות ומידע אישי\nבקשות מפורשות לפי הסיכום: הוספה מתוך תמונה; שמירת כל הפרטים הזמינים, הפרדת חימום, סדר תרגילים, שם, חזרות/זמן וסטים; תמיכה בחוסרים ובאי-ודאות; איחוד כפילויות זהות ושמירת גרסאות; הבחנה בין מידע משתמש לפרשנות עוזר.\nלא נמסרו כאן נתוני רמה, מקסימום חזרות, סקילים, מטרות, פציעות, ציוד אישי או כללי התקדמות. אין לעדכן בגינם את הפרופיל הקיים.\n\n## הצעות לשדות נתונים\nsource_image, workout_date, workout_type, section, exercise_order, exercise_name, reps, duration_seconds, sets, rounds, rest_seconds, equipment, confidence, uncertainty_note, source_type, missing_information. אלו שדות מומלצים שנגזרו מהצורך ולא בקשה מפורשת למבנה טכני.\n\n## חוסרים\nמשך כולל; מנוחות; משמעות Round 1; פענוח מדויק של החימום ותחולת מינונו; תוכן Skill; קיומם של חלקים נוספים מחוץ לתמונה.\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום — 2 סבבים",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Jumping…; כנראה Jumping Jacks",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "low",
+              "uncertainty": [
+                "שם ומינון אינם ודאיים."
+              ],
+              "alternatives": [
+                {
+                  "name_raw": "Jumping Jacks",
+                  "duration_seconds": {
+                    "min": 30,
+                    "max": 30
+                  },
+                  "status": "uncertain_reading"
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "name_raw": "Push-ups",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "low",
+              "uncertainty": [
+                "שם ברור, משך לא ודאי."
+              ],
+              "alternatives": [
+                {
+                  "duration_seconds": {
+                    "min": 30,
+                    "max": 30
+                  },
+                  "status": "uncertain_reading"
+                }
+              ]
+            },
+            {
+              "order": 3,
+              "name_raw": "Dynamic…; המשך לא קריא",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "low",
+              "uncertainty": [
+                "אין לשמור Dynamic Arm Swings כשם מאומת."
+              ],
+              "alternatives": [
+                {
+                  "duration_seconds": {
+                    "min": 30,
+                    "max": 30
+                  },
+                  "status": "uncertain_reading"
+                }
+              ]
+            }
+          ],
+          "uncertainty": [
+            "תחולת הסימון ×30 sec אינה מוכרעת."
+          ]
+        },
+        {
+          "id": "strength",
+          "title": "מקטע ראשי — Round 1",
+          "type": "strength",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Elevated Pike Push-ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 8,
+                "max": 8
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Wide Push-ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 15,
+                "max": 15
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Elevated Lean Planche",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "Diamond Push-ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 5,
+              "name_raw": "Decline Push-ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 8,
+                "max": 8
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 6,
+              "name_raw": "Leg Raises on Floor",
+              "exercise_id": null,
+              "reps": {
+                "min": 12,
+                "max": 12
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": [
+            "סטים בשורות אינם מספר סבבים. תמונת IMG_0929.jpeg אינה זמינה לאימות."
+          ]
+        },
+        {
+          "id": "skill",
+          "title": "Skill",
+          "type": "skill",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [],
+          "uncertainty": [
+            "Skill חתוך; אין פרטים נגישים."
+          ]
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "COACH-FB004",
+      "source_id": "005",
+      "kind": "template",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "## COACH-FB004 — Workout 001 – Full Body Circuit\nחימום — 2 סבבים:\n- In & Out: 30 שניות.\n- Plank Knee to Elbow: 30 שניות.\n- Half Burpees: 10 חזרות.\n\nמקטע ראשי — 3 סבבים:\n- Jump Negative Pull-Ups: מספר חזרות לא ידוע.\n- Triceps Extensions: 10 חזרות.\n- Push-Ups: 30 שניות.\n- Squat Lunges: 30 שניות.\n\nFocus לפי הנוסח: Strength, Endurance, Full Body — סיווג עוזר.\nמידע נוסף מקריאה קודמת של שיחת המקור: הופיעו בצד הלוח תרגילי בטן שלא פוענחו. לכן הרשומה חלקית גם מעבר למינון החסר של המתח. העוזר שאל אם להוסיף למאגר; לא נמצא שם אישור מפורש, אך המשתמש מעביר כעת את הנוסח לצורך איגוד במאגר. מנוחות ומשך כולל לא נמסרו.\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום — 2 סבבים",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "In & Out",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Plank Knee to Elbow",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Half Burpees",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "strength",
+          "title": "מקטע ראשי — 3 סבבים",
+          "type": "strength",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Jump Negative Pull-Ups",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "מספר חזרות לא ידוע."
+              ],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Triceps Extensions",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Push-Ups",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "Squat Lunges",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "unreadable",
+          "title": "תרגילי בטן בצד הלוח",
+          "type": "unknown",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [],
+          "uncertainty": [
+            "נראו בקריאה קודמת אך לא פוענחו; אין שמות או מינונים."
+          ]
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "COACH-FB005",
+      "source_id": "005",
+      "kind": "template",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "## COACH-FB005 — Workout 002 – Full Body Strength\nחימום — 2 סבבים:\n- In & Out: 30 שניות.\n- High Knee Taps: 30 שניות.\n- Jumping Jacks: 20 חזרות.\n\nמקטע ראשי — כותרת Round 1:\n1. Pull-Ups: 10 חזרות.\n2. Wide Push-Ups: 10 חזרות.\n3. Diamond Push-Ups: 10 חזרות.\n4. High Plank: 30 שניות.\n5. 90 Degree Hold: 15 שניות.\n6. Plank: 30 שניות.\n7. Shoulder Taps: 30 שניות.\n8. Bench Dips: 10 חזרות.\n9. Deep Squats: 10 חזרות.\n10. Sumo Squats: 10 חזרות.\n11. Lunges: 10 חזרות לכל רגל.\n12. Jump Squats: 10 חזרות.\n\nמספר סבבים כולל: לא ידוע. מנוחות ומשך כולל: לא נמסרו.\nFocus לפי הנוסח: Strength, Core, Endurance, Legs — סיווג עוזר. אין להסיק מהשם Full Body Strength שזהו אימון שונה מהרשומה המקבילה בשיחת המקור.\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום — 2 סבבים",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "In & Out",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "High Knee Taps",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Jumping Jacks",
+              "exercise_id": null,
+              "reps": {
+                "min": 20,
+                "max": 20
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "strength",
+          "title": "מקטע ראשי — Round 1",
+          "type": "strength",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Pull-Ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Wide Push-Ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Diamond Push-Ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "High Plank",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 5,
+              "name_raw": "90 Degree Hold",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 15,
+                "max": 15
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 6,
+              "name_raw": "Plank",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 7,
+              "name_raw": "Shoulder Taps",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 8,
+              "name_raw": "Bench Dips",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 9,
+              "name_raw": "Deep Squats",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 10,
+              "name_raw": "Sumo Squats",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 11,
+              "name_raw": "Lunges",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": true,
+              "side_scope": "each_side",
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 12,
+              "name_raw": "Jump Squats",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": [
+            "Round 1 הוא כותרת, לא אישור למספר סבבים כולל."
+          ]
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "COACH-PUSH002",
+      "source_id": "006",
+      "kind": "template",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "# מקור 006 — הוספת אימון דחיפה למאגר\n\nתאריך בסיכום: 19.10.2026; לא אומת כתאריך האימון. מקור: חילוץ מתמונת אימון שנמסר על ידי המשתמש; התמונה עצמה אינה מצורפת כאן. בקשת המקור: הוספת האימון למאגר. אין תיעוד ביצוע.\n\n## COACH-PUSH002\nחימום — 2 סבבים, לפי הסדר: Jumping Jacks; Half Burpees / חצי בורפי; Commando Plank. חזרות, משכים ומנוחות לא נשמרו בתמלול.\n\n| סדר | תרגיל בחלק המרכזי | חזרות | שניות | סטים |\n|---|---|---|---|---|\n| 1 | עמידת ידיים | — | 10 | 3 |\n| 2 | שכיבות סמיכה בעמידת ידיים מול קיר | 6 | — | 3 |\n| 3 | Lean Planche Slides + שכיבת סמיכה | 7 | — | 2 |\n| 4 | Pike Push-ups | 10 | — | 2 |\n| 5 | Decline Push-ups | 12 | — | 2 |\n| 6 | החזקת 90° | — | 20 | 3 |\n\nאין מידע אם התרגילים ברצף, בסבבים או בסטים רגילים. לשמור את הסטים לכל תרגיל בלי להוסיף סבבים. אין מנוחות, וריאציות חלופיות או דרגת קושי. השם של התרגיל המשולב בשורה 3 נשמר כפי שנמסר; אופן ספירת החזרה המשולבת לא פורט.\n\nחלק Skill נפרד מימין היה חתוך ולא פוענח; אין להעביר אליו את עמידת הידיים שבחלק המרכזי. לא הופיע שחרור בסיכום, ואין להסיק שלא בוצע.\n\nסיווגים מוצעים: Push; כתפיים, עמידת ידיים וכוח דחיפה; Handstand, Handstand Push-up, Planche Lean, 90° Hold; שרירים: כתפיים, חזה, תלת-ראשי וליבה. אלו סיווגים מוצעים ולא כותרות מקור מאומתות. משך, מיקום וציוד מפורש לא נמסרו. קיר ומשטח מתאים הם ציוד מוסק מהתרגילים ולא זמינות שאושרה.\n\nאין מידע חדש על מטרות, העדפות, מגבלות, ציוד אישי, התאמה, התקדמות או דרישות אפליקציה. הרשומה חלקית וממתינה לתמונה לצורך אימות ולפענוח Skill.\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Jumping Jacks",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Half Burpees / חצי בורפי",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Commando Plank",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "strength",
+          "title": "מקטע מרכזי",
+          "type": "strength",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "עמידת ידיים",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 10,
+                "max": 10
+              },
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "שכיבות סמיכה בעמידת ידיים מול קיר",
+              "exercise_id": null,
+              "reps": {
+                "min": 6,
+                "max": 6
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Lean Planche Slides + שכיבת סמיכה",
+              "exercise_id": null,
+              "reps": {
+                "min": 7,
+                "max": 7
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 2,
+                "max": 2
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "אופן ספירת החזרה המשולבת לא פורט."
+              ],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "Pike Push-ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 2,
+                "max": 2
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 5,
+              "name_raw": "Decline Push-ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 12,
+                "max": 12
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 2,
+                "max": 2
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 6,
+              "name_raw": "החזקת 90°",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 20,
+                "max": 20
+              },
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": [
+            "אין מידע אם ברצף או בסבבים; אין להוסיף סבבים."
+          ]
+        },
+        {
+          "id": "skill",
+          "title": "Skill",
+          "type": "skill",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [],
+          "uncertainty": [
+            "חלק Skill נפרד חתוך; עמידת הידיים נשארת במקטע המרכזי."
+          ]
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "COACH-FB006",
+      "source_id": "007",
+      "kind": "template",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "# מקור 007 — הוספת אימון מתמונה למאגר\n\nשם שיחה רשמי לא ידוע. תאריך בחילוץ/date_added: 19.10.2026; אינו תאריך ביצוע מאומת. מקור: תמונה שפוענחה על ידי ChatGPT, לפי סיכום המשתמש; התמונה עצמה לא צורפה כאן. בשיחה אימון יחיד, ללא גרסאות כפולות לפי הסיכום.\n\n## COACH-FB006 — פול־בודי, 30 שניות לתרגיל\nהמשתמש ביקש להוסיף את האימון המצולם למאגר. סיווג Full Body מופיע בחילוץ; אין אישור ביצוע.\n\nחימום — 2 סבבים, לפי הסדר:\n1. Jumping Jacks.\n2. Mountain Climbers.\n3. Butt Kicks.\n\nמשך/חזרות ומנוחות בחימום לא נמסרו.\n\nחלק מרכזי — 3 סבבים; 30 שניות לכל תרגיל, לפי הסדר:\n1. Pike Push-ups.\n2. Side Plank.\n3. Flutter Kicks.\n4. V-Ups.\n5. Chest-to-Wall Handstand.\n6. Commando Plank.\n7. Toe Touches.\n8. Lean Planche Push-ups.\n\nלא ידוע אם Side Plank בשני הצדדים ואם 30 שניות לכל צד או בסך הכול. אין לבחור פירוש או לגזור משך כולל חד-משמעי. מנוחות בין תרגילים ובין סבבים לא צוינו. אין דרגת קושי, חלופות, כללי התאמה או התקדמות, משך כולל או ציוד מפורש. קיר הוא הסקה מ-Chest-to-Wall Handstand ולא זמינות ציוד שאושרה.\n\nאין מידע אישי חדש לגבי רמה, מטרות, ציוד, מגבלות, משך מועדף, תדירות או העדפות תרגילים. אין להשלים פרטים ממקורות אחרים בלי ייחוס.\n\nדרישה משתמעת בחילוץ: הוספת אימון מתמונה תוך שמירת חימום, סדר, סבבים ומשך עבודה. אין דיון במסכים, עיצוב, טיימר, מעקב, חשבונות או התאמה אישית.\n\n## הבהרות לרשומת ה-YAML שהוצעה במקור\nworkout_name: פול־בודי — 30 שניות לתרגיל; date_added: 2026-10-19 כפי שהוצע בחילוץ; source_type המקורי: user_workout. לצורך מיזוג, user_workout מציין שהמשתמש סיפק תמונה ולא מוכיח שהוא מחבר האימון או ביצע אותו. status המקורי „נוסף למאגר לפי בקשת המשתמש” הוא מצב קליטה בלבד, נפרד מאימות ומביצוע. total_duration, difficulty, progression_rules, modifications והמנוחות חסרים. uncertainty של Side Plank נשמרת לעיל.\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Jumping Jacks",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Mountain Climbers",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Butt Kicks",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "strength",
+          "title": "חלק מרכזי — 3 סבבים",
+          "type": "strength",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Pike Push-ups",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Side Plank",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "לא ידוע אם שני צדדים ואם 30 שניות לכל צד או בסך הכול."
+              ],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Flutter Kicks",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "V-Ups",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 5,
+              "name_raw": "Chest-to-Wall Handstand",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 6,
+              "name_raw": "Commando Plank",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 7,
+              "name_raw": "Toe Touches",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 8,
+              "name_raw": "Lean Planche Push-ups",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": [
+            "אין לגזור משך כולל חד משמעי בגלל חוסר ידיעה על הצדדים והמנוחות."
+          ]
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "PHOTO-008",
+      "source_id": "008",
+      "kind": "template",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "# מקור 008 — אימון עם שני מקטעי סבבים\n\nמקור: פענוח שהמשתמש העביר לשיחה המרכזית. שם שיחת המקור, תאריך האימון, מחבר ותמונה מקורית לא נמסרו. הביטוי „נוסף למאגר” הוא תיאור קליטה בסיכום ולא אישור שהאימון בוצע.\n\n## PHOTO-008 — סדר כפי שנמסר\n\n### חימום — 2 סבבים\n1. Pike Walk — 30 שניות.\n2. Shoulder Taps — 30 שניות.\n3. Half Burpees — 5 חזרות.\n\n### מקטע מקור: סבב 1 — 3 סבבים\n1. Australian Pull-Ups — 5 חזרות.\n2. Lunges — 10 חזרות לכל רגל.\n3. Bench Dips — 15 חזרות.\n\n### סקיל\nטקסט הפענוח שנמסר: Standing Sit / תרגול עמידת ידיים — הכיתוב לא ברור לגמרי.\nזהות התרגיל אינה מאומתת. אין לאחד אוטומטית עם Handstand או עם תרגיל בשם Standing Sit. אין מינון, סטים, משך או מספר סבבים. יש לשמור טקסט מקור ואי-ודאות עד לקבלת התמונה.\n\n### מקטע מקור: סבב 2 — 3 סבבים\n1. Wall Sit — 30 שניות.\n2. Side Squats — 10 חזרות לכל צד.\n3. Wall Walks — 3 חזרות.\n\n## חוסרים ומיזוג\nלא נמסרו מנוחות, זמן כולל, מיקום, ציוד מפורש, רמת קושי, כללי התקדמות, משוב ביצוע או עדכון פרופיל. קיר, מוט נמוך/מתקן משיכה ומשטח לתרגיל Bench Dips משתמעים מהתרגילים בלבד ואינם אישור זמינות. אין לקבוע סדר ביצוע סטים נוסף מעבר לסדר המקטעים שנמסר, ואין להפוך שני מקטעים בני 3 סבבים ל-3 חזרות על האימון כולו. אין כפילות מזוהה עם הרשומות הקיימות.\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום — 2 סבבים",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Pike Walk",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Shoulder Taps",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Half Burpees",
+              "exercise_id": null,
+              "reps": {
+                "min": 5,
+                "max": 5
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "round1",
+          "title": "סבב 1 — 3 סבבים",
+          "type": "strength",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Australian Pull-Ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 5,
+                "max": 5
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Lunges",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": true,
+              "side_scope": "each_side",
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Bench Dips",
+              "exercise_id": null,
+              "reps": {
+                "min": 15,
+                "max": 15
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "skill",
+          "title": "סקיל",
+          "type": "skill",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Standing Sit / תרגול עמידת ידיים",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "unclear_identity",
+              "uncertainty": [
+                "זהות אינה מאומתת; אין לשייך אוטומטית ל-Handstand או Standing Sit."
+              ],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "round2",
+          "title": "סבב 2 — 3 סבבים",
+          "type": "strength",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Wall Sit",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": {
+                "min": 30,
+                "max": 30
+              },
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Side Squats",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": true,
+              "side_scope": "each_side",
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Wall Walks",
+              "exercise_id": null,
+              "reps": {
+                "min": 3,
+                "max": 3
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "PLAN-OAP001",
+      "source_id": "009",
+      "kind": "program",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "## PLAN-OAP001 — תוכנית למתח ביד אחת\nתדירות בתוכנית: פעמיים בשבוע. אין להסיק שזו תדירות כלל אימוני המתאמן או שהמתאמן כבר מבצע מתח ביד אחת ללא סיוע.\n\n| סדר | תרגיל | סטים | חזרות |\n|---|---|---|---|\n| 1 | מתח ביד אחת עם גומייה | 3 | 5 |\n| 2 | מתח ביד אחת, חזרות שליליות | 3 | 5 |\n| 3 | מתח ארצ׳ר | 3 | 8 |\n\nהכמויות נשמרות כפי שנמסרו. לא הוגדר אם לכל יד/צד או בסך הכול. אין חימום, מנוחות, משך שליליות, חוזק גומייה, מרווח בין ימים, תנאי התאמה או כללי התקדמות. היעד הוא נושא התוכנית, לא אישור לסדר עדיפויות חדש בין מטרות המשתמש. מקור התוכנית אינו ידוע. אין תיעוד ביצוע.\n",
+      "sections": [
+        {
+          "id": "strength",
+          "title": "תוכנית למתח ביד אחת",
+          "type": "strength",
+          "rounds": null,
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "מתח ביד אחת עם גומייה",
+              "exercise_id": null,
+              "reps": {
+                "min": 5,
+                "max": 5
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "צדדים וחוזק גומייה לא פורטו."
+              ],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "מתח ביד אחת, חזרות שליליות",
+              "exercise_id": null,
+              "reps": {
+                "min": 5,
+                "max": 5
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "צדדים ומשך שלילית לא פורטו."
+              ],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "מתח ארצ׳ר",
+              "exercise_id": null,
+              "reps": {
+                "min": 8,
+                "max": 8
+              },
+              "duration_seconds": null,
+              "sets": {
+                "min": 3,
+                "max": 3
+              },
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "לא הוגדר לכל צד או בסך הכול."
+              ],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": [
+            "תדירות התוכנית פעמיים בשבוע; לא תדירות כלל אימוני המשתמש."
+          ]
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": {
+        "min": 2,
+        "max": 2
+      },
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "PHOTO-RINGS001",
+      "source_id": "009",
+      "kind": "template",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "## PHOTO-RINGS001 — אימון טבעות\nחימום ×2, לפי הסדר; כ-30 שניות לכל תרגיל (הערכה, לא זמן מאומת):\n1. Jumping Jacks.\n2. שכיבות סמיכה.\n3. In & Out.\n\nסבב 1 ×2:\n1. מקבילים באחיזה ניטרלית על טבעות — 10 חזרות.\n2. L-Sit Pull-Up Rotation — 10 חזרות.\n\nסבב 2 ×2:\n1. Chin-Ups על טבעות — 10 חזרות.\n2. Russian Push-Ups על טבעות — 20 חזרות.\n\nסבב 3 ×3:\n1. כפיפות מרפקים על טבעות — 12 חזרות.\n2. Skull Crushers על טבעות — 12 חזרות.\n\nמנוחות, משך כולל, רמה ומיקום לא נמסרו. טבעות נדרשות לפי התרגילים, אך אין אישור לבעלות אישית או לזמינות קבועה. לשמור שמות מורכבים כפי שהועברו עד אימות מול התמונות.\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Jumping Jacks",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "estimated",
+              "uncertainty": [
+                "כ-30 שניות הן הערכה בלבד ולא מינון מאומת."
+              ],
+              "alternatives": [
+                {
+                  "duration_seconds": {
+                    "min": 30,
+                    "max": 30
+                  },
+                  "status": "estimate"
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "name_raw": "שכיבות סמיכה",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "estimated",
+              "uncertainty": [
+                "כ-30 שניות הן הערכה בלבד ולא מינון מאומת."
+              ],
+              "alternatives": [
+                {
+                  "duration_seconds": {
+                    "min": 30,
+                    "max": 30
+                  },
+                  "status": "estimate"
+                }
+              ]
+            },
+            {
+              "order": 3,
+              "name_raw": "In & Out",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "estimated",
+              "uncertainty": [
+                "כ-30 שניות הן הערכה בלבד ולא מינון מאומת."
+              ],
+              "alternatives": [
+                {
+                  "duration_seconds": {
+                    "min": 30,
+                    "max": 30
+                  },
+                  "status": "estimate"
+                }
+              ]
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "round1",
+          "title": "סבב 1 ×2",
+          "type": "strength",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "מקבילים באחיזה ניטרלית על טבעות",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "L-Sit Pull-Up Rotation",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "שם מורכב נשמר כפי שנמסר עד אימות תמונה."
+              ],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "round2",
+          "title": "סבב 2 ×2",
+          "type": "strength",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Chin-Ups על טבעות",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Russian Push-Ups על טבעות",
+              "exercise_id": null,
+              "reps": {
+                "min": 20,
+                "max": 20
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "round3",
+          "title": "סבב 3 ×3",
+          "type": "strength",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "כפיפות מרפקים על טבעות",
+              "exercise_id": null,
+              "reps": {
+                "min": 12,
+                "max": 12
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Skull Crushers על טבעות",
+              "exercise_id": null,
+              "reps": {
+                "min": 12,
+                "max": 12
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    },
+    {
+      "id": "PHOTO-FB007",
+      "source_id": "009",
+      "kind": "template",
+      "origin": "user_supplied_transcription",
+      "status": "needs_review",
+      "executable": false,
+      "performed_at": null,
+      "source_image": null,
+      "rest_seconds": null,
+      "raw_markdown": "## PHOTO-FB007 — אימון פול־בודי\nחימום ×2, לפי הסדר; כ-30 שניות לכל תרגיל (הערכה):\n1. Butt Kicks.\n2. Commando Plank.\n3. Burpees.\n\nסבב 1 ×3:\n1. Chin-Ups — 8 חזרות.\n2. שכיבות סמיכה מתפרצות — 15 חזרות.\n3. Hanging Leg Raises — 10 חזרות.\n4. Pistol Squat בסיוע — 8 חזרות לכל רגל.\n\nסבב 2 ×3:\n1. Pull-Ups — 9 חזרות.\n2. Skull Crunches — 12 חזרות.\n3. Squat Jumps — 10 חזרות.\n4. Ring Curls — 12 חזרות.\n\nSkull Crunches נשמר כטקסט מקור; אין להחליפו אוטומטית ב-Skull Crushers ואין לקבוע שזה אותו תרגיל. זהות דורשת אימות. אופן הסיוע ב-Pistol Squat לא נמסר. מנוחות, משך כולל, מיקום ורמה חסרים. טבעות ומתקן תלייה משתמעים מהתרגילים בלבד ולא מאשרים ציוד אישי.\n",
+      "sections": [
+        {
+          "id": "warmup",
+          "title": "חימום",
+          "type": "warmup",
+          "rounds": {
+            "min": 2,
+            "max": 2
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Butt Kicks",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "estimated",
+              "uncertainty": [
+                "כ-30 שניות הן הערכה בלבד ולא מינון מאומת."
+              ],
+              "alternatives": [
+                {
+                  "duration_seconds": {
+                    "min": 30,
+                    "max": 30
+                  },
+                  "status": "estimate"
+                }
+              ]
+            },
+            {
+              "order": 2,
+              "name_raw": "Commando Plank",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "estimated",
+              "uncertainty": [
+                "כ-30 שניות הן הערכה בלבד ולא מינון מאומת."
+              ],
+              "alternatives": [
+                {
+                  "duration_seconds": {
+                    "min": 30,
+                    "max": 30
+                  },
+                  "status": "estimate"
+                }
+              ]
+            },
+            {
+              "order": 3,
+              "name_raw": "Burpees",
+              "exercise_id": null,
+              "reps": null,
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "estimated",
+              "uncertainty": [
+                "כ-30 שניות הן הערכה בלבד ולא מינון מאומת."
+              ],
+              "alternatives": [
+                {
+                  "duration_seconds": {
+                    "min": 30,
+                    "max": 30
+                  },
+                  "status": "estimate"
+                }
+              ]
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "round1",
+          "title": "סבב 1 ×3",
+          "type": "strength",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Chin-Ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 8,
+                "max": 8
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "שכיבות סמיכה מתפרצות",
+              "exercise_id": null,
+              "reps": {
+                "min": 15,
+                "max": 15
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Hanging Leg Raises",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "Pistol Squat בסיוע",
+              "exercise_id": null,
+              "reps": {
+                "min": 8,
+                "max": 8
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": true,
+              "side_scope": "each_side",
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [
+                "אופן הסיוע לא נמסר."
+              ],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        },
+        {
+          "id": "round2",
+          "title": "סבב 2 ×3",
+          "type": "strength",
+          "rounds": {
+            "min": 3,
+            "max": 3
+          },
+          "duration_seconds": null,
+          "rest_seconds": null,
+          "transition_seconds": null,
+          "optional": false,
+          "prescriptions": [
+            {
+              "order": 1,
+              "name_raw": "Pull-Ups",
+              "exercise_id": null,
+              "reps": {
+                "min": 9,
+                "max": 9
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 2,
+              "name_raw": "Skull Crunches",
+              "exercise_id": null,
+              "reps": {
+                "min": 12,
+                "max": 12
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "unclear_identity",
+              "uncertainty": [
+                "אין להחליף ב-Skull Crushers או להניח שזה אותו תרגיל."
+              ],
+              "alternatives": []
+            },
+            {
+              "order": 3,
+              "name_raw": "Squat Jumps",
+              "exercise_id": null,
+              "reps": {
+                "min": 10,
+                "max": 10
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            },
+            {
+              "order": 4,
+              "name_raw": "Ring Curls",
+              "exercise_id": null,
+              "reps": {
+                "min": 12,
+                "max": 12
+              },
+              "duration_seconds": null,
+              "sets": null,
+              "per_side": null,
+              "side_scope": null,
+              "quantity_mode": null,
+              "confidence": "transcribed_unverified",
+              "uncertainty": [],
+              "alternatives": []
+            }
+          ],
+          "uncertainty": []
+        }
+      ],
+      "overall_rounds": null,
+      "frequency_per_week": null,
+      "confidence": "source_summary_not_image_verified",
+      "conflicts": [],
+      "missing_information": [
+        "מנוחות חסרות או חלקיות",
+        "תמונת מקור אינה זמינה לאימות",
+        "אין תיעוד ביצוע"
+      ],
+      "planned_duration_minutes": null,
+      "duration_validation": "not_determinable",
+      "optional_finisher_minutes": null,
+      "duration_with_finisher_minutes": null
+    }
+  ],
+  "sources": [
+    {
+      "id": "001",
+      "name": "001-personal-coach-2026-08.md",
+      "text": "# מאגר מידע מרכזי – Calisthenics Coach\n**שם השיחה:** בניית מאמן קליסטניקס אישי ומאגר אימונים  \n**תקופת השיחה:** 1–5 באוגוסט 2026  \n**מטרת המסמך:** ריכוז כל המידע הזמין בשיחה לצורך בניית מאגר נתונים ואפליקציית אימוני קליסטניקס אישית.\n\nהמסמך מפריד בין:\n- **[משתמש]** – דרישה, העדפה או מידע שנמסרו על ידך.\n- **[מאמן מקורי]** – אימון שפוענח מתמונה של לוח האימונים.\n- **[AI]** – אימון, המלצה או רעיון שהצעתי.\n- **[מוסכם]** – עיקרון שהתקבל במהלך השיחה.\n- **[לא ודאי]** – מידע שהפענוח שלו אינו חד־משמעי.\n- **[חסר]** – מידע שלא נמסר או אינו זמין.\n\nחשוב: שלושת אימוני המקור כוללים פענוחים קודמים של תמונות. חלק מהפרטים אינם ודאיים, ולכן יש לשמר גם את רמת הביטחון בפענוח ולא להפוך אותם אוטומטית לנתונים מאומתים.\n\n---\n\n# 1. פרופיל המתאמן\n\n| שדה | ערך | מקור |\n|---|---|---|\n| שם | לירון | הקשר הפרויקט |\n| גיל | 32 | משתמש |\n| גובה | 180 ס\"מ | משתמש |\n| משקל | 72 ק\"ג | משתמש |\n| ניסיון בקליסטניקס | שנה וחצי נכון לאוגוסט 2026 | משתמש |\n| רמת כושר מוערכת | בינוני–מתקדם | AI |\n| מתח מקסימלי | 20 חזרות | משתמש |\n| מקבילים מקסימלי | 15 חזרות | משתמש |\n| Muscle Up | יודע לבצע | משתמש |\n| Front Lever | מתחיל, עדיין לא ברמה גבוהה | משתמש |\n| Handstand | יודע להיכנס לעמידת ידיים, מתקשה ביציבות ובהחזקה | משתמש |\n| ציוד אישי | גומיות התנגדות | משתמש |\n| סביבת אימון נוספת | פארק קליסטניקס | משתמש |\n| גישה למתח ומקבילים | משתמעת מאימון בפארק ומהיכולות | הסקה |\n| חגורת משקל | לא אושרה | חסר |\n| טבעות | לא אושר ציוד אישי; מופיעות בסביבת אימון מצולמת | לא ודאי |\n| וסט משקל | לא נמסר | חסר |\n| פציעות ומגבלות רפואיות | לא נמסרו | חסר |\n| תדירות אימונים שבועית | לא נמסרה | חסר |\n| ימי אימון קבועים | לא נמסרו | חסר |\n\n**הערה:** אין לפרש היעדר מידע על פציעות כאישור שאין פציעות.\n\n---\n\n# 2. מטרות המתאמן\n\n## 2.1 מטרות שהמשתמש הגדיר\n\n**[משתמש]**\n\nהמטרה המרכזית היא ליצור מאמן קליסטניקס אישי שיוכל:\n\n1. ללמוד מאימוני המאמן המקורי באמצעות תמונות.\n2. לבנות אימונים עצמאיים ואיכותיים.\n3. לשלב ידע ממאמני קליסטניקס מובילים בעולם.\n4. ליצור אימונים מגוונים, אפקטיביים ומותאמים אישית.\n5. להתאים אימונים לזמן ולסביבת האימון.\n6. לפתח לאורך זמן מערכת אימונים מקצועית.\n\n### סקילים קיימים לשיפור\n\n- Front Lever – התקדמות מרמה התחלתית.\n- Handstand – שיפור שיווי משקל, יציבות וזמן החזקה.\n- Muscle Up – סקיל קיים שניתן להמשיך לפתח.\n\n**[חסר]** המשתמש לא דירג את הסקילים לפי סדר חשיבות.\n\n## 2.2 יעדים מספריים שהוצעו על ידי AI\n\nאלו **הצעות בלבד**, ולא יעדים שהמשתמש אישר.\n\n| תחום | יעד שהוצע |\n|---|---|\n| Front Lever | החזקה של 10 שניות |\n| Muscle Up | 5–8 חזרות נקיות ברצף |\n| Explosive Pull Up | משיכה עד החזה |\n| Weighted Pull Up | תוספת 30 ק\"ג |\n| Handstand | החזקה יציבה של 30–60 שניות |\n| Handstand Push Up | 5 חזרות |\n| Planche Lean | שיפור כוח ושליטה |\n| Tuck Planche | החזקה יציבה |\n| Weighted Dips | תוספת 40 ק\"ג |\n| Archer Pull Up | פיתוח יכולת ביצוע |\n\nהיעדים הוצעו במסגרת תכנון לשנה קדימה. אין נתונים שמאפשרים לקבוע שהם ריאליים באותו פרק זמן עבור כל הסקילים.\n\n---\n\n# 3. מבנה האימון\n\n## 3.1 אימון סטנדרטי – 60 דקות\n\n**[משתמש – דרישה מפורשת]**\n\n| שלב | משך | תוכן |\n|---|---|---|\n| חימום | 5 דקות | הכנת הגוף לאימון |\n| Skill | 15–20 דקות | תרגול סקיל |\n| Strength | 35–40 דקות | כוח |\n| סה\"כ | 60 דקות | כולל כל השלבים |\n\nיש להתאים את משך שלב הכוח כך שסך האימון לא יעלה על שעה.\n\n### חימום\n\nעל בסיס התמונות:\n\n- לרוב 3 תרגילים.\n- 30 שניות לתרגיל.\n- 2 סבבים.\n\n**הבחנה:** זהו דפוס שנצפה באימונים, לא כלל מחייב שהמשתמש קבע.\n\n### Skill\n\n**[משתמש – הבהרה מפורשת]**\n\nבחלק ה-Skill בלוחות המקוריים לא מופיעים תרגילים, משום שהמאמן מחליט בזמן אמת מה לתרגל.\n\nלכן:\n\n- אין להסיק שהסקיל חסר באימון.\n- אין להמציא סקיל ולייחס אותו למאמן.\n- באפליקציה יש להפריד בין אימון הכוח המקורי לבין הסקיל שנבחר.\n- המאמן הדיגיטלי צריך לדעת לבחור סקיל מתאים באופן עצמאי.\n\nחלוקת הסקילים הרצויה היא ל-Push ול-Pull.\n\n### Strength\n\nמבוסס על אימוני המקור:\n\n- שימוש בסבבים.\n- שילוב תרגילי משיכה, דחיפה, רגליים וליבה.\n- בדרך כלל 3 סבבים.\n- מספר התרגילים משתנה.\n- שילוב כוח, שליטה, יציבות ותרגילי עזר.\n\n## 3.2 אימונים קצרים\n\n**[משתמש]**\n\nנדרשה גם אפשרות לבנות אימון Full Body של 30 דקות בפארק.\n\nכלומר, האפליקציה אינה יכולה להיות מוגבלת לאימונים של שעה בלבד.\n\n**דרישה נגזרת:** משך האימון צריך להיות פרמטר שניתן לשינוי, תוך התאמת מספר התרגילים, הסבבים והמנוחות.\n\n---\n\n# 4. מאגר אימונים – אימונים מקוריים מהמאמן\n\n## אימון FB001 – Full Body\n\n**תאריך:** 1.8.2026  \n**מקור:** תמונת לוח ראשונה  \n**סוג:** Full Body  \n**סטטוס:** פענוח חלקי\n\n### חימום – Warm-up ×2\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Plank Knee to Elbow | 30 שניות |\n| 2 | Jumping Jacks | 30 שניות |\n| 3 | Butt Kicks | 30 שניות |\n\n**סבבים:** 2  \n**משך עבודה נטו:** 3 דקות  \n**מנוחות:** לא צוינו.\n\n### Skill\n\nלא מופיע פירוט בלוח.\n\n**סיבה:** המאמן בוחר את הסקיל בזמן האימון.\n\n### Strength\n\n**Round ×3**\n\n| סדר | תרגיל | כמות | ודאות |\n|---|---|---|---|\n| 1 | Explosive Pull Ups | 20 חזרות לפי פענוח הכתום, אך שיוך המספר אינו ודאי | נמוכה |\n| 2 | Pull Ups | 10 חזרות | בינונית |\n| 3 | Bulgarian Split Squat | 12 לכל רגל | בינונית |\n| 4 | Trap Pull | 20 חזרות | בינונית |\n\n**הערת פענוח:** בתשובה הראשונה בשיחה הופיעו 4–5 חזרות ל-Explosive Pull Ups. לאחר בחינה של הפענוח הקודם, יש סתירה בין המספרים והשיוך שלהם לתרגילים. לכן אין לשמור את הכמות כנתון מאומת.\n\n### מנוחות\n\nלא צוינו בלוח.\n\n### תיוגים מוצעים\n\n`full_body`, `pull`, `explosive_strength`, `legs`, `unilateral`, `scapular_control`\n\n### הערות\n\n- זהו אימון מקורי של המאמן.\n- אין להוסיף לו סקיל משוער.\n- יש לשמור את התמונה המקורית לצורך אימות עתידי.\n\n---\n\n## אימון FB002 – Full Body\n\n**תאריך:** 2.8.2026  \n**מקור:** תמונת לוח שנייה  \n**סוג:** Full Body  \n**סטטוס:** פענוח חלקי\n\n### חימום – Warm-up ×2\n\nכל תרגיל 30 שניות.\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Seated In and Out | 30 שניות |\n| 2 | Bicycles | 30 שניות |\n| 3 | Leg Flutter | 30 שניות |\n\n**סבבים:** 2  \n**משך עבודה נטו:** 3 דקות  \n**מנוחות:** לא צוינו.\n\n### Skill\n\nלא פורט בלוח.\n\n**חשוב:** הפענוח הראשוני בשיחה שייך בטעות תרגילים שנראו בצד ימין של הלוח לחלק ה-Skill. לפי ההבהרה המאוחרת של המשתמש, אין לקבוע שהם היו חלק מהסקיל.\n\n### Strength – Round 1 ×3\n\n| סדר | תרגיל | כמות | ודאות |\n|---|---|---|---|\n| 1 | Australian Pull Up (with stop) | 5 חזרות | בינונית |\n| 2 | Jump Dips | 12 חזרות לפי פענוח קודם | נמוכה |\n| 3 | Shoulder Taps | 30 חזרות | גבוהה יחסית |\n| 4 | Jump Squat | 15 חזרות | גבוהה יחסית |\n\n**הערת פענוח:** בתשובה המקורית הופרד \"Pull Up with Stop\" כתרגיל חמישי, אך נראה שהוא חלק מהשורה של Australian Pull Up. יש לשמור את שתי הקריאות כגרסאות פענוח, ולא לספור אותו אוטומטית כתרגיל נוסף.\n\n### Strength – Round 2 ×2–3\n\nבצד ימין של הלוח מופיע סבב נוסף:\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Chin Up Hold | מקסימום זמן |\n| 2 | Wall Walks | 3 חזרות |\n| 3 | Close Squats | 15 חזרות |\n\n**ודאות:** בינונית בחלק מהשמות והכמויות.\n\n**הערה חשובה:** בפענוח הקודם נכתב \"Close Shoulder Shrugs\", אך הכיתוב בלוח נראה יותר כמו \"Close Squats\". יש לאמת מול התמונה המקורית.\n\n### מנוחות\n\nלא צוינו.\n\n### תיוגים מוצעים\n\n`full_body`, `pull`, `push`, `legs`, `core`, `isometric`, `bodyweight`\n\n---\n\n## אימון FB003 – Full Body\n\n**תאריך:** 4.8.2026  \n**מקור:** תמונת לוח שלישית  \n**סוג:** Full Body  \n**סטטוס:** פענוח חלקי בשל זווית הצילום והשתקפויות\n\n### חימום – Warm-up ×2\n\nכל תרגיל 30 שניות.\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Jumping Jacks | 30 שניות |\n| 2 | Bicycles | 30 שניות |\n| 3 | Commando Plank | 30 שניות |\n\n**סבבים:** 2  \n**משך עבודה נטו:** 3 דקות  \n**מנוחות:** לא צוינו.\n\n### Skill\n\nלא פורט בלוח.\n\n### Strength\n\nבכותרת מופיע Round 1.\n\n| סדר | תרגיל | כמות | ודאות |\n|---|---|---|---|\n| 1 | Arch Pull Up | 8 חזרות ×3 | בינונית |\n| 2 | Back Bridge | 15 חזרות ×3 | בינונית |\n| 3 | Trap Pull | 8 חזרות ×3 | בינונית |\n| 4 | Lunges | דקה אחת | בינונית |\n| 5 | External Shoulder Rotation | 10 לכל צד ×3 | בינונית |\n| 6 | Scapula Shrugs with Band | 15 חזרות ×3 | בינונית |\n| 7 | Superman Hold | 15 שניות ×3 | בינונית |\n\n### מנוחות\n\nלא צוינו.\n\n### הערות\n\n- אין ודאות שכל שבעת התרגילים שייכים לאותו סבב.\n- יש לשמר את הסדר כפי שפוענח.\n- המספרים הכתומים משויכים לתרגילים לפי המיקום בתמונה, אך ייתכנו שגיאות.\n\n### תיוגים מוצעים\n\n`full_body`, `pull`, `posterior_chain`, `shoulder_stability`, `scapular_control`, `core`, `mobility`\n\n---\n\n# 5. אימון שנבנה על ידי AI\n\n## אימון AI-FB001 – Park Full Body, 30 Minutes\n\n**תאריך:** 5.8.2026  \n**מקור:** אימון שנוצר על ידי AI לבקשת המשתמש  \n**סוג:** Full Body  \n**סביבה:** פארק  \n**משך מתוכנן:** 30 דקות  \n**סטטוס:** הוצע; לא ידוע אם בוצע בפועל.\n\n### חימום – 5 דקות\n\n**2 סבבים**\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Jumping Jacks | 30 שניות |\n| 2 | Commando Plank | 30 שניות |\n| 3 | Hollow Hold | 30 שניות |\n| 4 | Scapular Pull Ups | 10 חזרות |\n\n**מנוחה לפני סקיל:** 30 שניות.\n\n### Skill – Front Lever\n\n**משך מתוכנן:** 8 דקות  \n**סבבים:** 4\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Tuck Front Lever Hold | 10–15 שניות |\n| 2 | Tuck Front Lever Raises | 5 חזרות |\n| 3 | Dead Hang | 20 שניות |\n\n**מנוחה:** 60–90 שניות בין הסבבים.\n\n**דגש:** איכות הביצוע, ללא הגעה לכשל טכני.\n\n### Strength – Circuit ×3\n\n**משך מתוכנן:** כ-17 דקות.\n\n| סדר | תרגיל | כמות |\n|---|---|---|\n| 1 | Explosive Pull Ups | 5 חזרות |\n| 2 | Jump Dips | 10–12 חזרות |\n| 3 | Bulgarian Split Squat | 10 לכל רגל |\n| 4 | Australian Pull Ups | 12–15 חזרות |\n| 5 | Band External Rotation | 15 לכל יד |\n| 6 | Hollow Rocks | 20 חזרות |\n\n**מנוחה:** 90 שניות בין סבבים.\n\n### פינישר אופציונלי – EMOM ×3\n\nבתחילת כל דקה:\n\n**אפשרות א':**\n- 3 Muscle Ups נקיים.\n\n**אפשרות ב':**\n- 5 Chest-to-Bar Pull Ups.\n\n**משך:** 3 דקות.\n\n### הערת תכנון חשובה\n\nהאימון הוגדר כ-30 דקות, אך הוספת פינישר של 3 דקות ל-5 דקות חימום, 8 דקות סקיל ו-17 דקות כוח מביאה את משך האימון ל-33 דקות.\n\nלכן יש לשמור במאגר:\n\n- `planned_duration_minutes: 30`\n- `optional_finisher_minutes: 3`\n- `duration_with_finisher_minutes: 33`\n- `duration_validation: requires_adjustment`\n\nבנוסף, משך הסבבים בפועל תלוי בקצב הביצוע, ולכן 30 דקות הן הערכה ולא זמן מובטח.\n\n### תיוגים\n\n`ai_generated`, `full_body`, `park`, `30_min`, `front_lever`, `pull`, `push`, `legs`, `core`, `explosive_strength`\n\n---\n\n# 6. ספריית התרגילים שהוצעו במהלך השיחה\n\nהתרגילים הבאים הוזכרו כרעיונות להרחבת מאגר התרגילים. **אין להתייחס אליהם כאימונים שבוצעו או כתוכנית שהמשתמש אישר.**\n\n## 6.1 Pull – משיכה\n\n| תרגיל | מטרה עיקרית |\n|---|---|\n| Pull Ups | כוח משיכה |\n| Explosive Pull Ups | כוח מתפרץ |\n| Chest-to-Bar Pull Ups | כוח משיכה גבוה |\n| Weighted Pull Ups | כוח מרבי |\n| Archer Pull Ups | כוח חד-צדדי |\n| Typewriter Pull Ups | כוח ושליטה |\n| Mixed Grip Pull Ups | גיוון אחיזה ומשיכה |\n| L-Sit Pull Ups | משיכה ושליטת ליבה |\n| Australian Rows | משיכה אופקית |\n| Archer Australian Rows | משיכה אופקית חד-צדדית |\n| One Arm Pull Up | סקיל כוח מתקדם |\n| Scapular Pull Ups | שליטה בשכמות |\n| Dead Hang | אחיזה ותלייה |\n\n## 6.2 Front Lever\n\n| תרגיל | מטרה |\n|---|---|\n| Tuck Front Lever Hold | בסיס איזומטרי |\n| Advanced Tuck Front Lever | התקדמות איזומטרית |\n| One Leg Front Lever | התקדמות בסקיל |\n| Straddle Front Lever | התקדמות בסקיל |\n| Full Front Lever | סקיל מטרה |\n| Band Assisted Front Lever | תרגול עם סיוע |\n| Front Lever Raises | כוח דינמי |\n| Front Lever Pulls | כוח דינמי |\n| Front Lever Negatives | כוח אקסצנטרי |\n| Front Lever Rows | משיכה במנח Front Lever |\n| Ice Cream Makers | כוח ושליטה |\n| Dragon Flag | כוח ליבה |\n| Reverse Dragon Flag | שליטת ליבה |\n| Body Saw | יציבות ליבה |\n\n**הערה:** סדר ההתקדמות שהוצע הוא מסלול אפשרי, ולא רצף מחייב. יש לבחור שלב לפי יכולת הביצוע בפועל.\n\n## 6.3 Push ו-Handstand\n\n| תרגיל | מטרה |\n|---|---|\n| Handstand Wall Hold | בסיס לעמידת ידיים |\n| Chest-to-Wall Handstand | יישור ושליטה |\n| Freestanding Handstand Attempts | שיווי משקל |\n| Handstand Kick Ups | כניסה לעמידת ידיים |\n| Toe Pulls | שליטה באיזון |\n| Heel Pulls | שליטה באיזון |\n| Wall Walks | כוח כתפיים ושליטה |\n| Wall Handstand Shoulder Taps | העברת משקל |\n| Weight Shifts | שליטה בשיווי משקל |\n| Wall Runs | שליטה דינמית |\n| Box Handstand | בסיס ושליטה |\n| Line Drills | יישור הגוף |\n| Pike Handstand Push Ups | כוח דחיפה אנכית |\n| Handstand Push Ups | כוח מתקדם |\n| Planche Lean | כוח בכתפיים |\n| Tuck Planche | סקיל סטטי |\n| Planche Push Ups | כוח מתקדם |\n| Crow to Handstand | מעבר מתקדם |\n| Straight Bar Dips | דחיפה ומעבר ל-Muscle Up |\n| Weighted Dips | כוח דחיפה |\n\n## 6.4 Muscle Up\n\n- Muscle Up.\n- Band Assisted Muscle Up.\n- Muscle Up Transition Drills.\n- Muscle Up Slow Negatives.\n- Explosive Pull Ups.\n- Chest-to-Bar Pull Ups.\n- Straight Bar Dips.\n\n## 6.5 רגליים\n\n- Bulgarian Split Squat.\n- Jump Squat.\n- Lunges.\n- Cossack Squat.\n- Shrimp Squat.\n- Skater Squat.\n- Nordic Curl.\n- Assisted Pistol Squat.\n\n## 6.6 Core, Mobility ותרגילי עזר\n\n- Hollow Hold.\n- Hollow Rocks.\n- Superman Hold.\n- Back Bridge.\n- Commando Plank.\n- Plank Knee to Elbow.\n- Shoulder Taps.\n- External Shoulder Rotation.\n- Band External Rotation.\n- Scapula Shrugs.\n- Band Shoulder Dislocations.\n- Jumping Jacks.\n- Butt Kicks.\n- Bicycles.\n- Leg Flutter.\n- Seated In and Out.\n\n**כלל חשוב למאגר:** תרגיל יכול להשתייך למספר קטגוריות. למשל, Front Lever Rows הוא גם תרגיל Pull וגם תרגיל לפיתוח Front Lever.\n\n---\n\n# 7. עקרונות התאמה והתקדמות\n\n## 7.1 עקרונות שהמשתמש ביקש\n\n**[משתמש]**\n\n- גיוון משמעותי בין אימונים.\n- לא להסתמך רק על התרגילים שבתמונות.\n- ללמוד ממאמני קליסטניקס מובילים.\n- להתאים את התרגילים לרמה האישית.\n- לבנות אימונים איכותיים ואפקטיביים.\n- לשלב Push ו-Pull Skills.\n- לשמור על מבנה האימון המועדף.\n- להציג הוראות ביצוע ויזואליות.\n\n## 7.2 עקרונות שהוצעו על ידי AI\n\n| עיקרון | פירוט | סטטוס |\n|---|---|---|\n| Progressive Overload | העלאת קושי הדרגתית | הצעת AI |\n| Skill Before Strength | סקיל לפני כוח | תואם למבנה המבוקש |\n| RIR | השארת חזרות לפני כשל | הצעת AI |\n| RPE | דירוג מאמץ | הצעת AI |\n| Deload | הפחתת עומס תקופתית | הצעת AI |\n| Periodization | חלוקה למחזורי אימון | הצעת AI |\n| Skill Progressions | התקדמות לפי רמות | הצעת AI |\n| Exercise Rotation | גיוון מבוקר של תרגילים | תואם לדרישת המשתמש |\n| Shoulder Prehab | תרגילי עזר לכתפיים | הצעת AI |\n| Performance Tracking | מעקב אחר ביצועים | הצעת AI |\n\n### דוגמת מחזור אימונים שהוצעה\n\n| שבוע | מיקוד |\n|---|---|\n| 1 | בסיס והיכרות |\n| 2 | העלאת עומס |\n| 3 | עצימות גבוהה |\n| 4 | Deload |\n\nזהו רעיון ראשוני בלבד. לא הוסכם שכל ארבעה שבועות חייב להתבצע Deload.\n\n### דוגמה נוספת לגיוון Pull\n\n- שבוע 1: Explosive Pull Ups.\n- שבוע 2: Chest-to-Bar Pull Ups.\n- שבוע 3: Weighted Pull Ups.\n- שבוע 4: Deload.\n\n**הבהרה מקצועית:** החלפת תרגילים מדי שבוע אינה בהכרח הדרך הטובה ביותר למדוד התקדמות. באפליקציה רצוי להבחין בין תרגילי בסיס קבועים לבין תרגילי עזר מתחלפים.\n\n---\n\n# 8. מקורות ידע חיצוניים\n\nהמשתמש ביקש במפורש שהמאמן הדיגיטלי יסתמך גם על ידע מקצועי ממאמנים מובילים בעולם.\n\nבמהלך השיחה הוצעו המקורות הבאים:\n\n| מקור | תחום רלוונטי |\n|---|---|\n| FitnessFAQs – Daniel Vadnal | כוח, טכניקה ומוביליטי |\n| Saturno Movement | תנועה והתקדמות בסקילים |\n| Calisthenic Movement | טכניקה ואימוני משקל גוף |\n| The School of Calisthenics | בניית בסיס והתקדמות |\n| Dominik Sky | סקילים מתקדמים |\n| Steven Low – Overcoming Gravity | תכנון תוכניות והתקדמות |\n\n**חשוב:** המקורות הוזכרו כהמלצות. בשיחה לא בוצעה סקירת מחקרים או אימות של תוכניות אימון ספציפיות מתוכם.\n\nאין לייחס תרגיל מסוים למאמן מסוים רק משום שהוא משתמש בו.\n\n### חלוקת מקורות שהוצעה\n\nבהמשך השיחה הוצעה החלוקה:\n\n- 40% – סגנון המאמן המקורי.\n- 30% – ידע ממאמני קליסטניקס מובילים.\n- 30% – התאמה אישית.\n\n**סטטוס:** הצעת AI, לא דרישה מאושרת.\n\nלצורך האפליקציה עדיף לשמור זאת כהנחיה איכותית ולא כאלגוריתם בחירה המבוסס על אחוזים קשיחים.\n\n---\n\n# 9. דרישות האפליקציה\n\n## 9.1 דרישות מפורשות של המשתמש\n\n### A. קליטת תמונות\n\nהאפליקציה צריכה לתמוך בתהליך הבא:\n\n1. העלאת תמונה של לוח אימונים.\n2. פענוח התרגילים.\n3. זיהוי סדר הביצוע.\n4. זיהוי סבבים.\n5. זיהוי סטים וחזרות.\n6. זיהוי זמני עבודה.\n7. זיהוי מנוחות, כאשר הן מופיעות.\n8. הוספת האימון למאגר.\n\nיש להפריד בין מידע שנקרא בבירור לבין פענוח משוער.\n\n### B. בניית אימונים עצמאית\n\nהמערכת צריכה לדעת ליצור אימונים חדשים, ולא רק לשחזר אימונים קיימים.\n\nהיא צריכה לשלב:\n\n- אימונים מהמאגר.\n- תרגילים חדשים.\n- ידע מקצועי.\n- רמת המתאמן.\n- מטרות.\n- ציוד זמין.\n- משך האימון.\n- סביבת האימון.\n\n### C. אימונים מגוונים\n\nהמשתמש הדגיש שאין לחזור באופן קבוע על אותם תרגילים.\n\nהגיוון צריך להיות מבוקר, תוך שמירה על יכולת למדוד התקדמות.\n\n### D. המחשה ויזואלית\n\n**[משתמש – דרישה מפורשת]**\n\nלכל תרגיל יש לצרף תמונה שמראה כיצד מבצעים אותו.\n\nלאחר יצירת אינפוגרפיקה ראשונה, המשתמש ציין:\n\n> \"יצא ממש יפה !!! רק צריך לדייק את הפרטים הקטנים והטקסטים אבל רמה גבוה יחסית!\"\n\nמכאן נגזרות הדרישות:\n\n- עיצוב מקצועי.\n- תמונות ברורות.\n- טקסט בעברית תקינה.\n- שמות תרגילים מדויקים.\n- מספרי חזרות נכונים.\n- הוראות ביצוע מדויקות.\n- התאמה לצפייה במהלך אימון בפארק.\n\n## 9.2 רעיונות שהוצעו על ידי AI\n\nהרעיונות הבאים הוצעו במהלך השיחה, אך לא אושרו בנפרד כמפרט סופי.\n\n| רכיב | תיאור |\n|---|---|\n| ספריית אימונים | מאגר אימונים לפי קטגוריות |\n| ספריית תרגילים | תרגילים עם תיוגים |\n| ספריית סקילים | התקדמות לכל סקיל |\n| פרופיל מתאמן | נתוני כושר וציוד |\n| מנוע בניית אימונים | התאמה אוטומטית |\n| מעקב ביצועים | סטים, חזרות ועומסים |\n| מעקב RPE/RIR | מדידת עצימות |\n| מעקב סקילים | זמני החזקה ורמות |\n| מחזורי אימון | ניהול עומסים |\n| אינפוגרפיקה | הצגת אימון ויזואלית |\n| התאמות תרגילים | גרסאות קלות וקשות |\n| תיעוד מקור | מאמן מקורי או AI |\n\n---\n\n# 10. מבנה מומלץ למסד הנתונים\n\n**[הצעת AI – מפרט טכני חדש המבוסס על השיחה]**\n\nמומלץ להפריד בין חמש ישויות מרכזיות.\n\n### Athlete\n\n```json\n{\n  \"athlete_id\": \"liron\",\n  \"age_at_intake\": 32,\n  \"height_cm\": 180,\n  \"weight_kg_at_intake\": 72,\n  \"experience_months_at_intake\": 18,\n  \"pull_up_max_reps\": 20,\n  \"dip_max_reps\": 15,\n  \"skills\": {\n    \"muscle_up\": \"achieved\",\n    \"front_lever\": \"beginner\",\n    \"handstand\": \"balance_development\"\n  },\n  \"equipment_confirmed\": [\"resistance_bands\"],\n  \"training_environment\": [\"calisthenics_park\"],\n  \"injuries\": null,\n  \"weekly_frequency\": null\n}\n```\n\n### Exercise\n\n```json\n{\n  \"exercise_id\": \"front_lever_tuck_hold\",\n  \"name\": \"Tuck Front Lever Hold\",\n  \"category\": [\"pull\", \"skill\"],\n  \"movement_type\": \"isometric\",\n  \"equipment\": [\"pull_up_bar\"],\n  \"difficulty\": null,\n  \"instructions\": null,\n  \"common_mistakes\": [],\n  \"regressions\": [],\n  \"progressions\": [],\n  \"media\": []\n}\n```\n\n### Workout\n\n```json\n{\n  \"workout_id\": \"FB001\",\n  \"source\": \"original_coach\",\n  \"date\": \"2026-08-01\",\n  \"type\": \"full_body\",\n  \"planned_duration_minutes\": 60,\n  \"warmup\": [],\n  \"skill\": {\n    \"selection_mode\": \"coach_selected\",\n    \"exercises\": null\n  },\n  \"strength\": [],\n  \"notes\": [],\n  \"verification_status\": \"partially_verified\"\n}\n```\n\n**הערה:** משך 60 הדקות ב-FB001 נלקח ממבנה האימון הכללי שהמשתמש הגדיר, ולא מזמן שנכתב על הלוח עצמו.\n\n### WorkoutExercise\n\n```json\n{\n  \"exercise_id\": \"explosive_pull_up\",\n  \"order\": 1,\n  \"rounds\": 3,\n  \"reps\": null,\n  \"duration_seconds\": null,\n  \"rest_seconds\": null,\n  \"confidence\": \"low\",\n  \"source\": \"whiteboard_photo\",\n  \"notes\": \"Repetition count requires verification\"\n}\n```\n\n### TrainingLog\n\n```json\n{\n  \"workout_id\": \"AI-FB001\",\n  \"performed_at\": null,\n  \"completed\": null,\n  \"exercises\": [],\n  \"session_rpe\": null,\n  \"pain_report\": null,\n  \"notes\": null\n}\n```\n\nאין ליצור רישום אימון שבוצע רק משום שאימון נבנה או הוצג למשתמש.\n\n---\n\n# 11. כללי עבודה למאמן הדיגיטלי\n\nהכללים הבאים משלבים דרישות משתמש ועקרונות שהוצעו בשיחה.\n\n| כלל | מקור |\n|---|---|\n| אימון רגיל בנוי מחימום, סקיל וכוח | משתמש |\n| משך רגיל של שעה | משתמש |\n| תמיכה באימון קצר של 30 דקות | משתמש |\n| סקילים מחולקים ל-Push ו-Pull | משתמש |\n| סקיל בלוח המקורי אינו מפורט מראש | משתמש |\n| שימוש באימונים מקוריים כבסיס ללמידה | משתמש |\n| הוספת תרגילים ממקורות מקצועיים | משתמש |\n| גיוון משמעותי באימונים | משתמש |\n| התאמת התרגילים לרמה האישית | משתמש |\n| הצגת תמונה לכל תרגיל | משתמש |\n| מעקב RPE ו-RIR | הצעת AI |\n| ניהול עומס שבועי | הצעת AI |\n| מחזורי אימון ו-Deload | הצעת AI |\n| מניעת עומס יתר על כתפיים ומרפקים | הצעת AI |\n| התקדמות מדידה בסקילים | הצעת AI |\n\n### כללים נוספים שכדאי ליישם\n\n**[הצעת AI חדשה]**\n\n- לא להמציא נתונים חסרים מתמונות.\n- לשמור את התמונה המקורית לצד הפענוח.\n- לאפשר תיקון ידני של תרגילים וכמויות.\n- לשמור היסטוריית גרסאות.\n- להבחין בין אימון מתוכנן לאימון שבוצע.\n- לבדוק שסך משכי האימון תואם לזמן שהמשתמש ביקש.\n- לא להציג תרגיל מתקדם לפני בדיקת התאמתו למתאמן.\n- להציג רמת ביטחון בפענוח.\n- לא לייחס אימון או שיטת עבודה למאמן חיצוני ללא מקור.\n\n---\n\n# 12. דרישות לאינפוגרפיקה\n\nבמהלך השיחה נוצרה אינפוגרפיקה לאימון AI-FB001.\n\n### משוב המשתמש\n\n**חיובי:**\n- רמת עיצוב גבוהה.\n- המבנה הוויזואלי מוצלח.\n- התמונות מסייעות להבין את התרגילים.\n\n**דורש שיפור:**\n- דיוק בטקסטים.\n- דיוק בפרטים הקטנים.\n- דיוק בהצגת התרגילים.\n\n### פורמט מומלץ\n\nלכל תרגיל:\n\n1. שם באנגלית.\n2. שם בעברית, כאשר יש תרגום מקובל.\n3. תמונת התחלה.\n4. תמונת סיום או שלבי תנועה.\n5. חיצי תנועה.\n6. מספר חזרות או משך.\n7. דגש טכני.\n8. טעות נפוצה.\n9. גרסה קלה יותר.\n10. גרסה מתקדמת יותר.\n\n**חשוב:** הרשימה המלאה היא הרחבה שהוצעה על ידי AI. הדרישה המפורשת של המשתמש הייתה תמונה לכל תרגיל, ובהמשך דיוק בטקסטים ובפרטים.\n\n---\n\n# 13. מידע חסר שיש להשלים בעתיד\n\n| מידע | מצב |\n|---|---|\n| מספר אימונים בשבוע | חסר |\n| ימי אימון | חסר |\n| סדר עדיפות בין הסקילים | חסר |\n| זמן החזקת Handstand נוכחי | חסר |\n| זמן החזקת Front Lever נוכחי | חסר |\n| מספר Muscle Ups רצופים | חסר |\n| מגבלות רפואיות או פציעות | חסר |\n| גישה למשקולות | חסר |\n| גישה לחגורת משקל | חסר |\n| גישה לטבעות | לא מאושרת |\n| זמני מנוחה באימוני המקור | חסרים |\n| רמת מאמץ באימוני המקור | חסרה |\n| נתוני אימונים שבוצעו בפועל | חסרים |\n| משקלים נוספים בתרגילים | חסרים |\n| העדפות אישיות לתרגילים | טרם נמדדו באופן שיטתי |\n\n---\n\n# 14. סיכום המאגר הזמין בשיחה\n\n| מזהה | תאריך | סוג | מקור | מצב |\n|---|---|---|---|---|\n| FB001 | 1.8.2026 | Full Body | מאמן מקורי – תמונה | פענוח חלקי |\n| FB002 | 2.8.2026 | Full Body | מאמן מקורי – תמונה | פענוח חלקי |\n| FB003 | 4.8.2026 | Full Body | מאמן מקורי – תמונה | פענוח חלקי |\n| AI-FB001 | 5.8.2026 | Full Body – 30 דקות | AI | אימון מוצע |\n\n**סה\"כ בשיחה זו:**\n- 3 אימונים מקוריים מתמונות.\n- אימון אחד שנבנה על ידי AI.\n- אינפוגרפיקה אחת שנוצרה לאימון AI-FB001.\n- ספריית תרגילים ורעיונות להרחבה.\n- פרופיל מתאמן.\n- דרישות למאמן אישי.\n- דרישות ראשוניות לאפליקציה.\n\nאין בשיחה זו נתונים המוכיחים שהאימונים אכן בוצעו.\n\n---\n\n# 15. הוראות להעברה לשיחה המרכזית\n\nניתן להעתיק את כל המסמך ולהשתמש בהוראות הבאות:\n\n> המידע המצורף הוא חילוץ משיחת המקור של פרויקט Calisthenics Coach, מאוגוסט 2026.\n>\n> יש להוסיף את כל ארבעת האימונים למאגר המרכזי, תוך שמירת מזהי המקור, התאריכים, סדר התרגילים, הכמויות, הסבבים, המנוחות ורמת הביטחון בפענוח.\n>\n> יש להפריד בין אימונים מקוריים של המאמן לבין אימונים שנוצרו על ידי AI.\n>\n> אין להניח שאימון שהוצע אכן בוצע.\n>\n> אין לשייך תרגילי Skill ללוחות המקוריים כאשר הם לא צוינו במפורש.\n>\n> יש לשמור גרסאות פענוח שונות כאשר קיימת סתירה.\n>\n> יש לאחד כפילויות של תרגילים באמצעות מזהה תרגיל אחיד, אך לא למחוק הופעות שלהם באימונים שונים.\n>\n> יש לשלב את פרופיל המתאמן, העדפותיו, מטרותיו ודרישות האפליקציה במערכת המרכזית.\n>\n> תרגילים שהוצעו כרעיונות ייכנסו לספריית התרגילים, ולא להיסטוריית אימונים שבוצעו.\n>\n> יש לשמר הבחנה בין דרישות משתמש, החלטות מוסכמות והצעות AI.\n>\n> מטרת המערכת היא לבנות מאמן קליסטניקס אישי שמייצר אימונים איכותיים, מגוונים ומדורגים, תוך שימוש במאגר המקורי, בידע מקצועי חיצוני ובנתוני ההתקדמות האישיים.\n\n**הערת שלמות:** החילוץ כולל את כל ארבעת האימונים הזמינים בשיחה הנוכחית. הוא אינו כולל אימונים משיחות אחרות בפרויקט. כדי לבנות מאגר כולל של הפרויקט, יש למזג גם את החילוצים מאותן שיחות, תוך מניעת כפילויות ושמירת גרסאות שונות."
+    },
+    {
+      "id": "002",
+      "name": "002-emom-15-min.md",
+      "text": "# חילוץ שני — אימון קצר עם אינפוגרף\n\nשם שיחה: לא זמין. תאריך שנמסר בסיכום: 19.10.2026; לא אומת כתאריך ביצוע או יצירת האימון.\nמקור: סיכום שהמשתמש העביר לשיחה המרכזית.\n\n## בקשות משתמש\n- אימון באורך 15 דקות.\n- אינפוגרף מסודר.\n- לא נמסרו בסיכום זה מטרות, מגבלות, ציוד אישי או העדפות תרגילים.\n\n## אימון AI-EMOM001 — אימון פארק גוף מלא\n- מקור: הצעת עוזר; אין תיעוד שבוצע.\n- משך: 15 דקות. שיטה: EMOM. סבבים: 3.\n- חמש תחנות לסבב: הסקה בלבד ממשך האימון ומספר הסבבים, ולא נתון מאומת.\n- בתחילת כל דקה מתחילים תרגיל, משלימים חזרות ונחים ביתרת הדקה. חוזרים על הרצף 3 פעמים. נאמר לשמור על טכניקה תקינה.\n- דקה 2: מקבילים, 8–10 חזרות. זהו תיקון מפורש לנתון המשובש 10–10 באינפוגרף.\n- דקות 1, 3, 4, 5: התרגילים והמינונים אינם נגישים; גם מיקומם כחמש תחנות נשען על המבנה המשוער.\n- שורה מספרית נוספת באינפוגרף שובשה; התיקון השני אינו נגיש.\n- חימום: לא נגיש; אין להסיק שלא היה חימום ואין להוסיף חימום לגרסת המקור.\n- מיקום: פארק, לפי תיאור האימון. זמינות מקבילים משתמעת מהתרגיל; אינה אישור לציוד אישי או לזמינות קבועה. ציוד נוסף לא ידוע.\n- נטען שהאימון מותאם לרמה, אך אין בסיכום ראיות לאופן ההתאמה.\n- סטטוס: חלקי — ממתין לפענוח האינפוגרף המקורי. אין תמונה מצורפת לחילוץ זה.\n\n## הצעות בלבד לאפליקציה\nתמיכה ב-EMOM; טיימר להחלפת תרגיל בדקה; הצגת סבב ודקה נוכחיים; יעד חזרות ויתרת מנוחה; תיקונים ידניים והיסטוריית גרסאות.\n\n## מידע שלא סוכם\nאין כללי התקדמות, רגרסיות ופרוגרסיות, RPE/RIR, שינוי חזרות כשאין מנוחה, מנוחה מינימלית, טיפול בכאב או תדירות שבועית. אין פרטי ביצוע נוספים או עיצוב נגיש של התמונה. אין לנחש פרטים חסרים.\n"
+    },
+    {
+      "id": "003",
+      "name": "003-park-20-min.md",
+      "text": "## מקור והיקף החילוץ\n\n- **שם השיחה:** אינו מוצג במפורש; נושא השיחה הוא „אינפוגרף לאימון בפארק של 20 דקות”.\n- **תאריך האימון:** 29.08.2026, לפי הקשר השיחה הזמין.\n- **תאריך בקשת החילוץ:** 19.10.2026.\n- **תוכן זמין:** בקשת המשתמש, נוסח האימון שהוכן והתמונה שנוצרה ממנו.\n- **מספר אימונים מלאים בשיחה: אחד.** התמונה והנוסח הם שתי הצגות של אותו אימון, ואוחדו לרשומה אחת.\n- אזכורים לאימונים משיחות אחרות אינם כוללים כאן את תוכנם המלא, ולכן אינם נספרים כאימונים שחולצו.\n\n## אימון 001 — פארק, פול־בודי וסקיל, 20 דקות\n\n**מקור:** הצעת העוזר בעקבות בקשת המשתמש: „תעשה לי אינפוגרף לאימון בפארק של 20 דק”.\n\n**סטטוס:** אימון מוצע. אין בשיחה אישור שהמשתמש ביצע אותו או משוב על הקושי.\n\n**חלוקת הזמן:** 3 דקות חימום + 4 דקות סקיל + 12 דקות כוח + דקת סיום.\n\n### א. חימום — דקות 0–3\n\n| סדר | תרגיל | משך | חזרות / סטים | מנוחה |\n|---|---|---|---|---|\n| 1 | קפיצות קלות | 30 שניות | לא צוינו | לא צוינה |\n| 2 | סיבובי כתפיים | 30 שניות | לא צוינו | לא צוינה |\n| 3 | סקפולר פול־אפס — משיכות שכמות בתלייה | 60 שניות | לא צוינו | לא צוינה |\n| 4 | סקוואטים | 60 שניות | לא צוינו | לא צוינה |\n\n**הערת דיוק:** 60 שניות הן משך התחנה שנכתב. לא הוגדר אם לבצע ברצף או לחלק למקטעים, ולא נקבע מספר חזרות.\n\n### ב. סקיל — דקות 3–7\n\n**שני סבבים, בסדר הבא:**\n\n| סדר בכל סבב | תרגיל | זמן ביצוע בכל סבב | מנוחה |\n|---|---|---|---|\n| 1 | עמידת ידיים לקיר | 20 שניות | לא נקבעה בנפרד |\n| 2 | טאק פרונט לבר | 10–15 שניות | „מנוחה בשאר הזמן” |\n\n**מידע חסר:** לא הוגדרה חלוקת ארבע הדקות בין הסבבים או המנוחה בין שני התרגילים. אין לרשום במאגר „שתי דקות לסבב” ככלל מקורי מוסכם, אף שזו חלוקה אפשרית.\n\n### ג. כוח — דקות 7–19\n\n**שלושה סבבים. ארבע תחנות בכל סבב, בסדר הבא.**  \nלכל תחנה: **40 שניות עבודה ו־20 שניות מעבר.**\n\n| סדר בכל סבב | תרגיל | יעד חזרות בכל סבב | חלון עבודה | מעבר |\n|---|---|---|---|---|\n| 1 | מתח | 8–12 | 40 שניות | 20 שניות |\n| 2 | מקבילים | 8–12 | 40 שניות | 20 שניות |\n| 3 | סקוואט בולגרי | 10 לכל רגל | 40 שניות לשתי הרגליים יחד, לפי מבנה התחנה | 20 שניות |\n| 4 | הרמות ברכיים בתלייה | 10–15 | 40 שניות | 20 שניות |\n\n**בדיקת משך:** 4 תחנות × דקה × 3 סבבים = 12 דקות.\n\n**מידע חסר ואי־בהירויות לשימור במאגר:**\n\n- לא הוגדר מה לעשות אם מגיעים ליעד החזרות לפני תום 40 השניות.\n- לא הוגדר מה גובר אם לא משלימים את החזרות בזמן: הטיימר או יעד החזרות.\n- בבולגרי לא פורטה החלפת הרגליים. יעד של 10 חזרות לכל רגל בתוך 40 שניות עשוי להיות צפוף; זהו יעד מקורי הדורש הבהרה, ולא כלל התקדמות.\n- לא צוינה מנוחה נוספת בין הסבבים.\n- 20 השניות הוגדרו כזמן **מעבר**, ולא כמנוחה נפרדת נוספת.\n\n### ד. סיום — דקות 19–20\n\n| סדר | תרגיל | משך | מנוחה |\n|---|---|---|---|\n| 1 | הולו בודי | 30 שניות | לא צוינה |\n| 2 | מתיחת כתפיים ונשימה | 30 שניות | לא צוינה |\n\n### ציוד ותנאים לאימון\n\n**נדרש לפי התרגילים והאיורים, ולא כרשימת ציוד שהמשתמש אישר:**\n\n- מוט מתח.\n- מקבילים.\n- ספסל או משטח מוגבה ויציב לבולגרי.\n- קיר מתאים לעמידת ידיים.\n- שטח קרקע להולו בודי.\n\n**חסר:** לא נבדק אם יש קיר מתאים בפארק. לא ניתנה חלופה לעמידת הידיים או לתרגילים האחרים במקרה שחסר ציוד.\n\n### תוכן חזותי\n\nנוצר אינפוגרף בעברית עם איורי התרגילים, זמנים, חזרות וחלוקה לארבעת חלקי האימון.\n\n**הערת איכות:** איור הטאק פרונט לבר מציג תנוחה עם רגליים שאינן מכונסות בבירור לטאק קומפקטי. לצורך מאגר הדרכה יש לסמן את האיור כטעון בדיקה, ולא להסתמך עליו כמקור יחיד לטכניקה.\n\n## העדפות, פרופיל ומטרות\n\n### בקשות המשתמש בשיחה עצמה\n\n| נושא | מידע מפורש |\n|---|---|\n| מקום | פארק |\n| משך | 20 דקות |\n| פורמט | אינפוגרף |\n\nהמשתמש לא ביקש בהודעה זו במפורש פול־בודי, פרונט לבר או עמידת ידיים; אלה נוספו על ידי העוזר בהתבסס על הקשר קודם.\n\n### פרופיל קודם שהיה זמין לעוזר\n\n**אלה פרטים מסיכום הקשר קודם, ולא נתונים שנמסרו מחדש בשיחה זו. תאריך המדידה והעדכניות אינם מאומתים.**\n\n| נושא | מידע זמין |\n|---|---|\n| המתאמן | לירון |\n| גיל בעת מסירת הנתונים | 32 |\n| גובה | 180 ס״מ |\n| משקל | 72 ק״ג |\n| ותק בקליסטניקס | כשנה וחצי |\n| מתח מרבי | 20 חזרות |\n| מקבילים מרביים | 15 חזרות |\n| סקיל קיים | מאסל־אפ |\n| פרונט לבר | בתחילת הלמידה |\n| עמידת ידיים | קושי בהחזקה וביציבות |\n\n**ציוד אישי:** בשיחה הנוכחית לא נמסרה רשימת ציוד אישי מאומתת.  \n**מגבלות ופציעות:** לא נמסרו. אין להסיק מכך שאין מגבלות.\n\n### החלטות והצעות העוזר\n\n- אימון פול־בודי.\n- שילוב סקיל לפני חלק הכוח.\n- דגש קטן על עמידת ידיים ופרונט לבר.\n- סיווג האימון כ„רמה: בינוני”.\n- עיקרון שהופיע באינפוגרף: **„איכות לפני כמות”.**\n\nאלה **הצעות העוזר**, ולא כללים שהמשתמש אישר במפורש.\n\n### התאמה והתקדמות\n\nלא סוכמו בשיחה:\n\n- תנאי מעבר לגרסה קשה או קלה יותר.\n- הגדלת חזרות, סטים או זמני החזקה לאורך זמן.\n- שימוש בגומיות או תוספת משקל.\n- מרחק מכשל, קצב ביצוע או טווח תנועה.\n- תדירות שבועית או התאמה לאימונים קודמים.\n- חלופות לחוסר ציוד.\n\n## דרישות ורעיונות לאפליקציה\n\n**בשיחה המקורית לא נדון אפיון אפליקציה.** בקשת החילוץ הנוכחית מוסיפה את הדרישות הבאות למאגר:\n\n- לשמור את כל האימונים הזמינים, כולל אימונים מתוך תמונות.\n- לשמור סדר תרגילים, חימום, סטים, חזרות, זמני ביצוע, סבבים ומנוחות.\n- לשייך לכל מידע מקור ותאריך, כאשר הם זמינים.\n- להבחין בין בקשות המשתמש להצעות העוזר.\n- לאחד כפילויות זהות ולשמור גרסאות שונות.\n- לסמן מידע חסר, פענוח לא ודאי ותוכן שאינו נגיש.\n\n**מסקנות יישומיות מהאימון הזה — הצעות למבנה הנתונים, לא דרישות קודמות של המשתמש:**\n\n- לשמור בנפרד **חלון עבודה בשניות** ו**יעד חזרות**, משום שבאימון זה שניהם מופיעים יחד.\n- להבחין בין **מנוחה**, **זמן מעבר** ו**יתרת זמן שלא הוגדרה**.\n- לשמור יעד „לכל רגל” בשדה נפרד.\n- לשמור סטטוס „מוצע / בוצע / התקבל משוב”; האימון הזה הוא **מוצע**.\n- לקשר אינפוגרף לרשומת האימון, בלי ליצור ממנו אימון כפול.\n- לשמור הערות בדיקה לתוכן ולאיורים.\n\n**שלמות החילוץ:** נכלל האימון המלא היחיד הזמין בשיחה, כולל תוכן האינפוגרף. אימונים אחרים המוזכרים בהיסטוריית הפרויקט אינם נגישים כאן במלואם ולא שוחזרו מהשערות."
+    },
+    {
+      "id": "004",
+      "name": "004-push-2026-09-02.md",
+      "text": "# חילוץ: תוסיף למאגר\n\nתאריך שנמסר: 02.09.2026. מקור תמונה לפי הסיכום: IMG_0929.jpeg. התמונה עצמה לא צורפה לחילוץ. אימון ייחודי אחד, ללא כפילויות מדווחות.\n\n## COACH-PUSH001 — אימון מקור מלוח\n\nהמשתמש ביקש להוסיף את האימון המצולם למאגר. אין אישור שבוצע.\nסיווג PUSH / פלג גוף עליון ודגשי כתפיים, חזה, יד אחורית והכנה לפלאנץ׳ הם פרשנות העוזר ולא כותרת שאושרה על ידי המשתמש. ציוד משתמע: משטח מוגבה או מתקן פארק ורצפה; לא אישור לזמינות אישית. משך ומנוחות לא נמסרו.\n\n### חימום — 2 סבבים\n| סדר | תרגיל | מינון לפי הסיכום | ודאות |\n|---|---|---|---|\n| 1 | Jumping…; כנראה Jumping Jacks | כנראה 30 שניות | שם ומינון לא ודאיים |\n| 2 | Push-ups | כנראה 30 שניות | שם ברור, משך לא ודאי |\n| 3 | Dynamic…; המשך לא קריא | כנראה 30 שניות | פענוח חלקי |\n\nסימון ליד החימום נראה כמו ×30 sec, אך תחולתו על כל התרגילים לא הוכרעה. Dynamic Arm Swings הופיע בפענוח קודם בלבד ואין לשמור אותו כשם מאומת.\n\n### מקטע ראשי — כותרת מקור: Round 1\n| סדר | תרגיל | חזרות | שניות | סטים |\n|---|---|---|---|---|\n| 1 | Elevated Pike Push-ups | 8 | — | 3 |\n| 2 | Wide Push-ups | 15 | — | 3 |\n| 3 | Elevated Lean Planche | — | 30 | 3 |\n| 4 | Diamond Push-ups | 10 | — | 3 |\n| 5 | Decline Push-ups | 8 | — | 3 |\n| 6 | Leg Raises on Floor | 12 | — | 3 |\n\nכל השורות מסומנות ברורות בחילוץ שנמסר, אך לא אומתו כאן מול התמונה. אין להסיק מ-3 סטים לכל תרגיל שיש לבצע גם 3 סבבים, או להכפיל את הכמויות. אין מידע אם יש סבבים או חלקים נוספים שלא צולמו.\n\n### Skill\nהמילה Skill מופיעה מימין ללוח; התוכן אינו מופיע במלואו ולכן תרגילים, סטים וזמנים אינם ניתנים לחילוץ. אין להשלים לפי אימונים אחרים.\n\n## בקשות ומידע אישי\nבקשות מפורשות לפי הסיכום: הוספה מתוך תמונה; שמירת כל הפרטים הזמינים, הפרדת חימום, סדר תרגילים, שם, חזרות/זמן וסטים; תמיכה בחוסרים ובאי-ודאות; איחוד כפילויות זהות ושמירת גרסאות; הבחנה בין מידע משתמש לפרשנות עוזר.\nלא נמסרו כאן נתוני רמה, מקסימום חזרות, סקילים, מטרות, פציעות, ציוד אישי או כללי התקדמות. אין לעדכן בגינם את הפרופיל הקיים.\n\n## הצעות לשדות נתונים\nsource_image, workout_date, workout_type, section, exercise_order, exercise_name, reps, duration_seconds, sets, rounds, rest_seconds, equipment, confidence, uncertainty_note, source_type, missing_information. אלו שדות מומלצים שנגזרו מהצורך ולא בקשה מפורשת למבנה טכני.\n\n## חוסרים\nמשך כולל; מנוחות; משמעות Round 1; פענוח מדויק של החימום ותחולת מינונו; תוכן Skill; קיומם של חלקים נוספים מחוץ לתמונה.\n"
+    },
+    {
+      "id": "005",
+      "name": "005-two-full-body-workouts.md",
+      "text": "# מקור 005 — נוסח Markdown שהמשתמש העביר\n\nשם שיחת המקור ותאריכים לא צוינו בנוסח. שני האימונים תואמים לתוכן השיחה „אישור אימון קליסטניקס” שנקראה ישירות קודם לכן. לפי אותה קריאה, תמונות הועלו ב-11–12 באוקטובר 2026 לפי זמן ירושלים; תאריך ההעלאה אינו בהכרח תאריך האימון. אין תמונות מצורפות למקור זה ואין אישור ביצוע.\n\n## פרופיל שהועתק בנוסח\nAge: 32; Height: 180 cm; Weight: 72 kg; Experience: 1.5 years; Max Pull-Ups: 20; Max Dips: 15; Skills: Muscle-Up, Beginner Front Lever, Handstand; Equipment: Resistance Bands, Outdoor Park.\n\nאלו תואמים לפרופיל הקודם ואינם מדידות חדשות. התיאור המקוצר Handstand אינו מעיד על שליטה יציבה; נשמר התיאור המפורט הקודם: קושי ביציבות ובהחזקה. פארק הוא סביבת אימון ולא פריט ציוד.\n\n## COACH-FB004 — Workout 001 – Full Body Circuit\nחימום — 2 סבבים:\n- In & Out: 30 שניות.\n- Plank Knee to Elbow: 30 שניות.\n- Half Burpees: 10 חזרות.\n\nמקטע ראשי — 3 סבבים:\n- Jump Negative Pull-Ups: מספר חזרות לא ידוע.\n- Triceps Extensions: 10 חזרות.\n- Push-Ups: 30 שניות.\n- Squat Lunges: 30 שניות.\n\nFocus לפי הנוסח: Strength, Endurance, Full Body — סיווג עוזר.\nמידע נוסף מקריאה קודמת של שיחת המקור: הופיעו בצד הלוח תרגילי בטן שלא פוענחו. לכן הרשומה חלקית גם מעבר למינון החסר של המתח. העוזר שאל אם להוסיף למאגר; לא נמצא שם אישור מפורש, אך המשתמש מעביר כעת את הנוסח לצורך איגוד במאגר. מנוחות ומשך כולל לא נמסרו.\n\n## COACH-FB005 — Workout 002 – Full Body Strength\nחימום — 2 סבבים:\n- In & Out: 30 שניות.\n- High Knee Taps: 30 שניות.\n- Jumping Jacks: 20 חזרות.\n\nמקטע ראשי — כותרת Round 1:\n1. Pull-Ups: 10 חזרות.\n2. Wide Push-Ups: 10 חזרות.\n3. Diamond Push-Ups: 10 חזרות.\n4. High Plank: 30 שניות.\n5. 90 Degree Hold: 15 שניות.\n6. Plank: 30 שניות.\n7. Shoulder Taps: 30 שניות.\n8. Bench Dips: 10 חזרות.\n9. Deep Squats: 10 חזרות.\n10. Sumo Squats: 10 חזרות.\n11. Lunges: 10 חזרות לכל רגל.\n12. Jump Squats: 10 חזרות.\n\nמספר סבבים כולל: לא ידוע. מנוחות ומשך כולל: לא נמסרו.\nFocus לפי הנוסח: Strength, Core, Endurance, Legs — סיווג עוזר. אין להסיק מהשם Full Body Strength שזהו אימון שונה מהרשומה המקבילה בשיחת המקור.\n\n## Instructions for Codex — כפי שהועברו, סטטוס הצעות במסמך מסכם\n1. לשמור אימונים במסד נתונים מובנה.\n2. לשייך קבוצת שרירים לכל תרגיל.\n3. לסווג אימונים לפי סוג ורמת קושי.\n4. לשמר סטים, חזרות וזמנים מקוריים.\n5. לסמן מידע חסר כלא ידוע.\n6. להימנע מכפילויות בספריית התרגילים.\n7. לתמוך ביצירת אימונים חדשים מתוך המאגר.\n8. להוסיף תרגילים מעבר לקיימים.\n9. לתעדף גיוון והעמסה הדרגתית.\n10. לתמוך ב-15, 20, 30 ו-45 דקות.\n11. לכלול סקילים: Handstand, Muscle-Up, Front Lever.\n12. לתמוך באימונים בפארק.\n\nהמלצה שהועברה: להפריד את ספריית התרגילים מהאימונים, כך שאותו תרגיל יופיע בכמה תוכניות ללא שכפול מידע.\n\nהערת מיזוג: 45 דקות מופיעות לראשונה בנוסח עוזר שהועבר, ולכן זו אפשרות מוצעת שטרם אושרה כדרישת משתמש מפורשת. אין למחוק את משך 60 הדקות שהמשתמש ביקש במקור 001. סיווגי קושי, שרירים והעמסה הדרגתית אינם הופכים לערכים מאומתים רק בשל הופעתם ברשימת הנחיות.\n"
+    },
+    {
+      "id": "006",
+      "name": "006-push-handstand.md",
+      "text": "# מקור 006 — הוספת אימון דחיפה למאגר\n\nתאריך בסיכום: 19.10.2026; לא אומת כתאריך האימון. מקור: חילוץ מתמונת אימון שנמסר על ידי המשתמש; התמונה עצמה אינה מצורפת כאן. בקשת המקור: הוספת האימון למאגר. אין תיעוד ביצוע.\n\n## COACH-PUSH002\nחימום — 2 סבבים, לפי הסדר: Jumping Jacks; Half Burpees / חצי בורפי; Commando Plank. חזרות, משכים ומנוחות לא נשמרו בתמלול.\n\n| סדר | תרגיל בחלק המרכזי | חזרות | שניות | סטים |\n|---|---|---|---|---|\n| 1 | עמידת ידיים | — | 10 | 3 |\n| 2 | שכיבות סמיכה בעמידת ידיים מול קיר | 6 | — | 3 |\n| 3 | Lean Planche Slides + שכיבת סמיכה | 7 | — | 2 |\n| 4 | Pike Push-ups | 10 | — | 2 |\n| 5 | Decline Push-ups | 12 | — | 2 |\n| 6 | החזקת 90° | — | 20 | 3 |\n\nאין מידע אם התרגילים ברצף, בסבבים או בסטים רגילים. לשמור את הסטים לכל תרגיל בלי להוסיף סבבים. אין מנוחות, וריאציות חלופיות או דרגת קושי. השם של התרגיל המשולב בשורה 3 נשמר כפי שנמסר; אופן ספירת החזרה המשולבת לא פורט.\n\nחלק Skill נפרד מימין היה חתוך ולא פוענח; אין להעביר אליו את עמידת הידיים שבחלק המרכזי. לא הופיע שחרור בסיכום, ואין להסיק שלא בוצע.\n\nסיווגים מוצעים: Push; כתפיים, עמידת ידיים וכוח דחיפה; Handstand, Handstand Push-up, Planche Lean, 90° Hold; שרירים: כתפיים, חזה, תלת-ראשי וליבה. אלו סיווגים מוצעים ולא כותרות מקור מאומתות. משך, מיקום וציוד מפורש לא נמסרו. קיר ומשטח מתאים הם ציוד מוסק מהתרגילים ולא זמינות שאושרה.\n\nאין מידע חדש על מטרות, העדפות, מגבלות, ציוד אישי, התאמה, התקדמות או דרישות אפליקציה. הרשומה חלקית וממתינה לתמונה לצורך אימות ולפענוח Skill.\n"
+    },
+    {
+      "id": "007",
+      "name": "007-full-body-30-second.md",
+      "text": "# מקור 007 — הוספת אימון מתמונה למאגר\n\nשם שיחה רשמי לא ידוע. תאריך בחילוץ/date_added: 19.10.2026; אינו תאריך ביצוע מאומת. מקור: תמונה שפוענחה על ידי ChatGPT, לפי סיכום המשתמש; התמונה עצמה לא צורפה כאן. בשיחה אימון יחיד, ללא גרסאות כפולות לפי הסיכום.\n\n## COACH-FB006 — פול־בודי, 30 שניות לתרגיל\nהמשתמש ביקש להוסיף את האימון המצולם למאגר. סיווג Full Body מופיע בחילוץ; אין אישור ביצוע.\n\nחימום — 2 סבבים, לפי הסדר:\n1. Jumping Jacks.\n2. Mountain Climbers.\n3. Butt Kicks.\n\nמשך/חזרות ומנוחות בחימום לא נמסרו.\n\nחלק מרכזי — 3 סבבים; 30 שניות לכל תרגיל, לפי הסדר:\n1. Pike Push-ups.\n2. Side Plank.\n3. Flutter Kicks.\n4. V-Ups.\n5. Chest-to-Wall Handstand.\n6. Commando Plank.\n7. Toe Touches.\n8. Lean Planche Push-ups.\n\nלא ידוע אם Side Plank בשני הצדדים ואם 30 שניות לכל צד או בסך הכול. אין לבחור פירוש או לגזור משך כולל חד-משמעי. מנוחות בין תרגילים ובין סבבים לא צוינו. אין דרגת קושי, חלופות, כללי התאמה או התקדמות, משך כולל או ציוד מפורש. קיר הוא הסקה מ-Chest-to-Wall Handstand ולא זמינות ציוד שאושרה.\n\nאין מידע אישי חדש לגבי רמה, מטרות, ציוד, מגבלות, משך מועדף, תדירות או העדפות תרגילים. אין להשלים פרטים ממקורות אחרים בלי ייחוס.\n\nדרישה משתמעת בחילוץ: הוספת אימון מתמונה תוך שמירת חימום, סדר, סבבים ומשך עבודה. אין דיון במסכים, עיצוב, טיימר, מעקב, חשבונות או התאמה אישית.\n\n## הבהרות לרשומת ה-YAML שהוצעה במקור\nworkout_name: פול־בודי — 30 שניות לתרגיל; date_added: 2026-10-19 כפי שהוצע בחילוץ; source_type המקורי: user_workout. לצורך מיזוג, user_workout מציין שהמשתמש סיפק תמונה ולא מוכיח שהוא מחבר האימון או ביצע אותו. status המקורי „נוסף למאגר לפי בקשת המשתמש” הוא מצב קליטה בלבד, נפרד מאימות ומביצוע. total_duration, difficulty, progression_rules, modifications והמנוחות חסרים. uncertainty של Side Plank נשמרת לעיל.\n"
+    },
+    {
+      "id": "008",
+      "name": "008-two-circuits-unclear-skill.md",
+      "text": "# מקור 008 — אימון עם שני מקטעי סבבים\n\nמקור: פענוח שהמשתמש העביר לשיחה המרכזית. שם שיחת המקור, תאריך האימון, מחבר ותמונה מקורית לא נמסרו. הביטוי „נוסף למאגר” הוא תיאור קליטה בסיכום ולא אישור שהאימון בוצע.\n\n## PHOTO-008 — סדר כפי שנמסר\n\n### חימום — 2 סבבים\n1. Pike Walk — 30 שניות.\n2. Shoulder Taps — 30 שניות.\n3. Half Burpees — 5 חזרות.\n\n### מקטע מקור: סבב 1 — 3 סבבים\n1. Australian Pull-Ups — 5 חזרות.\n2. Lunges — 10 חזרות לכל רגל.\n3. Bench Dips — 15 חזרות.\n\n### סקיל\nטקסט הפענוח שנמסר: Standing Sit / תרגול עמידת ידיים — הכיתוב לא ברור לגמרי.\nזהות התרגיל אינה מאומתת. אין לאחד אוטומטית עם Handstand או עם תרגיל בשם Standing Sit. אין מינון, סטים, משך או מספר סבבים. יש לשמור טקסט מקור ואי-ודאות עד לקבלת התמונה.\n\n### מקטע מקור: סבב 2 — 3 סבבים\n1. Wall Sit — 30 שניות.\n2. Side Squats — 10 חזרות לכל צד.\n3. Wall Walks — 3 חזרות.\n\n## חוסרים ומיזוג\nלא נמסרו מנוחות, זמן כולל, מיקום, ציוד מפורש, רמת קושי, כללי התקדמות, משוב ביצוע או עדכון פרופיל. קיר, מוט נמוך/מתקן משיכה ומשטח לתרגיל Bench Dips משתמעים מהתרגילים בלבד ואינם אישור זמינות. אין לקבוע סדר ביצוע סטים נוסף מעבר לסדר המקטעים שנמסר, ואין להפוך שני מקטעים בני 3 סבבים ל-3 חזרות על האימון כולו. אין כפילות מזוהה עם הרשומות הקיימות.\n"
+    },
+    {
+      "id": "009",
+      "name": "009-one-arm-rings-full-body.md",
+      "text": "# מקור 009 — שלוש רשומות שהועברו בסיכום\n\nשם שיחת מקור, תאריכים וזהות מחבר לא נמסרו. הסיכום מזכיר לוחות עם כתב מטושטש ותמונות מקוריות להשוואה; התמונות עצמן לא צורפו כאן ואין אישור שנשמרו בפרויקט. „הוספתי למאגר” מציין קליטה ולא ביצוע. רמת הוודאות לכל מילה מטושטשת לא פורטה, ולכן אין לאמת מחדש שמות על סמך הסיכום בלבד.\n\n## PLAN-OAP001 — תוכנית למתח ביד אחת\nתדירות בתוכנית: פעמיים בשבוע. אין להסיק שזו תדירות כלל אימוני המתאמן או שהמתאמן כבר מבצע מתח ביד אחת ללא סיוע.\n\n| סדר | תרגיל | סטים | חזרות |\n|---|---|---|---|\n| 1 | מתח ביד אחת עם גומייה | 3 | 5 |\n| 2 | מתח ביד אחת, חזרות שליליות | 3 | 5 |\n| 3 | מתח ארצ׳ר | 3 | 8 |\n\nהכמויות נשמרות כפי שנמסרו. לא הוגדר אם לכל יד/צד או בסך הכול. אין חימום, מנוחות, משך שליליות, חוזק גומייה, מרווח בין ימים, תנאי התאמה או כללי התקדמות. היעד הוא נושא התוכנית, לא אישור לסדר עדיפויות חדש בין מטרות המשתמש. מקור התוכנית אינו ידוע. אין תיעוד ביצוע.\n\n## PHOTO-RINGS001 — אימון טבעות\nחימום ×2, לפי הסדר; כ-30 שניות לכל תרגיל (הערכה, לא זמן מאומת):\n1. Jumping Jacks.\n2. שכיבות סמיכה.\n3. In & Out.\n\nסבב 1 ×2:\n1. מקבילים באחיזה ניטרלית על טבעות — 10 חזרות.\n2. L-Sit Pull-Up Rotation — 10 חזרות.\n\nסבב 2 ×2:\n1. Chin-Ups על טבעות — 10 חזרות.\n2. Russian Push-Ups על טבעות — 20 חזרות.\n\nסבב 3 ×3:\n1. כפיפות מרפקים על טבעות — 12 חזרות.\n2. Skull Crushers על טבעות — 12 חזרות.\n\nמנוחות, משך כולל, רמה ומיקום לא נמסרו. טבעות נדרשות לפי התרגילים, אך אין אישור לבעלות אישית או לזמינות קבועה. לשמור שמות מורכבים כפי שהועברו עד אימות מול התמונות.\n\n## PHOTO-FB007 — אימון פול־בודי\nחימום ×2, לפי הסדר; כ-30 שניות לכל תרגיל (הערכה):\n1. Butt Kicks.\n2. Commando Plank.\n3. Burpees.\n\nסבב 1 ×3:\n1. Chin-Ups — 8 חזרות.\n2. שכיבות סמיכה מתפרצות — 15 חזרות.\n3. Hanging Leg Raises — 10 חזרות.\n4. Pistol Squat בסיוע — 8 חזרות לכל רגל.\n\nסבב 2 ×3:\n1. Pull-Ups — 9 חזרות.\n2. Skull Crunches — 12 חזרות.\n3. Squat Jumps — 10 חזרות.\n4. Ring Curls — 12 חזרות.\n\nSkull Crunches נשמר כטקסט מקור; אין להחליפו אוטומטית ב-Skull Crushers ואין לקבוע שזה אותו תרגיל. זהות דורשת אימות. אופן הסיוע ב-Pistol Squat לא נמסר. מנוחות, משך כולל, מיקום ורמה חסרים. טבעות ומתקן תלייה משתמעים מהתרגילים בלבד ולא מאשרים ציוד אישי.\n\n## כלל סקיל שהועבר\nלפי הסיכום: אזור Skill ריק בלוחות אינו חלק קבוע עם תרגילים ידועים; נבחר סקיל מתאים בכל אימון לפי המטרה והמצב באותו יום. אין להמציא את התוכן החסר או להסיק שאין שלב סקיל. מיקומו המדויק של אזור ריק בכל אחד מהלוחות לא פורט.\n\n## בדיקת כפילויות\nלא זוהתה זהות מלאה לרשומות קודמות. שלוש הרשומות נשמרות בנפרד, אחת כתוכנית בתדירות שבועית ושתיים כתבניות אימון. היעדר פירוט מקור אינו מצדיק לייחס אותן למאמן המקורי או ל-AI בוודאות.\n"
+    }
+  ],
+  "structure_policy": "Manual transcription; no executable dose inference; null means unknown; source text preserved.",
+  "structured_at": "2026-10-20"
+}

@@ -1,0 +1,457 @@
+{
+  "version": "2.0",
+  "reviewed_at": "2026-10-20",
+  "scope": "Bounded source review; not exhaustive systematic review or clinical sign-off",
+  "sources": [
+    {
+      "id": "acsm-2026",
+      "title": "ACSM: updated resistance training guidelines, 2026",
+      "url": "https://acsm.org/resistance-training-guidelines-update-2026/",
+      "type": "professional-society-summary",
+      "population": "Healthy adults; general resistance training, not skill-specific calisthenics",
+      "claim": "Major muscle groups at least twice weekly; consistency and effort matter; training to failure is not necessary for average healthy adults.",
+      "review_status": "Page text read; underlying full position stand not appraised",
+      "rights": "Copyright source owner; link only. No download or embedded copy authorized."
+    },
+    {
+      "id": "nasm-push",
+      "title": "NASM Exercise Library: Push-Up",
+      "url": "https://www.nasm.org/resource-center/exercise-library/push-up",
+      "type": "professional-education",
+      "population": "General exercise technique",
+      "claim": "Reference for push-up setup and movement; does not validate app progression thresholds.",
+      "review_status": "Page text read",
+      "rights": "Copyright source owner; link only. No download or embedded copy authorized."
+    },
+    {
+      "id": "ff-push",
+      "title": "FitnessFAQs: Master the Push-Up",
+      "url": "https://www.youtube.com/watch?v=-WXc4E-zcao",
+      "type": "original-coach-video",
+      "population": "General calisthenics instruction",
+      "claim": "External instructional reference for push-up learning.",
+      "review_status": "Exact title, author and description checked; not full video frame review",
+      "rights": "Copyright source owner; link only. No download or embedded copy authorized."
+    },
+    {
+      "id": "ff-pull",
+      "title": "FitnessFAQs: Master the Pull-Up",
+      "url": "https://www.youtube.com/watch?v=Y3ntNsIS2Q8",
+      "type": "original-coach-video",
+      "population": "General calisthenics instruction",
+      "claim": "External instructional reference for pull-up learning.",
+      "review_status": "Exact title, author and description checked; not full video frame review",
+      "rights": "Copyright source owner; link only. No download or embedded copy authorized."
+    },
+    {
+      "id": "ff-row",
+      "title": "FitnessFAQs: Top 3 Rows EVERYONE NEEDS",
+      "url": "https://www.youtube.com/watch?v=z4RJcgEKRSQ",
+      "type": "original-coach-video",
+      "population": "General calisthenics instruction",
+      "claim": "External instructional reference for rows.",
+      "review_status": "Exact title and author checked; not full video frame review",
+      "rights": "Copyright source owner; link only. No download or embedded copy authorized."
+    },
+    {
+      "id": "gmb-pull",
+      "title": "GMB / Ryan Hurst: Pull-Up Progression",
+      "url": "https://gmb.io/pull-ups/",
+      "type": "original-coach-tutorial",
+      "population": "Adults practicing bodyweight pulling",
+      "claim": "Coaching discussion of scapular preparation, pulling and eccentric loading; app does not reproduce its sample program.",
+      "review_status": "Article read; video not frame reviewed",
+      "rights": "Copyright source owner; link only. No download or embedded copy authorized."
+    },
+    {
+      "id": "gmb-handstand",
+      "title": "GMB / Ryan Hurst: How To Do A Handstand",
+      "url": "https://gmb.io/handstand/",
+      "type": "original-coach-tutorial",
+      "population": "Handstand learners; individual readiness needed",
+      "claim": "Preparation, safe exits, wall and balance practice; does not support automatic numeric unlock.",
+      "review_status": "Article read; linked video identity checked",
+      "rights": "Copyright source owner; link only. No download or embedded copy authorized."
+    },
+    {
+      "id": "gmb-handstand-video",
+      "title": "GMB Fitness / Praxis: Handstand progression",
+      "url": "https://www.youtube.com/watch?v=d6_lcWtQDxw",
+      "type": "original-coach-video",
+      "population": "Handstand learners",
+      "claim": "External instructional reference.",
+      "review_status": "Exact author and topic checked; not full video frame review",
+      "rights": "Copyright source owner; link only. No download or embedded copy authorized."
+    },
+    {
+      "id": "gmb-lsit",
+      "title": "GMB / Ryan Hurst: L-Sit Progression",
+      "url": "https://gmb.io/l-sit/",
+      "type": "original-coach-tutorial",
+      "population": "Adults practicing support strength",
+      "claim": "Coaching reference for support, tuck and gradually extending a leg.",
+      "review_status": "Article read; app copy original",
+      "rights": "Copyright source owner; link only. No download or embedded copy authorized."
+    },
+    {
+      "id": "gmb-rings",
+      "title": "GMB: Gymnastic Rings Training Guides",
+      "url": "https://gmb.io/rings/",
+      "type": "original-coach-index",
+      "population": "Experienced bodyweight trainees",
+      "claim": "Reference index for advanced skills, not evidence for a standalone safe prescription.",
+      "review_status": "Index inspected; advanced protocols not copied",
+      "rights": "Copyright source owner; link only. No download or embedded copy authorized."
+    },
+    {
+      "id": "gmb-progressions",
+      "title": "GMB: Bodyweight Progressions",
+      "url": "https://gmb.io/progressions/",
+      "type": "original-coach-commentary",
+      "population": "Skill learners",
+      "claim": "Progression is individual and not a universal staircase.",
+      "review_status": "Article read; coaching opinion distinguished from experimental evidence",
+      "rights": "Copyright source owner; link only. No download or embedded copy authorized."
+    },
+    {
+      "id": "mayo-modified",
+      "title": "Modified pushup — knee and wall variations",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/modified-pushup/vid-20084674",
+      "type": "original-exercise-video-page",
+      "population": "General adult exercise education; not a prescription for an individual",
+      "claim": "Exercise-specific external learning reference only; does not validate app dose or progression.",
+      "review_status": "Video landing page and transcript checked; knee and wall variations explicitly described; video not frame reviewed",
+      "rights": "Copyright source owner; link only. No downloaded images, video, hotlinks or embedded copies authorized."
+    },
+    {
+      "id": "mayo-squat",
+      "title": "Squat exercise",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/squat/vid-20084663",
+      "type": "original-exercise-video-page",
+      "population": "General adult exercise education; not a prescription for an individual",
+      "claim": "Exercise-specific external learning reference only; does not validate app dose or progression.",
+      "review_status": "Video landing page and transcript checked; video not frame reviewed",
+      "rights": "Copyright source owner; link only. No downloaded images, video, hotlinks or embedded copies authorized."
+    },
+    {
+      "id": "e3-split",
+      "title": "Split Squat Exercise Variations",
+      "url": "https://www.youtube.com/watch?v=hPC8-z6QXco",
+      "type": "original-exercise-video-page",
+      "population": "General adult exercise education; not a prescription for an individual",
+      "claim": "Exercise-specific external learning reference only; does not validate app dose or progression.",
+      "review_status": "Exact title, original author and description checked; video not frame reviewed",
+      "rights": "Copyright source owner; link only. No downloaded images, video, hotlinks or embedded copies authorized."
+    },
+    {
+      "id": "nasm-incline",
+      "title": "Incline Push-Up — exercise guide",
+      "url": "https://www.nasm.org/resource-center/exercise-library/incline-push-up",
+      "type": "original-exercise-guide",
+      "population": "General adult exercise education; not a prescription for an individual",
+      "claim": "Exercise-specific external learning reference only; does not validate app dose or progression.",
+      "review_status": "Exact original exercise guide checked; elevated bench/surface differs from app low-bar option",
+      "rights": "Copyright source owner; link only. No downloaded images, video, hotlinks or embedded copies authorized."
+    },
+    {
+      "id": "nasm-bridge",
+      "title": "Floor Bridge — exercise guide",
+      "url": "https://www.nasm.org/resource-center/exercise-library/floor-bridge",
+      "type": "original-exercise-guide",
+      "population": "General adult exercise education; not a prescription for an individual",
+      "claim": "Exercise-specific external learning reference only; does not validate app dose or progression.",
+      "review_status": "Exercise-specific guide text checked; no claim of licensed demonstration",
+      "rights": "Copyright source owner; link only. No downloaded images, video, hotlinks or embedded copies authorized."
+    },
+    {
+      "id": "nasm-deadbug",
+      "title": "Dead Bug — exercise guide",
+      "url": "https://www.nasm.org/resource-center/exercise-library/dead-bug",
+      "type": "original-exercise-guide",
+      "population": "General adult exercise education; not a prescription for an individual",
+      "claim": "Exercise-specific external learning reference only; does not validate app dose or progression.",
+      "review_status": "Exercise-specific instructions and alternating-limb setup checked",
+      "rights": "Copyright source owner; link only. No downloaded images, video, hotlinks or embedded copies authorized."
+    },
+    {
+      "id": "ace-birddog",
+      "title": "Bird-dog — illustrated exercise guide",
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/14/bird-dog/",
+      "type": "original-exercise-guide",
+      "population": "General adult exercise education; not a prescription for an individual",
+      "claim": "Exercise-specific external learning reference only; does not validate app dose or progression.",
+      "review_status": "Original step-by-step text and presence of exercise image links checked; images not independently technique-reviewed",
+      "rights": "Copyright source owner; link only. No downloaded images, video, hotlinks or embedded copies authorized."
+    },
+    {
+      "id": "ace-plank",
+      "title": "Front Plank — illustrated exercise guide",
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/32/front-plank/",
+      "type": "original-exercise-guide",
+      "population": "General adult exercise education; not a prescription for an individual",
+      "claim": "Exercise-specific external learning reference only; does not validate app dose or progression.",
+      "review_status": "Original forearm-plank steps and presence of exercise image links checked; images not independently technique-reviewed",
+      "rights": "Copyright source owner; link only. No downloaded images, video, hotlinks or embedded copies authorized."
+    },
+    {
+      "id": "ace-side-knee",
+      "title": "Side Plank - modified — illustrated exercise guide",
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/100/side-plank-modified/",
+      "type": "original-exercise-guide",
+      "population": "General adult exercise education; not a prescription for an individual",
+      "claim": "Exercise-specific external learning reference only; does not validate app dose or progression.",
+      "review_status": "Original bent-knee setup and step-by-step instructions checked; images not independently technique-reviewed",
+      "rights": "Copyright source owner; link only. No downloaded images, video, hotlinks or embedded copies authorized."
+    },
+    {
+      "id": "catalyst-sideplank",
+      "title": "Side Plank — exercise demonstration page",
+      "url": "https://www.catalystathletics.com/exercise/498/Side-Plank/",
+      "type": "original-exercise-video-page",
+      "population": "General adult exercise education; not a prescription for an individual",
+      "claim": "Exercise-specific external learning reference only; does not validate app dose or progression.",
+      "review_status": "Original exercise demonstration page title and description checked; video not frame reviewed",
+      "rights": "Copyright source owner; link only. No downloaded images, video, hotlinks or embedded copies authorized."
+    },
+    {
+      "id": "strengthlog-close",
+      "title": "Close-Grip Push-Up",
+      "url": "https://www.strengthlog.com/close-grip-push-up/",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original close-grip guide and image presence checked; image not technique-reviewed",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "caliverse-scap-push",
+      "title": "Scapula Push Up",
+      "url": "https://www.caliverse.app/exercises/scapula-push-up-266",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original straight-arm scapular movement instructions checked; video not played",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "nasm-pike",
+      "title": "Pike Push-Up",
+      "url": "https://www.nasm.org/resource-center/exercise-library/pike-push-up",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original guide and linked video presence checked; video not played",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "caliverse-dip",
+      "title": "Parallel Bar Dips",
+      "url": "https://www.caliverse.app/exercises/parallel-bar-dips-90",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original parallel-bar instructions checked; video not played",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "illinois-band-row",
+      "title": "Seated Row — band around feet",
+      "url": "https://eat-move-save.extension.illinois.edu/move/exercise/seated-row",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original seated floor band-row steps and image presence checked; source dose not adopted",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "prehab-active-hang",
+      "title": "Active Hang",
+      "url": "https://theprehabguys.com/vimeo-video/active-hang/",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original exercise page and active shoulder cue checked; video not played",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "catalyst-chin",
+      "title": "Pull-Up — chin-up variation section",
+      "url": "https://www.catalystathletics.com/exercise/39/Pull-up/",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Article explicitly describes supinated chin-up variation; linked demonstration is general pull-up, not confirmed chin-up",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "catalyst-reverse-lunge",
+      "title": "Reverse Lunge",
+      "url": "https://www.catalystathletics.com/exercise/735/Reverse-Lunge/",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original reverse-lunge guide checked; loaded demonstration differs from app bodyweight version; video not played",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "ace-side-lunge",
+      "title": "Side Lunge",
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/50/side-lunge/",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original bodyweight side-lunge steps and image presence checked; image not technique-reviewed",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "e3-single-bridge",
+      "title": "Single Leg Bridge — Category 1, Level 2",
+      "url": "https://e3rehab.com/proximal-hamstring-tendinopathy-rehab/",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Exact single-leg bridge section checked; rehab article used only for movement reference, no rehab or pain-dose protocol adopted",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "rehabhero-march",
+      "title": "Glute Bridge March",
+      "url": "https://www.rehabhero.ca/exercise/glute-bridge-march",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original alternating hip-flexion bridge instructions and media presence checked; clinical context and hold dose not adopted",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "ace-hinge",
+      "title": "Hip Hinge — alignment drill",
+      "url": "https://www.acefitness.org/resources/everyone/exercise-library/33/hip-hinge/",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original hinge guide checked; light bar used as alignment feedback differs from app equipment-free version",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "caliverse-single-hinge",
+      "title": "Single Leg Hinge",
+      "url": "https://www.caliverse.app/exercises/single-leg-hinge-120",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original bodyweight single-leg hinge steps checked; video not played",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "mayo-calf",
+      "title": "Calf Raise with Dumbbells",
+      "url": "https://www.mayoclinic.org/healthy-lifestyle/fitness/multimedia/calf-raise/vid-20084681",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Video page transcript checked; dumbbells differ from app bodyweight version; video not played",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "va-single-calf",
+      "title": "Single-Leg Heel Raise",
+      "url": "https://www.veteranshealthlibrary.va.gov/rehab/physicaltherapy/footankle/3,89909",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Single-leg supported heel-raise steps and illustration presence checked; rehabilitation dose not adopted",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "nasm-single-squat",
+      "title": "Single-Leg Squat — supported option",
+      "url": "https://www.nasm.org/resource-center/exercise-library/single-leg-squat",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original single-leg squat guide explicitly permits sturdy hand support and short controlled depth; video not played",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "gmb-pistol",
+      "title": "Pistol Squat Progression",
+      "url": "https://gmb.io/pistol/",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original full-pistol and preparation sections checked; rolling progression differs from app and is not adopted",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "gmb-hollow",
+      "title": "Hollow Body Hold Tutorial",
+      "url": "https://gmb.io/hollow-body/",
+      "type": "original-exercise-guide",
+      "population": "General adult movement reference only; source may have a rehabilitation or commercial context",
+      "claim": "Exercise learning reference only; app dose and readiness thresholds not validated.",
+      "review_status": "Original bent-knee and extended hollow-hold guide checked; video not played",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only. No copying, download or embedding rights asserted."
+    },
+    {
+      "id": "caliverse-support",
+      "title": "Parallel Bar Support Hold",
+      "url": "https://www.caliverse.app/exercises/parallel-bar-support-hold-128",
+      "type": "original-exercise-guide",
+      "population": "General adult exercise education",
+      "claim": "Movement reference only; app dose not validated",
+      "review_status": "Original straight-arm parallel support guide including assisted option checked; video not played",
+      "accessed": "2026-10-20",
+      "rights": "Copyright source owner; external link only"
+    },
+    {
+      "id": "nasm-library",
+      "title": "NASM — ספריית התרגילים הרשמית",
+      "url": "https://www.nasm.org/resource-center/exercise-library",
+      "type": "professional-exercise-library",
+      "claim": "מקור למיון תנועות, שרירים וציוד. שיוך כללי לספרייה אינו אימות של סרטון לכל וריאציה או אישור למינון האפליקציה.",
+      "review_status": "contextual-reference"
+    },
+    {
+      "id": "tabata-review-2019",
+      "title": "Izumi Tabata — סקירת פרוטוקול הטבטה, 2019",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10717222/",
+      "type": "research-review",
+      "claim": "הפרוטוקול המקורי הוא מאמץ אופניים מתיש. באפליקציה נעשה שימוש בתבנית שעון 20/10 בקצב נשלט, בלי טענה לתוצאות שקולות למחקר.",
+      "review_status": "format-distinction"
+    }
+  ],
+  "editorial_policy": {
+    "exercise_copy": "Original Hebrew editorial drafts; group-level sources are context, not per-exercise certification.",
+    "media": "Click to open external links only; no automatic iframe, hotlinked thumbnail or copied media.",
+    "progression": "Qualitative roadmaps; no validated numerical unlock or promise of timelines.",
+    "clinical": "Healthy adults only. No individualized rehabilitation, pregnancy or minor programming."
+  },
+  "media_coverage": {
+    "exercises_total": 40,
+    "exercises_with_external_reference": 38,
+    "video_link_records": 9,
+    "article_link_records": 29,
+    "full_coverage": false,
+    "frame_review_complete": false,
+    "exact_guide_exercises": 32
+  }
+}
