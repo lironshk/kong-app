@@ -1,3 +1,4 @@
+import { returnDecision } from './training-safety.js?v=31';
 import {
   exercises
 }
@@ -16,7 +17,7 @@ import {
 }
 from './ui.js?v=31';
 const families = [ ['horizontal_push', 'incline-push', 'wall-push', 'knee-push'], ['overhead_press',
-'pike-push'], ['vertical_pull', 'feet-assisted-pull', 'pull', 'chin'], ['horizontal_pull', 'row',
+'short-pike-push', 'pike-push'], ['vertical_pull', 'feet-assisted-pull', 'pull', 'chin'], ['horizontal_pull', 'row',
 'band-row'], ['squat', 'squat'], ['hinge', 'hinge'], ['single_leg', 'single-squat', 'split'], ['core_anti_extension',
 'deadbug', 'plank'], ['support', 'support', 'tuck-lsit'], ['compression', 'standing-knee', 'hanging-knee'],
 ['straight_arm_pull'], ['knee_flexion', 'heel-dig-hold'], ['core_anti_rotation', 'bird-dog'], ['calf',
@@ -105,9 +106,7 @@ export function applyCapabilityResults(profile, log) {
 export function capabilityDue(profile, now = new Date()) {
   const assessed = Date.parse(profile.capabilityCheck?.assessedAt || '');
   if (!Number.isFinite(assessed)) return true;
-  const last = Math.max(assessed, ...(profile.logs || []).filter(l => l.sets?.some(s => s.actual > 0) && Date.parse(l.completed_at) <= + now).map
-  (l => Date.parse(l.completed_at)).filter(Number.isFinite));
-  return + now - assessed >= 28 * 864e5 || + now - last >= 14 * 864e5;
+  return +now - assessed >= 28 * 864e5 || returnDecision(profile, profile.logs, now).returnAfterBreak;
 }
 export function capabilityOffer(profile) {
   return (

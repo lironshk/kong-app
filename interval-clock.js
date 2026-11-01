@@ -1,3 +1,4 @@
+import {workClockSeconds} from './training-safety.js?v=31';
 /** Advance elapsed guided intervals without asserting any physical performance. */
 export function advanceIntervalClock(session, now = Date.now()) {
   const blocks = session.plan?.blocks || [], initial = session.index;
@@ -14,7 +15,7 @@ export function advanceIntervalClock(session, now = Date.now()) {
     started += left * 1000;
     if ( ['work', 'skill'].includes(blocks[index].phase)) candidates.push(index);
     index++;
-    left = blocks[index]?.seconds || 0;
+    left = workClockSeconds(blocks[index]);
   }
   return {
     changed: index !== initial, index, timer: {

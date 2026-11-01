@@ -21,8 +21,8 @@ export function skillSelections(profile) {
   if (Object.keys(explicit).length === Object.keys(profile.skillSelections || {
   }).length && Object.keys(explicit).length) return explicit;
   const result = {
-    pull: skillState(profile, 'first-pull').achieved ? 'muscle-up': 'first-pull', push: skillState(profile,
-    'first-push').achieved ? 'handstand': 'first-push'
+    pull: (skillState(profile, 'first-pull').achieved || skillState(profile, 'first-pull').reportedGoal) ? 'muscle-up': 'first-pull',
+    push: (skillState(profile, 'first-push').achieved || skillState(profile, 'first-push').reportedGoal) ? 'handstand': 'first-push'
   };
   if (profile.skillSelections?.push === 'pistol') result.legs = 'pistol';
   const old = skills.find(s => s.id ===(aliases[profile.skillGoal] || profile.skillGoal));
@@ -55,19 +55,22 @@ export function skillState(profile, id) {
   };
   const placement = s.selfReportPlacement;
   let stage = placement && Number(profile[placement.metric]) >= placement.minimum ? placement.stage: 0,
-  achieved = false;
+  achieved = false, reportedGoal = false;
   for (let i = 0;
   i < s.stages.length;
   i++) {
     const c = s.stages[i].exit;
     if (capacity(c.exerciseId) >= c.value *(c.perSide ? 2: 1)) {
       stage = Math.min(i + 1, s.stages.length - 1);
-      if (i === s.stages.length - 1) achieved = true;
+      if (i === s.stages.length - 1) reportedGoal = true;
+      // Intake or ordinary exercise evidence places the starting stage; it never confirms this track.
     }
   }
   return {
     stage: Math.min(s.stages.length - 1, Math.max(0, state?.stage ?? stage)), achieved: state?.achieved ?? achieved,
-    since: state?.since || null, source: state ? 'evidence': 'self-report'
+    confirmedThrough: state?.since && state?.evidence?.length ?
+      (state.achieved ? s.stages.length - 1 : state.stage - 1) : -1,
+    reportedGoal, reportedPlacement: !state, since: state?.since || null, source: state ? 'evidence': 'self-report'
   };
 }
 export function focusSkills(profile, focus, choice, seconds, logs = []) {
@@ -79,7 +82,8 @@ export function focusSkills(profile, focus, choice, seconds, logs = []) {
   if (types.includes('both')) types = seconds >= 720 ? ['pull', 'push']: [logs.filter(l => l.plan?.skillTracks?.length).length % 2 ? 'push':
   'pull'];
   types = types.filter(t => t !== 'legs' || focus === 'lower');
-  return types.filter(t => selected[t]).map(t => selected[t]).filter(id => !skillState(profile, id).achieved);
+  return types.filter(t => selected[t]).map(t => selected[t]).filter(id => !skillState(profile, id).achieved &&
+    !(['first-push','first-pull'].includes(id) && skillState(profile,id).reportedGoal));
 }
 // Evidence must name this track and stage, use the same setup, and explicitly confirm technique.
 export function stageProposal(profile, id, now = new Date()) {

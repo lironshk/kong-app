@@ -54,6 +54,8 @@
 .lib-card-meta{font-size:14px;line-height:20px;color:var(--text-secondary);margin:0}
 .lib-card-tags{display:flex;gap:6px;flex-wrap:wrap}
 .lib-tag{display:inline-block;padding:2px 8px;border-radius:999px;background:var(--canvas);color:var(--text-secondary);font-size:12px;line-height:18px}
+.lib-muscles{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.lib-muscles .lib-tag{font-size:14px;line-height:20px;padding:4px 12px;color:var(--text-primary)}
 .lib-tag.is-mine{background:var(--text-primary);color:var(--canvas)}
 .lib-card-link{margin-top:auto;padding-top:8px;font-size:14px;line-height:20px;font-weight:700;color:var(--text-primary)}
 .lib-skill-card.is-selected{box-shadow:0 0 0 2px var(--text-primary)!important}
@@ -196,3 +198,67 @@ body .skill-evidence-detail .roadmap-step.current-stage::before{background:var(-
 .kong-splash span{font-weight:900;letter-spacing:.12em}
 @keyframes splash-reveal{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.kong-splash{animation:none}}
+
+/* Admin exercise checker */
+.admin-check label{display:block;margin:12px 0 6px;font-weight:700}
+.admin-check textarea,.admin-check input{width:100%;box-sizing:border-box}
+.admin-results,.admin-inbox{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+.admin-result{padding:12px 14px;border-radius:12px;background:var(--canvas);border-inline-start:4px solid var(--text-secondary)}
+.admin-result.is-exists{border-color:#2f8a4e}.admin-result.is-similar{border-color:#c98a1b}.admin-result.is-missing{border-color:#c0392b}
+.admin-result-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.admin-status{font-size:14px;color:var(--text-secondary)}
+.admin-matches{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-top:6px}
+.admin-matches small{color:var(--text-secondary)}
+.admin-add{margin-top:8px}
+.admin-inbox li{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--line,rgba(0,0,0,.08))}
+.admin-inbox li small{display:block;color:var(--text-secondary)}
+.admin-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+
+/* S5: muscle sections and compact, RTL-friendly family and skill navigation. */
+.lib-area-jumps,.lib-quick-filters>div,.exercise-siblings{display:flex;gap:8px;flex-wrap:wrap;margin-block:12px}
+.lib-area-jumps a,.exercise-siblings a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid var(--control-border);border-radius:12px;color:inherit;text-decoration:none}
+.lib-quick-filters .lib-option{min-height:44px}
+.lib-quick-filters [aria-pressed="true"],.exercise-siblings [aria-current="true"]{border-color:var(--action);background:var(--surface);font-weight:800}
+.lib-muscle-section{scroll-margin-block-start:24px;margin-block:28px}
+.lib-muscle-section>h2{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px}
+.lib-muscle-section>h2 small{font-size:14px;font-weight:400;color:var(--muted)}
+.lib-families{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:16px}
+.lib-family{min-width:0;padding:14px;border:1px solid var(--control-border);border-radius:16px;background:var(--surface)}
+.lib-family h3{margin:0 0 12px;font-size:18px}
+.lib-family-tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.lib-tier{min-width:0;display:flex;flex-direction:column;gap:8px}
+.lib-tier>.lib-card{height:100%;display:flex;flex-direction:column;min-width:0;padding:0;text-decoration:none;color:inherit;overflow:hidden;border-radius:12px}
+.lib-tier .lib-media{width:100%;height:auto;aspect-ratio:1.25}
+.lib-tier .lib-card-body{display:flex;flex-direction:column;gap:6px;padding:8px;min-width:0}
+.lib-tier .lib-card-title{font-size:14px;overflow-wrap:anywhere;line-height:1.5}
+.lib-tier .lib-tag{white-space:normal;font-size:12px;line-height:1.5}
+.lib-tier-missing{color:var(--muted);border:1px dashed var(--control-border);border-radius:12px;padding:8px}
+.lib-tier.is-context .lib-card{border:1px dashed var(--control-border)}
+.lib-tier.is-match>strong{color:var(--action)}
+.lib-tier.is-match .lib-card{border:1px solid var(--control-border)}
+.lib-tier [aria-current="true"]{outline:2px solid var(--action);outline-offset:-2px}
+.lib-family-next{display:block;padding-block:12px;min-height:44px;color:inherit}
+.lib-family>details{margin-block-start:12px}
+.lib-family>details>summary{min-height:44px;display:flex;align-items:center;cursor:pointer}
+.skill-step-list{list-style:none;margin:20px 0;padding:0}
+.skill-step-list .roadmap-step{position:relative;display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;margin:0;padding:0 0 20px;border:0;border-radius:0;background:none}
+.skill-step-list .roadmap-step::before{content:"";position:absolute;inset-inline-start:15px;top:30px;bottom:0;width:2px;background:var(--control-border)}
+.skill-step-list .roadmap-step:last-child::before{display:none}
+.skill-step-dot{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1px solid var(--control-border);background:var(--surface);font-weight:800;z-index:1}
+.skill-step-content{min-width:0;padding:12px;border:1px solid var(--control-border);border-radius:14px}
+.skill-step-link{display:flex;gap:12px;align-items:center;min-height:60px;text-decoration:none;color:inherit}
+.skill-step-link .lib-media{flex:0 0 64px;width:64px;height:52px;border-radius:8px}
+.skill-step-link small{display:block;margin-block-start:4px}
+.skill-step-list .is-done .skill-step-content{opacity:.65}
+.skill-step-list .current-stage .skill-step-content,.skill-step-list .current-stage .skill-step-dot{border:2px solid var(--action)}
+.skill-step-content .roadmap-pass{font-size:14px;margin:10px 0 0}
+.skill-current-details{margin-block-start:14px}
+.skill-current-details summary{min-height:44px;cursor:pointer;padding-block:10px}
+.lib-family a:focus-visible,.skill-steps a:focus-visible,.lib-area-jumps a:focus-visible{outline:3px solid var(--action);outline-offset:2px}
+@media(max-width:400px){.lib-family{padding:10px}.lib-family-tiers{gap:5px}.lib-tier .lib-card-body{padding:5px}.lib-tier .lib-card-title{font-size:13px}.skill-step-list .roadmap-step{gap:8px}.exercise-siblings{flex-direction:column}}
+
+.lib-workout-families{font-size:13px;line-height:1.6;color:var(--muted)}
+.preview-plates-strip>.exercise-siblings,.preview-movement:not([open]) .exercise-siblings{display:none}
+.lib-family-tiers>li:only-child{grid-column:1/-1}
+.lib-family-tiers:has(>li:nth-child(2):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}
+.lib-missing-note{display:block;margin-block:8px;color:var(--text-secondary)}

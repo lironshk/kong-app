@@ -1,3 +1,5 @@
+import {isTourActive} from './tour.js?v=31';
+import {trainingStyle, trainingDays} from './session-structure.js?v=31';
 import {
   emptyFilters
 }
@@ -27,6 +29,13 @@ function initializeState() {
   return state;
 }
 function save() {
+  if (isTourActive()) return true;
+  for (const profile of state.db?.users || []) {
+    profile.trainingStyle = trainingStyle(profile);
+    profile.dedicatedLegDay = profile.dedicatedLegDay === true && trainingDays(profile) >= 3;
+    profile.sessionStructure ||= 'mixed';
+    profile.sessionExtras = {warmup: true, cooldown: true, ...profile.sessionExtras};
+  }
   if (!persist(state.db)) {
     toast(t('לא ניתן לשמור בדפדפן. לייצא את הנתונים לפני סגירה.', 'Storage unavailable. Export your data before closing.'),
     'error');

@@ -383,7 +383,8 @@ export function bindHome( {
         });
         if (save()) {
           $('#modal').close();
-          render()
+          if (!value) onCoach('normal');
+          else render()
         } else p.checkIns = before
       }
     }, resume:() => go('coach'), heat:() => go('coach'), lighter:() => onCoach('tired'), workout:() => onCoach('normal'),

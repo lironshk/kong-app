@@ -1,4 +1,5 @@
-import './data/exercises.js?v=31';
+import {exercises} from './data/exercises.js?v=31';
+import {familyOf} from './data/exercise-families.js?v=31';
 import {
   movementAtlas
 }
@@ -12,7 +13,7 @@ const escape = s => String(s ?? '').replace(/[&<>"']/g, c =>( {
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }
 [c]));
-export function exerciseVisual(exercise, {
+function renderExerciseVisual(exercise, {
   compact = false, lang = 'he'
 } = {
 }) {
@@ -26,8 +27,6 @@ export function exerciseVisual(exercise, {
       `${escape(exercise.id)}` +
       `" data-kind="` +
       `${atlas.kind || 'movement'}` +
-      `" data-review="` +
-      `${atlas.review}` +
       `"><img class="movement-atlas-image" src="` +
       `${atlas.src}` +
       `" width="` +
@@ -78,6 +77,22 @@ export function exerciseVisual(exercise, {
     `</small></figure>`
   );
 }
+// Native hash links work in every guide, including preview and player surfaces.
+export function siblingOptionsHTML(exercise, {lang = 'he'} = {}) {
+  const found = familyOf(exercise?.id);
+  if (!found) return '';
+  const he = lang !== 'en', labels = {easy: he ? 'קלה' : 'Easy', regular: he ? 'רגילה' : 'Regular', hard: he ? 'קשה' : 'Hard'};
+  return `<nav class="exercise-siblings" aria-label="${he ? 'וריאציות לתרגיל' : 'Exercise variations'}">
+  ${Object.entries(found.family.tiers).map(([tier, id]) => {
+    const e = exercises.find(e => e.id === id);
+    return e ? `<a href="#library/exercise/${encodeURIComponent(id)}" data-chain-ex="${escape(id)}"
+      ${id === exercise.id ? 'aria-current="true"' : ''}>${labels[tier]}: ${escape(he ? e.he : e.en)}
+      ${e.advancedOnly || e.novelEccentric ? ` · ${he ? 'נדרש אישור אישי' : 'Clearance required'}` : ''}</a>` : '';
+  }).join('')}</nav>`;
+}
+export function exerciseVisual(exercise, options = {}) {
+  return renderExerciseVisual(exercise, options) + (options.compact ? siblingOptionsHTML(exercise, options) : '');
+}
 // Clean media for browse cards: the plate only, or a Hebrew-named neutral tile.
 export function movementThumb(exercise, {
   lang = 'he', eager = false
@@ -87,8 +102,6 @@ export function movementThumb(exercise, {
   if (atlas) return (
     `<span class="lib-media" data-movement-id="` +
     `${escape(exercise.id)}` +
-    `" data-review="` +
-    `${atlas.review}` +
     `"><img src="` +
     `${atlas.src}` +
     `" width="` +

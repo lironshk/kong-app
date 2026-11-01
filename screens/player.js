@@ -1,3 +1,13 @@
+import {validateExecution, loadedStep} from '../execution-validation.js?v=31';
+import {effortRating, effortChoicesHTML, difficultyOption, previousPerformanceHTML, sessionDebrief, adjustRest}
+from '../player-coach.js?v=31';
+import {createPlayerSignals, holdCueEvents} from '../player-signals.js?v=31';
+import {skipSessionExtra, mainSeconds} from '../session-extras.js?v=31';
+import {circuitCompatible, sessionHeader} from '../session-structure.js?v=31';
+import {executionBlock} from '../session-execution.js?v=31';
+import { variationBlock, chooseVariation } from '../variation-choice.js?v=31';
+import { familyOf } from '../data/exercise-families.js?v=31';
+import { effortText, unresolvedPain, reportedPain, workClockSeconds } from '../training-safety.js?v=31';
 import {
   applyCapabilityResults, capabilityResultsHTML
 }
@@ -67,6 +77,10 @@ import {
 }
 from '../screens/skills.js?v=31';
 import {
+  openReliefModal
+}
+from '../screens/relief.js?v=31';
+import {
   $, $$, change, nameOf, on, t, user
 }
 from '../shared.js?v=31';
@@ -81,6 +95,10 @@ from '../state.js?v=31';
 function captureDraft() {
   const u = user(), s = u?.session;
   if (state.page !== 'work' || !s) return;
+  const reserveKey = s.plan.blocks[s.index]?.unit === 'seconds' ? 'technical_reserve_seconds' : 'rir';
+  const reserveInput = $(reserveKey === 'rir' ? '#set-rir' : '#hold-reserve');
+  if (reserveInput && s.draft.reserve_estimate_source && String(s.draft[reserveKey] ?? '') !== reserveInput.value)
+    s.draft.reserve_estimate_source = 'numeric-self-report';
   if ($('#actual')) s.draft = {
     ... s.draft, rir: $('#set-rir')?.value ?? s.draft?.rir ?? '', technical_reserve_seconds: $('#hold-reserve')?.value ?? '',
     left_actual: $('#left-actual')?.value ?? '', right_actual: $('#right-actual')?.value ?? '', range_of_motion: $('#set-rom')?.value || '',
@@ -97,32 +115,43 @@ function work() {
   const s = u?.session;
   if (!s) return go('home');
   if (!resumeEligible(u, s)) {
-    modal(('<h2>נדרשת הערכה מחדש לפני המשך</h2><p>תנאי הציוד, הכאב, החום או ההתאוששות השתנו. יש לסיים ' +
-    'ולשמור את הביצוע החלקי ולבנות אימון חדש.</p><button id="save-partial-safety">שמירת אימון חלקי' + '</button>'));
+    shell('<div class="focus-player">' + ('<h2>נדרשת הערכה מחדש לפני המשך</h2><p>תנאי הציוד, הכאב, החום או ההתאוששות השתנו. יש לסיים ' +
+    'ולשמור את הביצוע החלקי ולבנות אימון חדש.</p><button class="primary-action" id="save-partial-safety">שמירת אימון חלקי' + '</button>') + '</div>');
     on('#save-partial-safety',() => {
-      $('#modal').close();
       state.finishMode = true;
       finish()
     });
     return;
   }
+  s.notifications = u.timerMuted !== true;
   const b = s.plan.blocks[s.index];
+  if(b && b.unit==='seconds' && b.target>0 && s.timer.left>workClockSeconds(b)) s.timer.left=workClockSeconds(b);
   if (!b || state.finishMode) return finish();
   const original = exercises.find(e => e.id === b.id) || b, performed = exercises.find(e => e.id ===(s.draft?.performed || b.id)) || original,
   isWork = ['work', 'skill'].includes(b.phase);
   const equipment = s.equipment || u.locations?.find(l => l.id === s.location_id)?.equipment || u.equipment;
   const guided = ['tabata', 'interval', 'emom', 'mobility'].includes(s.plan.format);
-  const alternatives = substitutionCandidates(original, exercises, equipment);
+  if (isWork && b.family) {
+    const recommendation = chooseVariation(u, b.sourceExerciseId || b.id, {equipment});
+    if (recommendation) Object.assign(b, {options: recommendation.options, recommendedTier: recommendation.recommendedTier,
+      variationReason: recommendation.variationReason, feedbackReason: recommendation.feedbackReason});
+  }
+  const alternatives = [...new Map([...substitutionCandidates(original, exercises, equipment),
+    ...(b.options || []).filter(o => o.available).map(o => exercises.find(e => e.id === o.exerciseId))].map(e => [e.id, e])).values()];
   const phaseName = b.phase === 'skill' ? t('סקיל — תרגול איכות', 'Skill practice'): isWork ? t('תנועה בשליטה',
   'Controlled movement'): b.phase === 'rest' ? t('מנוחה והתאוששות', 'Rest and recover'): b.phase === 'warm' ? t('חימום',
   'Warm-up'): t('תנועה ונשימה', 'Move and breathe');
+  const hold = (isWork || b.rampUp) && b.unit === 'seconds' && b.target > 0;
+  const holdReady = hold && remaining(s.timer) > 0;
   const timer =(`<div class="session-clock"><div class="timer" id="clock" role="timer" aria-label="` + (
     `${t('זמן שנותר', 'Time remaining')}`
   ) + `">` + (
     `${formatTime(remaining(s.timer))}`
   ) + `</div><small>` + (
-    `${isWork ? t('חלון זמן אופציונלי', 'Optional time window'): t('זמן מוצע', 'Suggested time')}`
-  ) + `</small><div class="row timer-actions"><button class="secondary" id="timer-toggle" aria-label="` + (
+    `${(isWork || b.rampUp) && b.unit==='seconds' && b.target>0 ? t('זמן ההחזקה בלבד', 'Hold time only') :
+      isWork ? t('חלון הכנה ותנועה; אפשר לסיים מוקדם', 'Preparation and movement window; stop early as needed'):
+      t('זמן מוצע', 'Suggested time')}`
+  ) + `</small><div class="row timer-actions"><button class="${holdReady ? 'primary-action' : 'secondary'}" id="timer-toggle" aria-label="` + (
     `${t('הפעלת או עצירת הטיימר', 'Start or pause timer')}`
   ) + `">` + (
     `${icon(s.timer.running ? 'pause': 'play', 16)}`
@@ -133,34 +162,36 @@ function work() {
   ) + `">↺</button><button class="icon-button ` + (
     `${s.notifications ? 'enabled': ''}`
   ) + `" id="timer-sound" aria-label="` + (
-    `${t('צליל טיימר', 'Timer sound')}`
+    `${s.notifications ? 'השתקת צליל ורטט' : 'מושתק; הפעלת צליל ורטט'}`
   ) + `" aria-pressed="` + (
     `${!!s.notifications}`
   ) + `">` + (
-    `${icon('volume', 16)}`
+    `${icon('volume', 20)}`
   ) + `</button></div></div>`);
   const logForm = isWork && !(s.continuous && guided) ?(`<div class="session-log-panel"><div class="session-log-title"><strong>` + (
     `${t('תיעוד הביצוע שלי', 'Log my performance')}`
-  ) + `</strong><small>` + (
+  ) + `</strong><p>${esc(effortText(b))}</p><small>` + (
     `${t('רק מה שביצעת בפועל', 'Only work you actually did')}`
   ) + `</small></div>` + (
-    `${performed.id === b.id && b.target > 0 ?(`<button class="quick-target full-width" id="complete-target">` + (
-      `${icon('check', 18)}`
-    ) + ` בוצע</button>`): ''}`
-  ) + `<div class="quick-adjust"><div class="set-inputs"><label>` + (
-    `${b.unit === 'seconds' ? t('כמה שניות ביצעתי בפועל?', 'How many seconds did I complete?'): t('כמה חזרות ביצעתי בפועל?',
+    `<div class="logging-dock">${effortChoicesHTML(b, s.draft)}<p id="player-status" role="status">${esc(s.playerMessage || '')}</p>` +
+    ''  ) + `<div class="quick-adjust"><div class="set-inputs"><label>` + (
+    `${b.perSide ? 'סה״כ בשני הצדדים' : b.unit === 'seconds' ? t('כמה שניות ביצעתי בפועל?', 'How many seconds did I complete?'): t('כמה חזרות ביצעתי בפועל?',
     'How many reps did I complete?')}`
   ) + `<div class="counter-input"><button type="button" class="secondary" id="actual-minus" ` + `aria-label="` + (
     `${t('הפחתת ערך', 'Decrease value')}`
   ) + `">−</button><input id="actual" type="number" inputmode="numeric" min="0" max="999" step="1" ` + `value="` + (
     `${esc(s.draft?.actual ?? b.target ?? '')}`
   ) + `" placeholder="—" aria-label="` + (
-    `${t('ביצוע בפועל', 'Actual performance')}`
+    `${b.perSide ? 'סה״כ בשני הצדדים' : t('ביצוע בפועל', 'Actual performance')}`
   ) + `"><button type="button" class="secondary" id="actual-plus" aria-label="` + (
     `${t('הגדלת ערך', 'Increase value')}`
-  ) + `">+</button></div></label></div></div><details class="session-adjust" ` + (
+  ) + `">+</button></div></label></div></div>` +
+    `<button class="quick-target full-width ${holdReady ? 'secondary' : 'primary-action'}" id="complete-target">` + (
+      `${icon('check', 18)}`
+    ) + ` ${b.target > 0 ? 'בוצע' : 'שמירת הביצוע'}</button>`
+ + `</div><details class="session-adjust" ` + (
     `${performed.id !== b.id || b.assessment ? 'open': ''}`
-  ) + `><summary>תיעוד אחר, תנאים ועתודה</summary><label>` + (
+  ) + `><summary>פירוט</summary><label>` + (
     `${t('איך הייתה השליטה?', 'How was my form?')}`
   ) + `<select id="quality"><option value="good" ` + (
     `${s.draft?.quality !== 'uncertain' ? 'selected': ''}`
@@ -206,7 +237,7 @@ function work() {
   ) + ` ` + (
     `${icon('arrow', 16)}`
   ) + `</button><label>` + (
-    `${b.unit === 'seconds' ? 'עתודה טכנית בשניות': 'חזרות שנותרו בסט · RIR · רשות'}`
+    `${b.unit === 'seconds' ? 'עתודה טכנית בשניות': 'כמה חזרות נקיות נשארו? · רשות'}`
   ) + `<input id="` + (
     `${b.unit === 'seconds' ? 'hold-reserve': 'set-rir'}`
   ) + `" type="number" min="0" max="10" step="1" value="` + (
@@ -231,11 +262,11 @@ function work() {
   `class="form-error" role="alert"></div><button class="text-button session-skip" id="skip-block">` + (
     `${t('דילוג בלי לרשום ביצוע', 'Skip without logging')}`
   ) + `</button></div>`):(`<div class="session-log-panel">` + (
-    `${s.continuous && guided ?(`<p class="micro-note">` + (
+    `${b.phase === 'rest' ? '' : s.continuous && guided ?(`<p class="micro-note">` + (
       `${t('הטיימר עובר אוטומטית. מאשרים את הביצוע האמיתי בסיום.', 'The timer advances automatically. Confirm actual work at the end.')}`
-    ) + `</p><button class="secondary full-width" id="skip-block">` + (
+    ) + `</p><button class="${holdReady ? 'secondary' : 'primary-action'} full-width" id="skip-block">` + (
       `${t('דילוג על המקטע', 'Skip this block')}`
-    ) + `</button>`):(`<button class="full-width" id="next-block">` + (
+    ) + `</button>`):(`<button class="full-width ${holdReady ? 'secondary' : 'primary-action'}" id="next-block">` + (
       `${t('מוכנים לתנועה הבאה', 'Ready for the next movement')}`
     ) + ` ` + (
       `${icon('arrow', 18)}`
@@ -243,30 +274,46 @@ function work() {
       `${t('דילוג בלי לרשום ביצוע', 'Skip without logging')}`
     ) + `</button>`)}`
   ) + `</div>`);
+  // Remember exposure per trainee, including skipped work; rerenders of the first step keep its default.
+  const exposureKey = `${s.id}:${s.index}`, seen = u.movementInstructionsSeen || {};
+  const logged = [...(u.logs || []).flatMap(l => l.sets || []), ...(s.sets || [])]
+    .some(set => (set.performed_exercise_id || set.planned_exercise_id) === performed.id);
+  const instructionsOpen = isWork && !logged && (!seen[performed.id] || seen[performed.id] === exposureKey);
+  if (isWork && !seen[performed.id]) {
+    u.movementInstructionsSeen = {...seen, [performed.id]: exposureKey};
+    save();
+  }
   shell(focusPlayerHTML( {
-    session: s, block: b, performed, timer, logForm, phaseName, summary: s.plan.summaryHe, details: s.plan.rationaleHe || s.plan.reasonHe || s.
-    plan.why
+    session: s, block: b, performed, timer, logForm, phaseName, instructionsOpen, previousNumbers: previousPerformanceHTML(u, b),
+    summary: s.plan.summaryHe, details: s.plan.rationaleHe || s.plan.reasonHe || s.plan.why
   }));
   bindCommon();
-  on('#rest-add',() => {
-    s.timer = {
-      left: Math.min(7200, remaining(s.timer) + 30), running: s.timer.running, started: Date.now()
-    };
+  for (const [selector, delta] of [['#rest-add', 15], ['#rest-minus', -15]]) on(selector, () => {
+    s.timer = adjustRest(s.timer, delta);
     save();
-    tick()
+    tick();
   });
   on('#rest-skip',() => advanceBlock(s));
+  for (const [selector, kind] of [['#skip-warmup', 'warmup'], ['#skip-cooldown', 'cooldown']]) on(selector, () => {
+    const before = structuredClone(s);
+    if (!skipSessionExtra(s, kind)) return;
+    if (!save()) {Object.assign(s, before); return;}
+    if (s.index >= s.plan.blocks.length) {state.finishMode = true; finish();} else work();
+  });
   on('#set-stop',() => {
     captureDraft();
     s.timer = {
       left: remaining(s.timer), running: false, started: Date.now()
     };
     save();
-    modal(('<h2>עוצרים ובודקים</h2><p>לעצור בכאב או בירידת שליטה. כאב שנמשך, חוזר או מגביל תנועה מצריך ' +
+    shell('<div class="focus-player"><h2>עוצרים ובודקים</h2><p>לעצור בכאב או בירידת שליטה. כאב שנמשך, חוזר או מגביל תנועה מצריך ' +
     'בדיקה והתאמה מקצועית.</p><button class="secondary" id="stop-failed">לא הצלחתי — דילוג ללא ' +
-    'ביצוע</button><button class="secondary" id="stop-pain">יש כאב — סיום ושמירה</button>'));
+    'ביצוע</button><button class="secondary" id="stop-relief">התכווצות או שריר נתפס — מה עושים</button>' +
+    '<button class="primary-action" id="stop-pain">יש כאב — סיום ושמירה</button>' +
+    '<button class="secondary" id="stop-back">חזרה לסט</button></div>');
+    on('#stop-back', work);
+    on('#stop-relief', () => openReliefModal());
     on('#stop-failed',() => {
-      $('#modal').close();
       (s.skipped ??= []).push(s.index);
       advanceBlock(s)
     });
@@ -281,7 +328,6 @@ function work() {
         u.checkIns = before;
         return;
       }
-      $('#modal').close();
       state.finishMode = true;
       finish();
       $('#pain').checked = true;
@@ -299,6 +345,9 @@ function work() {
     s.timer = {
       left: remaining(s.timer), running: !s.timer.running, started: Date.now()
     };
+    if (s.timer.running && hold) for (const event of holdCueEvents(s.timer, remaining(s.timer), {start: true})) {
+      playerSignal(event, !s.notifications);
+    }
     save();
     const el = $('#timer-toggle');
     el.innerHTML =( (
@@ -310,15 +359,16 @@ function work() {
   on('#timer-reset',() => {
     captureDraft();
     s.timer = {
-      left: b.seconds, running: false, started: Date.now()
+      left: workClockSeconds(b), running: false, started: Date.now()
     };
     save();
     work()
   });
   on('#timer-sound',() => {
     captureDraft();
-    s.notifications = !s.notifications;
-    if (s.notifications) beep(true);
+    u.timerMuted = s.notifications;
+    s.notifications = !u.timerMuted;
+    if (s.notifications) playerSignal('start');
     save();
     work()
   });
@@ -336,9 +386,34 @@ function work() {
     const el = $(id);
     if (el) el.oninput = captureDraft
   });
-  change('#performed',() => {
+  const substitute = id => {
     captureDraft();
-    work()
+    if (!applyPlayerSubstitution(u, s, id, {equipment})) {
+      s.draft.performed = b.id;
+      s.playerMessage = 'הווריאציה אינה זמינה במגבלות האימון הנוכחי.';
+    }
+    save();
+    work();
+  };
+  change('#performed', e => substitute(e.target.value));
+  $$('[data-variation-tier]').forEach(button => button.onclick = () => {
+    const option = b.options?.find(o => o.tier === button.dataset.variationTier && o.available);
+    if (option) substitute(option.exerciseId);
+  });
+  $$('[data-difficulty]').forEach(button => button.onclick = () => {
+    captureDraft();
+    const before = structuredClone(s), choices = structuredClone(u.variationChoices || {}), feedback = u.variationFeedback;
+    applyDifficultyFeedback(u, s, button.dataset.difficulty, {equipment});
+    if (!save()) {Object.assign(s, before); u.variationChoices = choices; u.variationFeedback = feedback;}
+    work();
+  });
+  $$('[data-set-effort]').forEach(button => button.onclick = () => {
+    captureDraft();
+    Object.assign(s.draft, effortRating(button.dataset.setEffort, b.unit, b));
+    if ($('#set-rir') && b.unit !== 'seconds') $('#set-rir').value = String(s.draft.rir);
+    if ($('#hold-reserve') && b.unit === 'seconds') $('#hold-reserve').value = String(s.draft.technical_reserve_seconds);
+    $$('[data-set-effort]').forEach(el => el.setAttribute('aria-pressed', String(el === button)));
+    save();
   });
   on('#next-block',() => {
     if (isWork) {
@@ -373,7 +448,8 @@ function work() {
         id, planned_exercise_id: b.id, performed_exercise_id: s.draft.performed || b.id, ...(b.skill ? {
           skill: b.skill, skillStage: b.skillStage
         }: {
-        }), round: b.round, target: b.target, unit: b.unit, phase: b.phase, assessment: !!b.assessment, provisional: !!b.provisional,
+        }), round: b.round, ...(b.circuitId ? {circuitId: b.circuitId, exerciseInRound: b.exerciseInRound} : {}),
+        target: b.target, unit: b.unit, phase: b.phase, assessment: !!b.assessment, provisional: !!b.provisional,
         source: b.source || 'evidence', calibration: !!b.calibration, technical_reserve_seconds: s.draft.technical_reserve_seconds !== '' ?
         Number(s.draft.technical_reserve_seconds): null, left_actual: s.draft.left_actual !== '' ? Number(s.draft.left_actual): null,
         right_actual: s.draft.right_actual !== '' ? Number(s.draft.right_actual): null, range_of_motion: s.draft.range_of_motion || undefined,
@@ -382,7 +458,9 @@ function work() {
         {
           rir: + s.draft.rir
         }: {
-        }), actual: + v, quality: s.draft.quality || 'good', assistance: s.draft.assistance?.trim() || null,
+        }), ...(s.draft.effort ? {effort: s.draft.effort, reserve_estimate_source:s.draft.reserve_estimate_source,
+          prescribed_reserve:s.draft.prescribed_reserve} : {}), actual: + v,
+        quality: s.draft.quality || 'good', assistance: s.draft.assistance?.trim() || null,
         setup: s.draft.setup?.trim() || null, added_load: load === '' || load == null ? null: + load, side_allocation: b.side_allocation || null,
         at: new Date().toISOString()
       })
@@ -392,9 +470,13 @@ function work() {
   on('#complete-target',() => {
     if (!$('#actual') || !$('#next-block')) return;
     captureDraft();
-    $('#next-block').click()
+    const button = $('#next-block');
+    if (button.onclick) button.onclick(); else button.click();
   });
   on('#skip-block',() => {
+    if (['warm', 'cool'].includes(b.phase) && !b.rampUp) {
+      s.extrasSkipped = {...s.plan.extrasSkipped, ...s.extrasSkipped, [b.phase === 'warm' ? 'warmup' : 'cooldown']: true};
+    }
     (s.skipped ??= []).push(s.index);
     advanceBlock(s)
   });
@@ -414,16 +496,95 @@ function work() {
   });
   tick();
 }
+export function applyDifficultyFeedback(profile, session, difficulty, options = {}) {
+  if (!['hard', 'easy'].includes(difficulty)) return false;
+  const block = session.plan.blocks[session.index], family = familyOf(block.id)?.family;
+  if (!family) {session.playerMessage = 'אין כרגע גרסה נוספת; אפשר לדלג ולשמור מה שבוצע.'; return false;}
+  const candidate = difficultyOption(profile, block, difficulty, options);
+  const changed = !!candidate && applyPlayerSubstitution(profile, session, candidate.exerciseId, options);
+  const event = {difficulty, exerciseId: block.id, selectedId: changed ? candidate.exerciseId : block.id,
+    changed, at: new Date(options.now ?? Date.now()).toISOString()};
+  profile.variationFeedback = {...profile.variationFeedback, [family.id]: event};
+  session.variationFeedback = {...session.variationFeedback, [family.id]: event};
+  session.playerMessage = changed ? 'החלפתי את הגרסה ושמרתי לפעם הבאה.' : difficulty === 'easy' ?
+    'שמרתי שהיה קל; גרסה קשה יותר תיפתח לאחר ביצוע מלא בשליטה וללא כאב.' :
+    'שמרתי שהיה קשה; אין כרגע גרסה קלה זמינה ובטוחה, אפשר לדלג.';
+  return changed;
+}
+// Both the performed-exercise select and the three-tier control use this substitution path.
+export function applyPlayerSubstitution(profile, session, exerciseId, {equipment = profile.equipment, now = new Date()} = {}) {
+  if (reportedPain({pain: session.painReported, sets: session.sets})) return false;
+  if (plan(profile, profile.minutes, 'normal', {now}).blocked) return false;
+  const block = session.plan.blocks[session.index];
+  const choice = chooseVariation(profile, block.sourceExerciseId || block.id, {equipment, now});
+  const family = choice && familyOf(choice.id)?.family;
+  const option = choice?.options.find(o => o.exerciseId === exerciseId && o.available);
+  if (!option) {
+    // Existing cross-family substitutions remain a record of performed work, with separate conditions.
+    if (block.options?.some(o => o.exerciseId === exerciseId) || familyOf(exerciseId)?.family.id === family?.id) return false;
+    const selected = exercises.find(e => e.id === exerciseId);
+    if (!selected || isBlocked(selected, recoveryState(profile.logs || [], now))) return false;
+    const original = exercises.find(e => e.id === block.id);
+    if (!substitutionCandidates(original, exercises, equipment).some(e => e.id === exerciseId)) return false;
+    session.draft = {...session.draft, performed: exerciseId};
+    return true;
+  }
+  const easy = session.plan.easyPractice || session.plan.deload || session.readiness === 'tired';
+  const next = variationBlock(profile, block, {equipment, now, easy}, option.tier);
+  if (!next || !doseAuthorized(profile, next, now)) return false;
+  const performedCount = (session.sets || []).filter(s => s.performed_exercise_id === exerciseId).length;
+  const pending = session.plan.blocks.slice(session.index + 1)
+    .filter(b => ['work', 'skill'].includes(b.phase) && b.id === exerciseId).length;
+  if (next.reviewedExecution && performedCount + 1 + pending > profile.exerciseClearances[exerciseId].sets) return false;
+  let blocks = session.plan.blocks.slice();
+  if (block.circuitId) {
+    const currentRound = blocks.filter(b => b.circuitId === block.circuitId && b.round === block.round && b.phase === 'work');
+    const at = currentRound.indexOf(block), before = currentRound[(at - 1 + currentRound.length) % currentRound.length],
+      after = currentRound[(at + 1) % currentRound.length];
+    const adapted = executionBlock(next);
+    if (!circuitCompatible(before, adapted) || !circuitCompatible(adapted, after) || next.reviewedExecution ||
+      adapted.executionRole === 'skill' || adapted.demandingStraightArm) return false;
+    Object.assign(next, {circuitId: block.circuitId, round: block.round, rounds: block.rounds,
+      exerciseInRound: block.exerciseInRound, exercisesPerRound: block.exercisesPerRound,
+      restSeconds: block.restSeconds, rir: next.unit === 'seconds' ? null : 'כשלוש', technicalReserve: block.technicalReserve});
+  }
+  blocks[session.index] = next;
+  const rest = blocks[session.index + 1];
+  if (next.emomMinute && rest?.phase === 'rest') blocks[session.index + 1] = {...rest, seconds: next.restSeconds};
+  if (!block.circuitId && !next.timingWindow && rest?.phase === 'rest')
+    blocks[session.index + 1] = {...rest, seconds: Math.max(rest.seconds, next.restSeconds)};
+  const checked = validateExecution(blocks);
+  if (checked.error) return false;
+  // Completed history cannot be moved by a substitution. Defer if recovery must be inserted before it.
+  if (checked.blocks[session.index]?.id !== next.id) return false;
+  blocks = checked.blocks;
+  const total = blocks.reduce((n, b) => n + b.seconds, 0);
+  if (mainSeconds(blocks) > (session.plan.requested_minutes ?? profile.minutes) * 60) return false;
+  profile.variationChoices = {...profile.variationChoices, [family.id]: option.tier};
+  Object.assign(session.plan, {blocks, total_seconds: total, unused_seconds: (session.plan.requested_minutes ?? profile.minutes) * 60 - mainSeconds(blocks),
+    main_seconds: mainSeconds(blocks), minutes: mainSeconds(blocks) / 60, sessionHeader: sessionHeader({...session.plan, blocks}),
+    exerciseIds: blocks.filter(b => ['work', 'skill'].includes(b.phase)).map(b => b.id)});
+  session.plan.phases = session.plan.phases?.map(p => {
+    const seconds = blocks.filter(b => b.section === p.id || b.phase === p.id).reduce((n, b) => n + b.seconds, 0);
+    return {...p, seconds, minutes: seconds / 60};
+  });
+  session.draft = {performed: next.id};
+  session.timer = {left: workClockSeconds(next), running: false, started: +now};
+  return true;
+}
 function advanceBlock(s) {
   const before = {
     index: s.index, draft: s.draft, timer: s.timer
   };
+  const skippingRest = s.plan.blocks[s.index]?.phase === 'rest';
   s.index++;
+  if (skippingRest) while (s.plan.blocks[s.index]?.phase === 'rest') s.index++;
   s.draft = {
   };
+  s.playerMessage = '';
   const n = s.plan.blocks[s.index];
   s.timer = {
-    left: n?.seconds || 0, running: !!(n?.phase === 'rest' || s.continuous && before.timer.running && n),
+    left: workClockSeconds(n), running: !!(n?.phase === 'rest' || s.continuous && before.timer.running && n),
     started: Date.now()
   };
   if (!save()) {
@@ -436,22 +597,8 @@ function advanceBlock(s) {
     finish()
   }
 }
-let audioContext;
-function beep(test = false) {
-  try {
-    audioContext ??= new(window.AudioContext || window.webkitAudioContext)();
-    audioContext.resume();
-    const osc = audioContext.createOscillator(), gain = audioContext.createGain();
-    osc.connect(gain);
-    gain.connect(audioContext.destination);
-    osc.frequency.value = 660;
-    gain.gain.setValueAtTime(0.06, audioContext.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + .25);
-    osc.start();
-    osc.stop(audioContext.currentTime + .26)
-  } catch {
-  }
-}
+const playerSignal = createPlayerSignals();
+function beep() { playerSignal('end'); }
 function tick() {
   const s = user()?.session;
   if (state.page !== 'work' || !s || state.finishMode || !$('#clock')) return;
@@ -474,18 +621,26 @@ function tick() {
   }
   const left = remaining(s.timer);
   $('#clock').textContent = formatTime(left);
+  const block = s.plan.blocks[s.index];
+  const hold = (['work', 'skill'].includes(block?.phase) || block?.rampUp) && block.unit === 'seconds' && block.target > 0;
+  if (hold && s.timer.running) {
+    const before = s.timer.cueSecond;
+    for (const event of holdCueEvents(s.timer, left, {start: s.timer.cueSecond == null && left > 3})) playerSignal(event, !s.notifications);
+    if (before !== s.timer.cueSecond) save();
+  }
   if (left <= 0 && s.timer.running) {
     s.timer = {
       left: 0, running: false, started: Date.now()
     };
     save();
-    if (s.notifications) beep();
+    if (!hold && s.notifications) beep();
     $('#timer-toggle').innerHTML =( (
       `${icon('play', 18)}`
     ) + ` <span>` + (
       `${t('הפעלה', 'Start')}`
     ) + `</span>`);
-    toast(t('חלון הזמן הסתיים. ממשיכים כשתהיו מוכנים.', 'Time window complete. Continue when you are ready.'))
+    if ($('#player-status')) $('#player-status').textContent = 'הזמן הסתיים. ממשיכים כשמוכנים.';
+    if (hold) {captureDraft(); work();}
   }
 }
 function guidedReview(s) {
@@ -540,25 +695,16 @@ function finish() {
     left: remaining(s.timer), running: false, started: Date.now()
   };
   save();
-  const actual = s.sets.length;
   state.finishMode = true;
   shell((`<div class="summary-page"><div class="summary-mark">` + (
     `${icon('check', 40)}`
   ) + `</div><span class="eyebrow">` + (
     `${t('רגע לעצמך', 'A MOMENT FOR YOURSELF')}`
   ) + `</span><h1>` + (
-    `${t('הגעת. זזת. זה נחשב.', 'You showed up. You moved. It counts.')}`
-  ) + `</h1><p class="muted">` + (
-    `${t('לפני שחוזרים ליום, לוקחים רגע לשים לב.', 'Before getting back to your day, take a moment to notice.')}`
-  ) + `</p><div class="summary-stats"><div><strong>` + (
-    `${actual}`
-  ) + `</strong><small>` + (
-    `${t('סטים שתיעדתי', 'sets logged')}`
-  ) + `</small></div><div><strong>` + (
-    `${new Set(s.sets.map(x => x.performed_exercise_id)).size}`
-  ) + `</strong><small>` + (
-    `${t('תנועות שתרגלתי', 'movements practised')}`
-  ) + `</small></div></div>` + (
+    `${t('סיכום האימון', 'Workout summary')}`
+  ) + `</h1><div class="session-debrief" aria-label="סיכום האימון">` +
+    sessionDebrief(u, s).map(line => `<p>${esc(line)}</p>`).join('') +
+    '</div><details><summary>פירוט</summary>' + (
     `${guidedReview(s)}`
   ) + `<section class="card summary-form"><label>` + (
     `${t('איך הרגיש המאמץ?', 'How did the effort feel?')}`
@@ -578,7 +724,7 @@ function finish() {
     `${t('משהו שכדאי לי לזכור', 'Something to remember')}`
   ) + `<textarea id="note" rows="3" maxlength="1000" placeholder="` + (
     `${t('מה עבד טוב? מה ארצה לשנות?', 'What went well? What would I change?')}`
-  ) + `"></textarea></label><button class="full-width" id="commit-session">` + (
+  ) + `"></textarea></label></section></details><button class="full-width primary-action" id="commit-session">` + (
     `${t('שומרים את ההתקדמות שלי', 'Save my progress')}`
   ) + ` ` + (
     `${icon('check', 18)}`
@@ -586,7 +732,7 @@ function finish() {
     `${s.index < s.plan.blocks.length ?(`<button class="text-button" id="back-session">` + (
       `${t('בעצם, אני רוצה להמשיך', 'Actually, I want to continue')}`
     ) + `</button>`): ''}`
-  ) + `</section><small>` + (
+  ) + `<small>` + (
     `${t('רק סטים שתיעדתם נספרים כביצוע. תכנון או דילוג לא נרשמים כאימון שבוצע.',
     'Only logged sets count as performance. Planning and skipping do not count as completed work.')}`
   ) + `</small></div>`));
@@ -627,7 +773,8 @@ function finish() {
       }), ...($('#session-rpe').value !== '' ? {
         session_RPE: Number($('#session-rpe').value)
       }: {
-      }), completed: s.index >= s.plan.blocks.length, effort: $('#effort').value, pain: s.painReported === true || $('#pain').checked,
+      }), extrasSkipped: {...s.plan.extrasSkipped, ...s.extrasSkipped}, completed: s.index >= s.plan.blocks.length,
+      effort: $('#effort').value, pain: s.painReported === true || $('#pain').checked,
       note: $('#note').value.trim()
     };
     // Session impression never manufactures per-set technique evidence.
@@ -664,6 +811,7 @@ function parseTempo(value) {
   }: null;
 }
 function resumeEligible(u, s) {
+  if (reportedPain({pain: s.painReported, sets: s.sets}) || unresolvedPain(u)) return false;
   if (painStatus(u) || u.checkIns?.[homeDate()]?.pain || plan(u, s.plan.minutes || u.minutes, 'normal',
   {
     now: new Date(), history: u.logs || []
@@ -673,14 +821,14 @@ function resumeEligible(u, s) {
   if (weather?.severe) return false;
   const equipment = u.locations?.find(l => l.id === s.location_id)?.equipment || u.equipment;
   const state = recoveryState(u.logs || [], new Date());
-  const planned = s.plan.blocks.filter(b => ['work', 'skill'].includes(b.phase) && b.reviewedExecution);
+  const planned = s.plan.blocks.filter(b => loadedStep(b) && b.reviewedExecution);
   if (planned.some(b => planned.filter(x => x.id === b.id).length >(u.exerciseClearances?.[b.id]?.sets || 0))) return false;
-  return s.plan.blocks.slice(s.index).filter(b => ['work', 'skill'].includes(b.phase)).every(b => {
+  return s.plan.blocks.slice(s.index).filter(loadedStep).every(b => {
     const e = exercises.find(e => e.id === b.id);
     return !!e &&(!b.skill || !skillState(u, b.skill).achieved) && doseAuthorized(u, b, new Date()) && hasEquipment(e,
     equipment) && !isBlocked(e, state)
   });
 }
 export {
-  captureDraft, work, advanceBlock, audioContext, beep, tick, guidedReview, finish, parseTempo, resumeEligible
+  captureDraft, work, advanceBlock, beep, tick, guidedReview, finish, parseTempo, resumeEligible
 };

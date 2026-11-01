@@ -79,7 +79,7 @@ export const lessons = [
     'מדריך למשיכה, עם מבט על הדרך לחזרה מלאה.', 'A pulling tutorial with a look at the path to a full rep.',
     './assets/energy-hero.webp', ['להבחין בין משיכה נשלטת לתנופה.', 'לעיין במפת המתח הראשון לצד המדריך, בלי לדלג על הכנה.']),
   lesson('split-squat-foundations', 'split', 'רגל אחת במרכז', 'One leg in focus',
-    'סקוואט מפוצל: להכיר את התנועה ואת האפשרויות שלה.', 'Explore the split squat and its variations.',
+    'מכרע סטטי (לאנג׳): להכיר את התנועה ואת האפשרויות שלה.', 'Explore the split squat and its variations.',
     './assets/energy-strength.webp', ['להתבונן ביציבות העמדה לאורך התנועה.', 'לבחור טווח אישי; הסרטון מציג וריאציות, לא הוראה לבצע את כולן.']),
   lesson('squat-foundations', 'squat', 'להבין את הסקוואט', 'See more in the basics',
     'סקוואט עם הסבר והדגמה של Mayo Clinic.', 'The squat, explained and demonstrated by Mayo Clinic.',

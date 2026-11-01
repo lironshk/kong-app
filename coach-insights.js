@@ -1,3 +1,4 @@
+import { rotateWorkout } from './workout-rotation.js?v=31';
 import {
   sessionMinutes
 }
@@ -97,12 +98,12 @@ export function todayWorkout(profile, options = {
       skillTrack: options.skillTrack, skillChoice: options.skillChoice, skillFocusOverride: options.skillFocusOverride,
       readiness: options.readiness ?? 'normal', date: now, seed: options.seed
     });
-    return {
+    return rotateWorkout(p, {
       ... result, dayIndex, today: {
         date: today, locationId: location?.id ?? null, recovery: result.recovery, reasonHe: result.rationaleHe,
         reasonEn: result.rationaleEn
       }
-    };
+    }, options);
   }
   const recent = validLogs(logs, now).filter(isStrength).map(l => dateKey(new Date(l.completed_at),
   timeZone));
@@ -123,9 +124,9 @@ export function todayWorkout(profile, options = {
   const result = plan(p, options.minutes ?? p.minutes, options.readiness ?? 'normal', {
     ... options, history: logs, recovery, dayIndex, weekIndex
   });
-  return {
+  return rotateWorkout(p, {
     ... result, today: {
       date: today, locationId: location?.id ?? null, recovery, reasonHe, reasonEn
     }, rationaleHe: reasonHe, rationaleEn: reasonEn
-  };
+  }, options);
 }

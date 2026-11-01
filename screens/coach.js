@@ -1,3 +1,5 @@
+import {extraTimeText} from '../session-extras.js?v=31';
+import {trainingPreferencesHTML, bindTrainingPreferences, sessionHeaderHTML} from '../session-structure.js?v=31';
 import {
   localDateKey
 }
@@ -47,7 +49,7 @@ import {
 }
 from '../phase-bar.js?v=31';
 import {
-  currentSessionOptions, refreshSavedSession, sessionInputs
+  currentSessionOptions, refreshSavedSession, sessionInputs as baseSessionInputs
 }
 from '../session-refresh.js?v=31';
 import {
@@ -120,6 +122,9 @@ function bindPlanUpdate() {
     dashboard();
   }, 'להחיל עכשיו'));
 }
+export function sessionInputs(profile, options = {}) {
+  return baseSessionInputs(profile, options);
+}
 function savedPlanState(u, options, applyNow = false) {
   const session = u.session;
   if (!session) return {
@@ -133,7 +138,7 @@ function savedPlanState(u, options, applyNow = false) {
   const location = u.locations?.find(l => l.id === effective.locationId);
   const equipment = effective.equipment ?? location?.equipment ?? u.equipment;
   const preview = {
-    ... u, equipment, locations: u.locations?.map(l => l.id === effective.locationId ? {
+    ... u, sessionStructure: effective.structure || u.sessionStructure, equipment, locations: u.locations?.map(l => l.id === effective.locationId ? {
       ... l, equipment
     }: l)
   };
@@ -182,7 +187,8 @@ function dashboard() {
   };
   const refresh = savedPlanState(u, options);
   const previewProfile = options.equipment ? {
-    ... u, equipment: options.equipment, locations: u.locations?.map(l => l.id === options.locationId ? {
+    ... u, sessionStructure: options.structure || u.sessionStructure, equipment: options.equipment,
+    locations: u.locations?.map(l => l.id === options.locationId ? {
       ... l, equipment: options.equipment
     }: l)
   }: u;
@@ -192,9 +198,14 @@ function dashboard() {
     'This is your saved session. Resume the same block with the same equipment.'
   }: generated;
   if (p.blocked && state.page === 'coach') return blocked(p.reason, p.adaptation);
+  const offerPreferences = state.page === 'coach' && !u.trainingPreferencesOffered;
   shell((refresh.pending ? planUpdateNotice(): '') + renderDailyHome( {
-    profile: u, todayPlan: p, screen: state.page === 'coach' ? 'coach': 'home', lang: he() ? 'he': 'en'
-  }) +(state.page === 'coach' ? capabilityOffer(u): ''));
+    profile: u, todayPlan: {...p, total_seconds: p.main_seconds ?? p.total_seconds}, screen: state.page === 'coach' ? 'coach': 'home', lang: he() ? 'he': 'en'
+  }) +(state.page === 'coach' ? (offerPreferences ? trainingPreferencesHTML(u) : '') + capabilityOffer(u): ''));
+  if (state.page === 'coach' && !p.blocked) $('.daily-today')?.insertAdjacentHTML('beforeend',
+    sessionHeaderHTML(p));
+  bindTrainingPreferences(document, u, () => {save(); dashboard();});
+  if (offerPreferences) {u.trainingPreferencesOffered = true; save();}
   if (state.page === 'coach' && window.matchMedia('(min-width: 1024px)').matches) {
     const host = document.createElement('section');
     host.className = 'desktop-coach-editor';
@@ -282,20 +293,24 @@ function recipeDetail(id) {
     `${p && !p.blocked ?(`<p class="recipe-meta">` + (
       `${icon('clock', 18)}`
     ) + ` ` + (
-      `${Math.ceil(p.total_seconds / 60)}`
+      `${esc(extraTimeText(p))}`
     ) + ` ` + (
-      `${t('דקות מתוכננות', 'planned minutes')}`
+      `${t('מתוכנן', 'planned')}`
     ) + `</p>`): ''}`
-  ) + `<p>` + (
+  ) + (w.origin === 'coach' ? '<small>מבוסס על לוח מאמן</small>' : '') + `<p>` + (
     `${esc(he() ? w.description: w.descriptionEn || w.en)}`
   ) + `</p><p class="micro-note">` + (
-    `${t('הזמן כולל חימום, מנוחות וסיום. אפשר לעצור ולהאריך מנוחה בכל שלב.',
-    'The time includes warm-up, rests and cool-down. Pause or extend rest at any point.')}`
+    `${t('הזמן כולל אימון ומנוחות. החימום והשחרור נוספים בנפרד.',
+    'Time covers training and rests. Warm-up and cool-down are extra.')}`
   ) + `</p>` + (
     `${w.note ?(`<p class="notice">` + (
       `${esc(w.note)}`
     ) + `</p>`): ''}`
-  ) + (
+  ) + (w.sections ? `<details><summary>המקטעים מהלוח</summary>${w.sections.map(s =>
+    `<p>${esc(s.title)} · ${s.rounds} ${s.individualSets ? 'סטים' : 'סבבים'}</p><ul>${s.items.map(i =>
+      `<li>${esc(exercises.find(e => e.id === i.id)?.he || i.id)} · ${i.reps ?? i.seconds} ` +
+      `${i.seconds != null ? 'שניות' : 'חזרות'}${i.perSide && i.reps ? ' לכל צד' : ''}` +
+      `${i.uncertain ? ' · מינון לא ודאי; יעד האפליקציה שמרני' : ''}</li>`).join('')}</ul>`).join('')}</details>` : '') + (
     `${p?.blocked ?(`<p class="notice">` + (
       `${esc(p.reason)}`
     ) + `</p>`): moves.length ?(`<h3>` + (
@@ -329,7 +344,9 @@ function recipeDetail(id) {
 function coachPreviewOptions(u, seed = {
 }) {
   return {
-    profile: u, lang: 'he', previewOnly: seed.previewOnly === true, seed, onPainReview: painReview, onPreferences: preferences => {
+    profile: u, onVariationChoice: () => save(), onExtrasChange: extras => {u.sessionExtras = extras; save();},
+    lang: 'he', previewOnly: seed.previewOnly === true, seed,
+    onPainReview: painReview, onPreferences: preferences => {
       u.coachPreferences = {
         ... preferences
       };
@@ -349,7 +366,7 @@ function coachPreviewOptions(u, seed = {
         ... options, equipment: [... equipment]
       };
       u.session = {
-        id: crypto.randomUUID(), plan: structuredClone(pp), index: 0, sets: [], skipped: [], timer: {
+        id: crypto.randomUUID(), plan: structuredClone(pp), index: 0, sets: [], skipped: [], extrasSkipped: {...pp.extrasSkipped}, timer: {
           left: pp.blocks[0].seconds, running: false, started: Date.now()
         }, started_at: new Date().toISOString(), scheduled_date: localDateKey(), planned_date: plannedDate || localDateKey(),
         location_id: options.locationId, equipment: [... equipment], readiness: options.readiness, draft: {

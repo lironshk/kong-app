@@ -1,3 +1,5 @@
+import {replayTour} from '../tour.js?v=31';
+import {trainingPreferencesHTML, bindTrainingPreferences} from '../session-structure.js?v=31';
 import {
   BRAND_NAME, LOGO_SVG, applyBrand
 }
@@ -26,6 +28,10 @@ import {
   go, render
 }
 from '../router.js?v=31';
+import {
+  isAdmin, setAdmin
+}
+from '../admin-inbox.js?v=31';
 import {
   capabilityIntro, reviewedExecution
 }
@@ -92,10 +98,12 @@ function profileMenu() {
   `מקצוע בכוח וכושר להערכות וריאציה, כיסוי שבועי, עומסים משותפים, התקדמות ותקופה קלה ולניסוי חמשת ` +
   `סוגי האימונים; דיאטן ספורט מורשה למחשבון חלבון, משקלים קיצוניים, אנרגיה, תוספים וצום; ורופא ` +
   `ספורט או קלינאי חום לכאב, חזרה לפעילות והוראות חירום בעברית. טרם התקבל אישור מקצועי בשם ` +
-  `ובתאריך. תרגילים מתקדמים מוגבלים עד בדיקה אישית מתועדת.</p></details><p>© ` + (
+  `ובתאריך. תרגילים מתקדמים מוגבלים עד בדיקה אישית מתועדת.</p></details><p id="menu-copyright">© ` + (
     `${new Date().getFullYear()}`
   ) + ` KONG</p><div class="profile-menu-actions"><button class="secondary" id="menu-sources">מקורות ` +
   `ושקיפות</button><button class="secondary" id="menu-privacy">פרטיות והנתונים שלי</button>` +
+  `${isAdmin() ? '<button class="secondary" id="menu-admin">כלי מנהל · בדיקת תרגילים</button>': ''}` +
+  `<button class="secondary" id="menu-tour">הדרכה על האפליקציה</button>` +
   `<button class="secondary" id="menu-skills">הסקילים שלי</button><button class="secondary" ` +
   `id="reviewed-execution">בדיקה מקצועית ותקופת אימון</button><button class="secondary" ` + `id="add-profile">` + (
     `${icon('plus')}`
@@ -140,6 +148,21 @@ function profileMenu() {
     go('research')
   });
   on('#menu-privacy', privacy);
+  on('#menu-tour', replayTour);
+  on('#menu-admin',() => {
+    $('#modal').close();
+    go('admin')
+  });
+  // Five taps on the copyright line toggle the admin tools on this device.
+  let taps = 0;
+  on('#menu-copyright',() => {
+    if (++taps < 5) return;
+    taps = 0;
+    const enable = !isAdmin();
+    setAdmin(enable);
+    toast(enable ? 'כלי מנהל הופעלו במכשיר הזה.': 'כלי מנהל כובו במכשיר הזה.');
+    profileMenu()
+  });
   on('#menu-skills',() => {
     $('#modal').close();
     go('skills')
@@ -164,7 +187,7 @@ function settings() {
   shell(( (
     `${pageHead(t('עוד קצת בדרך שלך', 'A LITTLE MORE YOU'), t('המסלול שלי. הכללים שלי.', 'My path. My preferences.'),
     t('כאן מעדכנים את השגרה ושומרים על בעלות על הנתונים.', 'Adjust your routine and stay in control of your data.'))}`
-  ) + `<div class="settings-grid"><section class="card"><h2>` + (
+  ) + `<button class="secondary" id="settings-tour">הדרכה על האפליקציה</button><div class="settings-grid"><section class="card"><h2>` + (
     `${t('תצוגה ושפה', 'Display and language')}`
   ) + `</h2><div class="appearance-modes">` + (
     `${[ ['light', 'בהיר', 'Light'], ['dark', 'כהה', 'Dark'], ['sunlight', 'אור שמש', 'Sunlight']].map(( [id,
@@ -256,15 +279,19 @@ function settings() {
   ) + `</p><button class="ghost danger-text" id="delete-profile">` + (
     `${t('מחיקת הפרופיל וההיסטוריה', 'Delete profile & history')}`
   ) + `</button></section>` + (
+    `${trainingPreferencesHTML(u)}`
+  ) + (
     `${capabilityOffer(u)}`
   ) + (
     `${recoverySettings()}`
   ) + `</div>`));
+  bindTrainingPreferences(document, u, () => {save(); settings();});
   $$('[data-capability]').forEach(b => b.onclick = capabilityIntro);
   $$('[data-brand]').forEach(b => b.onclick =() => {
     applyBrand(b.dataset.brand);
     settings()
   });
+  on('#settings-tour', replayTour);
   on('#edit-settings',() => startOnboarding(true));
   on('#switch-settings', profileMenu);
   on('#add-location',() => locationEditor());

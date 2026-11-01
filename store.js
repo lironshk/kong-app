@@ -1,3 +1,4 @@
+import {trainingStyle, trainingDays} from './session-structure.js?v=31';
 import {
   conditionsKnown, equipmentSchema
 }
@@ -76,6 +77,7 @@ function checkSets(sets) {
   for (const s of sets) {
     if (!s || !identifier(s.id) || !identifier(s.performed_exercise_id) || !finite(s.actual) ||(!(s.assessment === true && s.target === null) &&
     !finite(s.target)) || ! ['seconds', 'reps'].includes(s.unit) || ! ['good', 'uncertain'].includes(s.quality)) fail();
+    if (s.effort !== undefined && !['easy', 'normal', 'hard'].includes(s.effort)) fail();
     if (s.rir !== undefined && !finite(s.rir, 0, 10)) fail();
     if (s.skillStage !== undefined &&(!Number.isInteger(s.skillStage) || s.skillStage < 0 || s.skillStage > 100)) fail();
     if (s.technique_confirmed !== undefined && typeof s.technique_confirmed !== 'boolean') fail();
@@ -155,6 +157,28 @@ function profile(input, {
   ();
   for (const k of['push', 'pull', 'legs', 'core']) if (!finite(u[k], 0, k === 'core' ? 600: 200)) fail();
   if (!finite(u.minutes, 10, 90) || ! ['strength', 'endurance', 'core', 'skills'].includes(u.goal)) fail();
+  for (const [key, allowed] of Object.entries({trainingStyle: ['full', 'mixed', 'split'],
+    sessionStructure: ['mixed', 'sets', 'rounds']})) if (u[key] !== undefined && !allowed.includes(u[key])) fail();
+  if (u.dedicatedLegDay !== undefined && typeof u.dedicatedLegDay !== 'boolean') fail();
+  if (u.trainingPreferencesOffered !== undefined && typeof u.trainingPreferencesOffered !== 'boolean') fail();
+  if (u.sessionExtras !== undefined && (!u.sessionExtras || Array.isArray(u.sessionExtras) ||
+    Object.keys(u.sessionExtras).some(k => !['warmup', 'cooldown'].includes(k)) ||
+    Object.values(u.sessionExtras).some(v => typeof v !== 'boolean'))) fail();
+  if (u.tourSeen !== undefined && typeof u.tourSeen !== 'boolean') fail();
+  if (u.tourVersion !== undefined && (!Number.isInteger(u.tourVersion) || u.tourVersion < 0 || u.tourVersion > 1000000)) fail();
+  if (u.timerMuted !== undefined && typeof u.timerMuted !== 'boolean') fail();
+  if (u.variationFeedback !== undefined) {
+    if (!u.variationFeedback || Array.isArray(u.variationFeedback) || Object.keys(u.variationFeedback).length > 500) fail();
+    for (const [family, event] of Object.entries(u.variationFeedback)) {
+      if (!identifier(family) || !event || !['hard', 'easy'].includes(event.difficulty) ||
+        !identifier(event.exerciseId) || !identifier(event.selectedId) || typeof event.changed !== 'boolean' ||
+        !Number.isFinite(Date.parse(event.at))) fail();
+    }
+  }
+  u.dedicatedLegDay = u.dedicatedLegDay === true && trainingDays(u) >= 3;
+  u.trainingStyle = trainingStyle(u);
+  u.sessionStructure ||= 'mixed';
+  u.sessionExtras = {warmup: true, cooldown: true, ...u.sessionExtras};
   u.minutes = sessionMinutes(u.minutes);
   if (u.dayMinutes) for (const d of Object.keys(u.dayMinutes)) u.dayMinutes[d] = sessionMinutes(u.dayMinutes[d]);
   if (u.coachPreferences?.minutes != null) u.coachPreferences.minutes = sessionMinutes(u.coachPreferences.minutes);

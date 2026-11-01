@@ -1,3 +1,4 @@
+import {renderTourPage, offerTour, isTourActive} from './tour.js?v=31';
 import {exercises} from './data/exercises.js?v=31';
 import {skills} from './data/skills.js?v=31';
 import {shell} from './shell.js?v=31';
@@ -49,12 +50,20 @@ import {
   skillDetail
 }
 from './screens/skills.js?v=31';
+import {
+  admin
+}
+from './screens/admin.js?v=31';
+import {
+  relief
+}
+from './screens/relief.js?v=31';
 const aliases = {
   today: 'home', history: 'progress', workouts: 'library', program: 'coach', settings: 'profile', research: 'profile'
 };
 const pages = {
   home: 'home', coach: 'coach', work: 'work', library: 'library', skills: 'skills', progress: 'history',
-  profile: 'settings'
+  profile: 'settings', admin: 'admin', relief: 'relief'
 };
 export function resolveRoute(hash, {
   hasSession = false, section = null
@@ -170,13 +179,19 @@ export function createHistoryRouter( {
 let controller;
 export function initializeRouter() {
   controller = createHistoryRouter( {
-    win: window, location, history: window.history, state, hasSession:() => !!user()?.session, beforeNavigate:() => {
-      captureDraft();
+    win: window, location, history: window.history, state, hasSession:() => !!user()?.session || isTourActive(), beforeNavigate:() => {
+      if (!isTourActive()) captureDraft();
       const dialog=$('#modal');
       if(dialog){dialog.onclose=null;dialog.querySelectorAll('iframe').forEach(frame=>frame.remove());dialog.close();}
     }, render, focusMain:() => $('#main')?.focus( {
       preventScroll: true
     })
+  });
+  document.addEventListener('click', event => {
+    const link = event.target.closest?.('a[data-chain-ex]');
+    if (!link || event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button > 0) return;
+    event.preventDefault();
+    go('library/exercise/' + encodeURIComponent(link.dataset.chainEx));
   });
   controller.start();
 }
@@ -218,6 +233,8 @@ export function renderPage() {
     return;
   }
   if (state.page === 'research' || state.profileSection === 'sources') return research();
+  if (state.page === 'admin') return admin();
+  if (state.page === 'relief') return relief();
   if (!user()) {
     if (state.page === 'settings') return startOnboarding();
     return landing();
@@ -229,6 +246,7 @@ export function renderPage() {
 export function render() {
   const restore = state.page === 'onboarding' ? captureView(document):() => {
   };
-  renderPage();
+  renderTourPage(renderPage);
   restore();
+  offerTour();
 }

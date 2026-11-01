@@ -1,4 +1,8 @@
 import {
+  reliefEntry
+}
+from '../screens/relief.js?v=31';
+import {
   localDateKey
 }
 from '../calendar.js?v=31';
@@ -12,7 +16,7 @@ import {
 from '../engine.js?v=31';
 import {
   activeFilterChips, activeFilterCount, emptyFilters, exerciseDetailHTML, exerciseResults, filterExercises,
-  filterPanel, libraryHeader, skillsArea, sortExercises, workoutsArea
+  filterPanel, libraryHeader, quickFilters, skillsArea, sortExercises, workoutsArea
 }
 from '../library-view.js?v=31';
 import {
@@ -77,7 +81,7 @@ function exerciseDetail(id) {
     $('#modal').close();
     go(b.dataset.page)
   });
-  $$('[data-chain-ex]').forEach(b => b.onclick =() => go('library/exercise/' + encodeURIComponent(b.dataset.chainEx)));
+  $$('[data-chain-ex]').forEach(b => b.onclick =event => { event.preventDefault(); go('library/exercise/' + encodeURIComponent(b.dataset.chainEx)); });
   on('#favorite',() => {
     const u = user();
     u.favorites ??= [];
@@ -106,7 +110,7 @@ async function library() {
         area: state.libraryArea, query: state.libraryQuery, filters: state.libraryFilterSet, saved: state.librarySaved,
         signedIn: !!u, lang, sort: state.librarySort
       })}`
-    ) + `<div id="lib-active"></div><div id="library-body"></div><dialog id="lib-filters" ` +
+    ) + `${reliefEntry()}<div id="lib-active"></div><div id="library-body"></div><dialog id="lib-filters" ` +
     `class="lib-filter-sheet" aria-labelledby="lib-filter-title"></dialog></div>`));
     $$('[data-lib-area]').forEach(b => b.onclick =() => {
       if (state.libraryArea === b.dataset.libArea) return;
@@ -280,8 +284,19 @@ function renderLibraryResults() {
   $('#lib-active').innerHTML = activeFilterChips(state.libraryFilterSet, {
     saved: state.librarySaved, lang
   });
-  body.innerHTML = exerciseResults(list, {
-    lang
+  body.innerHTML = quickFilters(state.libraryFilterSet, lang) + exerciseResults(list, {lang, profile: user()});
+  $$('[data-quick-filter]').forEach(b => b.onclick = () => {
+    const [key, value] = b.dataset.quickFilter.split(':'), values = state.libraryFilterSet[key] || [];
+    state.libraryFilterSet = {...state.libraryFilterSet, [key]: values.includes(value) ? values.filter(v => v !== value) : [...values, value]};
+    renderLibraryResults();
+    document.querySelector(`[data-quick-filter="${key}:${value}"]`)?.focus({preventScroll: true});
+  });
+  $$('[data-area-jump]').forEach(b => b.onclick = event => {
+    event.preventDefault();
+    const section = document.getElementById('lib-area-' + b.dataset.areaJump);
+    section?.scrollIntoView({block: 'start'});
+    section?.querySelector('h2')?.setAttribute('tabindex', '-1');
+    section?.querySelector('h2')?.focus({preventScroll: true});
   });
   const badge = $('#lib-open-filters');
   if (badge) {

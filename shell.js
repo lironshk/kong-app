@@ -1,3 +1,4 @@
+import {isTourActive} from './tour.js?v=31';
 import {
   captureView
 }
@@ -52,7 +53,7 @@ function shell(content, {
   const u = user();
   const activePage=state.page==='skills'&&u?'library':state.page;
   const focusMode = state.page === 'work';
-  sessionWakeLock(focusMode && !state.finishMode && !document.hidden);
+  sessionWakeLock(focusMode && !state.finishMode && !document.hidden && !isTourActive());
   document.documentElement.lang = he() ? 'he': 'en';
   document.documentElement.dir = he() ? 'rtl': 'ltr';
   document.title =( (

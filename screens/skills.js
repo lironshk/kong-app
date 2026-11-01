@@ -15,7 +15,7 @@ import {
 }
 from '../exercise-visuals.js?v=31';
 import {
-  onboardingSkillChoices
+  onboardingSkillChoices, skillStepsHTML
 }
 from '../journey-view.js?v=31';
 import {
@@ -155,65 +155,7 @@ function skillDetail(id) {
     `${skillGates(s)}`
   ) + (
     `${state.source === 'self-report' && !state.achieved ? '<p>דיווח עצמי · שיבוץ ראשוני; ביצועים שיתועדו בהמשך יכולים לשנות אותו.</p>': ''}`
-  ) + `<h3>מפת הדרך</h3>` + (
-    `${s.stages.map((stage, i) => {
-      const e = exercises.find(e => e.id === stage.exerciseId);
-      return(`<section class="card roadmap-step ` + (
-        `${!state.achieved && state.stage === i ? 'current-stage': ''}`
-      ) + `" ` + (
-        `${!state.achieved && state.stage === i ? 'aria-current="step"': ''}`
-      ) + `><h3>שלב ` + (
-        `${i + 1}`
-      ) + ` · ` + (
-        `${esc(e?.he || 'תרגיל בהכנה')}`
-      ) + `</h3><span class="chip roadmap-state">` + (
-        `${state.achieved || i < state.stage ? 'הושלם': i === state.stage ? 'השלב הנוכחי': 'בהמשך'}`
-      ) + `</span>` + (
-        `${exerciseVisual(e, {
-          lang: 'he', compact: true
-        })}`
-      ) + `<p class="roadmap-pass">כדי לעבור שלב: ` + (
-        `${stage.exit.sets || 1}`
-      ) + ` × ` + (
-        `${stage.exit.value}`
-      ) + ` ` + (
-        `${stage.exit.unit === 'seconds' ? 'שניות': 'חזרות'}`
-      ) + (
-        `${stage.exit.perSide ? ' לכל צד': ''}`
-      ) + `</p><p>טווח זמן לשלב: ` + (
-        `${esc(stage.timeline)}`
-      ) + `</p><details class="roadmap-details"><summary>פירוט</summary>` + (
-        `${!state.achieved && i === state.stage ? weeklySkillPractice(u, s): ''}`
-      ) + `<p>כניסה: ` + (
-        `${stage.entry ? criterion(stage.entry): s.gates.map(g => esc(exercises.find(e => e.id === g.exerciseId)?.he || 'תרגיל') + ' ' + criterion(g)).join(
-        ' · ')}`
-      ) + `</p><p>כדי לעבור שלב: ` + (
-        `${criterion(stage.exit)}`
-      ) + ` בביצוע נקי וללא כאב, ולאחר אישור מפורש.</p><p>` + (
-        `${esc(s.branchPolicy)}`
-      ) + `</p><p>` + (
-        `${esc(stage.exit.task)}`
-      ) + ` · ` + (
-        `${esc(stage.exit.setup)}`
-      ) + ` · ` + (
-        `${esc(stage.exit.assistance)}`
-      ) + ` · ` + (
-        `${esc(stage.exit.range_of_motion)}`
-      ) + ` · ` + (
-        `${esc(stage.exit.reserve)}`
-      ) + ` · ` + (
-        `${esc(stage.exit.safeExit)}`
-      ) + `</p><p>` + (
-        `${esc(e?.cue || 'נדרשת הדרכה אישית')}`
-      ) + `</p><p>טעויות נפוצות: ` + (
-        `${[...(e?.mistakes || []), ... s.mistakes].map(esc).join(' · ')}`
-      ) + `</p>` + (
-        `${e ?(`<button class="secondary" data-road-ex="` + (
-          `${e.id}`
-        ) + `">הוראות התרגיל</button>`): ''}`
-      ) + `</details></section>`);
-    }).join('')}`
-  ) + `<h3>דרישות מוקדמות</h3><ul>` + (
+  ) + skillStepsHTML(s, state, {currentDetails: !state.achieved ? weeklySkillPractice(u, s) : ''}) + `<h3>דרישות מוקדמות</h3><ul>` + (
     `${s.prerequisites.map(x =>(`<li>` + (
       `${esc(x)}`
     ) + `</li>`)).join('')}`

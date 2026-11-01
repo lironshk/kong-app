@@ -1,5 +1,10 @@
+import {mainSeconds} from './session-extras.js?v=31';
+import {finishExecution} from './session-execution.js?v=31';
+import { unresolvedPain, reportedPain, returnDecision, painRule } from './training-safety.js?v=31';
+import { volumeBudget, fatigueDecision } from './training-volume.js?v=31';
+import { chooseVariation, variationBlock } from './variation-choice.js?v=31';
 import {
-  equipmentSchema, hasEquipment
+  equipmentSchema, hasEquipment, workSeconds, lighterActive
 }
 from './training-evidence.js?v=31';
 export const RULE_VERSION = 'foundation-0.3.0';
@@ -48,17 +53,13 @@ const nativePrescription = s => !s.planned_exercise_id || s.planned_exercise_id 
 const baselineMatch =(s, e) => nativePrescription(s) && s.performed_exercise_id === e.id && s.unit ===(e.unit || 'reps') && conditionText(s.
 assistance) === '' && conditionText(s.setup) === '' && Number(s.added_load || 0) === 0 &&(s.side_allocation || null) ===(e.perSide ?
 'total_both_sides': null) && Number.isFinite(s.target) && s.target > 0 && Number.isFinite(s.actual) && s.actual >= 0;
-function painReview(logs, reviewedAt) {
-  const last = logs.filter(l => l.pain === true).at(- 1);
-  return last && !(Number.isFinite(dateTime(reviewedAt)) && dateTime(reviewedAt) >= logTime(last)) ? last: null;
-}
 function earnedTarget(e, entries, logs) {
   let earned = 0;
   for (const {
     log, sets
   }
   of entries) {
-    if (log.completed !== true || log.pain === true || ! ['normal', 'easy'].includes(log.effort) || sets.some(s => s.quality !== 'good' || s.
+    if (log.completed !== true || log.pain === true || ! ['normal', 'easy'].includes(log.effort) || sets.some(s => s.pain || s.quality !== 'good' || s.
     actual < s.target)) continue;
     const approval = log.plan?.adaptation?.approvedProgressions?.find(a => a.exerciseId === e.id);
     if (!approval) continue;
@@ -110,9 +111,11 @@ export function adaptTarget(e, target, logs, {
 }
 export function plan(p, minutes = p?.minutes, readiness = 'normal', context = {
 }) {
-  const now = context.now ?? new Date();
+  const now = new Date(context.now ?? Date.now());
   const logs = sortedLogs(context.history ?? p?.logs).filter(l => logTime(l) <= + now);
-  const pain = painReview(logs, context.painReviewedAt ?? p?.painReviewedAt);
+  const pain = unresolvedPain(p, {logs, now, reviewedAt: context.painReviewedAt});
+  const returning = returnDecision(p, logs, now).returnAfterBreak;
+  const fatigue = fatigueDecision(logs, now), volume = volumeBudget(p, logs, now);
   // Only an explicit capability reassessment starts a fresh comparison baseline.
   // Pain review deliberately uses the full history, including earlier assessments.
   const assessmentAt = dateTime(p?.assessmentAt);
@@ -136,7 +139,7 @@ export function plan(p, minutes = p?.minutes, readiness = 'normal', context = {
   days.indexOf(dayIndex));
   const variant =(sessionIndex + weekIndex) % 3;
   const pick = id => exercises.find(e => e.id === id);
-  const tired = readiness === 'tired';
+  const tired = readiness === 'tired' || fatigue || returning || lighterActive(p,now);
   const push = p.push >= 8 && !tired ? 'push': p.equipment.includes('lowbar') ? 'incline-push': p.equipment.includes('wall') ? 'wall-push':
   'knee-push';
   const pull = p.pull >= 5 && p.equipment.includes('bar') && !tired ? 'pull': p.equipment.includes('lowbar') ? 'row': p.equipment.includes('band'
@@ -153,6 +156,7 @@ export function plan(p, minutes = p?.minutes, readiness = 'normal', context = {
   let chosen = ids.map(pick).filter(e => e && !e.advancedOnly);
   if (minutes < 15) chosen = chosen.filter(e => e.id !== accessory);
   const recovery = context.recovery === true;
+  chosen = chosen.map(e => chooseVariation(p, e.id, {logs, now})).filter(Boolean);
   const warm = Math.min(300, Math.max(120, Math.round(minutes * 60 * .12)));
   const cool = 60, work = minutes < 15 ? 30: tired ? 30: p.goal === 'endurance' ? 45: 40;
   const rest = minutes < 15 ? 60: tired ? 80: p.goal === 'endurance' ? 45: 80;
@@ -160,8 +164,9 @@ export function plan(p, minutes = p?.minutes, readiness = 'normal', context = {
   const maxRounds = 3;
   // Allocate whole rounds. An optional accessory can be omitted before building,
   // but a push/pull/legs/core round is never truncated after generation.
-  if (chosen.length * slot > minutes * 60 - warm - cool) chosen = chosen.filter(e => e.id !== accessory);
-  const rounds = recovery ? 0: Math.min(tired ? 2: maxRounds, Math.floor((minutes * 60 - warm - cool) /(chosen.length * slot)));
+  if (chosen.length * slot > minutes * 60) chosen = chosen.filter(e => e.id !== accessory);
+  const rounds = recovery ? 0: Math.min(fatigue ? 1 : tired || p.experience === 'new' ? 2: maxRounds,
+    Math.floor((minutes * 60) /(chosen.length * slot)));
   let blocks = [ {
     id: 'warm', he: 'חימום ותנועה', en: 'Warm-up and movement', phase: 'warm', seconds: warm, cue:
     'הליכה נינוחה במקום, סיבובי כתפיים וסקוואטים קלים בטווח נוח. להתחיל לאט ולהעלות קצב בהדרגה.', target: null
@@ -209,26 +214,50 @@ export function plan(p, minutes = p?.minutes, readiness = 'normal', context = {
   if (recovery) {
     blocks.push( {
       id: 'recovery', he: 'תנועה קלה והתאוששות', en: 'Easy movement and recovery', phase: 'recovery', seconds: Math.min(600,
-      minutes * 60 - warm - cool), cue: 'הליכה קלה בקצב שמאפשר שיחה ותנועות נוחות ללא כאב. אין צורך באימון כוח נוסף היום.',
+      minutes * 60), cue: 'הליכה קלה בקצב שמאפשר שיחה ותנועות נוחות ללא כאב. אין צורך באימון כוח נוסף היום.',
       target: null
     });
   } else for (let r = 0;
   r < rounds;
   r++) for (const e of chosen) {
+    if (!volume.room(e)) continue;
+    const usedSets = blocks.filter(b => b.phase === 'work' && b.id === e.id).length;
+    if ((e.advancedOnly || e.novelEccentric) && usedSets >= p.exerciseClearances[e.id].sets) continue;
+    const legacyTarget = adaptedTarget(e);
+    const dose = variationBlock(p, {...e, phase: 'work', round: r + 1, set: r + 1}, {logs: comparisonLogs, now, easy: tired});
+    if (dose.source === 'conservative-default' && usedSets >= 2) continue;
+    // Older exact-condition records remain conservative ceilings during the transition.
+    if (evidence.has(e.id) && dose.target != null) {
+      const prior = comparisonLogs.map(log => ({log, sets: (log.sets || []).filter(s => baselineMatch(s, e))}));
+      const earned = earnedTarget(e, prior.filter(x => x.sets.length), comparisonLogs);
+      dose.target = approvedProgressions.some(a => a.exerciseId === e.id) || earned >= legacyTarget ? legacyTarget : Math.min(dose.target, legacyTarget);
+      dose.seconds = workSeconds(dose, dose.target);
+    }
+    blocks.push(dose);
+    volume.count(e);
     blocks.push( {
-      ... e, phase: 'work', round: r + 1, set: r + 1, seconds: work, target: adaptedTarget(e), unit: e.unit || 'reps',
-      rir: '2–3', side_allocation: e.perSide ? 'total_both_sides': null
-    });
-    blocks.push( {
-      id: e.id + '-rest', he: 'מנוחה והכנה', en: 'Rest and prepare', phase: 'rest', seconds: rest, target: null,
+      id: e.id + '-rest', he: 'מנוחה והכנה', en: 'Rest and prepare', phase: 'rest',
+      seconds: dose.reviewedExecution ? Math.max(rest, dose.restSeconds) : rest, target: null,
       cue: 'לנשום בנוחות. להאריך את המנוחה לפי הצורך; זמן האימון הוא הערכה.'
     });
   }
+  if (blocks.at(-1)?.phase === 'rest') blocks.pop();
   blocks.push( {
     id: 'cool', he: 'סיום ונשימה', en: 'Cool down', phase: 'cool', seconds: cool, cue: 'להאט בהדרגה. לנשום ברוגע ולבדוק איך הגוף מרגיש.',
     target: null
   });
   const[titleHe, titleEn] = recovery ? ['מרווח לנשימה', 'Room to recover']: titles[p.goal][variant];
+  if (blocks.filter(b => b.phase === 'work' && b.round === 1).reduce((n, b) => n + b.seconds + rest, 0) > minutes * 60) {
+    blocks = blocks.filter((b, i, all) => b.sourceExerciseId !== accessory && !(b.phase === 'rest' && all[i - 1]?.sourceExerciseId === accessory));
+  }
+  // Keep complete rounds within the requested budget after calculating real variation doses.
+  while (mainSeconds(blocks) > minutes * 60 && blocks.some(b => b.phase === 'work')) {
+    const lastRound = blocks.filter(b => b.phase === 'work').at(-1).round;
+    blocks = blocks.filter((b, i, all) => b.phase === 'work' ? b.round !== lastRound :
+      !(b.phase === 'rest' && all[i - 1]?.phase === 'work' && all[i - 1].round === lastRound));
+  }
+  for (const key of Object.keys(volume.planned)) delete volume.planned[key];
+  blocks.filter(b => b.phase === 'work').forEach(b => volume.count(b));
   const total_seconds = blocks.reduce((n, b) => n + b.seconds, 0);
   const comparisons = [... evidence.values()].filter(e => blocks.some(b => b.phase === 'work' && b.id === e.exerciseId));
   const reductions = comparisons.filter(e => e.causes.length);
@@ -271,16 +300,20 @@ export function plan(p, minutes = p?.minutes, readiness = 'normal', context = {
   };
   const warning = !pull ? 'לא אושר ציוד משיכה מתאים. אין כאן תחליף שקול לאימון משיכה.': null;
   const skillNote = p.goal === 'skills' ? 'נבנה בסיס כללי בלבד. עמידת ידיים, מאסל־אפ ופרונט לבר אינם נפתחים אוטומטית על סמך דיווח עצמי.': null;
-  return {
-    rule_version: RULE_VERSION, adaptation, minutes, total_seconds, unused_seconds: minutes * 60 - total_seconds,
+  return finishExecution({
+    rule_version: RULE_VERSION, adaptation, returnAfterBreak: returning, sessionVolumeReduction: fatigue,
+    volume: {range: volume.range, previous: volume.previous, planned: volume.planned},
+    minutes, total_seconds, unused_seconds: minutes * 60 - total_seconds,
     blocks, missing_pull: !pull, available: chosen.every(e => available(e, p)), title: titleHe, titleHe,
     titleEn, focus: recovery ? 'recovery': p.goal, rounds, dayIndex, sessionIndex, weekIndex, recovery,
-    readiness, exerciseIds: blocks.filter(b => b.phase === 'work').map(b => b.id), sets: blocks.filter(b => b.phase === 'work').length,
-    warnings: [warning, skillNote].filter(Boolean), skillNote, sources: RULE_SOURCES, reason: [adaptation.reasonHe,
+    readiness, requested_minutes: minutes, exerciseIds: blocks.filter(b => b.phase === 'work').map(b => b.id),
+    sets: blocks.filter(b => b.phase === 'work').length,
+    warnings: [painRule, returning ? 'חזרה אחרי הפסקה: מתחילים בדרגה קלה יותר ובודקים שוב את היכולת.' : null, warning, skillNote].filter(Boolean),
+    skillNote, sources: RULE_SOURCES, reason: [adaptation.reasonHe,
     recovery ? 'יום תנועה קלה בין אימוני כוח.': 'בחירה לפי היכולת המדווחת, הציוד הזמין והמטרה שלך.',
-    tired ? 'היום הופחתו הדרגה והנפח.': 'לשמור כ־2–3 חזרות אפשריות במאגר ולעצור אם הטכניקה נשברת.', warning,
+    tired ? 'היום הופחתו הדרגה והנפח.': 'לשמור את העתודה שמופיעה בכל סט ולעצור בירידת שליטה.', warning,
     skillNote, 'הספים והמינונים הם כללי מוצר מתועדים, שטרם עברו אישור מאמן אישי.'].filter(Boolean).join(' ')
-  };
+  }, {profile: p, logs, now});
 }
 export function weekPlan(p, weekIndex = 0) {
   const days = [... new Set((p.days || []).filter(d => Number.isInteger(d) && d >= 0 && d < 7))].sort((a,
@@ -295,21 +328,21 @@ export function weekPlan(p, weekIndex = 0) {
   });
 }
 export function recommendation(log) {
-  return log.pain ? 'דווח כאב: לעצור את התרגיל ולפנות לבדיקה מתאימה לפני חזרה אליו. לא תוצע העלאת עומס.': log.effort === 'hard' ?
+  return reportedPain(log) ? 'דווח כאב: לעצור את התרגיל ולפנות לבדיקה מתאימה לפני חזרה אליו. לא תוצע העלאת עומס.': log.effort === 'hard' ?
   'האימון היה מאתגר. לחזור על אותה רמה או לבחור יום קל; לבדוק התאוששות לפני האימון הבא.': log.sets?.some(s => s.quality === 'uncertain') ?
   'לחזור על אותה וריאציה ולהתמקד בטכניקה לפני שינוי עומס.':
   'לשמור על אותה וריאציה כדי להשוות ביצועים. עלייה ברמה דורשת כמה ביצועים עקביים והערכת טכניקה.';
 }
 export function nextAction(logs = [], context = {
 }) {
-  const ordered = sortedLogs(logs).filter(l => logTime(l) <= +(context.now ?? new Date())), pain = painReview(ordered,
-  context.painReviewedAt), latest = ordered.at(- 1);
+  const ordered = sortedLogs(logs).filter(l => logTime(l) <= +(context.now ?? new Date())),
+    pain = unresolvedPain({}, {logs: ordered, now: context.now ?? new Date(), reviewedAt: context.painReviewedAt}), latest = ordered.at(-1);
   if (pain) return {
     status: 'review', message: recommendation(pain), sourceLogId: pain.id || null, sourceDate: pain.completed_at,
     automaticProgression: false
   };
   return latest ? {
-    status: latest.effort === 'hard' ? 'recover': 'repeat', message: latest.pain ?
+    status: latest.effort === 'hard' ? 'recover': 'repeat', message: reportedPain(latest) ?
     'דיווח הכאב עבר בדיקת מוכנות מפורשת. להתחיל בזהירות ולעצור אם כאב חוזר.': recommendation(latest),
     automaticProgression: false
   }: {
@@ -364,7 +397,7 @@ export function progressionCheckpoint(exerciseId, logs = [], {
     const prescribed =(row.log.plan?.blocks || []).filter(b => b.phase === 'work' && b.id === exerciseId);
     const allPrescribedLogged = !prescribed.length || row.sets.length >= prescribed.length;
     const good = allPrescribedLogged && row.log.pain !== true && row.log.completed === true && ['easy',
-    'normal'].includes(row.log.effort) && row.sets.every(s => s.quality === 'good' && s.actual >= s.target && s.target === currentTarget);
+    'normal'].includes(row.log.effort) && row.sets.every(s => !s.pain && s.quality === 'good' && s.actual >= s.target && s.target === currentTarget);
     if (!good) break;
     const d = new Intl.DateTimeFormat('en-CA', {
       timeZone: 'Asia/Jerusalem'
@@ -375,9 +408,9 @@ export function progressionCheckpoint(exerciseId, logs = [], {
     }
     if (recent.length === 3) break;
   }
-  const lastPain = sortedLogs(logs).filter(l => logTime(l) <= + now).filter(l => l.pain === true).at(- 1);
+  const lastPain = sortedLogs(logs).filter(l => logTime(l) <= + now).filter(reportedPain).at(-1);
   const evidence = recent.map(x => x.log.id).filter(id => typeof id === 'string' && id);
-  const fresh = + now - dateTime(latest.log.completed_at) <= 21 * 86400000;
+  const fresh = !returnDecision({assessmentAt}, logs, now).returnAfterBreak;
   const eligible = recent.length === 3 && new Set(evidence).size === 3 && fresh &&(!lastPain || dateTime(lastPain.completed_at) < dateTime(recent
   [0].log.completed_at));
   const step = unit === 'seconds' ?(e.perSide ? 2: 5):(e.perSide ? 2: 1);
@@ -386,10 +419,10 @@ export function progressionCheckpoint(exerciseId, logs = [], {
     'building', suggestedTarget: eligible ? currentTarget + step: null, reasonHe: eligible ? (
       'שלושה אימונים נפרדים באותם תנאים הושלמו בשליטה מדווחת. אפשר לאשר יעד מעט גבוה יותר; זו הצעה, ' +
       'לא בדיקת טכניקה.'
-    ): !fresh ? 'חלפו יותר משלושה שבועות מהביצוע המקביל האחרון. לחזור להערכת היכולת לפני שינוי יעד.': base.reasonHe,
+    ): !fresh ? 'חלפו שבועיים ללא אימון מתועד. לחזור להערכת היכולת לפני שינוי יעד.': base.reasonHe,
     reasonEn: eligible ? (
       'Three separate sessions under matching conditions met their targets with reported control. A ' +
       'small increase can be explicitly approved; this is not a technique assessment.'
-    ): !fresh ? 'The last comparable session was over three weeks ago. Reassess before changing the target.': base.reasonEn
+    ): !fresh ? 'Training has been paused for at least two weeks. Reassess before changing the target.': base.reasonEn
   };
 }

@@ -1,3 +1,6 @@
+import {variationEvidence} from './training-evidence.js?v=31';
+import {exerciseFamilies, familyOf} from './data/exercise-families.js?v=31';
+import {recommendTier} from './variation-choice.js?v=31';
 import {
   skillTarget
 }
@@ -46,7 +49,27 @@ export const EQUIPMENT_LABELS = {
   'Parallettes'], rings: ['טבעות', 'Rings'], bench: ['משטח יציב', 'Stable bench'], anchor: ['נקודת עיגון',
   'Anchor point'], box: ['ארגז', 'Box'], pole: ['עמוד', 'Pole']
 };
+// Muscle labels are stored in Hebrew on each exercise; English is display-only.
+export const MUSCLE_LABELS_EN = {
+  'חזה': 'Chest', 'גב': 'Back', 'כתפיים': 'Shoulders', 'כתף קדמית': 'Front delts', 'כתף אחורית': 'Rear delts',
+  'יד קדמית': 'Biceps', 'יד אחורית': 'Triceps', 'אחיזה': 'Grip', 'ליבה': 'Core', 'אלכסוני הבטן': 'Obliques',
+  'מייצבי שכמות': 'Scapular stabilizers', 'מסור קדמי': 'Serratus anterior', 'מייצבי כתפיים': 'Shoulder stabilizers',
+  'מייצבי גב': 'Back stabilizers', 'ירך קדמית': 'Quads', 'ירך אחורית': 'Hamstrings', 'ישבן': 'Glutes',
+  'שוקיים': 'Calves', 'מכופפי ירך': 'Hip flexors', 'מקרבי ירך': 'Adductors', 'מרחיקי ירך': 'Abductors',
+  'מסובבי ירך': 'Hip rotators', 'מייצבי אגן': 'Pelvic stabilizers', 'רגליים': 'Legs',
+  'תנועתיות עמוד שדרה': 'Spine mobility', 'תנועתיות בית חזה': 'Thoracic mobility', 'תנועתיות קרסול': 'Ankle mobility'
+};
+export function musclesHTML(e, lang = 'he') {
+  const list = e.muscles || [];
+  return list.length ? (
+    `<ul class="lib-muscles">` +
+    `${list.map(m => `<li class="lib-tag">${esc(lang === 'en' ? MUSCLE_LABELS_EN[m] || m: m)}</li>`).join('')}` +
+    `</ul>`
+  ): '';
+}
 export const PATTERN_LABELS = {
+  shoulder_external_rotation: ['סיבוב כתף חיצוני', 'Shoulder external rotation'],
+  trunk_extension: ['פשיטת גו', 'Trunk extension'],
   horizontal_push: ['דחיקה אופקית', 'Horizontal push'], vertical_push: ['דחיקה אנכית', 'Vertical push'],
   horizontal_pull: ['משיכה אופקית', 'Horizontal pull'], vertical_pull: ['משיכה אנכית', 'Vertical pull'],
   support: ['תמיכה', 'Support'], scapular_control: ['שליטת שכמות', 'Scapular control'], squat: ['סקוואט',
@@ -72,8 +95,15 @@ export const FORMAT_LABELS = {
 };
 export const AREAS = [ ['exercises', 'תרגילים', 'Exercises'], ['skills', 'סקילים', 'Skills'], ['workouts',
 'אימונים', 'Workouts']];
-export const FACETS = ['equipment', 'pattern', 'level', 'skill'];
+export const MUSCLE_AREAS = {
+  chest: ['חזה', 'Chest'], back: ['גב', 'Back'], shoulders: ['כתפיים', 'Shoulders'],
+  legs: ['רגליים', 'Legs'], glutes: ['ישבן', 'Glutes'], core: ['ליבה', 'Core'],
+  fullbody: ['כל הגוף', 'Full body'], mobility: ['תנועתיות', 'Mobility']
+};
+export const TIER_LABELS = {easy: ['קלה', 'Easy'], regular: ['רגילה', 'Regular'], hard: ['קשה', 'Hard']};
+export const FACETS = ['area', 'tier', 'equipment', 'pattern', 'level', 'skill'];
 const FACET_TITLES = {
+  area: ['אזור בגוף', 'Muscle area'], tier: ['קושי במשפחה', 'Family difficulty'],
   equipment: ['ציוד', 'Equipment'], pattern: ['דפוס תנועה', 'Movement pattern'], level: ['דרגה', 'Level'],
   skill: ['סקיל', 'Skill']
 };
@@ -84,7 +114,7 @@ const nameOf =(x, lang) => lang === 'en' ? x?.en: x?.he;
 const byId = id => exercises.find(e => e.id === id);
 export function emptyFilters() {
   return {
-    equipment: [], pattern: [], level: [], skill: []
+    area: [], tier: [], equipment: [], pattern: [], level: [], skill: []
   };
 }
 export function activeFilterCount(f) {
@@ -92,12 +122,15 @@ export function activeFilterCount(f) {
 }
 export function facetOptions() {
   return {
+    area: Object.keys(MUSCLE_AREAS), tier: Object.keys(TIER_LABELS),
     equipment: ['none', ... Object.keys(EQUIPMENT_LABELS).filter(id => id !== 'none' && exercises.some(e => e.equipment.includes(id)))],
     pattern: Object.keys(PATTERN_LABELS).filter(id => exercises.some(e => e.pattern === id)), level: [1,
     2, 3, 4, 5].filter(n => exercises.some(e => e.level === n)).map(String), skill: skills.map(s => s.id)
   };
 }
 export function facetValueLabel(facet, value, lang = 'he') {
+  if (facet === 'area') return pick(MUSCLE_AREAS[value], lang);
+  if (facet === 'tier') return pick(TIER_LABELS[value], lang);
   if (facet === 'equipment') return equipmentLabel(value, lang);
   if (facet === 'pattern') return patternLabel(value, lang);
   if (facet === 'level') return levelLabel(value, lang);
@@ -106,7 +139,9 @@ export function facetValueLabel(facet, value, lang = 'he') {
 const skillMembers = new Map(skills.map(s => [s.id, new Set( [... s.steps, ... s.stages.flatMap(st => [st.exerciseId,
 ...(st.drills || [])])])]));
 function searchText(e) {
-  return[e.he, e.en, ...(e.muscles || []), ...(PATTERN_LABELS[e.pattern] || []), ... e.equipment.flatMap(x => EQUIPMENT_LABELS[x] || [x])].join(
+  const family = familyOf(e.id)?.family;
+  return[family?.he, family?.en, e.he, e.en, ...(e.muscles || []), ...(PATTERN_LABELS[e.pattern] || []),
+  ... e.equipment.flatMap(x => EQUIPMENT_LABELS[x] || [x])].join(
   ' ').toLowerCase();
 }
 // Within a facet values are alternatives (OR); facets combine (AND).
@@ -119,7 +154,9 @@ export function filterExercises( {
   const q = query.trim().toLowerCase(), f = {
     ... emptyFilters(), ... filters
   };
-  return list.filter(e =>(!saved || saved.includes(e.id)) &&(!f.equipment.length ||(e.equipment.length ? e.equipment.every(x => f.equipment.
+  return list.filter(e => (!f.area.length || f.area.includes(familyOf(e.id)?.family.area)) &&
+    (!f.tier.length || f.tier.includes(familyOf(e.id)?.tier)) &&
+    (!saved || saved.includes(e.id)) &&(!f.equipment.length ||(e.equipment.length ? e.equipment.every(x => f.equipment.
   includes(x)): f.equipment.includes('none'))) &&(!f.pattern.length || f.pattern.includes(e.pattern)) &&(!f.level.length || f.level.includes(
   String(e.level))) &&(!f.skill.length || f.skill.some(id => skillMembers.get(id)?.has(e.id))) &&(!q || searchText(e).includes(q))).sort((a,
   b) => Number(!!movementAtlas[b.id]) - Number(!!movementAtlas[a.id]));
@@ -291,32 +328,65 @@ export function activeFilterChips(filters = emptyFilters(), {
     `</button></div>`
   ): '';
 }
-export function exerciseResults(list, {
-  lang = 'he'
-} = {
-}) {
-  const t =(a, b) => lang === 'en' ? b: a;
-  return (
-    `<p class="lib-result-count" role="status">` +
-    `${list.length}` +
-    ` ` +
-    `${t('תרגילים', 'exercises')}` +
-    `</p>`
-  ) +(list.length ? (
-    `<ul class="lib-grid">` +
-    `${list.map((e, i) => exerciseCard(e, {
-      lang, eager: i < 3
-    })).join('')}` +
-    `</ul>`
-  ): (
-    `<div class="lib-empty"><h2>` +
-    `${t('לא נמצאו תרגילים שמתאימים לסינון', 'No exercises match these filters')}` +
-    `</h2><p>` +
-    `${t('לנסות מילה אחרת או להסיר חלק מהסינון.', 'Try another word or remove some filters.')}` +
-    `</p><button class="lib-clear" data-clear-filters>` +
-    `${t('ניקוי סינון', 'Clear filters')}` +
-    `</button></div>`
-  ));
+// Keep all siblings visible for context; only matches are emphasized after filtering.
+export function familyCard(family, {lang = 'he', matches = null, currentId = null, profile = null} = {}) {
+  const t = (a, b) => lang === 'en' ? b : a;
+  const assessmentAt = Date.parse(profile?.assessmentAt);
+  const logs = (profile?.logs || []).filter(l => l.completed && Date.parse(l.completed_at) <= Date.now() &&
+    (!Number.isFinite(assessmentAt) || Date.parse(l.completed_at) >= assessmentAt));
+  const hasEvidence = profile && Object.values(family.tiers).some(id => {
+    const e = byId(id);
+    return e && variationEvidence({...profile, capabilityCheck: {results: []}}, e, logs);
+  });
+  const equipment = profile?.locations?.find(l => l.id === profile.activeLocation)?.equipment || profile?.equipment || [];
+  const recommended = hasEvidence ? recommendTier(profile, family, {equipment}).exerciseId : null;
+  return `<article class="lib-family" data-family="${esc(family.id)}"><h3>${esc(nameOf(family, lang))}</h3>
+    <ul class="lib-family-tiers">${Object.entries(TIER_LABELS).map(([tier, label]) => {
+      const e = byId(family.tiers[tier]);
+      if (!e) return '';
+      return `<li class="lib-tier ${matches && !matches.has(e.id) ? 'is-context' : 'is-match'}">
+        <strong>${pick(label, lang)}</strong><a class="lib-card" href="#library/exercise/${encodeURIComponent(e.id)}" data-chain-ex="${esc(e.id)}"
+        ${currentId === e.id ? 'aria-current="true"' : ''}>
+        ${movementThumb(e, {lang})}<span class="lib-card-body"><span class="lib-card-title">${esc(nameOf(e, lang))}</span>
+        <span class="lib-tag">${esc(levelLabel(e.level, lang))}</span>
+        <span class="lib-tag">${esc(e.equipment.length ? e.equipment.map(x => equipmentLabel(x, lang)).join(' · ') : equipmentLabel('none', lang))}</span>
+        ${e.advancedOnly || e.novelEccentric ? `<small>${t('נדרש אישור אישי', 'Individual clearance required')}</small>` : ''}
+        ${currentId === e.id ? `<b>${t('התרגיל הנוכחי', 'Current exercise')}</b>` : ''}
+        ${recommended === e.id ? `<b>${t('מומלץ לך', 'Recommended for you')}</b>` : ''}</span></a></li>`;
+    }).join('')}</ul>
+    ${Object.values(family.tiers).some(id=>!id) ? `<small class="lib-missing-note">${t(
+      'מוצגות האפשרויות הזמינות לתנועה הזו.', 'Available options for this movement.')}</small>` : ''}
+    <details><summary>${t('פירוט', 'Details')}</summary><p>${esc(family.traineeNote || family.note)}</p></details>
+    ${['easierFamily', 'harderFamily', 'relatedFamily', ...(family.relatedFamilies || []).map(id => 'related:' + id)].map(key => {
+      const next = exerciseFamilies.find(f => f.id === (key.startsWith('related:') ? key.slice(8) : family[key]));
+      if (key === 'relatedFamily' && family.relatedFamily === family.easierFamily) return '';
+      const id = next && (next.tiers.easy || next.tiers.regular || next.tiers.hard);
+      return id ? `<a class="lib-family-next" href="#library/exercise/${encodeURIComponent(id)}" data-chain-ex="${esc(id)}">
+        ${key.startsWith('related') ? t('אפשרות נוספת: ', 'Related option: ') :
+        key === 'easierFamily' ? t('הכנה: ', 'Preparation: ') : t('ההמשך: ', 'Continue: ')}${esc(nameOf(next, lang))}</a>` : '';
+    }).join('')}</article>`;
+}
+export function quickFilters(filters = emptyFilters(), lang = 'he') {
+  return `<div class="lib-quick-filters">${['area', 'tier'].map(key => `
+    <div role="group" aria-label="${pick(FACET_TITLES[key], lang)}">${facetOptions()[key].map(v => `
+    <button class="lib-option" data-quick-filter="${key}:${v}" aria-pressed="${(filters[key] || []).includes(v)}">
+    ${esc(facetValueLabel(key, v, lang))}</button>`).join('')}</div>`).join('')}</div>`;
+}
+export function exerciseResults(list, {lang = 'he', profile = null} = {}) {
+  const t = (a, b) => lang === 'en' ? b : a, matches = new Set(list.map(e => e.id));
+  const families = [...new Set(list.map(e => familyOf(e.id)?.family).filter(Boolean))].sort((a,b)=>
+    (a.id==='push-foundation' ? -1 : b.id==='push-foundation' ? 1 : 0) ||
+    Math.min(...Object.values(a.tiers).filter(Boolean).map(id=>byId(id).level)) - Math.min(...Object.values(b.tiers).filter(Boolean).map(id=>byId(id).level)));
+  const areas = Object.keys(MUSCLE_AREAS).filter(area => families.some(f => f.area === area));
+  return `<p class="lib-result-count" role="status">${list.length} ${t('תרגילים', 'exercises')}</p>` + (list.length ?
+    areas.map(area => `<section class="lib-muscle-section" id="lib-area-${area}" aria-labelledby="lib-title-${area}">
+      <h2 id="lib-title-${area}">${pick(MUSCLE_AREAS[area], lang)}
+      <small>${list.filter(e => familyOf(e.id)?.family.area === area).length} ${t('תרגילים', 'exercises')} ·
+      ${families.filter(f => f.area === area).length} ${t('משפחות', 'families')}</small></h2>
+    <div class="lib-families">${families.filter(f => f.area === area).map(f => familyCard(f, {lang, matches, profile})).join('')}</div></section>`).join('') :
+    `<div class="lib-empty"><h2>${t('לא נמצאו תרגילים שמתאימים לסינון', 'No exercises match these filters')}</h2>
+    <p>${t('לנסות מילה אחרת או להסיר חלק מהסינון.', 'Try another word or remove some filters.')}</p>
+    <button class="lib-clear" data-clear-filters>${t('ניקוי סינון', 'Clear filters')}</button></div>`);
 }
 export function filterPanel(draft = emptyFilters(), {
   lang = 'he', signedIn = false, saved = false
@@ -432,13 +502,13 @@ export function skillRoadmapCard(s, {
     `<span class="lib-stage-track" aria-hidden="true">` +
     `${s.stages.map((x, i) => (
       `<span class="` +
-      `${i < state.stage || state.achieved ? 'done': i === state.stage ? 'current': ''}` +
+      `${i <= (state.confirmedThrough ?? -1) || state.achieved ? 'done': i === state.stage ? 'current': ''}` +
       `"></span>`
     )).join('')}` +
     `</span><span class="lib-card-meta">` +
     `${esc(s.timeline)}` +
     `</span><span class="lib-card-link">` +
-    `${t('למפת הדרך', 'View roadmap')}` +
+    `${t('לשלבים בדרך לסקיל', 'View skill steps')}` +
     `</span></span></button>` +
     `${state.achieved ? (
       `<button class="lib-start" data-next-skill="` +
@@ -511,6 +581,7 @@ export function workoutCard(w, {
     `</span><span class="lib-card-body"><span class="lib-card-title">` +
     `${esc(nameOf(w, lang))}` +
     `</span><span class="lib-card-meta">` +
+    `${w.origin === 'coach' ? 'מבוסס על לוח מאמן · ' : ''}` +
     `${levelLabel(w.level, lang)}` +
     ` · ` +
     `${t(... FORMAT_LABELS[w.format])}` +
@@ -525,6 +596,7 @@ export function workoutCard(w, {
     ` ` +
     `${t('תנועות', 'movements')}` +
     `</span>` +
+    `<span class="lib-workout-families">${[...new Set(moves.map(e => nameOf(familyOf(e.id)?.family || e, lang)))].map(esc).join(' · ')}</span>` +
     `${phaseBar(w, {
       lang
     })}` +
@@ -623,7 +695,7 @@ function variationList(ids, lang) {
   return ids.length ? (
     `<ul class="lib-variations">` +
     `${ids.map(byId).filter(Boolean).map(x => (
-      `<li><button class="lib-variation" data-chain-ex="` +
+      `<li><a class="lib-variation" href="#library/exercise/${encodeURIComponent(x.id)}" data-chain-ex="` +
       `${esc(x.id)}` +
       `">` +
       `${movementThumb(x, {
@@ -631,7 +703,7 @@ function variationList(ids, lang) {
       })}` +
       `<span>` +
       `${esc(nameOf(x, lang))}` +
-      `</span></button></li>`
+      `</span></a></li>`
     )).join('')}` +
     `</ul>`
   ): '';
@@ -641,8 +713,10 @@ export function exerciseDetailHTML(e, {
 } = {
 }) {
   const t =(a, b) => lang === 'en' ? b: a, sources =(e.source_ids || e.sourceIds || []).length;
-  const easier = variationList(e.regressions || [], lang), harder = variationList(e.progressions || [],
-  lang);
+  const family = familyOf(e.id)?.family;
+  const siblings = new Set(family ? Object.values(family.tiers) : []);
+  const easier = variationList((e.regressions || []).filter(id => !siblings.has(id)), lang);
+  const harder = variationList((e.progressions || []).filter(id => !siblings.has(id)), lang);
   return (
     `<article class="lib-detail"><div class="lib-detail-demo">` +
     `${exerciseVisual(e, {
@@ -660,7 +734,15 @@ export function exerciseDetailHTML(e, {
       `${saved ? t('נשמר', 'Saved'): t('שמירה', 'Save')}` +
       `</button>`
     ): ''}` +
-    `</header>
+    `</header>` +
+    `${e.muscles?.length ? (
+      `<section class="lib-muscle-group"><h3>` +
+      `${t('שרירים עיקריים', 'Main muscles')}` +
+      `</h3>` +
+      `${musclesHTML(e, lang)}` +
+      `</section>`
+    ): ''}` +
+    `
     <section><h3>` +
     `${t('איך מבצעים', 'How to do it')}` +
     `</h3><ol class="lib-cues">` +
@@ -678,18 +760,19 @@ export function exerciseDetailHTML(e, {
       lang
     })}` +
     `</section>\n    \n    ` +
+    `${family ? `<section class="lib-variation-group"><h3>${t('וריאציות', 'Variations')}</h3>${familyCard(family, {lang, currentId: e.id})}</section>` : ''}` +
     `${easier || harder ? (
       `<section class="lib-variation-group">` +
       `${easier ? (
         `<div><h3>` +
-        `${t('רגרסיה', 'Easier')}` +
+        `${t('אפשרות קלה או הכנה', 'Easier or preparation')}` +
         `</h3>` +
         `${easier}` +
         `</div>`
       ): ''}` +
       `${harder ? (
         `<div><h3>` +
-        `${t('התקדמות', 'Harder')}` +
+        `${t('אפשרות המשך', 'Next option')}` +
         `</h3>` +
         `${harder}` +
         `</div>`

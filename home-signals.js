@@ -1,3 +1,4 @@
+import { unresolvedPain } from './training-safety.js?v=31';
 import {
   recoveryState, loadingExposure, conditionsKnown
 }
@@ -28,15 +29,7 @@ export function datedLogs(logs = [], now = new Date()) {
 }
 export function painStatus(profile = {
 }, date = dayKey()) {
-  const entry = profile.checkIns?.[date];
-  if (entry?.pain === true) return true;
-  const last = [...(profile.logs || [])].filter(l => l.pain && logDate(l) <= date).sort((a, b) => Date.parse(b.completed_at) - Date.parse(a.
-  completed_at))[0];
-  if (!last) return false;
-  if (Date.parse(profile.painReviewedAt || '') >= Date.parse(last.completed_at)) return false;
-  return !Object.entries(profile.checkIns || {
-  }).some(( [d, e]) => d >= logDate(last) && d <= date && e.pain === false &&(d > logDate(last) || Date.parse(e.updated_at || '') >= Date.parse(
-  last.completed_at)));
+  return !!unresolvedPain(profile, {date, now: new Date(date + 'T23:59:59Z')});
 }
 export function readiness(entry = {
 }, pain = false, relevantArea = null) {

@@ -1,3 +1,8 @@
+import {instructionRouteHTML} from './movement-instructions.js?v=31';
+import {sessionHeaderHTML} from './session-structure.js?v=31';
+import {extraTimeText} from './session-extras.js?v=31';
+import { variationSelectorHTML } from './variation-choice.js?v=31';
+import { effortText, painRule, doseText } from './training-safety.js?v=31';
 import {
   exercises
 }
@@ -11,12 +16,13 @@ import {
 }
 from './ui.js?v=31';
 import {
-  infographicSVG
+  infographicSVG, siblingOptionsHTML
 }
 from './exercise-visuals.js?v=31';
 const work = b => ['work', 'skill'].includes(b?.phase);
 export function playerProgress(session) {
   const active = session.plan.blocks[session.index];
+  if (active?.rampUp) return 'סט הכנה קצר';
   if ( ['warm', 'cool'].includes(active?.phase)) {
     const group = session.plan.blocks.filter(b => b.phase === active.phase);
     return (
@@ -30,6 +36,8 @@ export function playerProgress(session) {
   const blocks = session.plan.blocks, steps = blocks.filter(work), ids = [... new Set(steps.map(b => b.id))];
   const current = work(blocks[session.index]) ? blocks[session.index]: blocks.slice(session.index).find(work) || steps.at(- 1);
   if (!current) return 'תנועה ונשימה';
+  if (current.circuitId) return `סבב ${current.round} מתוך ${current.rounds} · ` +
+    `תרגיל ${current.exerciseInRound} מתוך ${current.exercisesPerRound}`;
   const sets = steps.filter(b => b.id === current.id), position = sets.indexOf(current) + 1;
   return (
     `תרגיל ` +
@@ -42,7 +50,9 @@ export function playerProgress(session) {
     `${sets.length}`
   );
 }
-export function playerPlate(block, session) {
+export function playerPlate(block, session, {includeInstructions = true} = {}) {
+  const route = includeInstructions ? instructionRouteHTML(block) : '';
+  if (!movementAtlas[block.id] && route) return route;
   let id = block.id;
   if (work(block) && !movementAtlas[id]) {
     const exercise = exercises.find(e => e.id === id) || block;
@@ -77,40 +87,39 @@ export function playerPlate(block, session) {
     `${plate.height}` +
     `" alt="` +
     `${esc(e?.he || block.he)}` +
-    `"></div>`
-  ): '';
+    `"></div>` + route
+  ): route;
 }
 export function focusPlayerHTML( {
-  session: s, block: b, performed, timer, logForm, phaseName, summary, details
+  session: s, block: b, performed, timer, logForm, phaseName, summary, details, previousNumbers = '', instructionsOpen = false
 }) {
-  const isWork = work(b), next = s.plan.blocks.slice(s.index + 1).find(b => b.phase !== 'rest'), previous = s.plan.blocks.slice(0,
+  const isWork = work(b), next = s.plan.blocks.slice(s.index + 1).find(b => work(b) || ['warm', 'cool'].includes(b.phase)), previous = s.plan.blocks.slice(0,
   s.index).findLast(work), sameSet = next && work(next) && next.id === previous?.id, sets = next ? s.plan.blocks.filter(x => work(x) && x.id ===
   next.id): [];
-  const reserve = b.unit === 'seconds' ? 'להשאיר עתודה טכנית ולעצור בירידת שליטה': (
-    `עוד ` +
-    `${b.rir ??(b.provisional ? 3: 2)}` +
-    ` בטנק`
-  );
+  const reserve = effortText(b);
   return (
     `<div class="focus-player"><header class="focus-header"><button class="text-button" ` +
     `id="work-save-exit">שמירה ויציאה</button><p>` +
     `${playerProgress(s)}` +
-    `</p><details><summary aria-label="אפשרויות האימון">⋯</summary><div class="focus-menu"><button ` +
+    `</p><details><summary aria-label="אפשרויות האימון">פירוט</summary><div class="focus-menu"><button ` +
     `class="secondary" id="end-early">סיום וסיכום</button><details><summary>על האימון</summary><p>` +
     `${esc(summary || '')}` +
     `</p><p>` +
     `${esc(details || '')}` +
     `</p>` +
     `${(s.plan.skillTracks || []).some(t => t.preparationOnly) ? '<p>תרגול הכנה בלבד; ביצוע יעד הסקיל דורש בדיקה מקצועית אישית.</p>': ''}` +
-    `</details></div></details></header><section class="focus-step"><span class="chapter-label">` +
+    `</details></div></details></header>` +
+    `${s.index === 0 && !isWork ? sessionHeaderHTML(s.plan) + `<p class="session-extra-time">${esc(extraTimeText(s.plan))}</p>` : ''}` +
+    `<section class="focus-step${isWork ? ' focus-work' : ''}"><span class="chapter-label">` +
     `${esc(phaseName)}` +
     `</span>` +
-    `${b.calibration ? '<p class="notice">סט כיול — לבצע עם 1–2 חזרות בטנק</p>': ''}` +
-    `${b.assessment ? '<p class="notice">בדיקת יכולת — להשאיר לפחות 3 חזרות או שניות עתודה</p>': ''}` +
+    `${b.calibration ? '<p class="notice">סט כיול: ' + esc(reserve) + '</p>': ''}` +
+    `${b.assessment ? '<p class="notice">בדיקת יכולת: ' + esc(reserve) + '</p>': ''}` +
     `${b.phase === 'rest' ? (
       `${timer}` +
-      `<div class="rest-controls"><button class="secondary" id="rest-add">+30 שנ׳</button><button ` +
-      `class="text-button" id="rest-skip">לדלג</button></div>` +
+      `<div class="rest-controls"><button class="secondary" id="rest-add">+15 שנ׳</button>` +
+      `<button class="secondary" id="rest-minus">−15 שנ׳</button><button ` +
+      `class="primary-action" id="rest-skip">לדלג</button></div>` +
       `${next ? (
         `<p>` +
         `${sameSet ? (
@@ -123,34 +132,47 @@ export function focusPlayerHTML( {
           `${esc(next.he)}`
         )}` +
         `</p>` +
+        `${next.circuitId ? `<p>סבב ${next.round} · תחנה ${next.exerciseInRound} מתוך ${next.exercisesPerRound}</p>` : ''}` +
+        `${sameSet ? `<p>התרגיל הבא: ${esc(next.he)}</p>` : ''}` +
         `${playerPlate(next, s)}`
       ): '<p>ממשיכים לשחרור ולנשימה</p>'}`
     ): (
       `${playerPlate(isWork ? {
-        ... performed, phase: b.phase
-      }: b, s)}` +
+        ... performed, ...(performed.id === b.id ? b : {}), phase: b.phase
+      }: b, s, {includeInstructions: !isWork})}` +
       `<h1>` +
       `${esc(isWork ? performed.he: b.he)}` +
       `</h1>` +
-      `${!isWork || b.unit === 'seconds' ? timer: (
-        `<div class="focus-target">` +
-        `${isWork ? (
-          `${b.target ?? 'היכרות ללא יעד'}` +
-          `${b.target != null ? ' ' +(b.unit === 'seconds' ? 'שניות': 'חזרות'): ''}`
-        ): (
-          `${b.seconds}` +
-          ` שניות`
-        )}` +
-        `</div>`
-      )}` +
-      `${b.perSide ? '<small>סה״כ שני הצדדים · חצי בכל צד</small>': ''}` +
-      `<p class="focus-cue">` +
+      `${isWork && performed.muscles?.length ? (
+        `<p class="focus-muscles">` +
+        `${esc(performed.muscles.join(' · '))}` +
+        `</p>`
+      ): ''}` +
+      `${isWork || b.rampUp ? `<div class="focus-target">${esc(doseText(b))}</div>` : ''}` +
+      `${isWork ? '<div class="difficulty-controls" role="group" aria-label="התאמת קושי">' +
+        '<button class="secondary" data-difficulty="hard">קשה מדי</button>' +
+        '<button class="secondary" data-difficulty="easy">קל מדי</button></div>' : ''}` +
+      `${isWork ? '<details class="focus-movement-details"' + (instructionsOpen ? ' open' : '') + '><summary>פירוט התנועה</summary>' +
+        instructionRouteHTML({...performed, ...(performed.id === b.id ? b : {}), phase: b.phase}) +
+        siblingOptionsHTML(performed, {lang: 'he'}) + '</details>' +
+        '<details><summary>פירוט וריאציות</summary>' + variationSelectorHTML(b) + '</details>' + previousNumbers : ''}` +
+      `${isWork && b.feedbackReason ? `<p class="focus-feedback">${esc(b.feedbackReason)}</p>` : ''}` +
+      `${b.rampEntryExitSeconds ? `<small>כניסה ויציאה: ${b.rampEntryExitSeconds} שניות בנפרד מזמן ההחזקה.</small>` : ''}` +
+      `${!isWork || b.unit === 'seconds' ? timer : ''}` +
+      `${isWork && b.unit === 'seconds' && b.target > 0 ? (
+        `<small>כניסה ויציאה: ${b.entryExitRestSeconds || Math.max(0, b.seconds-b.target)} שניות בנפרד; ` +
+        (b.entryExitRestSeconds ? 'זמן ההכנה כלול במנוחה של הדקה. ' : '') +
+        'להתחיל את שעון ההחזקה רק כשהמנח מוכן.' +
+        (b.perSide ? ' בחצי הזמן לעצור את השעון, להחליף צד ולהמשיך; לרשום את סך שני הצדדים.' : '') + '</small>') : ''}` +
+      `${b.perSide ? '<small>לתעד סה״כ שני הצדדים, חצי בכל צד.</small>': ''}` +
+      `<details class="focus-coaching-details"><summary>פירוט ההנחיה</summary><p class="focus-cue">` +
       `${esc(b.cue || performed.cue || 'תנועה נוחה ונשימה בשליטה.')}` +
       `</p>` +
+      `</details>` +
       `${isWork ? (
         `<p>` +
         `${esc(reserve)}` +
-        `</p>` +
+        `</p><small>${b.actualRestSeconds ?? b.restSeconds ?? 0} שניות מנוחה אחרי הסט</small>` +
         `${b.unit === 'seconds' ? '': (
           `<details class="focus-timer"><summary>טיימר לסט</summary>` +
           `${timer}` +
@@ -160,6 +182,9 @@ export function focusPlayerHTML( {
     )}` +
     `</section>` +
     `${logForm}` +
+    `${b.phase === 'warm' && !b.rampUp ? '<button class="secondary full-width" id="skip-warmup">דילוג לאימון</button>' : ''}` +
+    `${b.phase === 'cool' ? '<button class="secondary full-width" id="skip-cooldown">סיום בלי שחרור</button>' : ''}` +
+    `<details><summary>פירוט כלל הכאב</summary><p>${esc(painRule)}</p></details>` +
     `<button class="text-button focus-stop" id="set-stop">לא הצלחתי / כאב</button></div>`
   );
 }

@@ -1,3 +1,4 @@
+import {installTour, isTourActive} from './tour.js?v=31';
 import {
   BRAND_NAME
 }
@@ -7,15 +8,15 @@ import {
 }
 from './state.js?v=31';
 import {
-  initializeRouter, render
+  initializeRouter, render, go
 }
 from './router.js?v=31';
 import {
-  sessionWakeLock, toast
+  sessionWakeLock, toast, shell, modal
 }
 from './shell.js?v=31';
 import {
-  $, $$, t
+  $, $$, t, user
 }
 from './shared.js?v=31';
 import {
@@ -31,13 +32,16 @@ import {
 }
 from './screens/coach.js?v=31';
 initializeState();
+installTour({state, user, save, go, render, shell, modal, schedule: setTimeout});
 initializeRouter();
-setInterval(tick, 250);
+setInterval(() => {if (!isTourActive()) tick();}, 250);
 window.addEventListener('pagehide',() => {
+  if (isTourActive()) return;
   captureDraft();
   save()
 });
 document.addEventListener('visibilitychange',() => {
+  if (isTourActive()) return;
   sessionWakeLock(state.page === 'work' && !state.finishMode && !document.hidden);
   if (document.hidden) {
     captureDraft();
@@ -71,7 +75,7 @@ render();
 if ('serviceWorker' in navigator) {
   let controlled = !!navigator.serviceWorker.controller;
   navigator.serviceWorker.addEventListener('controllerchange',() => {
-    if (controlled) {
+    if (controlled && state.page !== 'work') {
       toast('גרסה חדשה זמינה — לרענן');
       const el = $('#toast');
       clearTimeout(toast.timeout);
@@ -84,5 +88,5 @@ if ('serviceWorker' in navigator) {
   });
 }
 window.matchMedia('(min-width: 1024px)').addEventListener('change',() => {
-  if (state.page === 'coach') dashboard();
+  if (state.page === 'coach' && !isTourActive()) dashboard();
 });

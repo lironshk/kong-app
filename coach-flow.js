@@ -1,3 +1,7 @@
+import {sessionHeaderHTML, roundCardsHTML} from './session-structure.js?v=31';
+import {extraTimeText, extraRowHTML, rampUpNotice} from './session-extras.js?v=31';
+import { variationSelectorHTML } from './variation-choice.js?v=31';
+import { effortText, painRule, doseText } from './training-safety.js?v=31';
 import {
   renderPhaseBar
 }
@@ -44,7 +48,7 @@ const equipmentLabels = {
 export function openCoachPreview( {
   profile, lang = 'he', seed = {
   }, previewOnly = false, templateId = null, modal, onStart, onPainReview, onPreferences, onPlanChange,
-  savedPlan = null
+  savedPlan = null, onVariationChoice, onExtrasChange
 }) {
   const t =(a, b) => lang === 'en' ? b: a;
   const defaults = profile.coachPreferences || {
@@ -52,6 +56,7 @@ export function openCoachPreview( {
   const requestedMinutes = seed.minutes ?? defaults.minutes ?? profile.minutes;
   const initialMinutes = SESSION_DURATIONS.includes(sessionMinutes(requestedMinutes)) ? sessionMinutes(requestedMinutes): 30;
   let skillChoice = seed.skillChoice || defaults.skillChoice || 'pull', skillChoiceExplicit = seed.skillChoice !== undefined;
+  let structureOverride = seed.structure || defaults.structure || null;
   let focus = seed.focus || defaults.focus || 'auto';
   const initialLocation = seed.locationId ?? defaults.locationId ?? profile.activeLocation;
   const initialReadiness = seed.readiness ?? 'normal';
@@ -117,7 +122,10 @@ export function openCoachPreview( {
       `${esc(l.name)}` +
       `</option>`
     )).join('')}` +
-    `</select></label></div><div class="workout-filters" id="focus-chips">` +
+    `</select></label></div><div class="session-structure-chips" role="group" aria-label="מבנה האימון">` +
+    `${[['sets', 'סטים'], ['rounds', 'סבבים']].map(([id, label]) =>
+      `<button type="button" class="secondary" data-structure="${id}">${label}</button>`).join('')}` +
+    `</div><div class="workout-filters" id="focus-chips">` +
     `${Object.entries(focusLabels).map(( [id, label]) => (
       `<button type="button" data-focus="` +
       `${id}` +
@@ -175,13 +183,14 @@ export function openCoachPreview( {
     const location = profile.locations?.find(l => l.id === locationId);
     const selectedEquipment = equipmentOverride ?? location?.equipment ?? profile.equipment;
     const p = {
-      ... profile, variationApprovals: approvals, equipment: [... selectedEquipment], locations: [ {
+      ... profile, sessionStructure: structureOverride || profile.sessionStructure, variationApprovals: approvals,
+      equipment: [... selectedEquipment], locations: [ {
         id: locationId, name: location?.name || '', equipment: [... selectedEquipment]
       }]
     };
     const options = {
       skillFocusOverride: $('#skill-focus-override').checked === true, minutes: Number($('#duration').value),
-      readiness: $('#ready').value, locationId, confirmedTargets: approvals, focus, skillChoice: ['lower',
+      readiness: $('#ready').value, structure: structureOverride, locationId, confirmedTargets: approvals, focus, skillChoice: ['lower',
       'core'].includes(focus) && !skillChoiceExplicit ? 'none': skillChoice
     };
     let result = todayWorkout(p, options);
@@ -263,12 +272,17 @@ export function openCoachPreview( {
         $('#preview-start-note').textContent = '';
         return;
       }
-      const unique = [... new Map(p.blocks.filter(b => ['work', 'skill'].includes(b.phase)).map(b => [b.id,
+      const unique = [... new Map(p.blocks.filter(b => ['work', 'skill'].includes(b.phase)).map(b => [b.sourceExerciseId || b.id,
       b])).values()];
       const warm = p.blocks.filter(b => b.phase === 'warm').reduce((s, b) => s + b.seconds, 0);
       const rest = p.blocks.filter(b => b.phase === 'rest').reduce((s, b) => s + b.seconds, 0);
       $('#skill-choice').value = ['lower', 'core'].includes(focus) && !skillChoiceExplicit ? 'none': skillChoice;
-      dialog.querySelectorAll('[data-skill-choice]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.skillChoice === skillChoice)));
+      dialog.querySelectorAll('[data-structure]').forEach(button => button.onclick = () => {
+    if (savedPlan) return;
+    structureOverride = button.dataset.structure;
+    render();
+  });
+  dialog.querySelectorAll('[data-skill-choice]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.skillChoice === skillChoice)));
       $('#skill-choice').onchange =() => {
         skillChoice = $('#skill-choice').value;
         skillChoiceExplicit = true;
@@ -281,16 +295,23 @@ export function openCoachPreview( {
         `<div class="preview-summary ` +
         `${p.recovery ? 'is-recovery': ''}` +
         `"><div><span class="chapter-label">` +
-        `${p.recovery ? t('התאוששות לצמיחה', 'RECOVER TO GROW'): t('מותאם אליך', 'BUILT AROUND YOU')}` +
+        `${p.origin === 'coach' ? 'מבוסס על לוח מאמן' : p.recovery ? t('התאוששות לצמיחה', 'RECOVER TO GROW'): t('מותאם אליך', 'BUILT AROUND YOU')}` +
         `</span><h3>` +
         `${esc(lang === 'en' ? p.titleEn: p.titleHe || p.title)}` +
         `</h3><p>` +
         `${esc(note || '')}` +
         `</p></div><div class="preview-number"><strong>` +
-        `${Math.max(1, Math.floor(p.total_seconds / 60))}` +
+        `${Math.max(1, Math.ceil((p.main_seconds ?? p.total_seconds) / 60))}` +
         `</strong><span>דקות · מתוך ` +
         `${p.requested_minutes ?? p.minutes}` +
-        ` שביקשת</span></div></div><div class="preview-budget phase-proportions"><span>` +
+        ` שביקשת</span></div></div>${sessionHeaderHTML(p)}<p class="session-extra-time">` +
+        `${esc(extraTimeText(p))}</p>` +
+        `<details class="stimulus-details"><summary>פירוט החשיפה והמאמץ</summary><p>מספר התנועות לבדו אינו מעיד על מספיק עבודה מאתגרת;
+        בודקים גם מאמץ וימי אימון.</p>
+        <p>תרגול ציר ירך ללא עומס הוא תרגול תנועה. אפשר לבדוק בנפרד גשר או ציר ירך ברגל אחת.</p>
+        <a href="#library/exercise/single-hinge" data-chain-ex="single-hinge">הוראות ובדיקת יכולת לציר ירך ברגל אחת</a></details>` +
+        `${p.structureNote ? `<p class="micro-note">${esc(p.structureNote)}</p>` : ''}` +
+        `<div class="preview-budget phase-proportions"><span>` +
         `${t('חימום', 'Warm-up')}` +
         ` <b>` +
         `${Math.ceil(warm / 60)}` +
@@ -317,8 +338,8 @@ export function openCoachPreview( {
         ` ` +
         `${t('פירוט', 'Details')}` +
         `</summary><p>` +
-        `${esc(adaptive || '')}` +
-        `</p>` +
+        `${esc(adaptive || '')}</p><p>${esc(painRule)}` +
+        `</p>${p.legRestriction ? `<p>${esc(p.legRestriction)}</p>` : ''}` +
         `${p.missing_pull ? (
           `<p>` +
           `${t('ללא ציוד משיכה מאושר, חלק המשיכה חסר באימון.', 'Without approved pulling equipment, this session does not cover pulling.')}` +
@@ -332,8 +353,13 @@ export function openCoachPreview( {
         ): ''}` +
         `<small>` +
         `${t('כללי תכנון שמרניים; אינם הערכת טכניקה אישית.', 'Conservative planning rules; not an individual technique assessment.')}` +
-        `</small></details>`
+        `</small></details>${extraRowHTML(p, 'warmup', !!savedPlan)}` +
+        `${p.sessionExtras?.warmup === false && p.blocks.some(b => b.rampUp) ? `<p class="micro-note">${rampUpNotice}</p>` : ''}`
       );
+      dialog.querySelectorAll('[data-structure]').forEach(button => {
+        button.setAttribute('aria-pressed', String(button.dataset.structure === p.structure));
+        button.disabled = !!savedPlan;
+      });
       if (p.phases) {
         const budget = $('#setup-preview').querySelector('.preview-budget');
         budget.innerHTML = renderPhaseBar(p.phases);
@@ -413,7 +439,7 @@ export function openCoachPreview( {
         `${unique.map(e => exerciseVisual(e, {
           compact: true, lang
         })).join('')}` +
-        `</div><div class="preview-section-heading">` +
+        `</div>${roundCardsHTML(p, doseText)}<div class="preview-section-heading">` +
         `${(p.skillTracks || []).map(s => (
           `<p>` +
           `${esc(s.name || 'תרגול סקיל')}` +
@@ -425,12 +451,13 @@ export function openCoachPreview( {
         `${t('התנועות שלך היום', 'Your movements today')}` +
         `</h3><small>` +
         `${t('פותחים כרטיס כדי ללמוד לפני שמתחילים', 'Open a movement to learn before starting')}` +
-        `</small></div><div class="preview-movement-grid">` +
+        `</small></div>${p.circuits?.length ? '<details><summary>פירוט התרגילים והווריאציות</summary>' : ''}` +
+        `<div class="preview-movement-grid">` +
         `${unique.map((e, i) => {
-          const blocks = p.blocks.filter(b => ['work', 'skill'].includes(b.phase) && b.id === e.id);
+          const blocks = p.blocks.filter(b => ['work', 'skill'].includes(b.phase) && (b.sourceExerciseId || b.id) === (e.sourceExerciseId || e.id));
           const rest = p.blocks[p.blocks.indexOf(blocks[0]) + 1];
           return (
-            `<details class="preview-movement"><summary><div class="preview-movement-art">` +
+            `<div class="preview-movement-item"><details class="preview-movement"><summary><div class="preview-movement-art">` +
             `${exerciseVisual(e, {
               compact: true, lang
             })}` +
@@ -443,11 +470,9 @@ export function openCoachPreview( {
             `</h4><p><b>` +
             `${blocks.length}` +
             ` × ` +
-            `${e.target ?? 'היכרות ללא יעד'}` +
-            `</b> ` +
-            `${e.unit === 'seconds' ? t('שניות', 'seconds'): t('חזרות', 'reps')}` +
-            `${e.perSide ? ' · ' + t('סה״כ שני הצדדים', 'total both sides'): ''}` +
-            `</p><small>` +
+            `${esc(doseText(e))}` +
+            `</b>` +
+            `</p><p>${esc(effortText(e))}</p><small>` +
             `${rest?.phase === 'rest' ? rest.seconds + ' ' + t('שנ׳ מנוחה', 'sec rest'): t('ללא מנוחה קצובה', 'No fixed rest')}` +
             `</small><span class="preview-learn">` +
             `${t('איך מבצעים?', 'How to do it?')}` +
@@ -463,7 +488,7 @@ export function openCoachPreview( {
             `${esc(e.range_of_motion || '')}` +
             ` · ` +
             `${esc(e.execution_standard || '')}` +
-            `</p><ol>` +
+            `</p><p>${esc(doseText(e))} · ${esc(effortText(e))}</p><p>${esc(e.cue || '')}</p><ol>` +
             `${(e.instructions || [e.cue]).map(c => (
               `<li>` +
               `${esc(c)}` +
@@ -473,10 +498,10 @@ export function openCoachPreview( {
             `${t('להקל: ', 'Easier: ')}` +
             `</strong>` +
             `${esc(e.easy || '')}` +
-            `</p></div></details>`
+            `</p></div></details>` + variationSelectorHTML(e) + `</div>`
           )
         }).join('')}` +
-        `</div>`
+        `</div>${p.circuits?.length ? '</details>' : ''}`
       ): (
         `<div class="preview-recovery">` +
         `${icon('leaf', 34)}` +
@@ -486,8 +511,24 @@ export function openCoachPreview( {
         `${esc(p.blocks.find(b => b.phase === 'recovery')?.cue || t('תנועה נינוחה ונשימה.', 'Easy movement and breathing.'))}` +
         `</p></div>`
       );
-      $('#preview-start-note').textContent = t('הזמן כולל חימום, מנוחה וסיום. אפשר לעצור ולהאריך מנוחה בכל שלב.',
-      'Time includes warm-up, rests and cool-down. Pause or extend rest anytime.');
+      $('#preview-movements').innerHTML += extraRowHTML(p, 'cooldown', !!savedPlan);
+      dialog.querySelectorAll('[data-session-extra]').forEach(input => input.onchange = () => {
+        if (savedPlan) return;
+        profile.sessionExtras = {warmup: true, cooldown: true, ...profile.sessionExtras, [input.dataset.sessionExtra]: input.checked};
+        onExtrasChange?.({...profile.sessionExtras});
+        render();
+      });
+      dialog.querySelectorAll('[data-variation-tier]').forEach(button => button.onclick = () => {
+        if (savedPlan || button.disabled) return;
+        const block = p.blocks.find(b => b.sourceExerciseId === button.dataset.variationSource && b.options);
+        if (!block?.options.some(o => o.tier === button.dataset.variationTier && o.available)) return;
+        profile.variationChoices = {...profile.variationChoices, [block.family]: button.dataset.variationTier};
+        onVariationChoice?.(profile.variationChoices);
+        render();
+      });
+      if (savedPlan) dialog.querySelectorAll('[data-variation-tier]').forEach(button => {button.disabled = true;});
+      $('#preview-start-note').textContent = t('הזמן שבחרת כולל אימון ומנוחות. חימום ושחרור נוספים בנפרד.',
+      'Your time covers training and rests. Warm-up and cool-down are extra.');
     } finally {
       restore();
     }

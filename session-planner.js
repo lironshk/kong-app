@@ -1,14 +1,17 @@
+import {trainingQueue, legPatterns} from './session-structure.js?v=31';
+import {finishExecution,executionBlock} from './session-execution.js?v=31';
+import { chooseVariation } from './variation-choice.js?v=31';
 import {
   phaseLabel
 }
 from './data/glossary.js?v=31';
 import {
-  volumeFamily, weeklyVolume, weeklyRange, experiencedProfile
+  volumeFamily, volumeBudget, fatigueDecision, experiencedProfile
 }
 from './training-volume.js?v=31';
 import {
   unresolvedDoses, doseAuthorized, evidenceKey, conditionsKnown, recoveryState, isBlocked, hasEquipment,
-  reviewedClearance, variationEvidence, variationPrescription, workSeconds, squatReportStep
+  reviewedClearance, variationEvidence, variationPrescription, workSeconds, squatReportStep, recoveryBefore
 }
 from './training-evidence.js?v=31';
 import {
@@ -31,11 +34,11 @@ import {
   SESSION_DURATIONS, sessionMinutes
 }
 from './session-settings.js?v=31';
-const phaseBudgets = [ [300, 300, 1020, 0, 180], [360, 600, 1440, 120, 180], [420, 720, 1920, 300,
-240], [480, 1080, 2280, 360, 300]];
+const phaseBudgets = [[300, 300, 1500, 0, 180], [360, 600, 2100, 0, 180],
+  [420, 720, 2880, 0, 240], [480, 1080, 3420, 0, 300]];
 export const budgets = Object.fromEntries(SESSION_DURATIONS.map((minutes, i) => [minutes, phaseBudgets[i]]));
 export const focusLabels = {
-  auto: 'אוטומטי לפי התוכנית', full: 'כל הגוף', upper: 'פלג גוף עליון', lower: 'פלג גוף תחתון', push: 'דחיקה',
+  auto: 'אוטומטי לפי התוכנית', full: 'כל הגוף', upper: 'פלג גוף עליון', lower: 'רגליים', push: 'דחיקה',
   pull: 'משיכה', core: 'בטן וליבה', skill: 'יום סקיל', park: 'אימון כוח בפארק'
 };
 export const patternLabels = {
@@ -50,11 +53,12 @@ export const patternLabels = {
 const templates = {
   full: ['horizontal_push', 'horizontal_pull', 'squat', ['hinge', 'hip_extension'], ['overhead_press',
   'vertical_pull'], ['core_anti_extension', 'core_anti_rotation']], upper: ['overhead_press', 'vertical_pull',
-  'horizontal_push', 'horizontal_pull', 'core_anti_extension', 'compression'], lower: ['squat', 'hinge',
+  'horizontal_push', 'horizontal_pull', ['squat', 'single_leg', 'hinge'], 'core_anti_extension', 'compression'], lower: ['squat', 'hinge',
   'single_leg', 'knee_flexion', 'calf', 'core_anti_rotation'], push: ['overhead_press', 'horizontal_push',
-  'core_anti_extension', 'support'], pull: ['vertical_pull', 'horizontal_pull', 'scapular_control',
+  ['hinge', 'squat', 'single_leg'], 'core_anti_extension', 'support'], pull: ['vertical_pull', 'horizontal_pull',
+  ['squat', 'single_leg', 'hinge'], 'scapular_control',
   'core_anti_rotation'], core: ['core_anti_extension', 'core_anti_rotation', 'core_lateral_stability',
-  'compression', 'trunk_flexion'], skill: ['squat', 'core_anti_rotation'], park: [ ['squat', 'single_leg'],
+  'compression', 'trunk_flexion', ['squat', 'single_leg', 'hinge']], skill: ['squat', 'core_anti_rotation'], park: [ ['squat', 'single_leg'],
   'horizontal_push', 'horizontal_pull', 'locomotion', 'core_anti_extension']
 };
 const labels = ['warmup', 'skill', 'strength', 'finish', 'cooldown'].map(phaseLabel);
@@ -65,7 +69,7 @@ const confirmed = l =>(l.sets || []).filter(s => s.actual > 0);
 /** Pure session builder. Timer completion never advances the queue or establishes capacity. */
 export function buildSession( {
   profile, logs = profile?.logs || [], minutes = profile?.minutes || 45, focus = 'auto', equipment = profile?.equipment || [],
-  skillTrack, skillChoice, skillFocusOverride = false, readiness = 'normal', date = new Date(), seed
+  skillTrack, skillChoice, structure, skillFocusOverride = false, readiness = 'normal', date = new Date(), seed
 } = {
 }) {
   minutes = sessionMinutes(minutes);
@@ -87,10 +91,8 @@ export function buildSession( {
   const deload = !!(lighter?.reviewer && lighter?.reviewedAt && Date.parse(lighter.start) <= + now && Date.parse(lighter.end) >= + now);
   const completed = logs.filter(l => l.completed && l.plan?.planner === 'personal-coach-1' && l.plan.queueItem != null && l.plan.essentialIds?.
   length && !unresolvedDoses(l.plan, l.sets).length);
-  const queueIndex = new Set(completed.map(l => l.plan.queueItem)).size, days = Array.isArray(p.days) ? p.days.length: Number(p.daysPerWeek || 3)
-  ;
-  const queue = days >= 5 ? ['full', 'skill', 'full', 'full', 'skill']: days === 4 ? ['full', 'skill',
-  'full', 'park']: ['full', 'full'];
+  const queueIndex = new Set(completed.map(l => l.plan.queueItem)).size;
+  const queue = trainingQueue(p);
   const requestedFocus = focus;
   focus = focus === 'auto' ? queue[queueIndex % queue.length]: focus;
   const recovery = recoveryState(logs, now), blockedPatterns = recovery.blocked;
@@ -98,11 +100,7 @@ export function buildSession( {
   !l.plan?.easyPractice).map(l => l.completed_at.slice(0, 10)));
   if (requestedFocus === 'auto' && rollingDays.size >= 3) focus = 'skill';
   const easyPractice = focus === 'skill' || readiness === 'tired' || deload;
-  const recent = logs.filter(l => + now - Date.parse(l.completed_at) <= 14 * 864e5);
-  const difficult = recent.slice(- 2);
-  const fatigue = difficult.length === 2 && difficult.every(l => confirmed(l).some(s => conditionsKnown(s) &&(l.effort === 'hard' || s.quality
-  === 'uncertain' || s.actual < s.target))) && confirmed(difficult[0]).some(a => conditionsKnown(a) && confirmed(difficult[1]).some(b =>
-  conditionsKnown(b) && evidenceKey(a) === evidenceKey(b)));
+  const fatigue = fatigueDecision(logs, now);
   // A longer reviewed rest is never shortened to fit the regular-work cap. Defer that variation instead.
   const restFits = e => !reviewedClearance(p, e, now) || e.demandingStraightArm || p.exerciseClearances[e.id].added_load > 0 || p.
   exerciseClearances[e.id].restSeconds <= 180;
@@ -146,11 +144,16 @@ export function buildSession( {
   };
   const omissions = [], chosen = [];
   for (const slot of(focus === 'pull' && experiencedProfile(p) ? ['vertical_pull', 'horizontal_pull',
-  'core_anti_extension', 'compression']: focus === 'lower' && experiencedProfile(p) ? ['squat', 'hinge',
+  ['squat', 'single_leg', 'hinge'], 'core_anti_extension', 'compression']: focus === 'lower' && experiencedProfile(p) ? ['squat', 'hinge',
   'single_leg', 'knee_flexion', 'calf', 'core_anti_extension']: templates[focus])) {
     const alternatives = Array.isArray(slot) ? slot: [slot];
     const order = alternatives.slice();
-    if (queueIndex % 2 ||(!chosen.some(e => e.movementPattern === 'horizontal_pull') && alternatives.includes('vertical_pull'))) order.reverse();
+    if (alternatives.length === 3 && alternatives.every(x => legPatterns.includes(x))) {
+      const shift = queueIndex % alternatives.length; order.push(...order.splice(0, shift));
+    }
+    const legSlot = alternatives.length === 3 && alternatives.every(x => legPatterns.includes(x));
+    if (!legSlot && (queueIndex % 2 || (!chosen.some(e => e.movementPattern === 'horizontal_pull') &&
+      alternatives.includes('vertical_pull')))) order.reverse();
     if (alternatives.includes('vertical_pull') && p.pull >= 3) order.sort((a, b) => Number(b === 'vertical_pull') - Number(a === 'vertical_pull')
     );
     const e = order.map(choose).find(Boolean);
@@ -169,13 +172,8 @@ export function buildSession( {
     level - a.level);
     chosen.splice(2, 0, ... extras.slice(0, 2));
   }
-  const volumeRange = weeklyRange(p), previousVolume = weeklyVolume(logs, now), plannedVolume = {
-  };
-  const volumeRoom = e => Math.max(0, volumeRange[1] -(previousVolume[volumeFamily(e)] || 0) -(plannedVolume[volumeFamily(e)] || 0));
-  const countVolume = e => {
-    const k = volumeFamily(e);
-    plannedVolume[k] =(plannedVolume[k] || 0) + 1;
-  };
+  const volume = volumeBudget(p, logs, now), volumeRange = volume.range, previousVolume = volume.previous, plannedVolume = volume.planned;
+  const volumeRoom = volume.room, countVolume = volume.count;
   const pendingPartial = logs.filter(l => l.plan?.queueItem === queueIndex && l.plan?.planner === 'personal-coach-1' && unresolvedDoses(l.plan,
   l.sets).length).at(- 1);
   let remainingDoses = [], unpackedDoses = [];
@@ -294,6 +292,7 @@ export function buildSession( {
       // its conservative preparation when readiness or clearance is missing.
       const supporting = !eligible(drill) || !preparation?.ready && !reviewedClearance(p, drill, now) || deload && drill.advancedOnly;
       if (supporting) drill = exercise(preparation?.drill);
+      drill = drill && chooseVariation(p, drill.id, {logs, equipment, now});
       const seconds = ids.length === 2 ?(index === 0 ? Math.floor(allocation[1] * .57): allocation[1] - Math.floor(allocation[1] * .57)):
       allocation[1];
       // Advanced catalogue entries remain behind review; a stage confirmation is not technical clearance.
@@ -307,10 +306,13 @@ export function buildSession( {
       }
       const reviewed = drill.advancedOnly && reviewedClearance(p, drill, now) && !deload;
       const dose = variationPrescription(p, drill, logs, {
-        easy: !reviewed, now
-      }), work = dose.seconds, restSeconds = reviewed ? p.exerciseClearances[drill.id].restSeconds: 90;
-      const attempts = reviewed ? Math.min(volumeRoom(drill), p.exerciseClearances[drill.id].sets, Math.floor((seconds + restSeconds) /(work +
-      restSeconds))): dose.assessment ? 1: Math.min(4, Math.floor((seconds + restSeconds) /(work + restSeconds))),
+        easy: !reviewed || readiness === 'tired' || fatigue, now
+      }), work = dose.seconds, restSeconds = reviewed ? p.exerciseClearances[drill.id].restSeconds : 150;
+      const firstRecovery = recoveryBefore(blocks, {...dose, restSeconds}, 0);
+      const attemptBudget = Math.max(0, seconds-firstRecovery);
+      const attempts = reviewed ? Math.min(readiness === 'tired' || fatigue ? 1 : 5, volumeRoom(drill),
+      p.exerciseClearances[drill.id].sets, Math.floor((attemptBudget + restSeconds) /(work +
+      restSeconds))): dose.assessment ? 1: Math.min(4, Math.floor((attemptBudget + restSeconds) /(work + restSeconds))),
       target = dose.target;
       if (attempts < 1 || work > seconds) {
         add('skill-time-' + id, 'נדרש זמן לתרגול שנבדק', 'recovery', Math.min(120, seconds), 'skill',
@@ -318,27 +320,29 @@ export function buildSession( {
         usedSkill += seconds;
         continue;
       }
+      if (firstRecovery) fill('skill', firstRecovery);
       const why =(reviewed ? 'שלב ': 'הכנה לשלב ') +(state.stage + 1) + ' · ' + selected.he + ' · לעצור בירידת שליטה.';
       for (let i = 0;
       i < attempts;
       i++) {
         if (reviewed) countVolume(drill);
         add(drill.id, drill.he, 'skill', work, 'skill', why, {
-          ... dose, phase: 'skill', section: 'skill', seconds: work, target, skill: id, skillStage: state.stage,
+          ... dose, phase: 'skill', section: 'skill', restSeconds, seconds: work, target, skill: id, skillStage: state.stage,
           skillName: selected.he, stageNumber: state.stage + 1, cue: why, round: i + 1, set: i + 1
         });
         if (i < attempts - 1) fill('skill', restSeconds);
       }
-      usedSkill += attempts * work +(attempts - 1) * restSeconds;
+      usedSkill += firstRecovery + attempts * work +(attempts - 1) * restSeconds;
       skillTracks.push( {
         id, name: selected.he, stage: state.stage, stageNumber: state.stage + 1, exerciseId: drill.id, attempts,
-        seconds: attempts * work +(attempts - 1) * restSeconds, why, prerequisites: selected.prerequisites,
+        seconds: firstRecovery + attempts * work +(attempts - 1) * restSeconds, why, prerequisites: selected.prerequisites,
         preparationOnly: !reviewed, autoUnlock: false
       });
     }
     skillExercise = skillTracks.length ? exercise(skillTracks[0].exerciseId): null;
     track = skills.find(s => s.id === skillTracks[0]?.id);
   } else {
+    skillExercise = skillExercise && chooseVariation(p, skillExercise.id, {logs, equipment, now});
     if (skillExercise) {
       const attempts = 1, dose = variationPrescription(p, skillExercise, logs, {
         easy: true, now
@@ -357,6 +361,14 @@ export function buildSession( {
     }
   }
   // Aggregate demanding skill exposure before strength allocation. Essentials pack first.
+  for (const b of blocks.filter(b => ['work', 'skill'].includes(b.phase))) {
+    const choice = chooseVariation(p, b.sourceExerciseId || b.id, {logs, equipment, now});
+    if (choice) Object.assign(b, {
+      family: choice.family, tier: choice.options.find(o => o.exerciseId === b.id)?.tier,
+      recommendedTier: choice.recommendedTier, options: choice.options, variationReason: choice.variationReason,
+      sourceExerciseId: b.sourceExerciseId || b.id
+    });
+  }
   const skillWork = blocks.filter(b => b.phase === 'skill');
   // Unused skill time can fund complete strength sets, within the same weekly and per-exercise ceilings.
   const strengthBudget = allocation[2] + Math.max(0, allocation[1] - blocks.filter(b => b.section === 'skill').reduce((sum,
@@ -370,6 +382,7 @@ export function buildSession( {
     omissions.push(chosen[i].movementSubtype);
     chosen.splice(i, 1);
   }
+  chosen.splice(0, chosen.length, ...chosen.map(e => pendingPartial ? e : chooseVariation(p, e.id, {logs, equipment, now})).filter(e => e && eligible(e)));
   chosen.sort((a, b) => Number(accessory(a)) - Number(accessory(b)) || Number(a.group === 'core') - Number(b.group === 'core') ||(previousVolume[
   volumeFamily(a)] || 0) -(previousVolume[volumeFamily(b)] || 0));
   const baseRounds = minutes === 30 || easyPractice ? 2: 3, rounds = deload ? Math.max(1, Math.floor(baseRounds * .5)): fatigue ? Math.max(1,
@@ -400,10 +413,9 @@ export function buildSession( {
     rounds - consumed));
     if (e.advancedOnly || e.novelEccentric) n = Math.min(n, Math.max(0, p.exerciseClearances[e.id].sets - skillWork.filter(b => b.id === e.id).
     length));
+    if (!original.length && (dose.source === 'conservative-default' || p.experience === 'new')) n = Math.min(n, 2);
     if (dose.assessment) n = overlap.length ? 0: 1;
-    const prior = blocks.filter(b => b.phase === 'work').at(- 1);
-    const setupSeconds = prior && prior.loadingTags.some(t => e.loadingTags.includes(t)) ? Math.min(180,
-    Math.max(30, prior.restSeconds || 150)): 30;
+    const setupSeconds = recoveryBefore(blocks, e);
     const cost = count => setupSeconds + Array.from( {
       length: count
     },(_, r) => original[r]?.seconds ?? dose.seconds).reduce((sum, seconds) => sum + seconds, 0) + Math.max(0,
@@ -452,9 +464,21 @@ export function buildSession( {
     return[b.movementPattern, b.movementSubtype, e?.movementPattern, e?.movementSubtype].filter(Boolean);
   }));
   omissions.splice(0, omissions.length, ... new Set(omissions.filter(p => !p.split('/').some(k => trainedPatterns.has(k)))));
+  for (const b of blocks.filter(b => ['work', 'skill'].includes(b.phase) && !b.family)) {
+    const choice = chooseVariation(p, b.id, {logs, equipment, now});
+    if (choice) Object.assign(b, {
+      family: choice.family, tier: choice.options.find(o => o.exerciseId === b.id)?.tier,
+      recommendedTier: choice.recommendedTier, options: choice.options, variationReason: choice.variationReason,
+      sourceExerciseId: b.sourceExerciseId || b.id
+    });
+  }
+  // Render the final coverage, separately from the conservative allocation ledger used while packing.
+  for (const key of Object.keys(plannedVolume)) delete plannedVolume[key];
+  for (const b of blocks.filter(b => ['work', 'skill'].includes(b.phase) && executionBlock(b).countsAsStrength)) countVolume(b);
   const calibration = blocks.some(b => b.calibration);
   const totalSeconds = blocks.reduce((sum, b) => sum + b.seconds, 0);
-  const shortReason = totalSeconds < minutes * 60 ? 'האימון קצר מהמתוכנן כי נשמרו מגבלות הנפח, המנוחה וההתאוששות.': '';
+  const mainDuration = blocks.filter(b => !['warm', 'cool'].includes(b.phase)).reduce((sum, b) => sum + b.seconds, 0);
+  const shortReason = mainDuration < minutes * 60 ? 'האימון קצר מהמתוכנן כי נשמרו מגבלות הנפח, המנוחה וההתאוששות.' : '';
   const summaryHe = (
     `היום אימון ` +
     `${calibration ? 'כיול · ': ''}` +
@@ -468,7 +492,7 @@ export function buildSession( {
     `${volumeRange[0]}` +
     `–` +
     `${volumeRange[1]}` +
-    ` סטים מאומצים למשפחת דפוסים, כולל סקיל מאומץ. ` +
+    ` חשיפות מרביות למשפחת תנועות, כולל סקיל והכנה בעומס. זהו גבול עומס, לא הוכחה לאימון כוח מספיק. ` +
     `${Object.entries(plannedVolume).map(( [k, n]) => (
       `${( {
         pull: 'משיכה', push: 'דחיקה', knee: 'ברך', hip: 'ירך', core: 'ליבה'
@@ -479,11 +503,14 @@ export function buildSession( {
       `${n}` +
       ` היום`
     )).join('; ')}` +
-    `. היעד השבועי מתחלק בין האימונים; זמן או התאוששות עשויים לחייב השלמה ביום אחר. יעדי החזרות ` +
-    `וההחזקות חושבו מהביצוע והעתודה בבדיקה של אותה וריאציה ותנאים, בעיגול מטה ובתקרת טווח המטרה: ` +
+    `. חשיפה לתנועה אינה בהכרח סט כוח מאתגר; בודקים בנפרד מאמץ ומספר ימי עבודה. ` +
+    (blocks.some(b => ['work','skill'].includes(b.phase) && !b.provisional && !b.assessment && b.setup) ?
+      `מינון שנבדק נשען רק על ביצוע מתועד באותה וריאציה ובאותם תנאים. יעדי פתיחה אחרים שמרניים. ` :
+      `זה מינון פתיחה שמרני לפי הדיווח שלך; נתאים אותו אחרי שתתעד ביצוע. `) +
+    `טווחי המטרה: ` +
     `כוח 3–6, בניית שריר 6–12, סיבולת 12–20; ליבה והחזקות בטווח נפרד. תוצאה נמוכה אינה מוגבהת כדי ` +
     `להגיע לטווח: נדרשת בדיקת וריאציה קלה יותר. אין העברת אישורי ביצוע בין וריאציות; דיווח סקוואט ` +
-    `גבוה מאפשר הערכה זמנית שמרנית לסקוואט מפוצל בלבד. תרגילי עזר מקבלים טווח נפרד לפי הדפוס, בלי ` +
+    `גבוה מאפשר הערכה זמנית שמרנית למכרע סטטי בלבד. תרגילי עזר מקבלים טווח נפרד לפי הדפוס, בלי ` +
     `להגביה תוצאה שנמדדה.`
   );
   const rationaleHe = (
@@ -503,7 +530,7 @@ export function buildSession( {
     `${omissions.length ? ' דפוסים שלא כוסו: ' + omissions.map(p => p.split('/').map(k => patternLabels[k] || 'דפוס תנועה').join(' / ')).join(', ') +
     '.': ''}`
   );
-  return {
+  return finishExecution({
     ... gate, planner: 'personal-coach-1', focus, requestedFocus, queueItem: requestedFocus === 'auto' &&(pendingPartial || focus === queue[
     queueIndex % queue.length]) ? queueIndex: null, essentialIds, skillTracks, easyPractice, deload,
     sessionVolumeReduction: fatigue, accessoryIds, remainingDoses, unpackedDoses, trainingBlock: {
@@ -526,5 +553,5 @@ export function buildSession( {
     reasonHe: rationaleHe, why: rationaleHe, adaptation: {
       status: 'variation-evidence', approvedProgressions: [], automaticProgression: false, reasonHe: rationaleHe
     }, date: now.toISOString()
-  };
+  }, {profile: p, logs, now, structure});
 }

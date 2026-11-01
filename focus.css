@@ -5,7 +5,7 @@
 .focus-player{max-width:760px;margin:auto;padding:0 16px calc(16px + env(safe-area-inset-bottom));text-align:center}
 .focus-header{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:64px;border-bottom:1px solid var(--divider);text-align:start}
 .focus-header p{font-size:13px;margin:0}.focus-header button{font-size:13px;padding:10px 6px}.focus-header details{position:relative}.focus-header summary{cursor:pointer;font-size:28px;list-style:none;padding:4px 12px}.focus-header details button{position:absolute;inset-inline-end:0;width:150px;z-index:5;background:var(--surface)}
-.focus-step{padding:20px 0 12px}.focus-step h1{font-size:clamp(24px,5vw,36px);margin:12px 0}.focus-plate{background:#F6F3EE;border-radius:18px;margin:12px auto;overflow:hidden}.focus-plate img{display:block;width:100%;height:clamp(180px,30dvh,340px);object-fit:contain}.focus-target{font-size:clamp(38px,10vw,64px);font-weight:900;line-height:1.2;margin:12px 0}.focus-cue{line-height:1.6;max-width:48ch;margin:12px auto}.focus-step .timer{font-size:clamp(64px,18vw,112px);font-variant-numeric:tabular-nums;line-height:1.2;direction:ltr}.focus-timer summary{cursor:pointer}.focus-timer .timer{font-size:48px}.focus-step .session-clock{margin:16px auto;border:0;padding:0}.focus-step .timer-actions,.rest-controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.focus-player .session-log-panel{position:static;box-shadow:none;border:0;padding:0;background:transparent}.focus-player .session-log-title{display:none}.focus-player .quick-target{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:4;min-height:56px;box-shadow:0 0 0 8px var(--canvas);margin:12px 0}.focus-player .quick-adjust{max-width:330px;margin:auto}.focus-player .quick-adjust .set-inputs{display:block}.focus-player .counter-input{display:flex;gap:12px;align-items:center;justify-content:center}.focus-player .counter-input input{min-width:0;width:100px;text-align:center}.focus-player .counter-input button{min-width:48px;min-height:48px}.focus-player .session-adjust{text-align:start;padding:12px 0}.focus-player .session-adjust label{display:block;margin:12px 0}.focus-player .session-adjust input:not([type=checkbox]),.focus-player .session-adjust select{width:100%}.focus-stop{margin:12px auto;min-height:48px}.focus-player .session-clock small{display:block}
+.focus-step{padding:20px 0 12px}.focus-step h1{font-size:clamp(24px,5vw,36px);margin:12px 0}.focus-plate{background:#F6F3EE;border-radius:18px;margin:12px auto;overflow:hidden}.focus-plate img{display:block;width:100%;height:clamp(180px,30dvh,340px);object-fit:contain}.focus-target{font-size:clamp(48px,10vw,64px);font-weight:900;line-height:1.2;margin:12px 0}.focus-muscles{margin:-6px 0 8px;font-size:14px;color:var(--text-secondary)}.focus-cue{line-height:1.6;max-width:48ch;margin:12px auto}.focus-step .timer{font-size:clamp(64px,18vw,112px);font-variant-numeric:tabular-nums;line-height:1.2;direction:ltr}.focus-timer summary{cursor:pointer}.focus-timer .timer{font-size:48px}.focus-step .session-clock{margin:16px auto;border:0;padding:0}.focus-step .timer-actions,.rest-controls{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.focus-player .session-log-panel{position:static;box-shadow:none;border:0;padding:0;background:transparent}.focus-player .session-log-title{display:none}.focus-player .quick-target{position:sticky;bottom:calc(8px + env(safe-area-inset-bottom));z-index:4;min-height:56px;box-shadow:0 0 0 8px var(--canvas);margin:12px 0}.focus-player .quick-adjust{max-width:330px;margin:auto}.focus-player .quick-adjust .set-inputs{display:block}.focus-player .counter-input{display:flex;gap:12px;align-items:center;justify-content:center}.focus-player .counter-input input{min-width:0;width:100px;text-align:center}.focus-player .counter-input button{min-width:48px;min-height:48px}.focus-player .session-adjust{text-align:start;padding:12px 0}.focus-player .session-adjust label{display:block;margin:12px 0}.focus-player .session-adjust input:not([type=checkbox]),.focus-player .session-adjust select{width:100%}.focus-stop{margin:12px auto;min-height:48px}.focus-player .session-clock small{display:block}
 .desktop-coach-editor{display:none}.preview-plates-strip{display:flex;overflow:auto;gap:8px;margin-block:16px}.preview-plates-strip figure{min-width:100px;max-width:140px;margin:0}.preview-plates-strip figcaption{display:none}.skill-segments{display:flex;gap:6px;margin-block:12px}.skill-segments button{flex:1}.skill-segments [aria-pressed=true]{border-color:var(--action);color:var(--action)}
 @media(min-width:1024px){
  .coach-page .daily-today{display:none}.desktop-coach-editor{display:block}.desktop-coach-editor .coach-columns{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(300px,1fr);gap:24px;align-items:start}.desktop-coach-editor .coach-live-plan{grid-column:1;grid-row:1;min-width:0}.desktop-coach-editor .coach-live-controls{grid-column:2;grid-row:1;background:var(--surface);padding:20px;border:1px solid var(--divider);border-radius:20px;min-width:0}.desktop-coach-editor .preview-controls{display:grid;grid-template-columns:1fr}.desktop-coach-editor #skill-choice{display:none}.desktop-coach-editor .coach-live-controls label{display:block;margin-block:12px}.desktop-coach-editor .preview-equipment{display:block}.desktop-coach-editor .preview-equipment .check-label{display:flex;gap:8px;align-items:center}.desktop-coach-editor .preview-movement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.desktop-coach-editor .preview-start{position:static}.desktop-coach-editor .preview-start button{width:100%}.desktop-coach-editor select{max-width:100%;width:100%}
@@ -16,3 +16,57 @@
 
 .focus-plate svg{display:block;width:100%;height:clamp(180px,30dvh,340px)}
 .focus-header>details{position:relative}.focus-menu{position:absolute;inset-inline-end:0;top:100%;width:min(300px,85vw);background:var(--surface);border:1px solid var(--divider);border-radius:12px;padding:16px;z-index:6}.focus-header .focus-menu button{position:static;width:100%}.focus-menu details>summary{font-size:16px;padding:12px 0}.focus-header .focus-menu details p{margin-block:8px;line-height:1.6}
+
+/* The same three tiers are visible before and during a session. */
+.variation-choice { margin-block: 1rem; text-align: start; }
+.variation-tiers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4rem; }
+.variation-tiers button { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: .3rem; padding: .65rem .35rem; white-space: normal; }
+.variation-tiers button[aria-pressed="true"] { outline: 2px solid var(--accent, #c4ef71); outline-offset: 2px; }
+.variation-tiers small { font-size: .7rem; line-height: 1.4; }
+.variation-tiers button:disabled { opacity: .65; }
+.variation-recommended { font-weight: 700; }
+.variation-choice p { font-size: .85rem; }
+
+.focus-player .session-identity { margin-block: 12px; }
+.focus-player .session-area-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+#skip-warmup, #skip-cooldown { min-height: 56px; margin-block: 8px; }
+
+/* One main action; thumb-sized controls and readable numbers at park distance. */
+.focus-player .primary-action,.summary-page .primary-action{min-height:56px;min-width:120px}
+.focus-player .secondary{min-height:48px}
+.focus-player .counter-input input{font-size:48px;line-height:1.2;height:64px;width:140px}
+.difficulty-controls,.effort-choices{display:flex;justify-content:center;gap:8px;margin-block:12px}
+.difficulty-controls button,.effort-choices button{flex:1;min-width:0;white-space:normal}
+.effort-choices button{min-height:56px;font-size:18px}
+.effort-choices small{display:block;font-size:12px;margin-top:4px}
+.effort-choices [aria-pressed=true]{outline:2px solid var(--text);outline-offset:2px}
+.focus-player .last-performance{line-height:1.6;padding:8px;border:1px solid var(--divider);border-radius:12px}
+.focus-player [role=status]:empty{display:none}
+.focus-header .focus-menu{position:static;width:auto;max-width:100%;box-shadow:none}
+.focus-header summary[aria-label]{font-size:16px}
+.focus-header .focus-menu button{position:static}
+.session-debrief{line-height:1.7;text-align:start;margin-block:20px}
+.summary-page>.primary-action{margin-block:16px;width:100%}
+
+.focus-player .session-clock .timer-actions button{min-height:48px;min-width:48px}
+.focus-player .session-clock .timer-actions .primary-action{min-height:56px;min-width:120px}
+
+/* S6: the complete logging action stays within reach at 375 × 812. */
+.focus-player:has(.logging-dock){padding-bottom:290px}
+.logging-dock{position:fixed;inset-inline:0;bottom:0;z-index:8;max-width:760px;margin:auto;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:var(--canvas);border-top:1px solid var(--divider)}
+.logging-dock .effort-choices{margin:0 0 6px}.logging-dock .quick-target{position:static;margin:6px 0 0;box-shadow:none}
+.logging-dock .quick-adjust label{margin:0}.logging-dock .counter-input input{height:56px;font-size:48px}
+.focus-player #timer-sound{flex:0 0 56px;width:56px;padding:12px;white-space:nowrap}
+.focus-player .session-clock .timer-actions #timer-toggle,.focus-player #next-block{min-height:56px}
+.movement-instruction-route{text-align:start;line-height:1.55;padding:12px;border:1px solid var(--divider);border-radius:12px}
+.movement-instruction-route small{display:block}.movement-instruction-route ol{padding-inline-start:24px}
+@media(max-width:479px){.preview-summary{display:flex!important;flex-direction:column;align-items:stretch}.preview-number{width:auto}.preview-summary>div{width:100%}.logging-dock .effort-choices button{font-size:16px}.focus-player .focus-plate img{height:180px}}
+
+/* Keep the work identity and dose above the dock, even when first-use guidance is open. */
+@media(max-width:479px){
+ .focus-work{padding-top:8px}.focus-work .focus-plate{margin:8px auto}
+ .focus-work .focus-plate img,.focus-work .focus-plate svg{height:150px}
+ .focus-work h1{font-size:24px;line-height:1.15;margin:8px 0}
+ .focus-work .focus-muscles{margin:0 0 4px;line-height:1.25}
+ .focus-work .focus-target{font-size:48px;line-height:1.1;margin:6px 0}
+}

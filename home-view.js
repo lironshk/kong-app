@@ -387,7 +387,7 @@ export function renderHome( {
     `<p>` +
     `${esc(todayPlan.titleHe || todayPlan.title || 'תרגול לפי הכיוון שלך')}` +
     ` · ` +
-    `${Math.ceil((todayPlan.total_seconds || profile.minutes * 60 || 1800) / 60)}` +
+    `${Math.ceil((todayPlan.main_seconds ?? todayPlan.total_seconds ?? (profile.minutes || 30) * 60) / 60)}` +
     ` דקות</p><div class="today-thumbnails">` +
     `${movements.map(id => {
       const plate = movementAtlas[id], e = exercises.find(e => e.id === id);

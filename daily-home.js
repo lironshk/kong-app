@@ -1,7 +1,4 @@
-import {
-  renderPhaseBar
-}
-from './phase-bar.js?v=31';
+import {extraTimeText} from './session-extras.js?v=31';
 import {
   glossary
 }
@@ -42,23 +39,15 @@ export function renderDailyHome( {
   const movements = [... new Map((p.blocks || []).filter(b => ['work', 'skill'].includes(b.phase)).map(b => [b.id,
   exercises.find(e => e.id === b.id) || b])).values()];
   const location = profile.locations?.find(l => l.id ===(p.today?.locationId || p.locationId || profile.activeLocation));
-  // Keep optional finishing effort separate from recovery.
-  const phases = [ ['warmup', 'חימום', 'Warm-up', ['warmup', 'warm']], ['skill', 'סקיל', 'Skill', ['skill']],
-  ['strength', 'כוח', 'Strength', ['strength', 'work', 'rest']], ['finish', glossary.finish, 'Finish',
-  ['conditioning', 'finish']], ['cooldown', glossary.cooldown, 'Cool-down', ['cooldown', 'cool', 'recovery']]].map(( [id,
-  a, b, keys]) =>( {
-    id, label: t(a, b), seconds: p.phases ? p.phases.filter(x => keys.includes(x.id)).reduce((v, x) => v + x.seconds,
-    0):(p.blocks || []).filter(x => keys.includes(x.phase)).reduce((v, x) => v + x.seconds, 0)
-  }));
+  const title = (en ? p.titleEn || 'Full body' : p.titleHe || p.title || 'תנועה נוחה')
+    .replace(/\d+\s*(?:דקות|דק[׳']|min(?:utes)?)\s*(?:[·—–-]\s*)?/g, '').trim();
   const session = (
     `<section class="card daily-today"><h2>` +
     `${t('האימון שלך להיום', 'Your session today')}` +
     ` · ` +
-    `${esc(en ? p.titleEn || 'Full body': p.titleHe || p.title || 'תנועה נוחה')}` +
+    `${esc(title)}` +
     `</h2><p class="session-meta">` +
-    `${Math.ceil(p.total_seconds / 60)}` +
-    ` ` +
-    `${t('דקות', 'min')}` +
+    `${esc(extraTimeText(p))}` +
     ` · ` +
     `${esc(location?.name || t('המקום שלי', 'My space'))}` +
     ` · ` +
@@ -97,9 +86,6 @@ export function renderDailyHome( {
       )
     }).join('')}` +
     `</div>` +
-    `${renderPhaseBar(phases, {
-      className: 'daily-phase-summary'
-    })}` +
     `<button id="daily-start" class="full-width">` +
     `${profile.session ? t('להמשך האימון', 'Resume session'): t('לצפייה באימון', 'View session')}` +
     `</button><button id="daily-adjust" class="text-button full-width">` +
