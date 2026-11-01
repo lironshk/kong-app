@@ -1,48 +1,48 @@
-import {isTourActive} from './tour.js?v=31';
+import {isTourActive} from './tour.js?v=32';
 import {
   captureView
 }
-from './view-state.js?v=31';
+from './view-state.js?v=32';
 import {
   BRAND_NAME, WORDMARK_SVG
 }
-from './brand.js?v=31';
+from './brand.js?v=32';
 import {
   createWakeLock
 }
-from './focus-player.js?v=31';
+from './focus-player.js?v=32';
 import {
   exportRecovery
 }
-from './store.js?v=31';
+from './store.js?v=32';
 import {
   escapeHTML as esc, icon
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 import {
   go, render
 }
-from './router.js?v=31';
+from './router.js?v=32';
 import {
   onboarding, startOnboarding
 }
-from './screens/onboarding.js?v=31';
+from './screens/onboarding.js?v=32';
 import {
   captureDraft
 }
-from './screens/player.js?v=31';
+from './screens/player.js?v=32';
 import {
   privacy, profileMenu, showInstall
 }
-from './screens/profile.js?v=31';
+from './screens/profile.js?v=32';
 import {
   $, $$, he, on, t, user
 }
-from './shared.js?v=31';
+from './shared.js?v=32';
 import {
   save, state
 }
-from './state.js?v=31';
+from './state.js?v=32';
 const sessionWakeLock = createWakeLock();
 const navItems = [ ['home', 'home', 'בית', 'Home'], ['coach', 'clock', 'מאמן', 'Coach'], ['library',
 'library', 'ספרייה', 'Library'], ['progress', 'chart', 'התקדמות', 'Progress']];

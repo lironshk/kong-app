@@ -1,15 +1,15 @@
 import {
   escapeHTML as esc, icon
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 import {
   exerciseVisual
 }
-from './exercise-visuals.js?v=31';
+from './exercise-visuals.js?v=32';
 import {
   playback
 }
-from './data/playback.js?v=31';
+from './data/playback.js?v=32';
 export function youtubeId(url) {
   try {
     const u = new URL(url);

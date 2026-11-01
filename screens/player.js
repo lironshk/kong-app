@@ -1,97 +1,97 @@
-import {validateExecution, loadedStep} from '../execution-validation.js?v=31';
+import {validateExecution, loadedStep} from '../execution-validation.js?v=32';
 import {effortRating, effortChoicesHTML, difficultyOption, previousPerformanceHTML, sessionDebrief, adjustRest}
-from '../player-coach.js?v=31';
-import {createPlayerSignals, holdCueEvents} from '../player-signals.js?v=31';
-import {skipSessionExtra, mainSeconds} from '../session-extras.js?v=31';
-import {circuitCompatible, sessionHeader} from '../session-structure.js?v=31';
-import {executionBlock} from '../session-execution.js?v=31';
-import { variationBlock, chooseVariation } from '../variation-choice.js?v=31';
-import { familyOf } from '../data/exercise-families.js?v=31';
-import { effortText, unresolvedPain, reportedPain, workClockSeconds } from '../training-safety.js?v=31';
+from '../player-coach.js?v=32';
+import {createPlayerSignals, holdCueEvents} from '../player-signals.js?v=32';
+import {skipSessionExtra, mainSeconds} from '../session-extras.js?v=32';
+import {circuitCompatible, sessionHeader} from '../session-structure.js?v=32';
+import {executionBlock} from '../session-execution.js?v=32';
+import { variationBlock, chooseVariation } from '../variation-choice.js?v=32';
+import { familyOf } from '../data/exercise-families.js?v=32';
+import { effortText, unresolvedPain, reportedPain, workClockSeconds } from '../training-safety.js?v=32';
 import {
   applyCapabilityResults, capabilityResultsHTML
 }
-from '../capability-check.js?v=31';
+from '../capability-check.js?v=32';
 import {
   dailyDate
 }
-from '../daily-insights.js?v=31';
+from '../daily-insights.js?v=32';
 import {
   exercises, plan, remaining
 }
-from '../engine.js?v=31';
+from '../engine.js?v=32';
 import {
   focusPlayerHTML
 }
-from '../focus-player.js?v=31';
+from '../focus-player.js?v=32';
 import {
   dayKey as homeDate, painStatus
 }
-from '../home-signals.js?v=31';
+from '../home-signals.js?v=32';
 import {
   forecastWindows
 }
-from '../home-weather.js?v=31';
+from '../home-weather.js?v=32';
 import {
   advanceIntervalClock
 }
-from '../interval-clock.js?v=31';
+from '../interval-clock.js?v=32';
 import {
   substitutionCandidates
 }
-from '../movement-options.js?v=31';
+from '../movement-options.js?v=32';
 import {
   skillSelections, skillState, stageProposal
 }
-from '../skill-progress.js?v=31';
+from '../skill-progress.js?v=32';
 import {
   load, setDailyCheckIn
 }
-from '../store.js?v=31';
+from '../store.js?v=32';
 import {
   conditionsKnown, doseAuthorized, hasEquipment, isBlocked, recoveryState, unresolvedDoses
 }
-from '../training-evidence.js?v=31';
+from '../training-evidence.js?v=32';
 import {
   escapeHTML as esc, formatTime, icon
 }
-from '../ui.js?v=31';
+from '../ui.js?v=32';
 import {
   go
 }
-from '../router.js?v=31';
+from '../router.js?v=32';
 import {
   reviewedExecution
 }
-from '../screens/capability.js?v=31';
+from '../screens/capability.js?v=32';
 import {
   bindCommon, blocked, savedPlanState
 }
-from '../screens/coach.js?v=31';
+from '../screens/coach.js?v=32';
 import {
   history
 }
-from '../screens/progress.js?v=31';
+from '../screens/progress.js?v=32';
 import {
   skillDetail
 }
-from '../screens/skills.js?v=31';
+from '../screens/skills.js?v=32';
 import {
   openReliefModal
 }
-from '../screens/relief.js?v=31';
+from '../screens/relief.js?v=32';
 import {
   $, $$, change, nameOf, on, t, user
 }
-from '../shared.js?v=31';
+from '../shared.js?v=32';
 import {
   modal, shell, toast
 }
-from '../shell.js?v=31';
+from '../shell.js?v=32';
 import {
   save, state
 }
-from '../state.js?v=31';
+from '../state.js?v=32';
 function captureDraft() {
   const u = user(), s = u?.session;
   if (state.page !== 'work' || !s) return;

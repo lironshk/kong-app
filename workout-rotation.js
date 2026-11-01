@@ -1,8 +1,8 @@
-import { workouts } from './data/workouts.js?v=31';
-import { buildWorkout } from './workout-engine.js?v=31';
-import { recoveryState, isBlocked } from './training-evidence.js?v=31';
-import { exercises } from './data/exercises.js?v=31';
-import {volumeFamily} from './training-volume.js?v=31';
+import { workouts } from './data/workouts.js?v=32';
+import { buildWorkout } from './workout-engine.js?v=32';
+import { recoveryState, isBlocked } from './training-evidence.js?v=32';
+import { exercises } from './data/exercises.js?v=32';
+import {volumeFamily} from './training-volume.js?v=32';
 const hash = s => [...String(s)].reduce((n, c) => (n * 31 + c.charCodeAt(0)) >>> 0, 0);
 const templateId = log => log.templateId ?? log.plan?.templateId;
 export const workoutUserLevel = p => Number.isInteger(p.level) ? p.level :

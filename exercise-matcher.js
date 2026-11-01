@@ -1,11 +1,11 @@
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   exerciseAliases
 }
-from './data/exercise-aliases.js?v=31';
+from './data/exercise-aliases.js?v=32';
 // Name matching for the admin checker and for mapping coach boards to catalogue ids.
 // Scores are heuristics for a human decision; a "similar" result never auto-links an exercise.
 const STOP = new Set(['with', 'on', 'the', 'a', 'and', 'of', 'to', 'עם', 'על', 'של', 'ב', 'ו']);

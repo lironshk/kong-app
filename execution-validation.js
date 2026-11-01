@@ -1,4 +1,4 @@
-import {recoveryBefore, capacityFeasible} from './training-evidence.js?v=31';
+import {recoveryBefore, capacityFeasible} from './training-evidence.js?v=32';
 export const loadedStep = b => ['work', 'skill'].includes(b.phase) || b.loadedPreparation ||
   b.phase === 'warm' && (b.reviewedExecution || b.advancedOnly || b.novelEccentric || b.demandingStraightArm);
 const loaded = loadedStep;

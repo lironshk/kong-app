@@ -1,15 +1,15 @@
 import {
   lifestyleTips
 }
-from './data/lifestyle-tips.js?v=31';
+from './data/lifestyle-tips.js?v=32';
 import {
   weeklyMovementLedger
 }
-from './coach-insights.js?v=31';
+from './coach-insights.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 export const dailyDate =(now = new Date()) => new Intl.DateTimeFormat('en-CA', {
   timeZone: 'Asia/Jerusalem', year: 'numeric', month: '2-digit', day: '2-digit'
 }).format(now);

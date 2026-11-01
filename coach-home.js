@@ -1,11 +1,11 @@
 import {
   escapeHTML as esc, icon
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 // Pure view. app.js owns actions and the generation/confirmation lifecycle.
 export function renderCoachHome( {
   profile, lang = 'he', todayPlan = null, weeklyLedger = [], weekDays = [], checkpoints = [], checkpoint = null,

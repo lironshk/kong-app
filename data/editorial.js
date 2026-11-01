@@ -1,4 +1,4 @@
-import { exercises } from './exercises.js?v=31';
+import { exercises } from './exercises.js?v=32';
 
 // Learning collections are editorial entry points, never workout prescriptions.
 // Athlete imagery is inspirational artwork, not a technique demonstration.

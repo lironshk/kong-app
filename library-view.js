@@ -1,43 +1,43 @@
-import {variationEvidence} from './training-evidence.js?v=31';
-import {exerciseFamilies, familyOf} from './data/exercise-families.js?v=31';
-import {recommendTier} from './variation-choice.js?v=31';
+import {variationEvidence} from './training-evidence.js?v=32';
+import {exerciseFamilies, familyOf} from './data/exercise-families.js?v=32';
+import {recommendTier} from './variation-choice.js?v=32';
 import {
   skillTarget
 }
-from './journey-view.js?v=31';
+from './journey-view.js?v=32';
 import {
   renderPhaseBar
 }
-from './phase-bar.js?v=31';
+from './phase-bar.js?v=32';
 import {
   phaseLabel
 }
-from './data/glossary.js?v=31';
+from './data/glossary.js?v=32';
 // Library (ספרייה): pure render + filter helpers. No DOM access, so Node tests can render every area.
 import {
   movementAtlas
 }
-from './data/movement-atlas.js?v=31';
+from './data/movement-atlas.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   skills
 }
-from './data/skills.js?v=31';
+from './data/skills.js?v=32';
 import {
   workouts
 }
-from './data/workouts.js?v=31';
+from './data/workouts.js?v=32';
 import {
   exerciseVisual, movementThumb
 }
-from './exercise-visuals.js?v=31';
+from './exercise-visuals.js?v=32';
 import {
   skillState, skillSelections
 }
-from './skill-progress.js?v=31';
+from './skill-progress.js?v=32';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c =>( {
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }

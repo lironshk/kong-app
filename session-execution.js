@@ -1,14 +1,14 @@
-import {validateExecution, loadedStep} from './execution-validation.js?v=31';
-import {exercises} from './data/exercises.js?v=31';
-import {familyOf} from './data/exercise-families.js?v=31';
-import {volumeFamily} from './training-volume.js?v=31';
-import {recoveryBefore} from './training-evidence.js?v=31';
-import {doseText} from './training-safety.js?v=31';
-import {applyExtras, sessionExtras, mainSeconds} from './session-extras.js?v=31';
-import {buildRounds, sessionStructure, sessionHeader, legPatterns} from './session-structure.js?v=31';
-import {chooseVariation, variationBlock} from './variation-choice.js?v=31';
-import {volumeBudget, weeklyWorkSummary, posteriorAssessmentOptions} from './training-volume.js?v=31';
-import {isBlocked, recoveryState, doseAuthorized, lighterActive} from './training-evidence.js?v=31';
+import {validateExecution, loadedStep} from './execution-validation.js?v=32';
+import {exercises} from './data/exercises.js?v=32';
+import {familyOf} from './data/exercise-families.js?v=32';
+import {volumeFamily} from './training-volume.js?v=32';
+import {recoveryBefore} from './training-evidence.js?v=32';
+import {doseText} from './training-safety.js?v=32';
+import {applyExtras, sessionExtras, mainSeconds} from './session-extras.js?v=32';
+import {buildRounds, sessionStructure, sessionHeader, legPatterns} from './session-structure.js?v=32';
+import {chooseVariation, variationBlock} from './variation-choice.js?v=32';
+import {volumeBudget, weeklyWorkSummary, posteriorAssessmentOptions} from './training-volume.js?v=32';
+import {isBlocked, recoveryState, doseAuthorized, lighterActive} from './training-evidence.js?v=32';
 const work = b => ['work', 'skill'].includes(b.phase);
 const by = id => exercises.find(e => e.id === id);
 export function movementRole(b) {

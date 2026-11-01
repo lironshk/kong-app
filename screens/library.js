@@ -1,68 +1,68 @@
 import {
   reliefEntry
 }
-from '../screens/relief.js?v=31';
+from '../screens/relief.js?v=32';
 import {
   localDateKey
 }
-from '../calendar.js?v=31';
+from '../calendar.js?v=32';
 import {
   workouts
 }
-from '../data/workouts.js?v=31';
+from '../data/workouts.js?v=32';
 import {
   exercises
 }
-from '../engine.js?v=31';
+from '../engine.js?v=32';
 import {
   activeFilterChips, activeFilterCount, emptyFilters, exerciseDetailHTML, exerciseResults, filterExercises,
   filterPanel, libraryHeader, quickFilters, skillsArea, sortExercises, workoutsArea
 }
-from '../library-view.js?v=31';
+from '../library-view.js?v=32';
 import {
   bindMedia, mediaPanel
 }
-from '../media.js?v=31';
+from '../media.js?v=32';
 import {
   skillSummary
 }
-from '../skill-progress.js?v=31';
+from '../skill-progress.js?v=32';
 import {
   escapeHTML as esc, icon
 }
-from '../ui.js?v=31';
+from '../ui.js?v=32';
 import {
   buildWorkout
 }
-from '../workout-engine.js?v=31';
+from '../workout-engine.js?v=32';
 import {
   go
 }
-from '../router.js?v=31';
+from '../router.js?v=32';
 import {
   bindCommon, blocked, recipeDetail, sessionSetup
 }
-from '../screens/coach.js?v=31';
+from '../screens/coach.js?v=32';
 import {
   startOnboarding
 }
-from '../screens/onboarding.js?v=31';
+from '../screens/onboarding.js?v=32';
 import {
   restoreSkillPickerSelections, skillPicker
 }
-from '../screens/skills.js?v=31';
+from '../screens/skills.js?v=32';
 import {
   $, $$, change, dayIndex, he, on, t, user
 }
-from '../shared.js?v=31';
+from '../shared.js?v=32';
 import {
   modal, shell, toast
 }
-from '../shell.js?v=31';
+from '../shell.js?v=32';
 import {
   save, state
 }
-from '../state.js?v=31';
+from '../state.js?v=32';
 function exerciseDetail(id) {
   const e = exercises.find(e => e.id === id);
   if (!e) return;
@@ -473,7 +473,7 @@ function importBoard() {
       if (image) {
         const {
           putImage
-        } = await import('../media-store.js?v=31');
+        } = await import('../media-store.js?v=32');
         await putImage(u.id + ':' + id, image)
       }(u.imports ??= []).push( {
         id, name: $('#board-name').value.trim(), transcription: $('#board-text').value.trim(), notes: $('#board-notes').value.trim(),
@@ -495,7 +495,7 @@ async function viewBoard(r) {
   try {
     const {
       getImage
-    } = await import('../media-store.js?v=31'), blob = await getImage(r.image_key);
+    } = await import('../media-store.js?v=32'), blob = await getImage(r.image_key);
     if (!blob) return toast(t('התמונה לא נמצאת במכשיר הזה. גיבוי נתונים אינו כולל תמונות.',
     'Image unavailable on this device. JSON backups do not include images.'));
     if (state.boardUrl) URL.revokeObjectURL(state.boardUrl);

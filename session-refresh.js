@@ -1,5 +1,5 @@
-import {applyExtras, addRampUps, isExtra, mainSeconds} from './session-extras.js?v=31';
-import {workClockSeconds} from './training-safety.js?v=31';
+import {applyExtras, addRampUps, isExtra, mainSeconds} from './session-extras.js?v=32';
+import {workClockSeconds} from './training-safety.js?v=32';
 // Logged prescriptions only change after explicit confirmation; completed steps remain immutable.
 const stable = value => Array.isArray(value) ? value.map(stable): value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort
 ().map(k => [k, stable(value[k])])): value;

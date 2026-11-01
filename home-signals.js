@@ -1,12 +1,12 @@
-import { unresolvedPain } from './training-safety.js?v=31';
+import { unresolvedPain } from './training-safety.js?v=32';
 import {
   recoveryState, loadingExposure, conditionsKnown
 }
-from './training-evidence.js?v=31';
+from './training-evidence.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 // Product thresholds, not physiological diagnoses. Pure functions; missing is never zero.
 export const dayKey =(now = new Date()) => new Intl.DateTimeFormat('en-CA', {
   year: 'numeric', month: '2-digit', day: '2-digit'

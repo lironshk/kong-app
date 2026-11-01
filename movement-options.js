@@ -1,7 +1,7 @@
 import {
   hasEquipment
 }
-from './training-evidence.js?v=31';
+from './training-evidence.js?v=32';
 export function movementPattern(e) {
   if ( ['calf', 'single-calf'].includes(e?.id)) return 'ankle';
   if ( ['hinge', 'single-hinge', 'bridge', 'single-bridge', 'bridge-march'].includes(e?.id)) return 'hip';

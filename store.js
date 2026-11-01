@@ -1,24 +1,24 @@
-import {trainingStyle, trainingDays} from './session-structure.js?v=31';
+import {trainingStyle, trainingDays} from './session-structure.js?v=32';
 import {
   conditionsKnown, equipmentSchema
 }
-from './training-evidence.js?v=31';
+from './training-evidence.js?v=32';
 import {
   skills
 }
-from './data/skills.js?v=31';
+from './data/skills.js?v=32';
 import {
   skillSelections
 }
-from './skill-progress.js?v=31';
+from './skill-progress.js?v=32';
 import {
   validateHome
 }
-from './home-storage.js?v=31';
+from './home-storage.js?v=32';
 import {
   sessionMinutes
 }
-from './session-settings.js?v=31';
+from './session-settings.js?v=32';
 const KEY = 'form-coach-v1';
 const RECOVERY_KEY = 'form-coach-recovery-v1';
 const MAX_LENGTH = 8_000_000;

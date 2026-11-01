@@ -1,21 +1,21 @@
-import { returnDecision } from './training-safety.js?v=31';
+import { returnDecision } from './training-safety.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   calibratedTarget, reviewedClearance, lighterActive, conditionsKnown, hasEquipment, isBlocked, recoveryState,
   workSeconds
 }
-from './training-evidence.js?v=31';
+from './training-evidence.js?v=32';
 import {
   plan as safetyPlan
 }
-from './engine.js?v=31';
+from './engine.js?v=32';
 import {
   escapeHTML as esc
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 const families = [ ['horizontal_push', 'incline-push', 'wall-push', 'knee-push'], ['overhead_press',
 'short-pike-push', 'pike-push'], ['vertical_pull', 'feet-assisted-pull', 'pull', 'chin'], ['horizontal_pull', 'row',
 'band-row'], ['squat', 'squat'], ['hinge', 'hinge'], ['single_leg', 'single-squat', 'split'], ['core_anti_extension',

@@ -1,21 +1,21 @@
-import {isTourActive} from './tour.js?v=31';
-import {trainingStyle, trainingDays} from './session-structure.js?v=31';
+import {isTourActive} from './tour.js?v=32';
+import {trainingStyle, trainingDays} from './session-structure.js?v=32';
 import {
   emptyFilters
 }
-from './library-view.js?v=31';
+from './library-view.js?v=32';
 import {
   load, persist
 }
-from './store.js?v=31';
+from './store.js?v=32';
 import {
   t
 }
-from './shared.js?v=31';
+from './shared.js?v=32';
 import {
   toast
 }
-from './shell.js?v=31';
+from './shell.js?v=32';
 const state = {
   db: null, page: 'home', selectedDay: null, weekOffset: 0, libraryTab: 'exercises', libraryQuery: '',
   archive: null, onboard: null, onboardStep: 0,

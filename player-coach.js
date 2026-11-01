@@ -1,8 +1,8 @@
-import {exercises} from './data/exercises.js?v=31';
-import {familyOf} from './data/exercise-families.js?v=31';
-import {recommendTier, variationReady} from './variation-choice.js?v=31';
-import {conditionsKnown, evidenceKey} from './training-evidence.js?v=31';
-import {escapeHTML as esc} from './ui.js?v=31';
+import {exercises} from './data/exercises.js?v=32';
+import {familyOf} from './data/exercise-families.js?v=32';
+import {recommendTier, variationReady} from './variation-choice.js?v=32';
+import {conditionsKnown, evidenceKey} from './training-evidence.js?v=32';
+import {escapeHTML as esc} from './ui.js?v=32';
 
 const tiers = ['easy', 'regular', 'hard'];
 const byId = id => exercises.find(e => e.id === id);

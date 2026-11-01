@@ -1,7 +1,7 @@
-import {exercises} from './data/exercises.js?v=31';
-import {validateExecution} from './execution-validation.js?v=31';
-import {workSeconds} from './training-evidence.js?v=31';
-import {escapeHTML as esc} from './ui.js?v=31';
+import {exercises} from './data/exercises.js?v=32';
+import {validateExecution} from './execution-validation.js?v=32';
+import {workSeconds} from './training-evidence.js?v=32';
+import {escapeHTML as esc} from './ui.js?v=32';
 export const sessionExtras = p => ({warmup: p?.sessionExtras?.warmup !== false, cooldown: p?.sessionExtras?.cooldown !== false});
 export const isExtra = b => b.extra === true || ['warm', 'cool'].includes(b.phase) || ['warmup', 'cooldown'].includes(b.section);
 export const mainSeconds = blocks => blocks.filter(b => !isExtra(b)).reduce((n, b) => n + b.seconds, 0);

@@ -1,19 +1,19 @@
 import {
   localDateKey
 }
-from './calendar.js?v=31';
+from './calendar.js?v=32';
 import {
   glossary
 }
-from './data/glossary.js?v=31';
+from './data/glossary.js?v=32';
 import {
   skills
 }
-from './data/skills.js?v=31';
+from './data/skills.js?v=32';
 import {
   state
 }
-from './state.js?v=31';
+from './state.js?v=32';
 const $ = s => document.querySelector(s), $$ = s => [... document.querySelectorAll(s)];
 const he =() => true, t =(a, b) => he() ? a: b, user =() => state.db.users.find(u => u.id === state.db.active),
 nameOf = e => he() ? e.he: e.en;

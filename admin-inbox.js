@@ -1,7 +1,7 @@
 import {
   normalizeName
 }
-from './exercise-matcher.js?v=31';
+from './exercise-matcher.js?v=32';
 // Admin-only list of exercises seen elsewhere and not yet in the catalogue.
 // Stored on this device only; it reaches the catalogue when exported and added in a Claude session.
 const KEY = 'kong-exercise-inbox-v1', FLAG = 'kong-admin-v1';

@@ -3,7 +3,7 @@
 import {
   SESSION_DURATIONS
 }
-from './session-settings.js?v=31';
+from './session-settings.js?v=32';
 export function parseSessionIntent(input, lang = 'he') {
   const text = String(input ?? '').slice(0, 500).trim().toLowerCase();
   const result = {

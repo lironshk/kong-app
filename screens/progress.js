@@ -1,35 +1,35 @@
 import {
   renderProgressEvidence
 }
-from '../coach-progress.js?v=31';
+from '../coach-progress.js?v=32';
 import {
   exercises, nextAction, plan, recommendation
 }
-from '../engine.js?v=31';
+from '../engine.js?v=32';
 import {
   renderStartingPoint
 }
-from '../starting-point.js?v=31';
+from '../starting-point.js?v=32';
 import {
   dateKey, escapeHTML as esc, icon
 }
-from '../ui.js?v=31';
+from '../ui.js?v=32';
 import {
   bindCommon
 }
-from '../screens/coach.js?v=31';
+from '../screens/coach.js?v=32';
 import {
   exportProfile
 }
-from '../screens/profile.js?v=31';
+from '../screens/profile.js?v=32';
 import {
   $, change, he, nameOf, on, pageHead, t, user
 }
-from '../shared.js?v=31';
+from '../shared.js?v=32';
 import {
   shell
 }
-from '../shell.js?v=31';
+from '../shell.js?v=32';
 function history() {
   const u = user(), logs = [... u.logs].filter(l => Date.parse(l.completed_at) <= Date.now()).reverse(),
   allSets = logs.flatMap(l => l.sets || []).filter(s => s.actual > 0), totalMovements = new Set(allSets.map(s => s.performed_exercise_id)).size;

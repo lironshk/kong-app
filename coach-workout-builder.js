@@ -1,12 +1,12 @@
-import {mainSeconds} from './session-extras.js?v=31';
-import {coachExecution} from './data/coach-execution.js?v=31';
-import {executionBlock,finishExecution,movementRole,orderExecution} from './session-execution.js?v=31';
-import { chooseVariation, variationBlock } from './variation-choice.js?v=31';
-import { exercises } from './data/exercises.js?v=31';
-import { volumeBudget } from './training-volume.js?v=31';
+import {mainSeconds} from './session-extras.js?v=32';
+import {coachExecution} from './data/coach-execution.js?v=32';
+import {executionBlock,finishExecution,movementRole,orderExecution} from './session-execution.js?v=32';
+import { chooseVariation, variationBlock } from './variation-choice.js?v=32';
+import { exercises } from './data/exercises.js?v=32';
+import { volumeBudget } from './training-volume.js?v=32';
 import {
   workSeconds, recoveryBefore
-} from './training-evidence.js?v=31';
+} from './training-evidence.js?v=32';
 const byId = id => exercises.find(e => e.id === id);
 const pause = (id, seconds, section) => ({
   id, he: 'מנוחה והכנה', en: 'Rest and prepare', phase: 'rest', section, seconds, target: null,

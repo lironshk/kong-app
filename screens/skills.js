@@ -1,51 +1,51 @@
 import {
   todayWorkout
 }
-from '../coach-insights.js?v=31';
+from '../coach-insights.js?v=32';
 import {
   skills
 }
-from '../data/skills.js?v=31';
+from '../data/skills.js?v=32';
 import {
   exercises, plan
 }
-from '../engine.js?v=31';
+from '../engine.js?v=32';
 import {
   exerciseVisual
 }
-from '../exercise-visuals.js?v=31';
+from '../exercise-visuals.js?v=32';
 import {
   onboardingSkillChoices, skillStepsHTML
 }
-from '../journey-view.js?v=31';
+from '../journey-view.js?v=32';
 import {
   confirmStage, selectSkill, skillSelections, skillState, stageProposal
 }
-from '../skill-progress.js?v=31';
+from '../skill-progress.js?v=32';
 import {
   escapeHTML as esc
 }
-from '../ui.js?v=31';
+from '../ui.js?v=32';
 import {
   go
 }
-from '../router.js?v=31';
+from '../router.js?v=32';
 import {
   parseTempo
 }
-from '../screens/player.js?v=31';
+from '../screens/player.js?v=32';
 import {
   $, $$, he, nameOf, on, t, user
 }
-from '../shared.js?v=31';
+from '../shared.js?v=32';
 import {
   modal
 }
-from '../shell.js?v=31';
+from '../shell.js?v=32';
 import {
   save, state
 }
-from '../state.js?v=31';
+from '../state.js?v=32';
 function weeklySkillPractice(u, s) {
   if (!u) return '';
   const p = todayWorkout( {

@@ -1,47 +1,47 @@
 import {
   collections, lessons
 }
-from '../data/editorial.js?v=31';
+from '../data/editorial.js?v=32';
 import {
   skills
 }
-from '../data/skills.js?v=31';
+from '../data/skills.js?v=32';
 import {
   exercises
 }
-from '../engine.js?v=31';
+from '../engine.js?v=32';
 import {
   exerciseVisual
 }
-from '../exercise-visuals.js?v=31';
+from '../exercise-visuals.js?v=32';
 import {
   escapeHTML as esc, icon
 }
-from '../ui.js?v=31';
+from '../ui.js?v=32';
 import {
   go
 }
-from '../router.js?v=31';
+from '../router.js?v=32';
 import {
   bindCommon, dashboard
 }
-from '../screens/coach.js?v=31';
+from '../screens/coach.js?v=32';
 import {
   exerciseDetail
 }
-from '../screens/library.js?v=31';
+from '../screens/library.js?v=32';
 import {
   startOnboarding
 }
-from '../screens/onboarding.js?v=31';
+from '../screens/onboarding.js?v=32';
 import {
   $, $$, he, nameOf, on, t, user
 }
-from '../shared.js?v=31';
+from '../shared.js?v=32';
 import {
   modal, shell
 }
-from '../shell.js?v=31';
+from '../shell.js?v=32';
 const editorialText =(item, key) => he() ?(item[key + 'He'] || item[key] || ''):(item[key + 'En'] || item[key + 'He'] || item[key] || '');
 function destinations() {
   return(`<section class="explore-split"><div class="story-panel">` + (

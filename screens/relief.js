@@ -1,27 +1,27 @@
 import {
   evidenceLabels, myths, redFlags, regionSensations, reliefRegion, reliefRegions, reliefReview, reliefSources, sensations, sharpSteps
 }
-from '../data/relief.js?v=31';
+from '../data/relief.js?v=32';
 import {
   bodyMap, regionCloseup
 }
-from '../relief-visuals.js?v=31';
+from '../relief-visuals.js?v=32';
 import {
   escapeHTML as esc, safeUrl
 }
-from '../ui.js?v=31';
+from '../ui.js?v=32';
 import {
   pageHead
 }
-from '../shared.js?v=31';
+from '../shared.js?v=32';
 import {
   modal, shell
 }
-from '../shell.js?v=31';
+from '../shell.js?v=32';
 import {
   state
 }
-from '../state.js?v=31';
+from '../state.js?v=32';
 let ticking = null;
 const stopTimer = () => {
   clearInterval(ticking);

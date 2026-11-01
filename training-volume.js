@@ -1,11 +1,11 @@
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   loadingExposure, conditionsKnown, evidenceKey
 }
-from './training-evidence.js?v=31';
+from './training-evidence.js?v=32';
 // Pattern budgets are an editorial distribution, not muscle hypertrophy bands.
 export const volumeFamily = e => e.group === 'pull' || e.movementPattern === 'straight_arm_pull' ? 'pull': e.group === 'push' ? 'push': ['squat',
 'single_leg'].includes(e.movementPattern) ? 'knee': ['hinge', 'hip_extension', 'knee_flexion'].includes(e.movementPattern) ? 'hip': e.group ===

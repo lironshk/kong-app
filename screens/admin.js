@@ -1,35 +1,35 @@
 import {
   addRequest, clearInbox, inboxText, loadInbox, removeRequest, setAdmin
 }
-from '../admin-inbox.js?v=31';
+from '../admin-inbox.js?v=32';
 import {
   matchExercise
 }
-from '../exercise-matcher.js?v=31';
+from '../exercise-matcher.js?v=32';
 import {
   exportFile
 }
-from '../store.js?v=31';
+from '../store.js?v=32';
 import {
   escapeHTML as esc
 }
-from '../ui.js?v=31';
+from '../ui.js?v=32';
 import {
   go
 }
-from '../router.js?v=31';
+from '../router.js?v=32';
 import {
   $, $$, on, pageHead
 }
-from '../shared.js?v=31';
+from '../shared.js?v=32';
 import {
   confirmAction, shell, toast
 }
-from '../shell.js?v=31';
+from '../shell.js?v=32';
 import {
   state
 }
-from '../state.js?v=31';
+from '../state.js?v=32';
 const STATUS = {
   exists: ['קיים באפליקציה', 'is-exists'], similar: ['יש וריאציה קרובה', 'is-similar'], missing: ['לא קיים', 'is-missing']
 };

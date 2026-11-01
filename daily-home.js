@@ -1,28 +1,28 @@
-import {extraTimeText} from './session-extras.js?v=31';
+import {extraTimeText} from './session-extras.js?v=32';
 import {
   glossary
 }
-from './data/glossary.js?v=31';
+from './data/glossary.js?v=32';
 import {
   renderHome
 }
-from './home-view.js?v=31';
+from './home-view.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   movementAtlas
 }
-from './data/movement-atlas.js?v=31';
+from './data/movement-atlas.js?v=32';
 import {
   escapeHTML as esc
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 import {
   dailyDate, dailyProgress
 }
-from './daily-insights.js?v=31';
+from './daily-insights.js?v=32';
 export const checkInFields = [ ['sleepHours', 'שעות שינה', 0, 24, .5], ['sleepQuality', 'איכות שינה · 1 נמוכה, 5 גבוהה',
 1, 5, 1], ['energy', 'אנרגיה ומוכנות · 1 נמוכה, 5 גבוהה', 1, 5, 1], ['soreness', 'כאבי שרירים · 1 מעט, 5 הרבה',
 1, 5, 1], ['weightKg', 'משקל גוף (ק״ג)', 20, 400, .1], ['steps', 'צעדים', 0, 100000, 1], ['waterGlasses',

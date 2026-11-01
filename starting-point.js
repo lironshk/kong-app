@@ -1,15 +1,15 @@
 import {
   skills
 }
-from './data/skills.js?v=31';
+from './data/skills.js?v=32';
 import {
   skillSelections, skillState
 }
-from './skill-progress.js?v=31';
+from './skill-progress.js?v=32';
 import {
   escapeHTML as esc
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 export function renderStartingPoint(profile) {
   const metrics = [ ['push', 'שכיבות סמיכה', 'חזרות'], ['pull', 'מתח', 'חזרות'], ['legs', 'סקוואט',
   'חזרות'], ['core', 'פלאנק', 'שניות']];

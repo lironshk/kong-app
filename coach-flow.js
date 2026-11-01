@@ -1,43 +1,43 @@
-import {sessionHeaderHTML, roundCardsHTML} from './session-structure.js?v=31';
-import {extraTimeText, extraRowHTML, rampUpNotice} from './session-extras.js?v=31';
-import { variationSelectorHTML } from './variation-choice.js?v=31';
-import { effortText, painRule, doseText } from './training-safety.js?v=31';
+import {sessionHeaderHTML, roundCardsHTML} from './session-structure.js?v=32';
+import {extraTimeText, extraRowHTML, rampUpNotice} from './session-extras.js?v=32';
+import { variationSelectorHTML } from './variation-choice.js?v=32';
+import { effortText, painRule, doseText } from './training-safety.js?v=32';
 import {
   renderPhaseBar
 }
-from './phase-bar.js?v=31';
+from './phase-bar.js?v=32';
 import {
   captureView
 }
-from './view-state.js?v=31';
+from './view-state.js?v=32';
 import {
   SESSION_DURATIONS, sessionMinutes
 }
-from './session-settings.js?v=31';
+from './session-settings.js?v=32';
 import {
   focusLabels
 }
-from './session-planner.js?v=31';
+from './session-planner.js?v=32';
 import {
   todayWorkout, progressionCheckpoint
 }
-from './coach-insights.js?v=31';
+from './coach-insights.js?v=32';
 import {
   buildWorkout
 }
-from './workout-engine.js?v=31';
+from './workout-engine.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   exerciseVisual
 }
-from './exercise-visuals.js?v=31';
+from './exercise-visuals.js?v=32';
 import {
   escapeHTML as esc, icon
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 const equipmentLabels = {
   wall: ['קיר', 'Wall'], bar: ['מתח', 'Pull-up bar'], lowbar: ['מוט נמוך', 'Low bar'], band: ['גומייה',
   'Band'], parallel: ['מקבילים', 'Parallel bars'], parallettes: ['מקבילונים', 'Parallettes'], rings: ['טבעות',

@@ -1,12 +1,12 @@
-import { rotateWorkout } from './workout-rotation.js?v=31';
+import { rotateWorkout } from './workout-rotation.js?v=32';
 import {
   sessionMinutes
 }
-from './session-settings.js?v=31';
+from './session-settings.js?v=32';
 import {
   buildSession, budgets
 }
-from './session-planner.js?v=31';
+from './session-planner.js?v=32';
 /**
  * Read-only coaching API for the home screen (all inputs remain unmodified).
  * weeklyMovementLedger(logs,{now,timeZone}) -> groups of actual sets/local dates.
@@ -24,15 +24,15 @@ from './session-planner.js?v=31';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   plan, weekPlan
 }
-from './engine.js?v=31';
+from './engine.js?v=32';
 export {
   progressionCheckpoint
 }
-from './engine.js?v=31';
+from './engine.js?v=32';
 const DAY = 86400000;
 const stamp = value => typeof value === 'string' && value.trim() ? Date.parse(value): NaN;
 const validLogs =(logs, now) =>(Array.isArray(logs) ? logs: []).filter(l => Number.isFinite(stamp(l?.completed_at)) && stamp(l.completed_at) <= +

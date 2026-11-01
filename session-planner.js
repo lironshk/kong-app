@@ -1,39 +1,39 @@
-import {trainingQueue, legPatterns} from './session-structure.js?v=31';
-import {finishExecution,executionBlock} from './session-execution.js?v=31';
-import { chooseVariation } from './variation-choice.js?v=31';
+import {trainingQueue, legPatterns} from './session-structure.js?v=32';
+import {finishExecution,executionBlock} from './session-execution.js?v=32';
+import { chooseVariation } from './variation-choice.js?v=32';
 import {
   phaseLabel
 }
-from './data/glossary.js?v=31';
+from './data/glossary.js?v=32';
 import {
   volumeFamily, volumeBudget, fatigueDecision, experiencedProfile
 }
-from './training-volume.js?v=31';
+from './training-volume.js?v=32';
 import {
   unresolvedDoses, doseAuthorized, evidenceKey, conditionsKnown, recoveryState, isBlocked, hasEquipment,
   reviewedClearance, variationEvidence, variationPrescription, workSeconds, squatReportStep, recoveryBefore
 }
-from './training-evidence.js?v=31';
+from './training-evidence.js?v=32';
 import {
   focusSkills, skillState
 }
-from './skill-progress.js?v=31';
+from './skill-progress.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   skills
 }
-from './data/skills.js?v=31';
+from './data/skills.js?v=32';
 import {
   plan as safetyPlan
 }
-from './engine.js?v=31';
+from './engine.js?v=32';
 import {
   SESSION_DURATIONS, sessionMinutes
 }
-from './session-settings.js?v=31';
+from './session-settings.js?v=32';
 const phaseBudgets = [[300, 300, 1500, 0, 180], [360, 600, 2100, 0, 180],
   [420, 720, 2880, 0, 240], [480, 1080, 3420, 0, 300]];
 export const budgets = Object.fromEntries(SESSION_DURATIONS.map((minutes, i) => [minutes, phaseBudgets[i]]));

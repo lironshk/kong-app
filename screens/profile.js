@@ -1,61 +1,61 @@
-import {replayTour} from '../tour.js?v=31';
-import {trainingPreferencesHTML, bindTrainingPreferences} from '../session-structure.js?v=31';
+import {replayTour} from '../tour.js?v=32';
+import {trainingPreferencesHTML, bindTrainingPreferences} from '../session-structure.js?v=32';
 import {
   BRAND_NAME, LOGO_SVG, applyBrand
 }
-from '../brand.js?v=31';
+from '../brand.js?v=32';
 import {
   capabilityOffer
 }
-from '../capability-check.js?v=31';
+from '../capability-check.js?v=32';
 import {
   skills
 }
-from '../data/skills.js?v=31';
+from '../data/skills.js?v=32';
 import {
   exercises
 }
-from '../engine.js?v=31';
+from '../engine.js?v=32';
 import {
   canDeleteRecovery, deleteRecoveryBackup, exportFile, exportRecovery, validateImport
 }
-from '../store.js?v=31';
+from '../store.js?v=32';
 import {
   dateKey, escapeHTML as esc, icon, safeUrl
 }
-from '../ui.js?v=31';
+from '../ui.js?v=32';
 import {
   go, render
 }
-from '../router.js?v=31';
+from '../router.js?v=32';
 import {
   isAdmin, setAdmin
 }
-from '../admin-inbox.js?v=31';
+from '../admin-inbox.js?v=32';
 import {
   capabilityIntro, reviewedExecution
 }
-from '../screens/capability.js?v=31';
+from '../screens/capability.js?v=32';
 import {
   startOnboarding
 }
-from '../screens/onboarding.js?v=31';
+from '../screens/onboarding.js?v=32';
 import {
   captureDraft
 }
-from '../screens/player.js?v=31';
+from '../screens/player.js?v=32';
 import {
   $, $$, change, days, equipmentLabel, equipmentNames, goalLabel, he, on, pageHead, t, tx, user
 }
-from '../shared.js?v=31';
+from '../shared.js?v=32';
 import {
   confirmAction, modal, shell, toast
 }
-from '../shell.js?v=31';
+from '../shell.js?v=32';
 import {
   save, state
 }
-from '../state.js?v=31';
+from '../state.js?v=32';
 function privacy() {
   modal((`<h2>` + (
     `${t('הנתונים שלך. במכשיר שלך.', 'Your data. On your device.')}`
@@ -356,7 +356,7 @@ function settings() {
     try {
       const {
         deleteImage
-      } = await import('../media-store.js?v=31');
+      } = await import('../media-store.js?v=32');
       await Promise.all(images.map(deleteImage))
     } catch {
     }

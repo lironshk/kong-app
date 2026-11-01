@@ -1,55 +1,55 @@
 import {
   LOGO_SVG
 }
-from '../brand.js?v=31';
+from '../brand.js?v=32';
 import {
   skills
 }
-from '../data/skills.js?v=31';
+from '../data/skills.js?v=32';
 import {
   exercises, plan
 }
-from '../engine.js?v=31';
+from '../engine.js?v=32';
 import {
   movementThumb
 }
-from '../exercise-visuals.js?v=31';
+from '../exercise-visuals.js?v=32';
 import {
   dayKey as homeDate
 }
-from '../home-signals.js?v=31';
+from '../home-signals.js?v=32';
 import {
   SESSION_DURATIONS
 }
-from '../session-settings.js?v=31';
+from '../session-settings.js?v=32';
 import {
   selectSkill, skillSelections
 }
-from '../skill-progress.js?v=31';
+from '../skill-progress.js?v=32';
 import {
   escapeHTML as esc, icon
 }
-from '../ui.js?v=31';
+from '../ui.js?v=32';
 import {
   go, render
 }
-from '../router.js?v=31';
+from '../router.js?v=32';
 import {
   skillPicker
 }
-from '../screens/skills.js?v=31';
+from '../screens/skills.js?v=32';
 import {
   $, $$, days, equipmentNames, goalLabel, he, on, shortDays, t, tx, user
 }
-from '../shared.js?v=31';
+from '../shared.js?v=32';
 import {
   shell, toast
 }
-from '../shell.js?v=31';
+from '../shell.js?v=32';
 import {
   save, state
 }
-from '../state.js?v=31';
+from '../state.js?v=32';
 function startOnboarding(edit = false) {
   state.journeyProfile = false;
   state.editing = edit;

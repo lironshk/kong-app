@@ -1,23 +1,23 @@
 import {
   skills
 }
-from './data/skills.js?v=31';
+from './data/skills.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   skillState
 }
-from './skill-progress.js?v=31';
+from './skill-progress.js?v=32';
 import {
   movementThumb
 }
-from './exercise-visuals.js?v=31';
+from './exercise-visuals.js?v=32';
 import {
   escapeHTML as esc
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 export const TARGET_SKILLS = {
   'first-push': 'push', 'first-pull': 'pull', 'front-lever': 'front-lever', 'muscle-up': 'muscle-up-strict',
   handstand: 'handstand-free', planche: 'full-planche', lsit: 'lsit', 'human-flag': 'human-flag', hspu: 'wall-hspu',

@@ -1,9 +1,9 @@
-import { returnDecision } from './training-safety.js?v=31';
+import { returnDecision } from './training-safety.js?v=32';
 // Editorial defaults pending qualified review. Intake doses stay provisional; the squat family has one explicit conservative step.
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 const byId = id => exercises.find(e => e.id === id);
 export const equipmentSchema = ['wall', 'band', 'lowbar', 'bar', 'parallettes', 'rings', 'parallel',
 'box', 'anchor', 'pole', 'bench'];

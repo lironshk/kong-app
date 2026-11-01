@@ -1,7 +1,7 @@
 import {
   validateForecast
 }
-from './home-weather.js?v=31';
+from './home-weather.js?v=32';
 export function validateHome(h = {
 }) {
   const fail =() => {

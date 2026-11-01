@@ -1,9 +1,9 @@
-import {focusPlayerHTML} from './focus-player.js?v=31';
-import {openCoachPreview} from './coach-flow.js?v=31';
-import {exercises} from './data/exercises.js?v=31';
-import {effortChoicesHTML} from './player-coach.js?v=31';
-import {createPlayerSignals} from './player-signals.js?v=31';
-import {escapeHTML as esc, formatTime, icon} from './ui.js?v=31';
+import {focusPlayerHTML} from './focus-player.js?v=32';
+import {openCoachPreview} from './coach-flow.js?v=32';
+import {exercises} from './data/exercises.js?v=32';
+import {effortChoicesHTML} from './player-coach.js?v=32';
+import {createPlayerSignals} from './player-signals.js?v=32';
+import {escapeHTML as esc, formatTime, icon} from './ui.js?v=32';
 
 export const TOUR_VERSION = 1;
 const tourStep = (id, route, target, title, text, extra = {}) => ({id, route, target, title, text, ...extra});

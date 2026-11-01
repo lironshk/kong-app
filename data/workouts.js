@@ -1,4 +1,4 @@
-import { coachWorkouts } from './coach-workouts.js?v=31';
+import { coachWorkouts } from './coach-workouts.js?v=32';
 // Original editorial sessions. Durations cover main training; warm-up and cool-down are extras.
 const define=(id,he,en,description,format,minutes,muscleGroups,moves,extra={})=>({id,he,en,description,format,minutes,muscleGroups,moves,equipment:[],level:1,...extra});
 const originalWorkouts=[

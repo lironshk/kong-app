@@ -1,5 +1,5 @@
-import {libraryDrills} from './library-drills.js?v=31';
-import {registerPose} from './poses.js?v=31';
+import {libraryDrills} from './library-drills.js?v=32';
+import {registerPose} from './poses.js?v=32';
 // Original Hebrew editorial coaching copy. Source links are references, not a medical review.
 const baseExercises = [
   {

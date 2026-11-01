@@ -1,18 +1,18 @@
-import {mainSeconds} from './session-extras.js?v=31';
-import {finishExecution} from './session-execution.js?v=31';
-import { volumeBudget } from './training-volume.js?v=31';
-import { chooseVariation, variationBlock } from './variation-choice.js?v=31';
-import { exercises } from './data/exercises.js?v=31';
-import { workSeconds, emomPrescription } from './training-evidence.js?v=31';
-import { buildCoachSections } from './coach-workout-builder.js?v=31';
+import {mainSeconds} from './session-extras.js?v=32';
+import {finishExecution} from './session-execution.js?v=32';
+import { volumeBudget } from './training-volume.js?v=32';
+import { chooseVariation, variationBlock } from './variation-choice.js?v=32';
+import { exercises } from './data/exercises.js?v=32';
+import { workSeconds, emomPrescription } from './training-evidence.js?v=32';
+import { buildCoachSections } from './coach-workout-builder.js?v=32';
 import {
   plan, adaptTarget
 }
-from './engine.js?v=31';
+from './engine.js?v=32';
 import {
   workouts
 }
-from './data/workouts.js?v=31';
+from './data/workouts.js?v=32';
 const phase =(id, he, en, phase, seconds, cue) =>( {
   id, he, en, phase, seconds, target: null, cue
 });

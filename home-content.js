@@ -1,11 +1,11 @@
 import {
   homeContent
 }
-from './data/home-content.js?v=31';
+from './data/home-content.js?v=32';
 import {
   shiftDay
 }
-from './home-signals.js?v=31';
+from './home-signals.js?v=32';
 export function lessonContexts(profile, signals) {
   const ids = [4, 46];
   if (profile.goal === 'strength') ids.unshift(3);

@@ -1,6 +1,6 @@
 // Original schematic body art for the relief guide: shows where a sensation sits, not anatomy for diagnosis.
-import {reliefRegions} from './data/relief.js?v=31';
-import {escapeHTML as esc} from './ui.js?v=31';
+import {reliefRegions} from './data/relief.js?v=32';
+import {escapeHTML as esc} from './ui.js?v=32';
 
 const MIRROR = 'translate(200 0) scale(-1 1)';
 // Muscle zones per view; paired zones are drawn once and mirrored.

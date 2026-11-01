@@ -1,15 +1,15 @@
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   conditionsKnown, evidenceKey, variationEvidence
 }
-from './training-evidence.js?v=31';
+from './training-evidence.js?v=32';
 import {
   skills
 }
-from './data/skills.js?v=31';
+from './data/skills.js?v=32';
 const aliases = {
   'first-pullup': 'first-pull', 'first-pushup': 'first-push'
 };

@@ -1,17 +1,17 @@
-import {mainSeconds} from './session-extras.js?v=31';
-import {finishExecution} from './session-execution.js?v=31';
-import { unresolvedPain, reportedPain, returnDecision, painRule } from './training-safety.js?v=31';
-import { volumeBudget, fatigueDecision } from './training-volume.js?v=31';
-import { chooseVariation, variationBlock } from './variation-choice.js?v=31';
+import {mainSeconds} from './session-extras.js?v=32';
+import {finishExecution} from './session-execution.js?v=32';
+import { unresolvedPain, reportedPain, returnDecision, painRule } from './training-safety.js?v=32';
+import { volumeBudget, fatigueDecision } from './training-volume.js?v=32';
+import { chooseVariation, variationBlock } from './variation-choice.js?v=32';
 import {
   equipmentSchema, hasEquipment, workSeconds, lighterActive
 }
-from './training-evidence.js?v=31';
+from './training-evidence.js?v=32';
 export const RULE_VERSION = 'foundation-0.3.0';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 export {
   exercises
 };

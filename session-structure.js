@@ -1,6 +1,6 @@
-import {exercises} from './data/exercises.js?v=31';
-import {escapeHTML as esc} from './ui.js?v=31';
-import {reserveMinimum} from './training-evidence.js?v=31';
+import {exercises} from './data/exercises.js?v=32';
+import {escapeHTML as esc} from './ui.js?v=32';
+import {reserveMinimum} from './training-evidence.js?v=32';
 export const trainingDays = p => Math.max(1, Math.min(7, new Set(p.days || []).size || Number(p.daysPerWeek) || 3));
 export function trainingStyles(p = {}) {
   const days = trainingDays(p), dedicated = p.dedicatedLegDay === true;

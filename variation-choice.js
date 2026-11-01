@@ -1,13 +1,13 @@
-import {executionBlock} from './session-execution.js?v=31';
-import { exercises } from './data/exercises.js?v=31';
-import { exerciseFamilies, familyOf } from './data/exercise-families.js?v=31';
-import { adaptTarget } from './engine.js?v=31';
-import { unresolvedPain, returnDecision } from './training-safety.js?v=31';
+import {executionBlock} from './session-execution.js?v=32';
+import { exercises } from './data/exercises.js?v=32';
+import { exerciseFamilies, familyOf } from './data/exercise-families.js?v=32';
+import { adaptTarget } from './engine.js?v=32';
+import { unresolvedPain, returnDecision } from './training-safety.js?v=32';
 import {
   hasEquipment, reviewedClearance, recoveryState, isBlocked, lighterActive,
   variationEvidence, variationPrescription, prescriptionBand, conditionsKnown, evidenceKey, emomPrescription
-} from './training-evidence.js?v=31';
-import { escapeHTML as esc } from './ui.js?v=31';
+} from './training-evidence.js?v=32';
+import { escapeHTML as esc } from './ui.js?v=32';
 const tiers = ['easy', 'regular', 'hard'];
 const labels = {easy: 'קלה', regular: 'רגילה', hard: 'קשה'};
 const byId = id => exercises.find(e => e.id === id);

@@ -1,15 +1,15 @@
 import {
   displayPhases
 }
-from './session-settings.js?v=31';
+from './session-settings.js?v=32';
 import {
   phaseLabel
 }
-from './data/glossary.js?v=31';
+from './data/glossary.js?v=32';
 import {
   escapeHTML as esc
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 // Labels never participate in segment sizing: flex weights represent exact seconds.
 export function renderPhaseBar(phases, {
   className = '', label = p => p.label || phaseLabel(p.id)

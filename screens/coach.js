@@ -1,109 +1,109 @@
-import {extraTimeText} from '../session-extras.js?v=31';
-import {trainingPreferencesHTML, bindTrainingPreferences, sessionHeaderHTML} from '../session-structure.js?v=31';
+import {extraTimeText} from '../session-extras.js?v=32';
+import {trainingPreferencesHTML, bindTrainingPreferences, sessionHeaderHTML} from '../session-structure.js?v=32';
 import {
   localDateKey
 }
-from '../calendar.js?v=31';
+from '../calendar.js?v=32';
 import {
   capabilityOffer
 }
-from '../capability-check.js?v=31';
+from '../capability-check.js?v=32';
 import {
   openCoachPreview
 }
-from '../coach-flow.js?v=31';
+from '../coach-flow.js?v=32';
 import {
   todayWorkout
 }
-from '../coach-insights.js?v=31';
+from '../coach-insights.js?v=32';
 import {
   renderDailyHome
 }
-from '../daily-home.js?v=31';
+from '../daily-home.js?v=32';
 import {
   checkInReadiness, dailyDate
 }
-from '../daily-insights.js?v=31';
+from '../daily-insights.js?v=32';
 import {
   workouts
 }
-from '../data/workouts.js?v=31';
+from '../data/workouts.js?v=32';
 import {
   exercises, plan
 }
-from '../engine.js?v=31';
+from '../engine.js?v=32';
 import {
   exerciseVisual
 }
-from '../exercise-visuals.js?v=31';
+from '../exercise-visuals.js?v=32';
 import {
   bindHome
 }
-from '../home-controller.js?v=31';
+from '../home-controller.js?v=32';
 import {
   bindMedia
 }
-from '../media.js?v=31';
+from '../media.js?v=32';
 import {
   renderPhaseBar
 }
-from '../phase-bar.js?v=31';
+from '../phase-bar.js?v=32';
 import {
   currentSessionOptions, refreshSavedSession, sessionInputs as baseSessionInputs
 }
-from '../session-refresh.js?v=31';
+from '../session-refresh.js?v=32';
 import {
   SESSION_DURATIONS, sessionMinutes
 }
-from '../session-settings.js?v=31';
+from '../session-settings.js?v=32';
 import {
   selectSkill, skillSelections
 }
-from '../skill-progress.js?v=31';
+from '../skill-progress.js?v=32';
 import {
   escapeHTML as esc, icon
 }
-from '../ui.js?v=31';
+from '../ui.js?v=32';
 import {
   buildWorkout
 }
-from '../workout-engine.js?v=31';
+from '../workout-engine.js?v=32';
 import {
   go, render
 }
-from '../router.js?v=31';
+from '../router.js?v=32';
 import {
   capabilityIntro, painReview
 }
-from '../screens/capability.js?v=31';
+from '../screens/capability.js?v=32';
 import {
   openLesson
 }
-from '../screens/home.js?v=31';
+from '../screens/home.js?v=32';
 import {
   renderLibraryResults
 }
-from '../screens/library.js?v=31';
+from '../screens/library.js?v=32';
 import {
   startOnboarding
 }
-from '../screens/onboarding.js?v=31';
+from '../screens/onboarding.js?v=32';
 import {
   bindNextSkill
 }
-from '../screens/skills.js?v=31';
+from '../screens/skills.js?v=32';
 import {
   $, $$, dayIndex, he, on, pageHead, t, tx, user
 }
-from '../shared.js?v=31';
+from '../shared.js?v=32';
 import {
   confirmAction, modal, shell, toast
 }
-from '../shell.js?v=31';
+from '../shell.js?v=32';
 import {
   save, state
 }
-from '../state.js?v=31';
+from '../state.js?v=32';
 function planUpdateNotice() {
   return('<aside id="saved-plan-notice" class="plan-update-notice" role="status"><p>התוכנית עודכנה — ' +
   'להחיל על האימון הבא</p><button type="button" class="secondary" id="apply-plan-now">להחיל עכשיו' + '</button></aside>');

@@ -1,24 +1,24 @@
-import {instructionRouteHTML} from './movement-instructions.js?v=31';
-import {sessionHeaderHTML} from './session-structure.js?v=31';
-import {extraTimeText} from './session-extras.js?v=31';
-import { variationSelectorHTML } from './variation-choice.js?v=31';
-import { effortText, painRule, doseText } from './training-safety.js?v=31';
+import {instructionRouteHTML} from './movement-instructions.js?v=32';
+import {sessionHeaderHTML} from './session-structure.js?v=32';
+import {extraTimeText} from './session-extras.js?v=32';
+import { variationSelectorHTML } from './variation-choice.js?v=32';
+import { effortText, painRule, doseText } from './training-safety.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   movementAtlas
 }
-from './data/movement-atlas.js?v=31';
+from './data/movement-atlas.js?v=32';
 import {
   escapeHTML as esc
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 import {
   infographicSVG, siblingOptionsHTML
 }
-from './exercise-visuals.js?v=31';
+from './exercise-visuals.js?v=32';
 const work = b => ['work', 'skill'].includes(b?.phase);
 export function playerProgress(session) {
   const active = session.plan.blocks[session.index];

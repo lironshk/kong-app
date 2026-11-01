@@ -1,36 +1,36 @@
-import {installTour, isTourActive} from './tour.js?v=31';
+import {installTour, isTourActive} from './tour.js?v=32';
 import {
   BRAND_NAME
 }
-from './brand.js?v=31';
+from './brand.js?v=32';
 import {
   initializeState, state
 }
-from './state.js?v=31';
+from './state.js?v=32';
 import {
   initializeRouter, render, go
 }
-from './router.js?v=31';
+from './router.js?v=32';
 import {
   sessionWakeLock, toast, shell, modal
 }
-from './shell.js?v=31';
+from './shell.js?v=32';
 import {
   $, $$, t, user
 }
-from './shared.js?v=31';
+from './shared.js?v=32';
 import {
   captureDraft, tick
 }
-from './screens/player.js?v=31';
+from './screens/player.js?v=32';
 import {
   save
 }
-from './state.js?v=31';
+from './state.js?v=32';
 import {
   dashboard
 }
-from './screens/coach.js?v=31';
+from './screens/coach.js?v=32';
 initializeState();
 installTour({state, user, save, go, render, shell, modal, schedule: setTimeout});
 initializeRouter();

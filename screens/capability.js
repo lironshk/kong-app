@@ -1,47 +1,47 @@
 import {
   capabilityChoices, capabilityPlan, capabilityStop
 }
-from '../capability-check.js?v=31';
+from '../capability-check.js?v=32';
 import {
   skills
 }
-from '../data/skills.js?v=31';
+from '../data/skills.js?v=32';
 import {
   exercises, plan
 }
-from '../engine.js?v=31';
+from '../engine.js?v=32';
 import {
   dayKey as homeDate
 }
-from '../home-signals.js?v=31';
+from '../home-signals.js?v=32';
 import {
   escapeHTML as esc
 }
-from '../ui.js?v=31';
+from '../ui.js?v=32';
 import {
   go
 }
-from '../router.js?v=31';
+from '../router.js?v=32';
 import {
   blocked, recipeDetail
 }
-from '../screens/coach.js?v=31';
+from '../screens/coach.js?v=32';
 import {
   parseTempo
 }
-from '../screens/player.js?v=31';
+from '../screens/player.js?v=32';
 import {
   $, $$, he, on, t, user
 }
-from '../shared.js?v=31';
+from '../shared.js?v=32';
 import {
   modal, toast
 }
-from '../shell.js?v=31';
+from '../shell.js?v=32';
 import {
   save, state
 }
-from '../state.js?v=31';
+from '../state.js?v=32';
 function painReview() {
   modal((`<h2>` + (
     `${t('חוזרים עם תשומת לב.', 'Return with care.')}`

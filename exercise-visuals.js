@@ -1,13 +1,13 @@
-import {exercises} from './data/exercises.js?v=31';
-import {familyOf} from './data/exercise-families.js?v=31';
+import {exercises} from './data/exercises.js?v=32';
+import {familyOf} from './data/exercise-families.js?v=32';
 import {
   movementAtlas
 }
-from './data/movement-atlas.js?v=31';
+from './data/movement-atlas.js?v=32';
 import {
   poses
 }
-from './data/poses.js?v=31';
+from './data/poses.js?v=32';
 export const visualExerciseIds = Object.keys(poses);
 const escape = s => String(s ?? '').replace(/[&<>"']/g, c =>( {
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'

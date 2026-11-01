@@ -1,23 +1,23 @@
 import {
   skills
 }
-from './data/skills.js?v=31';
+from './data/skills.js?v=32';
 import {
   skillSelections, skillState
 }
-from './skill-progress.js?v=31';
+from './skill-progress.js?v=32';
 import {
   weeklyMovementLedger, progressionCheckpoint
 }
-from './coach-insights.js?v=31';
+from './coach-insights.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   escapeHTML as esc, icon
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 export function renderProgressEvidence(profile, lang = 'he') {
   const t =(a, b) => lang === 'en' ? b: a;
   const ledger = weeklyMovementLedger(profile.logs);

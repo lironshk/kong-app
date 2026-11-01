@@ -1,31 +1,31 @@
 import {
   dayKey, weeklyReview, stepReference
 }
-from './home-signals.js?v=31';
+from './home-signals.js?v=32';
 import {
   homeModel
 }
-from './home-view.js?v=31';
+from './home-view.js?v=32';
 import {
   searchCities, fetchForecast, weatherPolicy
 }
-from './home-weather.js?v=31';
+from './home-weather.js?v=32';
 import {
   recordLesson
 }
-from './home-content.js?v=31';
+from './home-content.js?v=32';
 import {
   validateHome
 }
-from './home-storage.js?v=31';
+from './home-storage.js?v=32';
 import {
   setDailyCheckIn
 }
-from './store.js?v=31';
+from './store.js?v=32';
 import {
   escapeHTML as esc
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 const $ = s => document.querySelector(s);
 export function bindHome( {
   profile: p, save, render, go, modal, toast, onCoach =() => go('coach')

@@ -1,4 +1,4 @@
-import {exercises} from './exercises.js?v=31';
+import {exercises} from './exercises.js?v=32';
 const originalSkills = [
   {
     "id": "first-push",

@@ -1,6 +1,6 @@
-import {exercises} from './data/exercises.js?v=31';
-import {movementAtlas} from './data/movement-atlas.js?v=31';
-import {escapeHTML as esc} from './ui.js?v=31';
+import {exercises} from './data/exercises.js?v=32';
+import {movementAtlas} from './data/movement-atlas.js?v=32';
+import {escapeHTML as esc} from './ui.js?v=32';
 // Review status stays internal; every movement keeps its exact written instructions.
 export const reviewedPlate = id => /^(coach-approved|reviewed|approved)$/.test(movementAtlas[id]?.review || '');
 export function instructionRoute(block) {

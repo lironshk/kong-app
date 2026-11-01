@@ -1,63 +1,63 @@
-import {renderTourPage, offerTour, isTourActive} from './tour.js?v=31';
-import {exercises} from './data/exercises.js?v=31';
-import {skills} from './data/skills.js?v=31';
-import {shell} from './shell.js?v=31';
+import {renderTourPage, offerTour, isTourActive} from './tour.js?v=32';
+import {exercises} from './data/exercises.js?v=32';
+import {skills} from './data/skills.js?v=32';
+import {shell} from './shell.js?v=32';
 import {
   bindEditorial, destinations
 }
-from './screens/home.js?v=31';
+from './screens/home.js?v=32';
 import {
   state
 }
-from './state.js?v=31';
+from './state.js?v=32';
 import {
   $, user, pageHead, t
 }
-from './shared.js?v=31';
+from './shared.js?v=32';
 import {
   captureView
 }
-from './view-state.js?v=31';
+from './view-state.js?v=32';
 import {
   dashboard
 }
-from './screens/coach.js?v=31';
+from './screens/coach.js?v=32';
 import {
   landing, home
 }
-from './screens/home.js?v=31';
+from './screens/home.js?v=32';
 import {
   library, exerciseDetail
 }
-from './screens/library.js?v=31';
+from './screens/library.js?v=32';
 import {
   onboarding, startOnboarding
 }
-from './screens/onboarding.js?v=31';
+from './screens/onboarding.js?v=32';
 import {
   captureDraft, work
 }
-from './screens/player.js?v=31';
+from './screens/player.js?v=32';
 import {
   research, settings
 }
-from './screens/profile.js?v=31';
+from './screens/profile.js?v=32';
 import {
   history as progress
 }
-from './screens/progress.js?v=31';
+from './screens/progress.js?v=32';
 import {
   skillDetail
 }
-from './screens/skills.js?v=31';
+from './screens/skills.js?v=32';
 import {
   admin
 }
-from './screens/admin.js?v=31';
+from './screens/admin.js?v=32';
 import {
   relief
 }
-from './screens/relief.js?v=31';
+from './screens/relief.js?v=32';
 const aliases = {
   today: 'home', history: 'progress', workouts: 'library', program: 'coach', settings: 'profile', research: 'profile'
 };

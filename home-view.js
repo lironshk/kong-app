@@ -1,35 +1,35 @@
 import {
   skills
 }
-from './data/skills.js?v=31';
+from './data/skills.js?v=32';
 import {
   skillSelections, skillState
 }
-from './skill-progress.js?v=31';
+from './skill-progress.js?v=32';
 import {
   escapeHTML as esc
 }
-from './ui.js?v=31';
+from './ui.js?v=32';
 import {
   exercises
 }
-from './data/exercises.js?v=31';
+from './data/exercises.js?v=32';
 import {
   movementAtlas
 }
-from './data/movement-atlas.js?v=31';
+from './data/movement-atlas.js?v=32';
 import {
   homeSignals, tissueLabels, patternLabels, dayKey, proteinReferences
 }
-from './home-signals.js?v=31';
+from './home-signals.js?v=32';
 import {
   forecastWindows
 }
-from './home-weather.js?v=31';
+from './home-weather.js?v=32';
 import {
   selectLesson, lessonContexts
 }
-from './home-content.js?v=31';
+from './home-content.js?v=32';
 // Translate existing catalogue movement taxonomy without guessing muscle contributions.
 const patternMap = {
   support: 'vertical_push', straight_arm_pull: 'horizontal_pull', knee_flexion: 'hip', hip_abduction: 'hip',
